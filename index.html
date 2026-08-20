@@ -439,7 +439,7 @@
   <div class="stat-banner">
     🔄 <b>누적 수집 · 최신 등록순</b> — 새 공고가 위에 쌓이고 기존 공고는 삭제하지 않음 ·
     수집처 <b>5곳</b>(사람인·고용24·잡코리아·알바몬·알바천국) · 직종 <b>룸메이드/하우스맨/인스펙터/관리자/시설</b><br>
-    1차 2026-08-19 (34건) → <b>2차 2026-08-20 (+53건) = 누적 87건</b> <span style="margin-left:auto">✅ 전 건 실제 공고 · 원문 URL 첨부</span>
+    1차 08-19 (34건) → 2차 08-20 (+53건) → <b>3차 08-20 고용24 직접수집 (+23건) = 누적 110건</b> <span style="margin-left:auto">✅ 전 건 실제 공고 · 원문 URL 첨부</span>
   </div>
 
   <div class="note rule">
@@ -485,12 +485,13 @@
           <td class="muted" style="font-size:11px">saramin.co.kr/…/view?rec_idx=</td>
           <td class="c">08-19<br>08-20</td>
         </tr>
-        <tr>
-          <td class="c"><span class="tag t-w24">고용24</span></td>
-          <td class="muted" style="font-size:12px">워크넷 연계 공고 — 사람인 검색 결과에 "고용24 공고"로 병행 노출된 건을 수집<br><span style="color:#fca5a5">※ 자체 API는 발급 불가(자동화 탭 참조)</span></td>
-          <td class="r"><b>15</b>건</td>
-          <td class="muted" style="font-size:11px">사람인 상세페이지 경유(원문 확인 가능)</td>
-          <td class="c">08-19<br>08-20</td>
+        <tr class="me">
+          <td class="c"><span class="tag t-w24">고용24</span><br><span class="muted" style="font-size:11px">직접 수집</span></td>
+          <td class="muted" style="font-size:12px"><b>work24.go.kr 채용정보 상세검색 직접 수집</b> — 검색어 "룸메이드" + <b>지역필터 부산(region=26000)</b> → 52건 중 신규 23건<br>
+            + 사람인 검색에 병행 노출된 고용24 연계 공고 15건<br><span style="color:#86efac">※ API 없이 사이트 직접 수집으로 해결 (2026-08-20)</span></td>
+          <td class="r"><b>38</b>건<br><span class="muted" style="font-size:11px">직접 23 / 경유 15</span></td>
+          <td class="muted" style="font-size:11px">work24.go.kr/…/empDetailAuthView.do<br>?wantedAuthNo=</td>
+          <td class="c">08-20</td>
         </tr>
         <tr>
           <td class="c"><span class="tag t-jk">잡코리아</span></td>
@@ -514,7 +515,7 @@
           <td class="c">08-20</td>
         </tr>
       </tbody>
-      <tfoot><tr><td>합계 · 5개 사이트</td><td>룸메이드 · 하우스맨 · 인스펙터 · 하우스키핑 관리자 · 시설</td><td class="r">87건</td><td>전 건 원문 URL 보유</td><td class="c">2026-08-20</td></tr></tfoot>
+      <tfoot><tr><td>합계 · 5개 사이트</td><td>룸메이드 · 하우스맨 · 인스펙터 · 하우스키핑 관리자 · 시설</td><td class="r">110건</td><td>전 건 원문 URL 보유</td><td class="c">2026-08-20</td></tr></tfoot>
     </table>
     <div class="src">
       ※ 위 조건 그대로 재검색하면 동일 공고를 확인할 수 있음 (마감된 공고는 목록에서 사라질 수 있으나 URL로는 접근 가능).
@@ -560,10 +561,10 @@
             <td class="c">연 1회<br><span class="muted">(신규 연도 발표 시)</span></td>
             <td class="muted" style="font-size:12px">키·호출 URL·분류코드표는 <b>api_config.json</b>에 저장</td></tr>
         <tr><td><b>부산 구인공고</b><br><span class="muted">5개 사이트</span></td>
-            <td>브라우저 자동 수집<br><span class="muted">(API 미사용)</span></td>
-            <td class="c"><span class="tag t-star3">🔄 수동 실행</span><br><span class="muted" style="font-size:11px">요청 시 실행</span></td>
+            <td>브라우저 자동 수집<br><span class="muted">고용24 포함 직접 수집(API 미사용)</span></td>
+            <td class="c"><span class="tag t-direct">✅ 수집 가능</span><br><span class="muted" style="font-size:11px">요청 시 실행</span></td>
             <td class="c">요청 시<br><span class="muted">주 1회 자동 예정</span></td>
-            <td class="muted" style="font-size:12px">아래 "수집 경로 근거" 표에 사이트별 검색 조건 기록</td></tr>
+            <td class="muted" style="font-size:12px">고용24도 <b>사이트 직접 수집으로 해결</b> — 구인공고 탭 "수집 경로 근거" 참조</td></tr>
         <tr><td>관광숙박업 등록현황<br><span class="muted">2025년 말 공식 통계</span></td>
             <td>공공데이터포털 파일 데이터</td>
             <td class="c"><span class="tag t-low">수기 반영</span></td>
@@ -574,7 +575,7 @@
   </div>
 
   <div class="card">
-    <h3>❌ 고용24 채용정보 API — 신청했으나 발급 불가 <span class="muted">2026-08-20 확인</span></h3>
+    <h3>고용24 — API는 불가, 직접 수집으로 해결 <span class="muted">2026-08-20 시도·검증 기록</span></h3>
     <div class="note rule">
       <b>진행 경과</b> : 공공데이터포털에서 「한국고용정보원_워크넷 채용정보」 활용신청 시도 → 고용24(work24.go.kr) 자체 발급 절차로 연결 →
       OPEN-API 인증키 신청 화면까지 진입 → <b>신청 화면 안내문에서 제약 확인</b>.
@@ -586,9 +587,17 @@
       <p>우리에게 필요한 <b>채용정보목록·상세 API</b>를 받으려면 <b>민간(직업소개·직업정보제공기관)</b> 자격으로 신청해야 하며,
       ①서비스 계획서 ②사업자등록증 <b>③직업정보제공사업 신고확인증</b> 3종 서류 제출이 필요.
       ③은 잡코리아·사람인처럼 채용정보를 제3자에게 제공하는 사업자 등록으로, 도급업 사업자에게는 해당되지 않음.</p>
-      <p><b>결론 : 발급 보류.</b> 대신 브라우저 수집으로 대체 — 고용24 공고는 사람인 검색 결과에도 "고용24 공고"로 함께 노출되며,
-      실제로 수집분 87건 중 <b>12건이 고용24 경유 공고</b>로 확인됨. 커버리지 손실 없음.</p>
-      <p class="muted">※ 지엠네트웍스가 향후 직업정보제공사업 신고를 하게 되면 기업회원으로 정식 신청 가능.</p>
+      <p><b>결론 : API 발급은 보류하되, 사이트 직접 수집으로 완전히 해결됨.</b></p>
+    </div>
+    <div class="api-card" style="border-color:#059669">
+      <h4>✅ 대안 확인 : work24.go.kr 직접 수집 성공 <span class="free">2026-08-20 검증</span></h4>
+      <p>API 없이 <b>고용24 「채용정보 상세검색」 페이지를 직접 조회</b>하는 방식으로 해결.
+      검색어 "룸메이드" + 지역필터 부산(<code>region=26000</code>) → <b>52건 조회</b>, 이 중 신규 23건 수집 완료.</p>
+      <p>공고별 고유번호(<code>wantedAuthNo</code>)로 <b>work24.go.kr 원문 URL을 직접 확보</b> — 사람인 경유가 아닌 정부 사이트 원문 링크.
+      현재 수집분 110건 중 <b>고용24 38건</b>(직접 23 + 사람인 경유 15).</p>
+      <p class="muted">※ 이 방식이 API보다 오히려 나은 점 : 서류·승인 절차 불필요, 웹에 노출되는 전체 공고를 그대로 수집.
+      단점 : 대량 자동화 시 사이트 부하를 고려해 수집 주기를 주 1회로 제한 권장.</p>
+      <p class="muted">※ 지엠네트웍스가 향후 직업정보제공사업 신고를 하게 되면 API도 정식 신청 가능.</p>
     </div>
     <div class="api-card">
       <h4>사람인 오픈 API — 미신청 (불필요 판단)</h4>
@@ -761,6 +770,31 @@ const JOBS = [
  { d:'26/08/08', gu:'사상구', hotel:'에이치에비뉴 호텔 사상', corp:'(주)베스원', op:'도급', job:'룸메이드', pay:'건별 6,500원', wf:'—', etc:'하우스키핑 · 상시모집 · 건별 단가제', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146051055' },
  { d:'26/08/05', gu:'서구', hotel:'서구 암남동 소재 호텔', corp:'(주)위더스파크', op:'도급', job:'룸메이드', pay:'일 120,000원', wf:'—', etc:'경력직 · 알바/정규직 · 상시모집', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=145984151' },
  { d:'26/08/04', gu:'연제구', hotel:'부산시티호텔', corp:'부산시티호텔', op:'직영', job:'룸메이드', pay:'일 110,000원', wf:'—', etc:'상시모집 · 3성급(122실)', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=145950536' },
+
+ /* ═══════ 2026-08-20 3차 : 고용24(work24.go.kr) 직접 수집 — 부산 지역필터(region=26000) "룸메이드" 52건 중 신규분 ═══════ */
+ { d:'26/08/19', gu:'해운대구', hotel:'뉴시즈 빌리브 패러그라퍼 해운대', corp:'주식회사 제이앤케이컴퍼니', op:'도급', job:'하우스맨', pay:'월 250~255만원', wf:'주5일 40시간', etc:'객실 하우스맨 · ~09/18', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608190004' },
+ { d:'26/08/19', gu:'동구', hotel:'아스티호텔 부산', corp:'(주)지엠네트웍스', op:'도급', job:'인스펙터', pay:'월 240만원', wf:'주5일 40시간', etc:'자사 공고 · 하우스키핑 인스펙터 · 경력1년', src:'고용24', gm:true, u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042608190008' },
+ { d:'26/08/19', gu:'사상구', hotel:'사상구 소재 숙박업소', corp:'에어텔', op:'직영', job:'룸메이드', pay:'시 11,250원', wf:'주3일', etc:'객실청소 1명 · 모텔급', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KF10102608190001' },
+ { d:'26/08/18', gu:'영도구', hotel:'펜션브릿지호텔', corp:'펜션브릿지호텔', op:'직영', job:'룸메이드', pay:'월 255만원', wf:'주6일 48시간', etc:'경력3년 우대', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042608180074' },
+ { d:'26/08/14', gu:'해운대구', hotel:'해운대 중동 소재 호텔', corp:'(주)시너링크', op:'도급', job:'하우스키핑 관리자', pay:'월 260~270만원', wf:'주5일 40시간', etc:'현장소장·선임주임 · 경력1년 · 관리자급', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBQ002608140002' },
+ { d:'26/08/14', gu:'해운대구', hotel:'해운대 해수욕장 인근 호텔', corp:'(주)시너링크', op:'도급', job:'하우스맨', pay:'월 250만원', wf:'주5일', etc:'객실정비 지원', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBQ002608140001' },
+ { d:'26/08/14', gu:'서구', hotel:'페어필드 바이 메리어트 부산 송도비치', corp:'주식회사 위더스티엠', op:'도급', job:'룸메이드', pay:'월 225만원', wf:'—', etc:'경력직 · 3성급(179실) · 메리어트 체인', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=54751939' },
+ { d:'26/08/13', gu:'해운대구', hotel:'트레블로지 스위트 부산 센텀', corp:'트레블로지 스위트 부산 센텀 호텔', op:'직영', job:'하우스키핑 관리자', pay:'월 220~265만원', wf:'주5일 40시간', etc:'하우스키핑 관리자 · 직영 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130112608130006' },
+ { d:'26/08/13', gu:'동래구', hotel:'호텔농심', corp:'주식회사 베스트스탭', op:'도급', job:'룸메이드', pay:'일 102,000원', wf:'주5일', etc:'객실청소원 · 경력1년 · 5성급(238실)', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KF10922608130001' },
+ { d:'26/08/12', gu:'서구', hotel:'서구 등대로 소재 호텔(송도)', corp:'주식회사 시너제닉', op:'도급', job:'룸메이드', pay:'월 150~250만원', wf:'주5일 25시간', etc:'객실정비원 · 송도 해상케이블카 인근', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBL002608120006' },
+ { d:'26/08/12', gu:'서구', hotel:'서구 등대로 소재 호텔(송도)', corp:'주식회사 시너제닉', op:'도급', job:'인스펙터', pay:'월 260만원', wf:'주5일 40시간', etc:'선임주임 인스펙터 · 경력1년 · 자사 거점 침투', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBL002608120005' },
+ { d:'26/08/12', gu:'서구', hotel:'그랩디오션 송도호텔', corp:'(주)지엠네트웍스', op:'도급', job:'룸메이드', pay:'일 91,630원', wf:'주5일 08:30~17:30', etc:'자사 공고', src:'고용24', gm:true, u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KF10112608120002' },
+ { d:'26/08/10', gu:'수영구', hotel:'광안해변로 소재 호텔(광안리)', corp:'주식회사 시너제닉', op:'도급', job:'룸메이드', pay:'일 100,000원', wf:'주2일', etc:'객실관리 아르바이트 · 신입', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130112608100038' },
+ { d:'26/08/07', gu:'중구', hotel:'지엔비호텔 부평동', corp:'지엔비호텔(GnB HOTEL)', op:'직영', job:'룸메이드', pay:'월 215만원 이상', wf:'주5일 40시간', etc:'객실 메이드 · 경력1년 · ~08/31', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042608070027' },
+ { d:'26/08/07', gu:'해운대구', hotel:'파라다이스호텔 부산', corp:'(주)아이비에스인더스트리', op:'도급', job:'룸메이드', pay:'월 243만원', wf:'주5일 40시간', etc:'중견기업 · 5성급(529실)', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K120032608070009' },
+ { d:'26/08/07', gu:'동구', hotel:'라마다앙코르 부산역호텔', corp:'라마다앙코르부산역호텔', op:'직영', job:'하우스맨', pay:'연 2,683만원', wf:'주5일 40시간', etc:'직영 채용 · ~10/06', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJ20282608070002' },
+ { d:'26/08/05', gu:'해운대구', hotel:'뉴시즈 빌리브 패러그라퍼 해운대', corp:'주식회사 제이앤케이컴퍼니', op:'도급', job:'인스펙터', pay:'월 260만원 이상', wf:'주5일 40시간', etc:'객실 인스펙트리스(주임)', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608050002' },
+ { d:'26/08/04', gu:'해운대구', hotel:'가든앤테라스 해운대', corp:'주식회사 한울글로벌', op:'도급', job:'룸메이드', pay:'일 110,000원 이상', wf:'주5일 08:00~17:00', etc:'룸메이드·객실정비', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130112608040032' },
+ { d:'26/08/03', gu:'기장군', hotel:'빌라쥬 드 아난티', corp:'(주)삼익', op:'도급', job:'하우스맨', pay:'월 220~240만원', wf:'주5일 40시간', etc:'하우스맨/룸메이드 · 5성급', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K163012608030026' },
+ { d:'26/07/29', gu:'동구', hotel:'토요코인 부산역점', corp:'토요코인코리아(주) 부산역점', op:'직영', job:'하우스키핑 관리자', pay:'월 250만원', wf:'주5일 40시간', etc:'객실청소 관리자(치프)', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042607290043' },
+ { d:'26/07/29', gu:'동구', hotel:'토요코인 부산역점', corp:'토요코인코리아(주) 부산역점', op:'직영', job:'룸메이드', pay:'시 11,000~11,500원', wf:'주5일 22시간', etc:'객실청소 룸메이드', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042607290042' },
+ { d:'26/07/27', gu:'해운대구', hotel:'관광호텔 라온(송정)', corp:'호텔라온주식회사', op:'직영', job:'룸메이드', pay:'일 180,000원', wf:'주5일', etc:'경력2년 · 일급 최상단', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBQ002607270015' },
+ { d:'26/07/24', gu:'중구', hotel:'뉴씨즈 래디언트 남포호텔', corp:'주식회사 제이앤케이컴퍼니', op:'도급', job:'인스펙터', pay:'월 260만원 이상', wf:'—', etc:'경력 인스펙트리스(주임) · 경력1년', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002607240002' },
 ];
 JOBS.forEach(j => j.url = j.u || ('https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=' + j.id));
 
