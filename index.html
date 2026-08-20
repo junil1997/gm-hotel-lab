@@ -45,6 +45,8 @@
   .tbl tfoot td { position:sticky; bottom:0; background:#1d4ed8; color:#fff; font-weight:800; padding:9px 10px; border-top:2px solid #3b82f6; }
   .clickable { cursor:pointer; }
   .clickable:hover { border-color:#3b82f6; }
+  .kpi.sel { outline:2px solid #60a5fa; outline-offset:2px; }
+  .kpi.gm.sel { outline-color:#f59e0b; }
   .bar-row.lnk { cursor:pointer; border-radius:6px; }
   .bar-row.lnk:hover { background:#243040; }
   .tbl tr.me { background:rgba(245,158,11,.14); }
@@ -447,25 +449,22 @@
   </div>
 
   <div class="kpi-grid">
-    <div class="kpi accent"><div class="kpi-t">수집 공고</div><div class="kpi-v" id="kJobTotal">0<span>건</span></div><div class="kpi-s">URL 확인 완료 건만 게재</div></div>
-    <div class="kpi"><div class="kpi-t">도급/용역업체 공고</div><div class="kpi-v" id="kJobDogub">0<span>건</span></div><div class="kpi-s">경쟁사 동향 = 이 숫자</div></div>
-    <div class="kpi"><div class="kpi-t">호텔 직영 공고</div><div class="kpi-v" id="kJobDirect">0<span>건</span></div><div class="kpi-s">직영 → 도급 전환 영업 타깃</div></div>
-    <div class="kpi gm"><div class="kpi-t">🎯 지엠네트웍스 자사</div><div class="kpi-v" id="kJobGm">0<span>건</span></div><div class="kpi-s">주황색 행 표시</div></div>
+    <div class="kpi accent clickable" id="kpiAll" onclick="opFilter('')"><div class="kpi-t">수집 공고 (전체)</div><div class="kpi-v" id="kJobTotal">0<span>건</span></div><div class="kpi-s">클릭 → 필터 해제</div></div>
+    <div class="kpi clickable" id="kpiDogub" onclick="opFilter('도급')"><div class="kpi-t">도급/용역업체 공고</div><div class="kpi-v" id="kJobDogub">0<span>건</span></div><div class="kpi-s">경쟁사 동향 · <b style="color:#93c5fd">클릭 → 이 공고만</b></div></div>
+    <div class="kpi clickable" id="kpiDirect" onclick="opFilter('직영')"><div class="kpi-t">호텔 직영 공고</div><div class="kpi-v" id="kJobDirect">0<span>건</span></div><div class="kpi-s">도급 전환 영업 타깃 · <b style="color:#93c5fd">클릭 → 이 공고만</b></div></div>
+    <div class="kpi gm clickable" id="kpiGm" onclick="opFilter('자사')"><div class="kpi-t">🎯 지엠네트웍스 자사</div><div class="kpi-v" id="kJobGm">0<span>건</span></div><div class="kpi-s">아스티·라마다앙코르·그랩디오션 · <b style="color:#fcd34d">클릭 → 이 공고만</b></div></div>
   </div>
 
   <div class="gunav" id="guNav"></div>
 
   <div class="searchbar">
     <input id="jobSearch" placeholder="호텔명 · 업체명 · 직종 검색…" oninput="renderJobs()">
-    <select id="jobType" onchange="renderJobs()">
-      <option value="">전체 직종</option>
-      <option>룸메이드</option><option>하우스맨</option><option>인스펙터</option>
-      <option>하우스키핑 관리자</option><option>프론트</option><option>시설</option>
-    </select>
+    <select id="jobType" onchange="renderJobs()"><option value="">전체 직종</option></select>
     <select id="jobOp" onchange="renderJobs()">
       <option value="">도급/직영 전체</option>
       <option value="도급">도급·용역업체 공고만</option>
       <option value="직영">호텔 직영 공고만</option>
+      <option value="자사">🎯 지엠네트웍스 자사 공고만</option>
     </select>
     <select id="jobSrc" onchange="renderJobs()">
       <option value="">수집처 전체</option>
@@ -831,11 +830,13 @@ function renderJobs(){
   const rows = JOBS.filter(j =>
     (!guFilter || j.gu === guFilter) &&
     (!jt || j.job === jt) &&
-    (!op || j.op === op) &&
+    (!op || (op === '자사' ? j.gm : (j.op === op && !j.gm))) &&
     (!sc || j.src === sc) &&
     (!q || (j.hotel + j.corp + j.job + j.etc).toLowerCase().includes(q)))
     .sort((a, b) => (b.d === '—' ? '' : b.d).localeCompare(a.d === '—' ? '' : a.d));
   document.getElementById('jobCnt').textContent = `${rows.length}건 / 전체 ${JOBS.length}건`;
+  const KPI = { '': 'kpiAll', '도급': 'kpiDogub', '직영': 'kpiDirect', '자사': 'kpiGm' };
+  Object.values(KPI).forEach(id => { const e = document.getElementById(id); if (e) e.classList.toggle('sel', KPI[op] === id); });
   document.getElementById('jobBody').innerHTML = rows.map((j, i) => `
     <tr class="${j.gm ? 'me' : ''}">
       <td class="c">${i + 1}</td>
@@ -893,8 +894,24 @@ renderVendors();
 
 document.getElementById('kJobTotal').innerHTML = JOBS.length + '<span>건</span>';
 document.getElementById('kJobDogub').innerHTML = JOBS.filter(j => j.op === '도급' && !j.gm).length + '<span>건</span>';
-document.getElementById('kJobDirect').innerHTML = JOBS.filter(j => j.op === '직영').length + '<span>건</span>';
+document.getElementById('kJobDirect').innerHTML = JOBS.filter(j => j.op === '직영' && !j.gm).length + '<span>건</span>';
 document.getElementById('kJobGm').innerHTML = JOBS.filter(j => j.gm).length + '<span>건</span>';
+
+/* 직종 드롭다운을 실제 데이터에서 생성 (건수 표시) */
+(() => {
+  const c = {}; JOBS.forEach(j => c[j.job] = (c[j.job] || 0) + 1);
+  document.getElementById('jobType').innerHTML = `<option value="">전체 직종 (${JOBS.length})</option>` +
+    Object.keys(c).sort((a, b) => c[b] - c[a]).map(k => `<option value="${k}">${k} (${c[k]})</option>`).join('');
+})();
+
+/* KPI 카드 클릭 → 도급/직영/자사 필터 */
+function opFilter(v){
+  document.getElementById('jobOp').value = v;
+  guFilter = ''; document.getElementById('jobSearch').value = '';
+  document.getElementById('jobType').value = ''; document.getElementById('jobSrc').value = '';
+  document.querySelectorAll('#guNav .gubtn').forEach((b, i) => b.classList.toggle('on', i === 0));
+  renderJobs();
+}
 renderJobs();
 </script>
 </body></html>
