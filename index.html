@@ -113,7 +113,7 @@
 
 <header>
   <h1>🏨 지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — Draft v0.3</small></h1>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.15</small></h1>
   <div class="meta">성급·지역 : <b>2026-08-19 실시간</b> (등급유효 호텔 834개 전수 집계)<br>
     등록현황 <b>2025년 말</b>(문체부) · 사업체조사 <b>2024년</b>(통계청) — 각 최신 공식판<br>
     구인공고 수집일 : <b>2026-08-19</b> (사람인·고용24)</div>
@@ -126,6 +126,7 @@
   <button class="navbtn" data-tab="t6" onclick="go('t6',this)">🏭 아웃소싱 공급시장</button>
   <button class="navbtn" data-tab="t4" onclick="go('t4',this)">📋 부산 구인공고 모니터링</button>
   <button class="navbtn" data-tab="t5" onclick="go('t5',this)">⚙️ 자동화 · 데이터 연동</button>
+  <button class="navbtn" data-tab="t7" onclick="go('t7',this)">🆚 기존 프로그램 대비</button>
 </div>
 
 <!-- ══════════════════ 탭1 : 전국 호텔 현황 ══════════════════ -->
@@ -551,8 +552,111 @@
   </div>
 </div>
 
+<!-- ══════════════════ 탭7 : 기존 프로그램 대비 ══════════════════ -->
+<div class="tab" id="t7">
+  <h2>기존 시장조사 프로그램과 무엇이 다른가 <span class="hint">두 프로그램은 대체 관계가 아니라 역할이 다름 — 함께 써야 완성됨</span></h2>
+
+  <div class="note">
+    📌 <b>한 줄 요약</b> — 기존 프로그램은 <b>"부산·경남에서 지금 싸우기 위한 무기"</b>(깊이), 신규 프로그램은
+    <b>"전국으로 넓히고 매주 자동으로 갱신되는 레이더"</b>(넓이·속도). 기존 것을 대체하는 게 아니라 <b>그 위에 시장 지도와 자동화를 얹은 것</b>.
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3>📗 기존 : 지엠네트웍스 시장조사 대시보드</h3>
+      <table class="tbl">
+        <tbody>
+          <tr><td>범위</td><td><b>부산 · 경남</b></td></tr>
+          <tr><td>조사 호텔</td><td>134개 · 23,588실</td></tr>
+          <tr><td>경쟁 도급업체</td><td><b>74곳</b> (순위·운영 호텔 수까지)</td></tr>
+          <tr><td>구인공고</td><td>311건 (엑셀 축적분)</td></tr>
+          <tr><td>자사 포지션</td><td><b>시장 1위 · 4개 호텔 · 1,400실</b></td></tr>
+          <tr><td>데이터 방식</td><td>엑셀 수작업 조사 → 붙여넣기</td></tr>
+          <tr><td>기준 시점</td><td>2026-07-19 (스냅샷)</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top:12px;background:#064e3b;border-color:#059669;color:#a7f3d0">
+        ✅ <b>이게 더 강한 부분</b> : 경쟁사 74곳 순위와 자사 시장점유 포지션, 도급 조사 도우미, 원본 시트 열람.
+        <b>영업 현장에서 바로 쓰는 실행 도구</b>로는 여전히 이쪽이 더 깊음 — 계속 씁니다.
+      </div>
+    </div>
+
+    <div class="card" style="border-color:#f59e0b">
+      <h3>📘 신규 : 호텔 상권분석 대시보드 (ver.15)</h3>
+      <table class="tbl">
+        <tbody>
+          <tr class="me"><td>범위</td><td><b>전국 16개 시도</b> (부산 별도 강조)</td></tr>
+          <tr class="me"><td>조사 호텔</td><td><b>834개 · 111,218실</b> (등급유효 전수)</td></tr>
+          <tr class="me"><td>성급 분석</td><td>1~5성 전수 + 부산 5성 10곳·4성 6곳 명단</td></tr>
+          <tr class="me"><td>아웃소싱 시장</td><td><b>업종별 경쟁 밀도</b> (전국 6,507 / 부산 293개사)</td></tr>
+          <tr class="me"><td>구인공고</td><td>87건 · <b>5개 사이트 · 전 건 원문 URL</b></td></tr>
+          <tr class="me"><td>데이터 방식</td><td><b>API·자동 수집</b> (KOSIS·등급결정원 실시간)</td></tr>
+          <tr class="me"><td>기준 시점</td><td><b>2026-08-20 · 요청 시/주 1회 자동 갱신</b></td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top:12px;background:#3b2f0b;border-color:#b45309;color:#fde68a">
+        🎯 <b>새로 생긴 것</b> : 전국 시장 지도(확장 후보지), 성급별 물량 구조, 아웃소싱 경쟁 밀도 통계, 5개 사이트 실시간 모니터링, 상시 웹 링크.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>핵심 차별점 5가지 <span class="muted">대표님 보고용</span></h3>
+    <table class="tbl">
+      <thead><tr><th>#</th><th>차별점</th><th>기존</th><th>신규 (ver.15)</th><th>경영 관점 의미</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="c"><b>1</b></td><td><b>시장 범위</b></td>
+          <td class="c">부산·경남 134개</td><td class="c"><b>전국 834개</b> (6.2배)</td>
+          <td class="muted" style="font-size:12px">부산 밖 확장 시 어느 지역·어느 성급을 칠지 근거가 생김. 부산은 등급유효 기준 <b>전국 2위 시장</b>임이 수치로 확인됨</td>
+        </tr>
+        <tr>
+          <td class="c"><b>2</b></td><td><b>데이터 갱신</b></td>
+          <td class="c">엑셀 수작업 · 스냅샷</td><td class="c"><b>API 자동 · 상시</b></td>
+          <td class="muted" style="font-size:12px">사람이 조사·입력하던 시간이 0에 수렴. 갱신 주기가 "조사할 때마다"에서 <b>"매주 자동"</b>으로</td>
+        </tr>
+        <tr>
+          <td class="c"><b>3</b></td><td><b>공고 근거</b></td>
+          <td class="c">건수 중심</td><td class="c"><b>전 건 원문 URL</b> + 5개 사이트</td>
+          <td class="muted" style="font-size:12px">사람인·고용24·잡코리아·알바몬·알바천국 교차 수집. <b>모든 수치를 원문으로 즉시 검증 가능</b> — 보고자료 신뢰도</td>
+        </tr>
+        <tr>
+          <td class="c"><b>4</b></td><td><b>신규 분석축</b></td>
+          <td class="c">—</td><td class="c"><b>성급 · 아웃소싱 공급시장</b></td>
+          <td class="muted" style="font-size:12px">성급별 물량 구조(3~4성이 객실 54%)와 경쟁 밀도(부산 741업종 293개사)로 <b>단가·타깃 전략 근거</b> 확보</td>
+        </tr>
+        <tr>
+          <td class="c"><b>5</b></td><td><b>접근성</b></td>
+          <td class="c">파일 전달(카톡)</td><td class="c"><b>상시 웹 주소</b></td>
+          <td class="muted" style="font-size:12px">junil1997.github.io/gm-hotel-lab — 링크 하나로 최신본 공유. 파일 버전 뒤섞임 없음</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>신규 프로그램이 실제로 찾아낸 것 <span class="muted">기존 조사에 없던 정보</span></h3>
+    <table class="tbl">
+      <thead><tr><th>발견</th><th>내용</th><th>영업 시사점</th></tr></thead>
+      <tbody>
+        <tr><td><b>자사 관리 호텔 특정</b></td><td>익명 공고(고용24)에서 근무지 주소로 <b>아스티호텔·라마다앙코르 부산역·그랩디오션 송도</b> 확인</td><td class="muted" style="font-size:12px">자사 공고 8건이 경쟁사 수치에 섞여 있던 것을 분리 — 경쟁 현황 왜곡 제거</td></tr>
+        <tr><td><b>대기업 경쟁사 진입</b></td><td>시그니엘 부산(5성) = <b>에이치디씨랩스(주)</b> / 하얏트 플레이스 연산 = (주)프로에이콤</td><td class="muted" style="font-size:12px">최상위 등급 호텔은 대기업 계열이 잡고 있음 — 진입 전략 재검토 필요</td></tr>
+        <tr><td><b>거점 구 침투 신호</b></td><td><b>(주)시너제닉</b>이 서구 송도 호텔에서 선임주임 인스펙터 <b>연 3,120만원</b> 모집</td><td class="muted" style="font-size:12px">서구는 자사 거점 — 관리자급 단가 경쟁 발생 중. 즉시 대응 필요</td></tr>
+        <tr><td><b>시설 도급 별도 시장</b></td><td>(주)빌텍이 솔라리아니시테츠호텔 시설 전체 수주 — 소장 월 390만 / 주임·근무자 월 280~290만</td><td class="muted" style="font-size:12px">하우스키핑과 <b>분리된 신규 사업 기회</b>. 단가가 객실정비보다 높음</td></tr>
+        <tr><td><b>관리자급 시장단가</b></td><td>파라다이스 객실 부소장/인스펙터 월 330만 · 송도 선임주임 연 3,120만 · 시설소장 월 390만</td><td class="muted" style="font-size:12px">자사 관리자 인건비 책정·입찰 단가 산정의 <b>실거래 기준선</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    🔭 <b>다음 단계 제안</b> — ① 두 프로그램의 데이터를 합쳐 <b>경쟁사 74곳 × 전국 성급 정보</b> 통합
+    ② 부산 구별 아웃소싱 업체 분포 조회(KOSIS 연동 완료) ③ 주 1회 자동 수집 스케줄 확정(요일·시간 결정 필요)
+    ④ 등급결정일 +3년 만료 임박 호텔 = 재심사·투자 시기 → <b>영업 타이밍 알림</b>
+  </div>
+</div>
+
 <footer>
-  지엠네트웍스 호텔 상권분석 대시보드 — Draft v0.5 (2026-08-20) · 호텔 834개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.15 (2026-08-20) · 호텔 834개 전수 명단 내장<br>
   통계 출처 : 한국관광협회중앙회 호텔업 등급결정 현황(2026-08-19 실시간 전수 집계) · 문화체육관광부 관광숙박업 등록현황(2025년 말) · 통계청 전국사업체조사(2024년, KOSIS) · 구인공고 : 사람인/고용24 (2026-08-19 수집, 전 건 원문 URL 첨부)
 </footer>
 
