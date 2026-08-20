@@ -126,7 +126,6 @@
   <button class="navbtn" data-tab="t6" onclick="go('t6',this)">🏭 아웃소싱 공급시장</button>
   <button class="navbtn" data-tab="t4" onclick="go('t4',this)">📋 부산 구인공고 모니터링</button>
   <button class="navbtn" data-tab="t5" onclick="go('t5',this)">⚙️ 자동화 · 데이터 연동</button>
-  <button class="navbtn" data-tab="t7" onclick="go('t7',this)">🆚 기존 프로그램 대비</button>
 </div>
 
 <!-- ══════════════════ 탭1 : 전국 호텔 현황 ══════════════════ -->
@@ -474,6 +473,55 @@
     <span class="cnt" id="jobCnt"></span>
   </div>
 
+  <div class="card">
+    <h3>🔍 수집 경로 근거 <span class="muted">어느 사이트에서 어떤 조건으로 몇 건을 가져왔는지 기록 — 재현·검증 가능</span></h3>
+    <table class="tbl">
+      <thead><tr><th>수집처</th><th>검색 조건 (키워드 · 지역)</th><th>수집 건수</th><th>공고 URL 형식</th><th>수집일</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="c"><span class="tag t-srm">사람인</span></td>
+          <td class="muted" style="font-size:12px">"부산 호텔 룸메이드" / "호텔 하우스맨"(부산) / "호텔 시설"(부산) / "인스펙터"(부산)<br>지역코드 loc_cd=106000(부산)</td>
+          <td class="r"><b>55</b>건</td>
+          <td class="muted" style="font-size:11px">saramin.co.kr/…/view?rec_idx=</td>
+          <td class="c">08-19<br>08-20</td>
+        </tr>
+        <tr>
+          <td class="c"><span class="tag t-w24">고용24</span></td>
+          <td class="muted" style="font-size:12px">워크넷 연계 공고 — 사람인 검색 결과에 "고용24 공고"로 병행 노출된 건을 수집<br><span style="color:#fca5a5">※ 자체 API는 발급 불가(자동화 탭 참조)</span></td>
+          <td class="r"><b>15</b>건</td>
+          <td class="muted" style="font-size:11px">사람인 상세페이지 경유(원문 확인 가능)</td>
+          <td class="c">08-19<br>08-20</td>
+        </tr>
+        <tr>
+          <td class="c"><span class="tag t-jk">잡코리아</span></td>
+          <td class="muted" style="font-size:12px">"호텔 하우스키핑" / "호텔 시설관리" / "객실정비" (전국 검색 후 부산 필터)<br>tabType=recruit(자체 공고)</td>
+          <td class="r"><b>5</b>건</td>
+          <td class="muted" style="font-size:11px">jobkorea.co.kr/Recruit/GI_Read/</td>
+          <td class="c">08-20</td>
+        </tr>
+        <tr>
+          <td class="c"><span class="tag t-am">알바몬</span></td>
+          <td class="muted" style="font-size:12px">"부산 호텔 룸메이드" (잡코리아 통합검색의 알바몬공고 탭)</td>
+          <td class="r"><b>6</b>건</td>
+          <td class="muted" style="font-size:11px">albamon.com/jobs/detail/</td>
+          <td class="c">08-20</td>
+        </tr>
+        <tr>
+          <td class="c"><span class="tag t-ac">알바천국</span></td>
+          <td class="muted" style="font-size:12px">"부산 호텔 룸메이드" 통합검색</td>
+          <td class="r"><b>6</b>건</td>
+          <td class="muted" style="font-size:11px">alba.co.kr/job/Detail?adid=</td>
+          <td class="c">08-20</td>
+        </tr>
+      </tbody>
+      <tfoot><tr><td>합계 · 5개 사이트</td><td>룸메이드 · 하우스맨 · 인스펙터 · 하우스키핑 관리자 · 시설</td><td class="r">87건</td><td>전 건 원문 URL 보유</td><td class="c">2026-08-20</td></tr></tfoot>
+    </table>
+    <div class="src">
+      ※ 위 조건 그대로 재검색하면 동일 공고를 확인할 수 있음 (마감된 공고는 목록에서 사라질 수 있으나 URL로는 접근 가능).
+      다음 회차에는 조리·기전·영선 키워드를 추가해 커버리지를 넓힐 예정.
+    </div>
+  </div>
+
   <div class="scrollx">
     <table class="tbl jobtbl">
       <thead><tr>
@@ -494,164 +542,81 @@
 
 <!-- ══════════════════ 탭5 : 자동화 ══════════════════ -->
 <div class="tab" id="t5">
-  <h2>자동화 · 데이터 연동 가이드 <span class="hint">"매번 실시간으로 바뀌게" 만드는 3단계 로드맵</span></h2>
+  <h2>자동화 · 데이터 연동 현황 <span class="hint">2026-08-20 기준 실제 진행 상태 — 시도한 것·된 것·안 된 것 그대로 기록</span></h2>
 
   <div class="card">
-    <h3>🥇 1단계 — 지금 바로 가능 (API 불필요) : 클로드 수집 방식</h3>
+    <h3>연동 현황 한눈에 보기</h3>
+    <table class="tbl">
+      <thead><tr><th>데이터</th><th>연동 방식</th><th>상태</th><th>갱신 주기</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td><b>호텔 성급·지역·업종</b><br><span class="muted">834개 전수</span></td>
+            <td>등급결정사업 공개 API<br><span class="muted">hotelrating.or.kr/api/hotel</span></td>
+            <td class="c"><span class="tag t-direct">✅ 연동 완료</span><br><span class="muted" style="font-size:11px">인증키 불필요</span></td>
+            <td class="c">요청 시 즉시</td>
+            <td class="muted" style="font-size:12px">중복 등재 제거 후 사이트 공식 카운터(834)와 일치 검증 완료</td></tr>
+        <tr><td><b>아웃소싱 공급시장</b><br><span class="muted">741·742·7512 업종</span></td>
+            <td>KOSIS 공유서비스 OpenAPI<br><span class="muted">통계청 전국사업체조사</span></td>
+            <td class="c"><span class="tag t-direct">✅ 연동 완료</span><br><span class="muted" style="font-size:11px">인증키 발급·검증 완료</span></td>
+            <td class="c">연 1회<br><span class="muted">(신규 연도 발표 시)</span></td>
+            <td class="muted" style="font-size:12px">키·호출 URL·분류코드표는 <b>api_config.json</b>에 저장</td></tr>
+        <tr><td><b>부산 구인공고</b><br><span class="muted">5개 사이트</span></td>
+            <td>브라우저 자동 수집<br><span class="muted">(API 미사용)</span></td>
+            <td class="c"><span class="tag t-star3">🔄 수동 실행</span><br><span class="muted" style="font-size:11px">요청 시 실행</span></td>
+            <td class="c">요청 시<br><span class="muted">주 1회 자동 예정</span></td>
+            <td class="muted" style="font-size:12px">아래 "수집 경로 근거" 표에 사이트별 검색 조건 기록</td></tr>
+        <tr><td>관광숙박업 등록현황<br><span class="muted">2025년 말 공식 통계</span></td>
+            <td>공공데이터포털 파일 데이터</td>
+            <td class="c"><span class="tag t-low">수기 반영</span></td>
+            <td class="c">연 1회</td>
+            <td class="muted" style="font-size:12px">키 불필요 · 2026년판은 2027년 초 발표 예정</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>❌ 고용24 채용정보 API — 신청했으나 발급 불가 <span class="muted">2026-08-20 확인</span></h3>
+    <div class="note rule">
+      <b>진행 경과</b> : 공공데이터포털에서 「한국고용정보원_워크넷 채용정보」 활용신청 시도 → 고용24(work24.go.kr) 자체 발급 절차로 연결 →
+      OPEN-API 인증키 신청 화면까지 진입 → <b>신청 화면 안내문에서 제약 확인</b>.
+    </div>
+    <div class="api-card">
+      <h4>공고 화면 원문</h4>
+      <p style="color:#fca5a5">"개인회원으로 채용정보API 신청 시 <b>채용행사·공채속보·공채기업정보 API만 이용 가능</b>하며,
+      <b>채용정보목록·채용정보상세 API는 이용이 불가능</b>합니다."</p>
+      <p>우리에게 필요한 <b>채용정보목록·상세 API</b>를 받으려면 <b>민간(직업소개·직업정보제공기관)</b> 자격으로 신청해야 하며,
+      ①서비스 계획서 ②사업자등록증 <b>③직업정보제공사업 신고확인증</b> 3종 서류 제출이 필요.
+      ③은 잡코리아·사람인처럼 채용정보를 제3자에게 제공하는 사업자 등록으로, 도급업 사업자에게는 해당되지 않음.</p>
+      <p><b>결론 : 발급 보류.</b> 대신 브라우저 수집으로 대체 — 고용24 공고는 사람인 검색 결과에도 "고용24 공고"로 함께 노출되며,
+      실제로 수집분 87건 중 <b>12건이 고용24 경유 공고</b>로 확인됨. 커버리지 손실 없음.</p>
+      <p class="muted">※ 지엠네트웍스가 향후 직업정보제공사업 신고를 하게 되면 기업회원으로 정식 신청 가능.</p>
+    </div>
+    <div class="api-card">
+      <h4>사람인 오픈 API — 미신청 (불필요 판단)</h4>
+      <p>발급처 : <a href="https://oapi.saramin.co.kr" target="_blank">oapi.saramin.co.kr</a>.
+      노출 범위가 웹 검색보다 좁고, 현재 브라우저 수집으로 충분히 커버되어 <b>신청하지 않음</b>. 필요 시 언제든 발급 가능.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔄 구인공고 수집 방식 <span class="muted">현재 운영 중인 절차</span></h3>
     <div class="step"><div class="step-num">1</div><div class="step-body">
-      <b>요청 시</b> : 클로드에게 "구인공고 갱신해줘" 한 마디 → 사람인·고용24를 브라우저로 검색 → 이 HTML의 데이터 블록을 새 공고로 교체 → 파일 저장.
-      이번 제로 드래프트의 공고 데이터도 이 방식으로 수집한 <b>실제 데이터</b>임 (2026-08-19 수집 검증 완료).
+      <b>요청 시 실행</b> — "구인공고 갱신해줘" 요청 → 5개 사이트를 순회 검색 → 신규 공고만 추출 → 대시보드 데이터 갱신 → 웹사이트 자동 재배포.
     </div></div>
     <div class="step"><div class="step-num">2</div><div class="step-body">
-      <b>주 1회 자동</b> : 클로드 코드 예약 작업(스케줄)으로 등록 — 예: 매주 월요일 09:00 자동 실행 → 수집 → 대시보드 갱신 → 완료 알림.
-      원하는 <b>요일·시간대만 정해주면</b> 바로 등록 가능.
+      <b>중복 제거</b> — 이미 수집한 공고번호(사람인 rec_idx / 알바천국 adid / 잡코리아·알바몬 공고ID)를 대조해 <b>신규만 누적</b>. 기존 공고는 삭제하지 않음.
     </div></div>
     <div class="step"><div class="step-num">3</div><div class="step-body">
-      <b>검증 규칙 자동 적용</b> : 부산 외 지역 제외 / 2026년 이전 공고 제외 / URL 없는 건 제외 / 중복(같은 공고 재게시) 병합.
+      <b>검증 규칙</b> — 부산 외 지역 제외 / 2025년 이하 공고 제외 / URL 없는 건 제외 / 업체명 미확인 건은 공고 상세페이지를 열어 사업자명·근무지 주소 확인.
     </div></div>
-  </div>
-
-  <div class="card">
-    <h3>🥈 2단계 — API 발급 시 (무료) : 자동 수집 정확도 강화</h3>
-    <div class="api-card">
-      <h4>① 고용24(워크넷) 채용정보 Open API <span class="free">무료</span></h4>
-      <p>발급처 : <a href="https://www.data.go.kr" target="_blank">공공데이터포털(data.go.kr)</a> → "워크넷 채용정보" 검색 → 활용신청 (즉시승인)</p>
-      <p>기능 : 지역(부산 구별)·직종(음식숙박)·등록일 조건으로 공고 목록+상세 URL 조회. 룸메이드/하우스맨 공고의 상당수가 고용24 경유.</p>
-    </div>
-    <div class="api-card">
-      <h4>② 사람인 오픈 API <span class="free">무료 (기업회원 키 발급)</span></h4>
-      <p>발급처 : <a href="https://oapi.saramin.co.kr" target="_blank">사람인 오픈API (oapi.saramin.co.kr)</a> → access-key 신청</p>
-      <p>기능 : 키워드+지역코드로 채용공고 검색 JSON 제공. 단, 노출 범위가 웹 검색보다 좁을 수 있어 브라우저 수집과 병행 권장.</p>
-    </div>
-    <div class="api-card">
-      <h4>③ 한국관광공사 TourAPI / 공공데이터포털 관광숙박업 데이터 <span class="free">무료</span></h4>
-      <p>발급처 : <a href="https://www.data.go.kr/data/3075666/fileData.do" target="_blank">공공데이터포털 「전국 관광숙박시설 현황」</a> — 지역·업종·등급별 업체수/객실수 원본</p>
-      <p>기능 : 탭1~2의 전국 통계를 연 1회 자동 갱신 + 17개 시도 전체 채우기 + 부산 구별 호텔 리스트.</p>
-    </div>
-    <div class="api-card">
-      <h4>④ KOSIS 공유서비스 OpenAPI (통계청) <span class="free">✅ 발급완료 · 호출검증 완료 (2026-08-20)</span></h4>
-      <p>인증키는 같은 폴더의 <b>api_config.json</b>에 저장 (호출 URL·분류코드표 포함). 아웃소싱 공급시장 탭의 전국사업체조사 수치를 신규 연도 발표 시 자동 갱신.</p>
-      <p>검증 : 2024년 전국 741업종 6,507개 / 부산 293개 — 대시보드 수치와 API 응답 일치 확인.</p>
-    </div>
-    <div class="note">💡 현황 : ④ KOSIS <b>연동 완료</b> · ① 고용24 API는 개인회원 제약(채용정보목록 API는 직업정보제공사업 신고 기관만 가능)으로 <b>보류 — 브라우저 수집으로 대체</b> (고용24 연계 공고도 사람인 검색에 포함됨) · ③ 관광숙박 파일데이터는 키 불필요 · ② 사람인은 선택사항.</div>
-  </div>
-
-  <div class="card">
-    <h3>🥉 3단계 — 장기 : 상시 서버 (busan-lab 방식)</h3>
-    <div class="step"><div class="step-num">S</div><div class="step-body">
-      기존 카페 상권랩(busan-lab.onrender.com)처럼 <b>Render 무료 서버</b>에 올려서, 대시보드를 열 때마다 서버가 고용24 API를 직접 호출 → 진짜 실시간.
-      HTML 파일 단독으로는 브라우저 보안정책(CORS) 때문에 채용사이트를 직접 호출할 수 없어서, 실시간을 원하면 이 단계가 최종형.
-      1~2단계로 운영해보고 필요하면 진행 권장.
+    <div class="step"><div class="step-num">4</div><div class="step-body">
+      <b>주 1회 자동화</b> — 예약 작업으로 등록 가능. <b style="color:#fbbf24">요일·시간만 정해주시면 즉시 등록</b> (예: 매주 월요일 09:00 → 수집 → 갱신 → 결과 알림).
     </div></div>
   </div>
 
   <div class="card">
     <h3>📬 주간 리포트 알림 포맷 (자동 발송안)</h3>
     <div class="note">매주 수집 후 : <b>신규 공고 ○건 / 마감 ○건 / 경쟁 도급사 신규 진입 ○곳 / 직영→도급 전환 시그널 ○건</b> 요약 +
-    이 대시보드 파일 갱신. 신규 공고에는 🆕 표시, 지난주 대비 변동 하이라이트.</div>
-  </div>
-</div>
-
-<!-- ══════════════════ 탭7 : 기존 프로그램 대비 ══════════════════ -->
-<div class="tab" id="t7">
-  <h2>기존 시장조사 프로그램과 무엇이 다른가 <span class="hint">두 프로그램은 대체 관계가 아니라 역할이 다름 — 함께 써야 완성됨</span></h2>
-
-  <div class="note">
-    📌 <b>한 줄 요약</b> — 기존 프로그램은 <b>"부산·경남에서 지금 싸우기 위한 무기"</b>(깊이), 신규 프로그램은
-    <b>"전국으로 넓히고 매주 자동으로 갱신되는 레이더"</b>(넓이·속도). 기존 것을 대체하는 게 아니라 <b>그 위에 시장 지도와 자동화를 얹은 것</b>.
-  </div>
-
-  <div class="two">
-    <div class="card">
-      <h3>📗 기존 : 지엠네트웍스 시장조사 대시보드</h3>
-      <table class="tbl">
-        <tbody>
-          <tr><td>범위</td><td><b>부산 · 경남</b></td></tr>
-          <tr><td>조사 호텔</td><td>134개 · 23,588실</td></tr>
-          <tr><td>경쟁 도급업체</td><td><b>74곳</b> (순위·운영 호텔 수까지)</td></tr>
-          <tr><td>구인공고</td><td>311건 (엑셀 축적분)</td></tr>
-          <tr><td>자사 포지션</td><td><b>시장 1위 · 4개 호텔 · 1,400실</b></td></tr>
-          <tr><td>데이터 방식</td><td>엑셀 수작업 조사 → 붙여넣기</td></tr>
-          <tr><td>기준 시점</td><td>2026-07-19 (스냅샷)</td></tr>
-        </tbody>
-      </table>
-      <div class="note" style="margin-top:12px;background:#064e3b;border-color:#059669;color:#a7f3d0">
-        ✅ <b>이게 더 강한 부분</b> : 경쟁사 74곳 순위와 자사 시장점유 포지션, 도급 조사 도우미, 원본 시트 열람.
-        <b>영업 현장에서 바로 쓰는 실행 도구</b>로는 여전히 이쪽이 더 깊음 — 계속 씁니다.
-      </div>
-    </div>
-
-    <div class="card" style="border-color:#f59e0b">
-      <h3>📘 신규 : 호텔 상권분석 대시보드 (ver.15)</h3>
-      <table class="tbl">
-        <tbody>
-          <tr class="me"><td>범위</td><td><b>전국 16개 시도</b> (부산 별도 강조)</td></tr>
-          <tr class="me"><td>조사 호텔</td><td><b>834개 · 111,218실</b> (등급유효 전수)</td></tr>
-          <tr class="me"><td>성급 분석</td><td>1~5성 전수 + 부산 5성 10곳·4성 6곳 명단</td></tr>
-          <tr class="me"><td>아웃소싱 시장</td><td><b>업종별 경쟁 밀도</b> (전국 6,507 / 부산 293개사)</td></tr>
-          <tr class="me"><td>구인공고</td><td>87건 · <b>5개 사이트 · 전 건 원문 URL</b></td></tr>
-          <tr class="me"><td>데이터 방식</td><td><b>API·자동 수집</b> (KOSIS·등급결정원 실시간)</td></tr>
-          <tr class="me"><td>기준 시점</td><td><b>2026-08-20 · 요청 시/주 1회 자동 갱신</b></td></tr>
-        </tbody>
-      </table>
-      <div class="note" style="margin-top:12px;background:#3b2f0b;border-color:#b45309;color:#fde68a">
-        🎯 <b>새로 생긴 것</b> : 전국 시장 지도(확장 후보지), 성급별 물량 구조, 아웃소싱 경쟁 밀도 통계, 5개 사이트 실시간 모니터링, 상시 웹 링크.
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>핵심 차별점 5가지 <span class="muted">대표님 보고용</span></h3>
-    <table class="tbl">
-      <thead><tr><th>#</th><th>차별점</th><th>기존</th><th>신규 (ver.15)</th><th>경영 관점 의미</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="c"><b>1</b></td><td><b>시장 범위</b></td>
-          <td class="c">부산·경남 134개</td><td class="c"><b>전국 834개</b> (6.2배)</td>
-          <td class="muted" style="font-size:12px">부산 밖 확장 시 어느 지역·어느 성급을 칠지 근거가 생김. 부산은 등급유효 기준 <b>전국 2위 시장</b>임이 수치로 확인됨</td>
-        </tr>
-        <tr>
-          <td class="c"><b>2</b></td><td><b>데이터 갱신</b></td>
-          <td class="c">엑셀 수작업 · 스냅샷</td><td class="c"><b>API 자동 · 상시</b></td>
-          <td class="muted" style="font-size:12px">사람이 조사·입력하던 시간이 0에 수렴. 갱신 주기가 "조사할 때마다"에서 <b>"매주 자동"</b>으로</td>
-        </tr>
-        <tr>
-          <td class="c"><b>3</b></td><td><b>공고 근거</b></td>
-          <td class="c">건수 중심</td><td class="c"><b>전 건 원문 URL</b> + 5개 사이트</td>
-          <td class="muted" style="font-size:12px">사람인·고용24·잡코리아·알바몬·알바천국 교차 수집. <b>모든 수치를 원문으로 즉시 검증 가능</b> — 보고자료 신뢰도</td>
-        </tr>
-        <tr>
-          <td class="c"><b>4</b></td><td><b>신규 분석축</b></td>
-          <td class="c">—</td><td class="c"><b>성급 · 아웃소싱 공급시장</b></td>
-          <td class="muted" style="font-size:12px">성급별 물량 구조(3~4성이 객실 54%)와 경쟁 밀도(부산 741업종 293개사)로 <b>단가·타깃 전략 근거</b> 확보</td>
-        </tr>
-        <tr>
-          <td class="c"><b>5</b></td><td><b>접근성</b></td>
-          <td class="c">파일 전달(카톡)</td><td class="c"><b>상시 웹 주소</b></td>
-          <td class="muted" style="font-size:12px">junil1997.github.io/gm-hotel-lab — 링크 하나로 최신본 공유. 파일 버전 뒤섞임 없음</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="card">
-    <h3>신규 프로그램이 실제로 찾아낸 것 <span class="muted">기존 조사에 없던 정보</span></h3>
-    <table class="tbl">
-      <thead><tr><th>발견</th><th>내용</th><th>영업 시사점</th></tr></thead>
-      <tbody>
-        <tr><td><b>자사 관리 호텔 특정</b></td><td>익명 공고(고용24)에서 근무지 주소로 <b>아스티호텔·라마다앙코르 부산역·그랩디오션 송도</b> 확인</td><td class="muted" style="font-size:12px">자사 공고 8건이 경쟁사 수치에 섞여 있던 것을 분리 — 경쟁 현황 왜곡 제거</td></tr>
-        <tr><td><b>대기업 경쟁사 진입</b></td><td>시그니엘 부산(5성) = <b>에이치디씨랩스(주)</b> / 하얏트 플레이스 연산 = (주)프로에이콤</td><td class="muted" style="font-size:12px">최상위 등급 호텔은 대기업 계열이 잡고 있음 — 진입 전략 재검토 필요</td></tr>
-        <tr><td><b>거점 구 침투 신호</b></td><td><b>(주)시너제닉</b>이 서구 송도 호텔에서 선임주임 인스펙터 <b>연 3,120만원</b> 모집</td><td class="muted" style="font-size:12px">서구는 자사 거점 — 관리자급 단가 경쟁 발생 중. 즉시 대응 필요</td></tr>
-        <tr><td><b>시설 도급 별도 시장</b></td><td>(주)빌텍이 솔라리아니시테츠호텔 시설 전체 수주 — 소장 월 390만 / 주임·근무자 월 280~290만</td><td class="muted" style="font-size:12px">하우스키핑과 <b>분리된 신규 사업 기회</b>. 단가가 객실정비보다 높음</td></tr>
-        <tr><td><b>관리자급 시장단가</b></td><td>파라다이스 객실 부소장/인스펙터 월 330만 · 송도 선임주임 연 3,120만 · 시설소장 월 390만</td><td class="muted" style="font-size:12px">자사 관리자 인건비 책정·입찰 단가 산정의 <b>실거래 기준선</b></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="note">
-    🔭 <b>다음 단계 제안</b> — ① 두 프로그램의 데이터를 합쳐 <b>경쟁사 74곳 × 전국 성급 정보</b> 통합
-    ② 부산 구별 아웃소싱 업체 분포 조회(KOSIS 연동 완료) ③ 주 1회 자동 수집 스케줄 확정(요일·시간 결정 필요)
-    ④ 등급결정일 +3년 만료 임박 호텔 = 재심사·투자 시기 → <b>영업 타이밍 알림</b>
+    대시보드 갱신 + 웹사이트 자동 반영. 신규 공고에는 🆕 표시, 지난주 대비 변동 하이라이트.</div>
   </div>
 </div>
 
