@@ -426,6 +426,33 @@
     </div>
   </div>
 
+  <div class="two">
+    <div class="card">
+      <h3>도급업체별 관리(추정) 호텔 수 <span class="muted">채용공고 근거 · 막대 클릭 → 해당 업체 공고</span></h3>
+      <div id="vCntBars"></div>
+      <div class="bar-row" style="font-weight:800;border-top:2px solid #3b82f6;padding-top:8px;margin-top:10px">
+        <div class="bar-label" style="color:#fff">합계</div><div class="bar-track" style="background:none"></div>
+        <div class="bar-val" style="color:#93c5fd" id="vCntTot"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>도급업체별 관리 객실 수 <span class="muted">= 매출 규모 · 등급유효 명단 대조 확인분만</span></h3>
+      <div id="vRoomBars"></div>
+      <div class="bar-row" style="font-weight:800;border-top:2px solid #f59e0b;padding-top:8px;margin-top:10px">
+        <div class="bar-label" style="color:#fff">합계</div><div class="bar-track" style="background:none"></div>
+        <div class="bar-val" style="color:#fcd34d" id="vRoomTot"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    💡 <b>객실 수가 곧 매출 규모</b> — 룸메이드 인건비는 보통 객실 단위로 정산되므로, 호텔 개수보다 <b>관리 객실 총량</b>이 실제 도급 매출에 가깝습니다.
+    파라다이스호텔 1곳(529실)이 소형 호텔 10곳보다 큰 물량입니다.<br>
+    ⚠️ <b>객실 수는 등급유효 호텔 명단(835개)과 대조해 확인된 곳만 합산</b>했습니다.
+    레지던스·생활숙박·무등급 호텔은 공식 객실수 자료가 없어 <b>"미확인"으로 분리 표기</b>하고 합계에 넣지 않았습니다 — 추정치를 지어내지 않기 위함입니다.
+    따라서 아래 객실 수는 <b>실제보다 작게 잡힌 하한값</b>입니다.
+  </div>
+
   <div class="card" id="vendorMap">
     <h3>🔎 부산 도급업체 → 관리 호텔 매핑 <span class="muted">채용공고 근거 · 구별 클릭 필터</span></h3>
     <div class="note">
@@ -439,7 +466,7 @@
     </div>
     <div class="scrollx" style="max-height:60vh">
       <table class="tbl">
-        <thead><tr><th>도급업체</th><th>관리(추정) 호텔</th><th>지역</th><th>모집 직종</th><th>공고</th><th>최근 공고일</th><th>근거 (공고 원문)</th></tr></thead>
+        <thead><tr><th>도급업체</th><th>관리(추정) 호텔</th><th>호텔<br>수</th><th>관리 객실<br><span style="font-weight:400;font-size:10px">(확인분)</span></th><th>지역</th><th>모집 직종</th><th>공고</th><th>최근 공고일</th><th>근거 (공고 원문)</th></tr></thead>
         <tbody id="vBody"></tbody>
       </table>
     </div>
@@ -1068,17 +1095,79 @@ function renderJobs(){
 }
 /* ─────────── 도급업체 → 호텔 매핑 (채용공고에서 자동 생성) ─────────── */
 let vGu = '';
+
+/* 공고상 호텔명 → 등급유효 명단(HOTELS)의 공식 객실 수.
+   자동 문자열 매칭은 오탐(예: '엘시티 레지던스'→'시티호텔')이 있어 전부 수기 대조함.
+   목록에 없는 호텔 = 레지던스·생활숙박·무등급으로 공식 객실수 자료가 없는 곳 → 미확인 처리. */
+const ROOMS = {
+  '파라다이스호텔 부산': 529, '아스티호텔 부산': 360, '그랜드조선 부산': 330,
+  '코모도호텔 부산': 311, '웨스틴조선 부산': 290, '시그니엘 부산 (호텔롯데)': 260,
+  '호텔농심': 238, '페어필드 바이 메리어트 부산 송도비치': 179,
+  '하얏트 플레이스 부산 연산': 160, '빌라쥬 드 아난티': 114,
+};
+/* 같은 대상을 다르게 적은 표기 통일 */
+const CORP_ALIAS = { '주식회사 베스트스탭': '(주)베스트스탭' };
+const HOTEL_ALIAS = { '센텀컨벤션호텔(벡스코 비즈니스호텔)': '센텀컨벤션호텔', '광안해변로 소재 호텔(광안리)': '광안리 소재 호텔' };
+const canonCorp = c => CORP_ALIAS[c] || c;
+const canonHotel = h => HOTEL_ALIAS[h] || h;
+
 const VENDORS = (() => {
   const m = {};
   JOBS.filter(j => j.op === '도급').forEach(j => {
-    const v = m[j.corp] = m[j.corp] || { corp: j.corp, gm: !!j.gm, hotels: {}, gus: new Set(), jobs: new Set(), cnt: 0, latest: '', links: [] };
-    v.hotels[j.hotel] = (v.hotels[j.hotel] || 0) + 1;
+    const corp = canonCorp(j.corp), hotel = canonHotel(j.hotel);
+    const v = m[corp] = m[corp] || { corp, gm: !!j.gm, hotels: {}, gus: new Set(), jobs: new Set(), cnt: 0, latest: '', links: [] };
+    if (j.gm) v.gm = true;
+    v.hotels[hotel] = (v.hotels[hotel] || 0) + 1;
     v.gus.add(j.gu); v.jobs.add(j.job); v.cnt++;
     if (j.d !== '—' && j.d > v.latest) v.latest = j.d;
     v.links.push(j.url);
   });
-  return Object.values(m).sort((a, b) => (b.gm ? 1 : 0) - (a.gm ? 1 : 0) || b.cnt - a.cnt);
+  Object.values(m).forEach(v => {
+    const names = Object.keys(v.hotels);
+    v.hotelCnt = names.length;
+    v.rooms = names.reduce((s, n) => s + (ROOMS[n] || 0), 0);
+    v.known = names.filter(n => ROOMS[n]).length;      // 객실수 확인된 호텔 수
+    v.unknown = v.hotelCnt - v.known;                  // 미확인 호텔 수
+  });
+  return Object.values(m).sort((a, b) => (b.gm ? 1 : 0) - (a.gm ? 1 : 0) || b.hotelCnt - a.hotelCnt || b.rooms - a.rooms);
 })();
+
+/* 도급업체별 분포 막대 (호텔 수 / 관리 객실 수) */
+(() => {
+  const esc = s => s.replace(/'/g, "\\'");
+  const byCnt = [...VENDORS].sort((a, b) => b.hotelCnt - a.hotelCnt || b.rooms - a.rooms).slice(0, 14);
+  const maxC = Math.max(...byCnt.map(v => v.hotelCnt));
+  document.getElementById('vCntBars').innerHTML = byCnt.map(v => `
+    <div class="bar-row lnk" onclick="vendorJump('${esc(v.corp)}')">
+      <div class="bar-label">${v.gm ? '🎯 ' : ''}${v.corp}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, v.hotelCnt / maxC * 100)}%;background:${v.gm ? '#f59e0b' : '#3b82f6'}"></div></div>
+      <div class="bar-val">${v.hotelCnt}곳</div>
+    </div>`).join('');
+  document.getElementById('vCntTot').textContent =
+    `${VENDORS.length}개사 · ${VENDORS.reduce((s, v) => s + v.hotelCnt, 0)}곳`;
+
+  const byRoom = VENDORS.filter(v => v.rooms > 0).sort((a, b) => b.rooms - a.rooms);
+  const maxR = Math.max(...byRoom.map(v => v.rooms), 1);
+  document.getElementById('vRoomBars').innerHTML = byRoom.map(v => `
+    <div class="bar-row lnk" onclick="vendorJump('${esc(v.corp)}')">
+      <div class="bar-label">${v.gm ? '🎯 ' : ''}${v.corp}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, v.rooms / maxR * 100)}%;background:${v.gm ? '#f59e0b' : '#0d9488'}"></div></div>
+      <div class="bar-val">${fmt(v.rooms)}실${v.unknown ? ` <span class="muted">+${v.unknown}곳?</span>` : ''}</div>
+    </div>`).join('') +
+    `<div class="bar-row" style="margin-top:10px"><div class="bar-label muted" style="width:auto">객실수 미확인 업체</div>
+     <div class="bar-track" style="background:none"></div>
+     <div class="bar-val muted" style="width:auto">${VENDORS.filter(v => v.rooms === 0).length}개사</div></div>`;
+  const totRooms = VENDORS.reduce((s, v) => s + v.rooms, 0);
+  const totUnknown = VENDORS.reduce((s, v) => s + v.unknown, 0);
+  document.getElementById('vRoomTot').innerHTML =
+    `${fmt(totRooms)}실 <span class="muted" style="font-weight:400">(확인 ${VENDORS.reduce((s, v) => s + v.known, 0)}곳 · 미확인 ${totUnknown}곳)</span>`;
+})();
+/* 막대 클릭 → 아래 매핑표에서 해당 업체만 보기 */
+function vendorJump(corp){
+  document.getElementById('vSearch').value = corp;
+  vGu = ''; renderVendors();
+  document.getElementById('vendorMap').scrollIntoView({ behavior: 'smooth' });
+}
 const vGus = [...new Set(VENDORS.flatMap(v => [...v.gus]))];
 document.getElementById('vGuNav').innerHTML =
   `<button class="gubtn on" onclick="setVGu('',this)">부산 전체 (${VENDORS.length}개사)</button>` +
@@ -1097,7 +1186,11 @@ function renderVendors(){
   document.getElementById('vBody').innerHTML = rows.map(v => `
     <tr class="${v.gm ? 'me' : ''}">
       <td>${v.gm ? '🎯 ' : ''}<b>${v.corp}</b>${v.gm ? ' <span class="tag t-gm">자사</span>' : ''}</td>
-      <td>${Object.entries(v.hotels).map(([h, c]) => h + (c > 1 ? ` <span class="muted">×${c}</span>` : '')).join('<br>')}</td>
+      <td>${Object.entries(v.hotels).map(([h, c]) =>
+          h + (ROOMS[h] ? ` <span class="muted">${fmt(ROOMS[h])}실</span>` : ' <span class="muted">(객실수 미확인)</span>')
+            + (c > 1 ? ` <span class="muted">×${c}</span>` : '')).join('<br>')}</td>
+      <td class="c"><b>${v.hotelCnt}</b></td>
+      <td class="r">${v.rooms ? '<b>' + fmt(v.rooms) + '</b>실' : '<span class="muted">—</span>'}${v.unknown ? `<br><span class="muted" style="font-size:11px">미확인 ${v.unknown}곳</span>` : ''}</td>
       <td class="c">${[...v.gus].join(', ')}</td>
       <td class="c">${[...v.jobs].join(' · ')}</td>
       <td class="c"><b>${v.cnt}</b>건</td>
