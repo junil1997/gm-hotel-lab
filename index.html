@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지엠네트웍스 호텔 상권분석 대시보드</title>
+<style>
+  * { box-sizing:border-box; }
+  body { font-family:'Malgun Gothic','맑은 고딕',sans-serif; margin:0; background:#0f172a; color:#e2e8f0; }
+  .wrap { max-width:1280px; margin:0 auto; padding:0 22px 60px; }
+  header { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:24px 0 14px; }
+  h1 { font-size:23px; margin:0; color:#fff; }
+  h1 small { display:block; font-size:13px; color:#94a3b8; font-weight:normal; margin-top:6px; }
+  .meta { font-size:12px; color:#64748b; text-align:right; line-height:1.7; }
+  .meta b { color:#93c5fd; }
+  .nav { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; gap:6px;
+         background:#0f172a; padding:8px 0 12px; border-bottom:2px solid #1e293b; margin-bottom:22px; }
+  .navbtn { background:#1e293b; color:#cbd5e1; border:1px solid #334155; border-radius:10px;
+            padding:10px 16px; font-size:14px; font-weight:700; cursor:pointer; }
+  .navbtn:hover { background:#243040; }
+  .navbtn.on { background:linear-gradient(135deg,#1d4ed8,#3b82f6); color:#fff; border:none; }
+  .tab { display:none; }
+  .tab.on { display:block; }
+  h2 { font-size:17px; color:#f1f5f9; margin:6px 0 14px; padding-left:10px; border-left:4px solid #3b82f6; }
+  h2 .hint { font-size:12px; color:#94a3b8; font-weight:normal; margin-left:8px; }
+  h3 { font-size:14px; color:#cbd5e1; margin:16px 0 10px; }
+  .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-bottom:24px; }
+  .kpi { background:#1e293b; border:1px solid #334155; border-radius:12px; padding:18px; }
+  .kpi.accent { background:linear-gradient(135deg,#1d4ed8,#3b82f6); border:none; }
+  .kpi.gm { border-color:#f59e0b; }
+  .kpi-t { font-size:13px; color:#94a3b8; margin-bottom:8px; }
+  .kpi.accent .kpi-t { color:#dbeafe; }
+  .kpi-v { font-size:28px; font-weight:800; color:#fff; line-height:1; }
+  .kpi-v span { font-size:14px; font-weight:500; color:#94a3b8; margin-left:3px; }
+  .kpi.accent .kpi-v span { color:#dbeafe; }
+  .kpi-s { font-size:12px; color:#64748b; margin-top:8px; }
+  .kpi.accent .kpi-s { color:#bfdbfe; }
+  .card { background:#1e293b; border:1px solid #334155; border-radius:12px; padding:18px 20px; margin-bottom:18px; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media (max-width:900px){ .two { grid-template-columns:1fr; } }
+  table.tbl { width:100%; border-collapse:collapse; font-size:13px; }
+  .tbl th { background:#0f172a; color:#94a3b8; padding:8px 10px; text-align:center; border-bottom:1px solid #334155; font-weight:600; position:sticky; top:0; z-index:2; }
+  .tbl td { padding:7px 10px; border-bottom:1px solid #0f172a; }
+  .tbl td.c { text-align:center; white-space:nowrap; }
+  .tbl td.r { text-align:right; white-space:nowrap; }
+  .tbl tbody tr:hover { background:#243040; }
+  .tbl tfoot td { position:sticky; bottom:0; background:#1d4ed8; color:#fff; font-weight:800; padding:9px 10px; border-top:2px solid #3b82f6; }
+  .clickable { cursor:pointer; }
+  .clickable:hover { border-color:#3b82f6; }
+  .bar-row.lnk { cursor:pointer; border-radius:6px; }
+  .bar-row.lnk:hover { background:#243040; }
+  .tbl tr.me { background:rgba(245,158,11,.14); }
+  .tbl tr.me td:first-child { border-left:3px solid #f59e0b; }
+  .tag { padding:2px 8px; border-radius:20px; font-size:11px; font-weight:700; white-space:nowrap; display:inline-block; }
+  .t-star5 { background:#7f1d1d; color:#fecaca; }
+  .t-star4 { background:#7c2d12; color:#fed7aa; }
+  .t-star3 { background:#78350f; color:#fde68a; }
+  .t-star2 { background:#1e3a8a; color:#bfdbfe; }
+  .t-star1 { background:#334155; color:#cbd5e1; }
+  .t-dogub { background:#4c1d95; color:#ddd6fe; }
+  .t-direct { background:#065f46; color:#a7f3d0; }
+  .t-gm { background:#78350f; color:#fcd34d; border:1px solid #f59e0b; }
+  .t-w24 { background:#134e4a; color:#99f6e4; }
+  .t-srm { background:#1e3a8a; color:#93c5fd; }
+  .pill { background:#065f46; color:#a7f3d0; padding:2px 8px; border-radius:20px; font-size:11px; }
+  .muted { color:#64748b; }
+  .bar-row { display:flex; align-items:center; gap:10px; margin:8px 0; font-size:13px; }
+  .bar-label { width:150px; color:#cbd5e1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .bar-track { flex:1; background:#0f172a; border-radius:6px; height:20px; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:6px; display:flex; align-items:center; }
+  .bar-val { width:90px; text-align:right; color:#94a3b8; white-space:nowrap; }
+  .note { background:#172554; border:1px solid #1e40af; border-radius:10px; padding:12px 16px; font-size:13px; color:#bfdbfe; margin-bottom:14px; line-height:1.7; }
+  .note.rule { background:#4a1d1d33; background:#3f1d1d; border-color:#b91c1c; color:#fecaca; }
+  .note.todo { background:#3b2f0b; border-color:#b45309; color:#fde68a; }
+  .note a, .src a { color:#93c5fd; }
+  .src { font-size:11px; color:#64748b; margin-top:10px; line-height:1.8; }
+  .searchbar { display:flex; align-items:center; gap:10px; margin-bottom:12px; flex-wrap:wrap; }
+  .searchbar input, .searchbar select { background:#0f172a; border:1px solid #334155; border-radius:8px;
+        color:#e2e8f0; padding:9px 12px; font-size:13px; }
+  .searchbar input { flex:1; min-width:200px; }
+  .searchbar input:focus, .searchbar select:focus { outline:none; border-color:#3b82f6; }
+  .cnt { font-size:12px; color:#64748b; white-space:nowrap; }
+  .scrollx { overflow:auto; max-height:72vh; border:1px solid #1e293b; border-radius:8px; }
+  .gunav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+  .gubtn { background:#0f172a; color:#cbd5e1; border:1px solid #334155; border-radius:20px;
+           padding:6px 14px; font-size:13px; font-weight:600; cursor:pointer; }
+  .gubtn:hover { background:#243040; }
+  .gubtn.on { background:#3b82f6; color:#fff; border-color:#3b82f6; }
+  .joblink { display:inline-block; background:#0f172a; border:1px solid #334155; color:#93c5fd;
+             border-radius:6px; padding:4px 10px; font-size:12px; text-decoration:none; white-space:nowrap; }
+  .joblink:hover { background:#1d4ed8; color:#fff; border-color:#1d4ed8; }
+  .jobtbl td { white-space:nowrap; }
+  .jobtbl td.wr { white-space:normal; min-width:160px; }
+  .stat-banner { display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+       background:#134e4a; border:1px solid #0d9488; border-radius:10px;
+       padding:10px 16px; margin:0 0 14px; font-size:13px; color:#99f6e4; }
+  .stat-banner b { color:#a7f3d0; }
+  .step { display:flex; gap:14px; margin:14px 0; }
+  .step-num { flex:none; width:32px; height:32px; border-radius:50%; background:#1d4ed8; color:#fff;
+              display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; }
+  .step-body { font-size:13px; color:#cbd5e1; line-height:1.7; }
+  .step-body b { color:#fff; }
+  .api-card { background:#0f172a; border:1px solid #334155; border-radius:10px; padding:14px 16px; margin-bottom:12px; }
+  .api-card h4 { margin:0 0 8px; font-size:14px; color:#93c5fd; }
+  .api-card p { margin:4px 0; font-size:13px; color:#94a3b8; line-height:1.7; }
+  .api-card .free { color:#34d399; font-weight:700; }
+  footer { margin-top:40px; font-size:11px; color:#475569; text-align:center; line-height:1.8; }
+</style></head>
+<body><div class="wrap">
+
+<header>
+  <h1>🏨 지엠네트웍스 호텔 상권분석 대시보드
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — Draft v0.3</small></h1>
+  <div class="meta">성급·지역 : <b>2026-08-19 실시간</b> (등급유효 호텔 834개 전수 집계)<br>
+    등록현황 <b>2025년 말</b>(문체부) · 사업체조사 <b>2024년</b>(통계청) — 각 최신 공식판<br>
+    구인공고 수집일 : <b>2026-08-19</b> (사람인·고용24)</div>
+</header>
+
+<div class="nav">
+  <button class="navbtn on" data-tab="t1" onclick="go('t1',this)">📊 전국 호텔 현황</button>
+  <button class="navbtn" data-tab="t2" onclick="go('t2',this)">⭐ 성급별 분석</button>
+  <button class="navbtn" data-tab="t3" onclick="go('t3',this)">🏢 호텔 유형 (분양형·브랜드)</button>
+  <button class="navbtn" data-tab="t6" onclick="go('t6',this)">🏭 아웃소싱 공급시장</button>
+  <button class="navbtn" data-tab="t4" onclick="go('t4',this)">📋 부산 구인공고 모니터링</button>
+  <button class="navbtn" data-tab="t5" onclick="go('t5',this)">⚙️ 자동화 · 데이터 연동</button>
+</div>
+
+<!-- ══════════════════ 탭1 : 전국 호텔 현황 ══════════════════ -->
+<div class="tab on" id="t1">
+  <h2>전국 호텔 현황 <span class="hint">성급·지역 : 2026-08-19 실시간 집계 · 등록 통계 : 2025년 말 (각 항목에 기준 표기)</span></h2>
+
+  <div class="kpi-grid">
+    <div class="kpi accent"><div class="kpi-t">⭐ 등급유효 호텔 (2026-08-19 실시간)</div><div class="kpi-v">834<span>개</span></div><div class="kpi-s">111,218실 · 유효 성급 보유 (제주 제외)</div></div>
+    <div class="kpi"><div class="kpi-t">관광숙박업 전체 ('25말 등록)</div><div class="kpi-v">2,996<span>개</span></div><div class="kpi-s">226,840실 (호텔업+콘도)</div></div>
+    <div class="kpi"><div class="kpi-t">호텔업 전체 ('25말 등록)</div><div class="kpi-v">2,746<span>개</span></div><div class="kpi-s">176,522실</div></div>
+    <div class="kpi"><div class="kpi-t">휴양콘도미니엄업 ('25말)</div><div class="kpi-v">250<span>개</span></div><div class="kpi-s">50,318실 · 분양형 다수</div></div>
+    <div class="kpi gm"><div class="kpi-t">🎯 부산 등급유효 호텔 (2026)</div><div class="kpi-v">80<span>개</span></div><div class="kpi-s">10,945실 · 서울 다음 전국 2위</div></div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3>지역별 등급유효 호텔 수 <span class="muted">(2026-08-19 · 16개 시도 전체 · 클릭 → 해당 지역 호텔 명단)</span></h3>
+      <div id="regionBars"></div>
+      <div class="bar-row" style="font-weight:800;border-top:2px solid #3b82f6;padding-top:8px;margin-top:10px"><div class="bar-label" style="color:#fff">합계</div><div class="bar-track" style="background:none"></div><div class="bar-val" style="color:#93c5fd">834개</div></div>
+      <div class="src">※ 제주는 제주관광협회가 별도 관리하여 이 명단에 미포함. 2025년말 등록현황 기준 제주 관광숙박업은 409개(33,101실).</div>
+    </div>
+    <div class="card">
+      <h3>지역별 객실 수 <span class="muted">(2026-08-19 · 클릭 → 해당 지역 호텔 명단)</span></h3>
+      <div id="regionRoomBars"></div>
+      <div class="bar-row" style="font-weight:800;border-top:2px solid #3b82f6;padding-top:8px;margin-top:10px"><div class="bar-label" style="color:#fff">합계</div><div class="bar-track" style="background:none"></div><div class="bar-val" style="color:#93c5fd">111,218실</div></div>
+      <div class="src">부산은 등급유효 기준 호텔 수·객실 수 모두 전국 2위. 참고: 2025년말 등록현황(콘도·무등급 포함) 기준으로는 부산 382개·18,982실.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>호텔업 세부 업종 구성</h3>
+    <table class="tbl">
+      <thead><tr><th>업종</th><th>업체 수</th><th>객실 수</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>관광호텔업</td><td class="r">1,114</td><td class="r">142,075</td><td class="muted">성급(1~5성) 등급결정 대상 — 도급 영업의 핵심 시장</td></tr>
+        <tr><td>호스텔업 · 소형호텔업 · 가족호텔업 · 기타</td><td class="r">1,632</td><td class="r">34,447</td><td class="muted">호텔업 합계에서 관광호텔 제외한 계산치 — 세부 분해는 공공데이터 연동 예정</td></tr>
+        <tr style="font-weight:700"><td>호텔업 합계</td><td class="r">2,746</td><td class="r">176,522</td><td></td></tr>
+        <tr><td>휴양콘도미니엄업</td><td class="r">250</td><td class="r">50,318</td><td class="muted">분양형 상당수 포함</td></tr>
+        <tr style="font-weight:700; background:rgba(59,130,246,.12)"><td>관광숙박업 총계</td><td class="r">2,996</td><td class="r">226,840</td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="src">
+      출처 :
+      <a href="https://www.mcst.go.kr/site/s_policy/dept/deptView.jsp?pSeq=2122&pDataCD=0417000000&pType=05" target="_blank">문화체육관광부 「2025년 기준 관광숙박업 등록현황」</a> ·
+      <a href="https://thetravelnews.co.kr/2026/05/tourism-lodging-statistics-korea-2025/" target="_blank">더트래블뉴스 통계 기사(2026.05)</a> ·
+      <a href="https://www.data.go.kr/data/3075666/fileData.do" target="_blank">공공데이터포털 전국 관광숙박시설 현황</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 탭2 : 성급별 분석 ══════════════════ -->
+<div class="tab" id="t2">
+  <h2>성급별 분석 <span class="hint">2026-08-19 실시간 · 한국관광협회중앙회 등급유효 호텔 834개 전수 집계 (제주 제외)</span></h2>
+
+  <div class="stat-banner">
+    ⭐ <b>등급유효 호텔 834개 · 111,218실</b> — 2026-08-19 hotelrating.or.kr 전체 명단 API 전수 집계 (등급 유효기간 3년 이내 호텔만)
+    <span style="margin-left:auto">제주는 제주관광협회 별도 관리 → 미포함</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi clickable" onclick="exFilter('5')"><div class="kpi-t">⭐⭐⭐⭐⭐ 5성급</div><div class="kpi-v">73<span>개</span></div><div class="kpi-s">25,622실 · 평균 351실 · <b style="color:#93c5fd">클릭→명단</b></div></div>
+    <div class="kpi clickable" onclick="exFilter('4')"><div class="kpi-t">⭐⭐⭐⭐ 4성급</div><div class="kpi-v">126<span>개</span></div><div class="kpi-s">30,086실 · 평균 239실 · <b style="color:#93c5fd">클릭→명단</b></div></div>
+    <div class="kpi clickable" onclick="exFilter('3')"><div class="kpi-t">⭐⭐⭐ 3성급</div><div class="kpi-v">223<span>개</span></div><div class="kpi-s">30,465실 · 평균 137실 · <b style="color:#93c5fd">클릭→명단</b></div></div>
+    <div class="kpi clickable" onclick="exFilter('2')"><div class="kpi-t">⭐⭐ 2성급</div><div class="kpi-v">324<span>개</span></div><div class="kpi-s">21,127실 · 평균 65실 · <b style="color:#93c5fd">클릭→명단</b></div></div>
+    <div class="kpi clickable" onclick="exFilter('1')"><div class="kpi-t">⭐ 1성급</div><div class="kpi-v">88<span>개</span></div><div class="kpi-s">3,918실 · 평균 45실 · <b style="color:#93c5fd">클릭→명단</b></div></div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3>성급별 호텔 수 <span class="muted">(2026-08-19)</span></h3>
+      <div id="starCntBars"></div>
+    </div>
+    <div class="card">
+      <h3>성급별 객실 수 <span class="muted">(2026-08-19)</span></h3>
+      <div id="starRoomBars"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>성급별 상세 · 도급 시장 관점 <span class="muted">전국 vs 🎯부산</span></h3>
+    <table class="tbl">
+      <thead><tr><th>성급</th><th>전국 호텔</th><th>전국 객실</th><th>평균 객실</th><th>🎯 부산 호텔</th><th>🎯 부산 객실</th><th>도급 시장 특성</th></tr></thead>
+      <tbody id="starTbl"></tbody>
+    </table>
+    <div class="note" style="margin-top:14px">
+      💡 <b>시장 해석 (2026)</b> : 객실 기준 무게중심은 <b>3~4성급(60,551실, 54.4%)</b>.
+      부산은 등급유효 80개·10,945실로 <b>서울(296개) 다음 2위 시장</b>.
+      특히 부산 5성 10개(3,261실)는 부산 전체 객실의 30% — 대형 물량이 최상위 등급에 집중된 구조.
+      2성급이 39개로 가장 많지만 평균 83실 소형 — 자체고용 → 도급 전환 제안 영업 구간.
+    </div>
+  </div>
+
+  <div class="card" id="explorer">
+    <h3>🔍 등급유효 호텔 전체 명단 탐색기 <span class="muted">834개 전수 내장 · 성급 × 지역 × 업종 필터 (2026-08-19 수집)</span></h3>
+    <div class="gunav" id="exGradeNav"></div>
+    <div class="gunav" id="exAreaNav"></div>
+    <div class="searchbar">
+      <select id="exType" onchange="renderEx()"><option value="">업종 전체</option></select>
+      <select id="exSort" onchange="renderEx()">
+        <option value="rooms">객실수 많은 순</option>
+        <option value="date">등급결정일 최신순</option>
+        <option value="name">호텔명 가나다순</option>
+      </select>
+      <input id="exSearch" placeholder="호텔명 검색…" oninput="renderEx()">
+      <span class="cnt" id="exCnt"></span>
+    </div>
+    <div class="scrollx" style="max-height:65vh">
+      <table class="tbl">
+        <thead><tr><th>#</th><th>성급</th><th>호텔명</th><th>지역</th><th>업종</th><th>객실수</th><th>등급결정일</th></tr></thead>
+        <tbody id="exBody"></tbody>
+        <tfoot><tr id="exFoot"></tr></tfoot>
+      </table>
+    </div>
+    <div class="src">등급결정일 + 3년 = 등급 유효만료·재심사 시기 → 시설·인력 투자 타이밍 = 도급 영업 적기. 출처 : hotelrating.or.kr (한국관광협회중앙회), 제주 미포함.</div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3>🎯 부산 5성급 전체 명단 (10개 · 3,261실)</h3>
+      <table class="tbl">
+        <thead><tr><th>호텔</th><th>객실</th><th>등급결정일</th></tr></thead>
+        <tbody>
+          <tr><td>부산롯데호텔</td><td class="r">650</td><td class="c">2024-12-16</td></tr>
+          <tr><td>파라다이스호텔 부산</td><td class="r">529</td><td class="c">2025-12-29</td></tr>
+          <tr><td>그랜드조선 부산</td><td class="r">330</td><td class="c">2024-05-17</td></tr>
+          <tr><td>아난티 앳 부산 코브</td><td class="r">310</td><td class="c">2024-12-10</td></tr>
+          <tr><td>웨스틴 조선 부산</td><td class="r">290</td><td class="c">2025-10-24</td></tr>
+          <tr><td>윈덤그랜드 부산</td><td class="r">271</td><td class="c">2024-01-23</td></tr>
+          <tr><td>파크하얏트 부산</td><td class="r">269</td><td class="c">2025-11-28</td></tr>
+          <tr><td>시그니엘 부산</td><td class="r">260</td><td class="c">2023-10-12</td></tr>
+          <tr><td>호텔농심</td><td class="r">238</td><td class="c">2026-03-30</td></tr>
+          <tr><td>아난티 앳 부산 빌라쥬</td><td class="r">114</td><td class="c">2023-12-29</td></tr>
+        </tbody>
+      </table>
+      <div class="src">파라다이스·웨스틴조선·아난티빌라쥬는 구인공고 탭에서 도급사(IBS·삼익) 활동 확인됨 — 나머지가 신규 영업 타깃.</div>
+    </div>
+    <div class="card">
+      <h3>🎯 부산 4성급 전체 명단 (6개 · 1,902실)</h3>
+      <table class="tbl">
+        <thead><tr><th>호텔</th><th>객실</th><th>등급결정일</th></tr></thead>
+        <tbody>
+          <tr><td>신라스테이 해운대</td><td class="r">407</td><td class="c">2024-06-20</td></tr>
+          <tr><td>L7 해운대</td><td class="r">383</td><td class="c">2024-11-18</td></tr>
+          <tr><td>아스티 호텔</td><td class="r">360</td><td class="c">2025-08-09</td></tr>
+          <tr><td>코모도호텔</td><td class="r">311</td><td class="c">2026-05-12</td></tr>
+          <tr><td>아바니센트럴 부산</td><td class="r">281</td><td class="c">2024-08-08</td></tr>
+          <tr><td>하얏트 플레이스 부산 연산</td><td class="r">160</td><td class="c">2026-06-10</td></tr>
+        </tbody>
+      </table>
+      <div class="src">코모도호텔은 구인공고 탭에서 도급사(레지스컴) 활동 확인. 등급결정일 +3년이 재심사 시기 = 시설·인력 투자 타이밍 = 영업 적기.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>참고 : 문체부 등록현황(2025년 말)과의 차이</h3>
+    <table class="tbl">
+      <thead><tr><th>기준</th><th>수치</th><th>포함 범위</th></tr></thead>
+      <tbody>
+        <tr><td>등급유효 호텔 (2026-08-19 실시간, 위 데이터)</td><td class="r">834개 · 111,218실</td><td class="muted">현재 유효한 성급 보유 호텔만 (제주 제외, 등급만료·무등급 제외)</td></tr>
+        <tr><td>관광호텔업 등록 (2025년 말, 문체부)</td><td class="r">1,114개 · 142,075실</td><td class="muted">등록된 전체 관광호텔 (무등급 188 + 등급만료 + 제주 포함)</td></tr>
+      </tbody>
+    </table>
+    <div class="src">
+      출처 : <a href="https://www.hotelrating.or.kr/hotel" target="_blank">호텔업 등급결정사업 — 등급결정 호텔 현황 (한국관광협회중앙회, 2026-08-19 조회)</a> ·
+      <a href="https://www.mcst.go.kr/site/s_policy/dept/deptView.jsp?pSeq=2122&pDataCD=0417000000&pType=05" target="_blank">문체부 2025년 기준 관광숙박업 등록현황</a><br>
+      ※ 원본 API에 중복 등재 7건(시그니엘부산 등) 발견 → 제거 후 집계 (사이트 공식 카운터 834와 일치 검증 완료).
+      등록현황 2026년판은 2027년 초 발표 예정 — 현재 2025년 말이 최신 공식 통계.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 탭3 : 호텔 유형 ══════════════════ -->
+<div class="tab" id="t3">
+  <h2>호텔 유형 분석 <span class="hint">운영 구조별 분류 — 도급 영업 접근법이 달라지는 지점</span></h2>
+
+  <div class="note todo">
+    ⚠️ 이 탭은 <b>프레임(뼈대)만 완성</b>된 상태. 유형별 정확한 개수는 아직 신뢰할 수 있는 단일 출처가 없어 비워둠 (거짓 수치 금지 원칙).
+    데이터 소스 : 휴양콘도(250개/50,318실)는 확보 완료, 생활숙박시설은 건축물대장/지자체 데이터, 브랜드 체인은 각 체인 공식 홈페이지 크롤링으로 채울 예정.
+  </div>
+
+  <div class="card">
+    <h3>등급유효 호텔 업종 구성 <span class="muted">2026-08-19 실시간 · 행 클릭 → 해당 업종 호텔 명단</span></h3>
+    <table class="tbl">
+      <thead><tr><th>업종</th><th>호텔 수</th><th>객실 수</th><th>평균 객실</th><th>비고</th></tr></thead>
+      <tbody id="typeTbl"></tbody>
+      <tfoot><tr id="typeFoot"></tr></tfoot>
+    </table>
+    <div class="src">등급결정(성급) 보유 호텔 기준 (제주 제외). 수상관광·의료관광·호스텔업은 현재 등급유효 호텔 없음.</div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3>🏗️ 분양형 (소유·운영 분리)</h3>
+      <table class="tbl">
+        <thead><tr><th>유형</th><th>규모</th><th>도급 영업 포인트</th></tr></thead>
+        <tbody>
+          <tr><td>휴양콘도미니엄</td><td class="c"><b>250개 · 50,318실</b> ✅확보</td><td class="muted">위탁운영사가 계약 주체. 객실정비 외 시설관리 수요 큼</td></tr>
+          <tr><td>분양형 호텔 (수익형)</td><td class="c muted">수집 예정</td><td class="muted">수분양자-위탁운영사 갈등 잦음 → 운영사 교체 시 도급업체도 교체되는 경우 많아 진입 기회</td></tr>
+          <tr><td>생활숙박시설 (레지던스)</td><td class="c muted">수집 예정</td><td class="muted">2024~ 규제 정비로 숙박업 신고 전환 증가 → 신규 위탁운영·도급 수요 발생 구간</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>🏷️ 브랜드 체인 vs 독립</h3>
+      <table class="tbl">
+        <thead><tr><th>유형</th><th>대표 브랜드</th><th>도급 영업 포인트</th></tr></thead>
+        <tbody>
+          <tr><td>글로벌 체인</td><td class="muted">메리어트 · 힐튼 · 아코르(이비스/노보텔) · IHG · 하얏트 · 윈덤(라마다)</td><td class="muted">본사 표준(SOP)·감사 대응 가능한 도급사 선호. 레퍼런스 가치 최상</td></tr>
+          <tr><td>국내 체인</td><td class="muted">롯데 · 신라(스테이) · 조선 · 켄싱턴 · 베스트웨스턴 · 토요코인 · 브라운스위트</td><td class="muted">지역 확장 시 일괄 도급 계약 가능성</td></tr>
+          <tr><td>독립 호텔</td><td class="muted">지역 중소 호텔 (부산: 아르반, 노스하버, 광수, GNB 등)</td><td class="muted">의사결정 빠름. 가격 민감. 현재 우리 주력 시장</td></tr>
+          <tr><td>프랜차이즈형</td><td class="muted">베니키아(관광공사) · 굿스테이 등</td><td class="muted">개별 오너 상대 — 독립호텔과 유사 접근</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>운영 구조별 도급 계약 의사결정자 맵</h3>
+    <table class="tbl">
+      <thead><tr><th>운영 구조</th><th>계약 의사결정자</th><th>계약 성격</th><th>영업 난이도</th></tr></thead>
+      <tbody>
+        <tr><td>직영 (오너 운영)</td><td class="c">오너/총지배인</td><td class="c">수의계약 多</td><td class="c"><span class="tag t-direct">낮음</span></td></tr>
+        <tr><td>위탁운영 (체인 브랜드)</td><td class="c">운영사 본사 구매팀</td><td class="c">입찰/비교견적</td><td class="c"><span class="tag t-star3">중간</span></td></tr>
+        <tr><td>분양형 + 위탁운영</td><td class="c">위탁운영사 (교체 잦음)</td><td class="c">운영사 교체 시 재계약</td><td class="c"><span class="tag t-star3">중간</span></td></tr>
+        <tr><td>글로벌 체인 직영</td><td class="c">본사 표준 벤더 등록</td><td class="c">벤더 등록 후 입찰</td><td class="c"><span class="tag t-star5">높음</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════ 탭6 : 아웃소싱 공급시장 ══════════════════ -->
+<div class="tab" id="t6">
+  <h2>아웃소싱 공급시장 규모 <span class="hint">통계청 전국사업체조사 2024년 확정 — 현재 최신 공식판 (2025년 조사는 2026년 말 발표 예정)</span></h2>
+
+  <div class="note">
+    💡 "아웃소싱 업체가 몇 개냐"는 <b>한 업종 코드로 답이 안 나옴</b>. 호텔 도급업체들은 사업자등록 시
+    ① <b>사업시설 유지·관리 서비스업(KSIC 741)</b> ② <b>건물·산업설비 청소업(742)</b> ③ <b>인력 공급업(7512)</b>
+    세 업종에 분산 등록되어 있음 (지엠네트웍스 같은 종합 도급사는 보통 741 또는 7512).
+    따라서 아래 3개 업종을 합쳐서 보는 것이 실제 경쟁 시장.
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi accent"><div class="kpi-t">사업시설 유지·관리업 (741) 전국</div><div class="kpi-v">6,507<span>개</span></div><div class="kpi-s">종사자 169,093명</div></div>
+    <div class="kpi gm" style="cursor:pointer" onclick="document.getElementById('vendorMap').scrollIntoView({behavior:'smooth'})"><div class="kpi-t">🎯 741 부산</div><div class="kpi-v">293<span>개</span></div><div class="kpi-s">종사자 6,333명 · <b style="color:#fcd34d">클릭 → 실제 활동 업체 목록 ▼</b></div></div>
+    <div class="kpi"><div class="kpi-t">건물·산업설비 청소업 (742) 부산</div><div class="kpi-v">1,807<span>개</span></div><div class="kpi-s">이 중 건축물 일반청소 1,146개</div></div>
+    <div class="kpi"><div class="kpi-t">인력 공급업 (7512) 부산</div><div class="kpi-v">537<span>개</span></div><div class="kpi-s">종사자 34,170명 — 파견·도급 인력</div></div>
+  </div>
+
+  <div class="card">
+    <h3>업종별 사업체수 · 종사자수 — 전국 vs 부산 (2024년)</h3>
+    <table class="tbl">
+      <thead><tr><th>KSIC</th><th>업종명</th><th>전국 사업체</th><th>전국 종사자</th><th>부산 사업체</th><th>부산 종사자</th><th>부산 비중</th><th>업체당 평균 종사자(부산)</th></tr></thead>
+      <tbody>
+        <tr><td class="c">N(74~76)</td><td>사업시설 관리·사업 지원·임대 서비스업 (대분류)</td><td class="r">136,241</td><td class="r">1,341,037</td><td class="r">8,394</td><td class="r">75,767</td><td class="r">6.2%</td><td class="r">9.0명</td></tr>
+        <tr><td class="c">74</td><td>사업시설 관리 및 조경 서비스업</td><td class="r">39,138</td><td class="r">354,217</td><td class="r">2,186</td><td class="r">13,332</td><td class="r">5.6%</td><td class="r">6.1명</td></tr>
+        <tr class="me"><td class="c"><b>741</b></td><td><b>사업시설 유지·관리 서비스업</b> ← 종합 도급사 핵심 업종</td><td class="r"><b>6,507</b></td><td class="r"><b>169,093</b></td><td class="r"><b>293</b></td><td class="r"><b>6,333</b></td><td class="r">4.5%</td><td class="r"><b>21.6명</b></td></tr>
+        <tr><td class="c">742</td><td>건물·산업설비 청소 및 방제 서비스업</td><td class="r">30,407</td><td class="r">175,219</td><td class="r">1,807</td><td class="r">6,733</td><td class="r">5.9%</td><td class="r">3.7명</td></tr>
+        <tr><td class="c">74211</td><td>└ 건축물 일반 청소업</td><td class="r">20,928</td><td class="r">125,216</td><td class="r">1,146</td><td class="r">4,328</td><td class="r">5.5%</td><td class="r">3.8명</td></tr>
+        <tr><td class="c">75</td><td>사업 지원 서비스업</td><td class="r">71,209</td><td class="r">905,368</td><td class="r">4,655</td><td class="r">57,999</td><td class="r">6.5%</td><td class="r">12.5명</td></tr>
+        <tr><td class="c">751</td><td>└ 고용 알선 및 인력 공급업</td><td class="r">20,863</td><td class="r">545,085</td><td class="r">1,172</td><td class="r">35,868</td><td class="r">5.6%</td><td class="r">30.6명</td></tr>
+        <tr><td class="c">7512</td><td>&nbsp;&nbsp;&nbsp;└ 인력 공급업</td><td class="r">9,565</td><td class="r">512,009</td><td class="r">537</td><td class="r">34,170</td><td class="r">5.6%</td><td class="r">63.6명</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:14px">
+      📌 <b>해석</b> :
+      ① 부산의 사업시설 유지·관리업(741)은 <b>293개</b>뿐이지만 업체당 평균 21.6명 — 일정 규모를 갖춘 종합 도급사 리그.
+      ② 청소업(742)은 1,807개로 숫자는 많지만 평균 3.7명 — 영세 업체가 대부분, 호텔 하우스키핑 도급 역량을 갖춘 곳은 소수.
+      ③ 인력 공급업(7512)은 537개에 평균 63.6명 — 파견 기반 대형사(IBS인더스트리·삼익 유형)가 이 구간.
+      ④ 호텔 하우스키핑 도급 가능 업체는 세 업종 통틀어도 부산에서 <b>수십 곳 수준</b>으로 추정 — 구인공고 탭에서 실제 활동 중인 경쟁사는 현재 10여 곳만 관측됨.
+    </div>
+    <div class="src">
+      출처 : 통계청 「전국사업체조사」 2024년 확정, KOSIS 시도·산업·종사자규모별 사업체수·종사자수(DT_1K52F03) — 2026-08-19 조회.
+      <a href="https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1K52F03" target="_blank">KOSIS 원본 통계표 열기 ↗</a><br>
+      참고 : 고용노동부 「사업체노동실태현황」(산재보험 가입 사업장 기준) 2023년으로는 부산 사업시설관리·조경(74) 745개 — 조사 기준(산재보험 성립 신고 사업장)이 달라 수치가 다름. 시장 규모 파악에는 전국사업체조사가 표준.
+    </div>
+  </div>
+
+  <div class="card" id="vendorMap">
+    <h3>🔎 부산 도급업체 → 관리 호텔 매핑 <span class="muted">채용공고 근거 · 구별 클릭 필터</span></h3>
+    <div class="note">
+      💡 <b>원리</b> : 도급업체가 특정 호텔 근무지로 룸메이드·하우스맨을 모집하면 = 그 호텔의 하우스키핑을 도급 운영 중일 가능성이 높음.
+      아래 매핑은 수집된 실제 채용공고(전 건 원문 URL 보유)에서 자동 생성되며, 구인공고를 갱신할 때마다 함께 갱신됨.
+    </div>
+    <div class="gunav" id="vGuNav"></div>
+    <div class="searchbar">
+      <input id="vSearch" placeholder="도급업체명 · 호텔명 검색…" oninput="renderVendors()">
+      <span class="cnt" id="vCnt"></span>
+    </div>
+    <div class="scrollx" style="max-height:60vh">
+      <table class="tbl">
+        <thead><tr><th>도급업체</th><th>관리(추정) 호텔</th><th>지역</th><th>모집 직종</th><th>공고</th><th>최근 공고일</th><th>근거 (공고 원문)</th></tr></thead>
+        <tbody id="vBody"></tbody>
+      </table>
+    </div>
+    <div class="src">
+      ※ '관리(추정)'인 이유 : 채용공고는 도급 계약의 간접 증거이며 확정은 호텔 직접 확인 필요. 공고가 마감돼도 계약 관계는 지속 중일 수 있음.<br>
+      ※ 반대로 <b>직영으로 채용 중인 호텔(도급사 없음)</b>은 구인공고 탭에서 "호텔 직영 공고만" 필터로 확인 — 이들이 도급 전환 영업 1순위 타깃.
+    </div>
+  </div>
+
+  <div class="note todo">
+    🔜 <b>다음 단계</b> : 수집 키워드를 하우스맨·시설기사·조리 등으로 확대하면 매핑 커버리지 상승.
+    개별 업체 전수 리스트(상호·주소)는 지방행정인허가데이터(LOCALDATA)·국세청 사업자 데이터로 확보 예정 → 경쟁사 명단화.
+  </div>
+</div>
+
+<!-- ══════════════════ 탭4 : 부산 구인공고 ══════════════════ -->
+<div class="tab" id="t4">
+  <h2>부산 호텔 구인공고 모니터링 <span class="hint">룸메이드 · 하우스맨 · 하우스키핑 · 시설</span></h2>
+
+  <div class="stat-banner">
+    🔄 <b>누적 수집 방식 · 최신 등록순 정렬</b> — 새로 수집한 공고가 위에 추가되고 기존 공고는 삭제하지 않음(마감 시 마감 표시 예정) ·
+    최근 수집 : <b>2026-08-19</b> (사람인 "부산 호텔 룸메이드" 56건 중 URL 확인분) <span style="margin-left:auto">✅ 전 건 실제 공고 · 원문 URL 첨부</span>
+  </div>
+
+  <div class="note rule">
+    📌 <b>수집 규칙</b> : ① 부산 지역(구 단위) 한정 ② 작년도(2025년 이하) 공고 제외 — 전 건 2026년 등록/수정 공고
+    ③ 거짓 작성 금지 — 공고 원문에 없는 정보는 "—" 처리 ④ 근거자료(공고 URL) 필수 첨부 ⑤ 급여·복리후생은 공고 표기 그대로
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi accent"><div class="kpi-t">수집 공고</div><div class="kpi-v" id="kJobTotal">0<span>건</span></div><div class="kpi-s">URL 확인 완료 건만 게재</div></div>
+    <div class="kpi"><div class="kpi-t">도급/용역업체 공고</div><div class="kpi-v" id="kJobDogub">0<span>건</span></div><div class="kpi-s">경쟁사 동향 = 이 숫자</div></div>
+    <div class="kpi"><div class="kpi-t">호텔 직영 공고</div><div class="kpi-v" id="kJobDirect">0<span>건</span></div><div class="kpi-s">직영 → 도급 전환 영업 타깃</div></div>
+    <div class="kpi gm"><div class="kpi-t">🎯 지엠네트웍스 자사</div><div class="kpi-v" id="kJobGm">0<span>건</span></div><div class="kpi-s">주황색 행 표시</div></div>
+  </div>
+
+  <div class="gunav" id="guNav"></div>
+
+  <div class="searchbar">
+    <input id="jobSearch" placeholder="호텔명 · 업체명 · 직종 검색…" oninput="renderJobs()">
+    <select id="jobType" onchange="renderJobs()">
+      <option value="">전체 직종</option>
+      <option>룸메이드</option><option>하우스맨</option><option>인스펙터</option>
+      <option>하우스키핑 관리자</option><option>프론트</option><option>시설</option>
+    </select>
+    <select id="jobOp" onchange="renderJobs()">
+      <option value="">도급/직영 전체</option>
+      <option value="도급">도급·용역업체 공고만</option>
+      <option value="직영">호텔 직영 공고만</option>
+    </select>
+    <span class="cnt" id="jobCnt"></span>
+  </div>
+
+  <div class="scrollx">
+    <table class="tbl jobtbl">
+      <thead><tr>
+        <th>순번</th><th>등록일</th><th>지역</th><th>호텔명</th><th>도급업체명</th>
+        <th>구인직종</th><th>급여</th><th>복리후생</th><th class="wr">특이사항</th><th>URL</th>
+      </tr></thead>
+      <tbody id="jobBody"></tbody>
+    </table>
+  </div>
+
+  <div class="src">
+    ※ 등록일 앞 "수정"은 공고 수정일(원 등록일이 검색화면에 미노출된 건). "고용24"는 고용24(워크넷) 연계 공고가 사람인에 노출된 건 —
+    URL은 사람인 상세페이지이며 원문 확인 가능. 급여 "월"은 월급, "연"은 연봉, "일"은 일급, "시"는 시급 — 공고 표기 그대로.
+    시설팀(시설기사·영선·기전) 직종은 다음 수집 회차에 검색 키워드 추가 예정.
+  </div>
+</div>
+
+<!-- ══════════════════ 탭5 : 자동화 ══════════════════ -->
+<div class="tab" id="t5">
+  <h2>자동화 · 데이터 연동 가이드 <span class="hint">"매번 실시간으로 바뀌게" 만드는 3단계 로드맵</span></h2>
+
+  <div class="card">
+    <h3>🥇 1단계 — 지금 바로 가능 (API 불필요) : 클로드 수집 방식</h3>
+    <div class="step"><div class="step-num">1</div><div class="step-body">
+      <b>요청 시</b> : 클로드에게 "구인공고 갱신해줘" 한 마디 → 사람인·고용24를 브라우저로 검색 → 이 HTML의 데이터 블록을 새 공고로 교체 → 파일 저장.
+      이번 제로 드래프트의 공고 데이터도 이 방식으로 수집한 <b>실제 데이터</b>임 (2026-08-19 수집 검증 완료).
+    </div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body">
+      <b>주 1회 자동</b> : 클로드 코드 예약 작업(스케줄)으로 등록 — 예: 매주 월요일 09:00 자동 실행 → 수집 → 대시보드 갱신 → 완료 알림.
+      원하는 <b>요일·시간대만 정해주면</b> 바로 등록 가능.
+    </div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body">
+      <b>검증 규칙 자동 적용</b> : 부산 외 지역 제외 / 2026년 이전 공고 제외 / URL 없는 건 제외 / 중복(같은 공고 재게시) 병합.
+    </div></div>
+  </div>
+
+  <div class="card">
+    <h3>🥈 2단계 — API 발급 시 (무료) : 자동 수집 정확도 강화</h3>
+    <div class="api-card">
+      <h4>① 고용24(워크넷) 채용정보 Open API <span class="free">무료</span></h4>
+      <p>발급처 : <a href="https://www.data.go.kr" target="_blank">공공데이터포털(data.go.kr)</a> → "워크넷 채용정보" 검색 → 활용신청 (즉시승인)</p>
+      <p>기능 : 지역(부산 구별)·직종(음식숙박)·등록일 조건으로 공고 목록+상세 URL 조회. 룸메이드/하우스맨 공고의 상당수가 고용24 경유.</p>
+    </div>
+    <div class="api-card">
+      <h4>② 사람인 오픈 API <span class="free">무료 (기업회원 키 발급)</span></h4>
+      <p>발급처 : <a href="https://oapi.saramin.co.kr" target="_blank">사람인 오픈API (oapi.saramin.co.kr)</a> → access-key 신청</p>
+      <p>기능 : 키워드+지역코드로 채용공고 검색 JSON 제공. 단, 노출 범위가 웹 검색보다 좁을 수 있어 브라우저 수집과 병행 권장.</p>
+    </div>
+    <div class="api-card">
+      <h4>③ 한국관광공사 TourAPI / 공공데이터포털 관광숙박업 데이터 <span class="free">무료</span></h4>
+      <p>발급처 : <a href="https://www.data.go.kr/data/3075666/fileData.do" target="_blank">공공데이터포털 「전국 관광숙박시설 현황」</a> — 지역·업종·등급별 업체수/객실수 원본</p>
+      <p>기능 : 탭1~2의 전국 통계를 연 1회 자동 갱신 + 17개 시도 전체 채우기 + 부산 구별 호텔 리스트.</p>
+    </div>
+    <div class="api-card">
+      <h4>④ KOSIS 공유서비스 OpenAPI (통계청) <span class="free">✅ 발급완료 · 호출검증 완료 (2026-08-20)</span></h4>
+      <p>인증키는 같은 폴더의 <b>api_config.json</b>에 저장 (호출 URL·분류코드표 포함). 아웃소싱 공급시장 탭의 전국사업체조사 수치를 신규 연도 발표 시 자동 갱신.</p>
+      <p>검증 : 2024년 전국 741업종 6,507개 / 부산 293개 — 대시보드 수치와 API 응답 일치 확인.</p>
+    </div>
+    <div class="note">💡 현황 : ④ KOSIS <b>연동 완료</b> · ① 고용24 API는 개인회원 제약(채용정보목록 API는 직업정보제공사업 신고 기관만 가능)으로 <b>보류 — 브라우저 수집으로 대체</b> (고용24 연계 공고도 사람인 검색에 포함됨) · ③ 관광숙박 파일데이터는 키 불필요 · ② 사람인은 선택사항.</div>
+  </div>
+
+  <div class="card">
+    <h3>🥉 3단계 — 장기 : 상시 서버 (busan-lab 방식)</h3>
+    <div class="step"><div class="step-num">S</div><div class="step-body">
+      기존 카페 상권랩(busan-lab.onrender.com)처럼 <b>Render 무료 서버</b>에 올려서, 대시보드를 열 때마다 서버가 고용24 API를 직접 호출 → 진짜 실시간.
+      HTML 파일 단독으로는 브라우저 보안정책(CORS) 때문에 채용사이트를 직접 호출할 수 없어서, 실시간을 원하면 이 단계가 최종형.
+      1~2단계로 운영해보고 필요하면 진행 권장.
+    </div></div>
+  </div>
+
+  <div class="card">
+    <h3>📬 주간 리포트 알림 포맷 (자동 발송안)</h3>
+    <div class="note">매주 수집 후 : <b>신규 공고 ○건 / 마감 ○건 / 경쟁 도급사 신규 진입 ○곳 / 직영→도급 전환 시그널 ○건</b> 요약 +
+    이 대시보드 파일 갱신. 신규 공고에는 🆕 표시, 지난주 대비 변동 하이라이트.</div>
+  </div>
+</div>
+
+<footer>
+  지엠네트웍스 호텔 상권분석 대시보드 — Draft v0.5 (2026-08-20) · 호텔 834개 전수 명단 내장<br>
+  통계 출처 : 한국관광협회중앙회 호텔업 등급결정 현황(2026-08-19 실시간 전수 집계) · 문화체육관광부 관광숙박업 등록현황(2025년 말) · 통계청 전국사업체조사(2024년, KOSIS) · 구인공고 : 사람인/고용24 (2026-08-19 수집, 전 건 원문 URL 첨부)
+</footer>
+
+</div>
+
+<script>
+/* ─────────── 전국 통계 (2025년 말, 실제 데이터) ─────────── */
+/* 지역별 — 2026-08-19 등급유효 호텔 기준 (hotelrating.or.kr 전수 집계, 제주는 제주관광협회 별도 관리로 미포함) */
+const REGIONS = [
+  { name:'서울', cnt:296, rooms:49891 },
+  { name:'경기', cnt:99,  rooms:11351 },
+  { name:'부산', cnt:80,  rooms:10945, me:true },
+  { name:'경남', cnt:61,  rooms:4679 },
+  { name:'인천', cnt:58,  rooms:9068 },
+  { name:'강원', cnt:46,  rooms:5632 },
+  { name:'전남', cnt:42,  rooms:3576 },
+  { name:'경북', cnt:41,  rooms:3840 },
+  { name:'전북', cnt:25,  rooms:3272 },
+  { name:'대구', cnt:23,  rooms:2214 },
+  { name:'충북', cnt:16,  rooms:1494 },
+  { name:'울산', cnt:15,  rooms:1913 },
+  { name:'대전', cnt:14,  rooms:1435 },
+  { name:'충남', cnt:12,  rooms:1180 },
+  { name:'광주', cnt:4,   rooms:416 },
+  { name:'세종', cnt:2,   rooms:312 },
+];
+/* 성급별 — 2026-08-19 hotelrating.or.kr 등급유효 호텔 834개 전수 집계 (제주 제외, 중복 7건 제거) */
+const STARS = [
+  { name:'5성급', cls:'t-star5', color:'#ef4444', cnt:73,  rooms:25622, bc:10, br:3261, note:'평균 351실. 대형 물량 — 글로벌 체인 벤더등록 필요. 레퍼런스 가치 최상' },
+  { name:'4성급', cls:'t-star4', color:'#f97316', cnt:126, rooms:30086, bc:6,  br:1902, note:'평균 239실. 비즈니스+관광 혼합 수요 — 도급 전환율 높은 구간' },
+  { name:'3성급', cls:'t-star3', color:'#eab308', cnt:223, rooms:30465, bc:18, br:2280, note:'객실수 최대 볼륨존 — 주력 타깃' },
+  { name:'2성급', cls:'t-star2', color:'#3b82f6', cnt:324, rooms:21127, bc:39, br:3228, note:'평균 65실 소규모. 자체고용 多 → 도급 전환 제안 영업 대상' },
+  { name:'1성급', cls:'t-star1', color:'#64748b', cnt:88,  rooms:3918,  bc:7,  br:274,  note:'소형 위주 — 소규모 용역·일용 시장' },
+];
+
+/* ─────────── 부산 구인공고 (2026-08-19 사람인 실수집 · 전 건 원문 URL 보유) ───────────
+   필드: no 자동 / d 등록일 / mod 수정일여부 / gu 지역 / hotel 호텔명 / corp 업체명 /
+   op 도급|직영 / job 직종 / pay 급여 / wf 복리후생 / etc 특이사항 / src 사람인|고용24 / gm 자사 / id rec_idx */
+const JOBS = [
+ { d:'26/08/18', gu:'해운대구', hotel:'웨스틴조선 부산', corp:'(주)삼익', op:'도급', job:'룸메이드', pay:'—', wf:'파견', etc:'정규직 · ~09/02 마감 · 5성급 체인 도급 사례', src:'사람인', id:54773634 },
+ { d:'26/08/18', gu:'중구', hotel:'GNB호텔(지엔비호텔)', corp:'GNB HOTEL', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'정규직 · ~09/17 마감 · 직영모집 → 도급 전환 영업 타깃', src:'사람인', id:54771766 },
+ { d:'26/08/18', gu:'동구', hotel:'동구 소재 호텔', corp:'(주)지엠네트웍스', op:'도급', job:'룸메이드', pay:'일 110,000원', wf:'탄력근무제', etc:'자사 공고 · 정규직·프리랜서 · ~09/17', src:'사람인', gm:true, id:54773159 },
+ { d:'26/08/18', gu:'해운대구', hotel:'센텀프리미어호텔', corp:'(주)와이제이인터내셔널', op:'도급', job:'룸메이드', pay:'—', wf:'점심지원', etc:'객실정비팀 · 정규직 · ~09/17', src:'사람인', id:54765426 },
+ { d:'26/08/18', mod:true, gu:'해운대구', hotel:'센텀컨벤션호텔', corp:'엠케이제이(유)', op:'도급', job:'룸메이드', pay:'일 110,000원', wf:'—', etc:'알바 · 기본 10유닛 기준 · ~08/31', src:'사람인', id:54626239 },
+ { d:'26/08/17', gu:'연제구', hotel:'아르반시티', corp:'아르반시티', op:'직영', job:'룸메이드', pay:'월 216만원', wf:'—', etc:'정규직·계약직 · ~09/16', src:'사람인', id:54761439 },
+ { d:'26/08/14', gu:'해운대구', hotel:'호텔일루아', corp:'호텔일루아', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'계약직 · 상시채용', src:'사람인', id:54750882 },
+ { d:'26/08/12', mod:true, gu:'중구', hotel:'파라미온 호텔', corp:'(주)파라미온', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'정규직 · ~09/04', src:'사람인', id:54382829 },
+ { d:'26/08/11', gu:'해운대구', hotel:'베니키아호텔 해운대', corp:'(주)해운대관광호텔', op:'직영', job:'룸메이드', pay:'월 220만원', wf:'—', etc:'정규직 · 경력1년↑ · ~09/10 · 객실/룸메이드 상시', src:'사람인', id:54711801 },
+ { d:'26/08/11', gu:'해운대구', hotel:'광수호텔', corp:'주식회사광수호텔', op:'직영', job:'룸메이드', pay:'월 216만원', wf:'—', etc:'계약직 · ~09/10 · 아래 오케이서비스(도급)와 동시 모집 중 — 이원화 운영', src:'사람인', id:54711071 },
+ { d:'26/08/10', gu:'남구', hotel:'그랜드모먼트 유스호스텔', corp:'(주)그랜드모먼트유스호스텔', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'정규직 · ~09/09', src:'사람인', id:54703598 },
+ { d:'26/08/06', gu:'기장군', hotel:'해운대비치골프앤리조트', corp:'해운대비치골프앤리조트(주)', op:'직영', job:'룸메이드', pay:'연 3,200만원', wf:'—', etc:'정규직 · ~09/05 · 리조트 — 급여 상단 구간', src:'사람인', id:54671957 },
+ { d:'26/08/05', mod:true, gu:'해운대구', hotel:'영무파라드호텔 해운대', corp:'(주)백의', op:'도급', job:'룸메이드', pay:'일 120,000원', wf:'—', etc:'프리랜서 · ~09/03 · 하우스키핑(객실정비)', src:'사람인', id:54373385 },
+ { d:'26/08/04', gu:'해운대구', hotel:'파라다이스호텔 부산', corp:'(주)아이비에스인더스트리', op:'도급', job:'룸메이드', pay:'월 243만원', wf:'파견 · 점심지원', etc:'정규직 · 경력1년↑ · 5성급 도급 대표 사례', src:'사람인', id:54647471 },
+ { d:'26/08/04', gu:'해운대구', hotel:'파라다이스호텔 부산', corp:'(주)아이비에스인더스트리', op:'도급', job:'인스펙터', pay:'—', wf:'파견', etc:'경력자 · 정규직·파트 · 오늘마감(08/19)', src:'사람인', id:54642280 },
+ { d:'26/08/04', gu:'해운대구', hotel:'파라다이스호텔 부산', corp:'(주)아이비에스인더스트리', op:'도급', job:'룸메이드', pay:'월 243만원', wf:'파견', etc:'정규직 · 경력1년↑ · 오늘마감(08/19)', src:'사람인', id:54642278 },
+ { d:'26/08/04', gu:'동구', hotel:'토요코인호텔 부산역1호점', corp:'토요코인코리아(주)', op:'직영', job:'하우스키핑 관리자', pay:'연 3,000만원', wf:'유연근무제', etc:'객실관리 책임자(치프) · ~10/03 · 관리자급 직영 채용', src:'사람인', id:54646529 },
+ { d:'26/08/03', mod:true, gu:'기장군', hotel:'빌라쥬 드 아난티', corp:'(주)삼익', op:'도급', job:'하우스맨', pay:'월 220만원', wf:'파견 · 육아휴직', etc:'인스펙터/하우스맨/룸메이드 통합모집 · ~08/26 · 5성급 리조트', src:'사람인', id:54572529 },
+ { d:'26/07/30', gu:'중구', hotel:'트레블로지 스위트 센텀', corp:'래디언트남포', op:'직영', job:'하우스키핑 관리자', pay:'—', wf:'—', etc:'직원+관리자 동시채용 · ~08/29 · 글로벌 브랜드(윈덤 계열)', src:'사람인', id:54610865 },
+ { d:'26/07/30', mod:true, gu:'중구', hotel:'파라미온 호텔', corp:'(주)파라미온', op:'직영', job:'하우스키핑 관리자', pay:'—', wf:'—', etc:'하우스키퍼 신입/경력 · ~08/29', src:'사람인', id:54606782 },
+ { d:'26/07/29', gu:'영도구', hotel:'노스하버호텔', corp:'(주)노스하버호텔', op:'직영', job:'룸메이드', pay:'월 220만원', wf:'—', etc:'정규직·계약직 · ~08/28', src:'사람인', id:54597844 },
+ { d:'26/07/27', gu:'영도구', hotel:'호텔아델라', corp:'(주)아델라태산', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'2026 하반기 정규직&알바 · ~09/25', src:'사람인', id:54576691 },
+ { d:'26/07/27', gu:'해운대구', hotel:'송정호텔', corp:'(주)파인프라자', op:'도급', job:'룸메이드', pay:'시 15,000원', wf:'—', etc:'알바(프리랜서) · ~08/26', src:'사람인', id:54575084 },
+ { d:'26/07/24', mod:true, gu:'부산진구', hotel:'쏘타 스위트 호텔 서면', corp:'쏘타스위트부산서면', op:'직영', job:'하우스키핑 관리자', pay:'—', wf:'—', etc:'하우스키퍼(H.K) · 정규직·계약직 · 채용시', src:'사람인', id:54560082 },
+ { d:'26/07/24', mod:true, gu:'중구', hotel:'스탠포드호텔 부산', corp:'(주)스타포드인', op:'직영', job:'하우스키핑 관리자', pay:'—', wf:'—', etc:'주임/대리급 · 초대졸↑ · ~08/31 · 체인호텔 관리자 직영채용', src:'사람인', id:54554173 },
+ { d:'26/07/24', gu:'중구', hotel:'중구 소재 호텔', corp:'(주)성우디오씨', op:'도급', job:'룸메이드', pay:'월 270만원', wf:'—', etc:'정규직 · ~08/23 · 급여 상단 — 공고에 호텔명 미표기', src:'사람인', id:54551736 },
+ { d:'26/07/23', gu:'해운대구', hotel:'광수호텔', corp:'주식회사오케이서비스', op:'도급', job:'룸메이드', pay:'월 216만원', wf:'—', etc:'계약직 · ~08/22 · 직영 공고와 병행 중', src:'사람인', id:54541416 },
+ { d:'26/07/08', mod:true, gu:'해운대구', hotel:'호텔 라뮤에뜨', corp:'주식회사 라뮤에뜨', op:'직영', job:'룸메이드', pay:'연 2,592만원', wf:'—', etc:'신입 정규직 · 채용시', src:'고용24', id:54411487 },
+ { d:'26/07/08', mod:true, gu:'해운대구', hotel:'파라다이스호텔 부산', corp:'(주)아이비에스인더스트리', op:'도급', job:'룸메이드', pay:'연 2,916만원', wf:'—', etc:'계약직 · ~08/28', src:'고용24', id:54315240 },
+ { d:'26/06/29', mod:true, gu:'중구', hotel:'코모도호텔 부산', corp:'레지스컴 주식회사', op:'도급', job:'룸메이드', pay:'연 2,640만원', wf:'—', etc:'정규직 · 채용시', src:'고용24', id:54249284 },
+ { d:'—',        gu:'서구', hotel:'송도해수욕장 인근 호텔(그랩디오션 송도)', corp:'(주)지엠네트웍스', op:'도급', job:'룸메이드', pay:'—', wf:'4대보험', etc:'자사 공고 · 채용시 · 고용24 연계', src:'고용24', gm:true, id:54733810 },
+ { d:'—',        gu:'수영구', hotel:'광안리 소재 호텔', corp:'주식회사 시너제닉', op:'도급', job:'룸메이드', pay:'—', wf:'4대보험', etc:'아르바이트 · 채용시', src:'고용24', id:54705594 },
+ { d:'—',        gu:'해운대구', hotel:'관광호텔 라온(송정)', corp:'호텔라온주식회사', op:'직영', job:'룸메이드', pay:'—', wf:'4대보험', etc:'채용시', src:'고용24', id:54579861 },
+ { d:'—',        gu:'동구', hotel:'토요코인 부산역점', corp:'토요코인코리아(주) 부산역점', op:'직영', job:'룸메이드', pay:'—', wf:'퇴직금', etc:'객실청소 · ~09/28', src:'고용24', id:54600489 },
+];
+JOBS.forEach(j => j.url = 'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=' + j.id);
+
+/* ─────────── 호텔 전체 명단 (2026-08-19 hotelrating.or.kr 전수, 중복 제거 후 834개) ───────────
+   형식: [호텔명, 성급, 지역idx, 객실수, 업종idx, 등급결정일] */
+const EX_AREA = ['', '서울', '부산', '대구', '인천', '광주', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '전남', '경북', '경남', '제주'];
+const EX_TYPE = { 0: '관광호텔업', 1: '한국전통호텔업', 2: '소형호텔업', 3: '수상관광호텔업', 4: '의료관광호텔업', 5: '가족호텔업', 6: '호스텔업', 7: '일반숙박업' };
+const HOTELS = [["호텔 블리스","1",1,30,0,"2026-08-19"],["아늑 호텔 앤 스파 서울 성수 건대","1",1,50,0,"2026-08-19"],["로얄서울호텔","4",1,310,0,"2026-08-18"],["SIGNIEL SEOUL","5",1,235,0,"2026-08-16"],["3에스(S) 호텔(소래점)","2",4,57,0,"2026-08-13"],["더 웨스턴 부산","2",2,72,0,"2026-08-12"],["동대문 관광호텔","2",1,50,0,"2026-08-11"],["스피디움 호텔","4",10,134,0,"2026-08-11"],["호텔 더 디자이너스","3",1,100,0,"2026-08-11"],["엠블던호텔","3",9,238,0,"2026-08-10"],["렉시호텔","1",1,51,0,"2026-08-10"],["베니키아해운대호텔마리안느","3",2,127,0,"2026-08-06"],["관광호텔 뮤제오","3",11,59,0,"2026-08-06"],["호텔 더 캐슬(방이2)","1",1,41,0,"2026-07-28"],["이스턴 호텔","3",3,70,0,"2026-07-25"],["핸드픽트호텔.서울","3",1,46,0,"2026-07-25"],["오라카이 청계산 호텔","4",1,193,0,"2026-07-23"],["노블레스관광호텔","2",1,84,0,"2026-07-22"],["웨스턴라이프호텔","4",13,155,0,"2026-07-22"],["그랜드 머큐어 임피리얼 팰리스 서울","5",1,314,0,"2026-07-22"],["유니아일랜드 더 스파빌","3",4,61,0,"2026-07-22"],["데이즈 호텔 명동","3",1,64,0,"2026-07-21"],["서울미라마(유)그랜드하얏트서울","5",1,615,0,"2026-07-15"],["호텔롯데 엘세븐명동","4",1,250,0,"2026-07-14"],["나이아가라관광호텔","3",1,98,0,"2026-07-14"],["토요코인 대구동성로","2",3,213,0,"2026-07-13"],["호텔 디 아티스트 연신내점","2",1,48,0,"2026-07-13"],["포포인츠 바이 쉐라톤 서울 구로","4",1,202,0,"2026-07-10"],["호텔 스카이파크 킹스타운 동대문지점","4",1,406,5,"2026-07-09"],["계룡스파텔","3",6,143,0,"2026-07-07"],["신라스테이 광화문","4",1,336,0,"2026-07-06"],["AC호텔 바이 메리어트 서울 강남","4",1,282,0,"2026-07-06"],["울릉관광호텔","1",15,22,2,"2026-07-06"],["롯데시티호텔명동","4",1,435,0,"2026-07-06"],["컬리넌 호텔 앤 스파","1",1,70,0,"2026-07-06"],["울릉도 이사부 호텔","1",15,24,2,"2026-07-06"],["그레이193호텔","2",2,25,2,"2026-07-06"],["호텔 밀하우스","1",1,47,0,"2026-07-06"],["종로크라운","2",1,83,0,"2026-07-04"],["인터컨티넨탈 알펜시아 평창리조트","5",10,238,0,"2026-07-03"],["노보텔 앰배서더 강남 호텔","5",1,332,0,"2026-07-03"],["라코지스테이서울","3",1,68,5,"2026-07-03"],["홀리데이 인 리조트","4",10,214,0,"2026-07-03"],["포레스타","2",1,53,0,"2026-07-03"],["(주)용암온천관광호텔","2",15,37,0,"2026-07-02"],["골든호텔","2",4,79,0,"2026-07-02"],["르메르디앙 서울 명동","5",1,200,0,"2026-07-02"],["해밀톤관광호텔","3",1,166,0,"2026-07-02"],["밀리토피아 호텔 바이마린","4",9,176,0,"2026-07-02"],["브릭스관광호텔","2",1,53,0,"2026-07-02"],["목시 서울 명동","3",1,205,0,"2026-07-02"],["다온호텔","2",13,20,2,"2026-07-02"],["HOTEL THE DESIGNERS CHEONGNYANGNI","2",1,80,0,"2026-07-02"],["이비스스타일앰배서더인천에어포트","4",4,360,0,"2026-07-02"],["로프트 관광호텔(HOTEL LOFT)","3",1,58,0,"2026-07-02"],["토요코인 부산중앙역","2",2,442,0,"2026-07-02"],["호텔 더 디자이너스 인천","3",4,103,0,"2026-07-02"],["토요코인 인천부평","2",4,510,0,"2026-07-02"],["신라모노그램 강릉","5",10,315,0,"2026-07-02"],["라까사 호텔","3",1,88,0,"2026-06-30"],["(주)호텔인터불고 원주","4",10,145,0,"2026-06-24"],["청풍리조트 레이크호텔","4",11,180,0,"2026-06-18"],["신촌라싸 관광호텔","1",1,41,0,"2026-06-18"],["디엠프레스호텔","2",6,66,0,"2026-06-16"],["경화기업(주) 타워힐관광호텔","3",2,116,0,"2026-06-16"],["속초비즈니스호텔카멜","2",10,40,0,"2026-06-16"],["아스트로(ASTRO) 관광호텔","2",9,100,0,"2026-06-16"],["엘디스리젠트호텔","4",3,110,0,"2026-06-14"],["하버파크호텔","4",4,214,0,"2026-06-13"],["호텔 스카이파크 센트럴 명동점","3",1,312,0,"2026-06-13"],["포레스타호텔","2",1,58,0,"2026-06-12"],["롯데호텔울산","5",7,200,0,"2026-06-12"],["센트럴 관광호텔","1",9,52,0,"2026-06-11"],["로이넷 호텔 서울 마포","3",1,341,0,"2026-06-11"],["엘리에나호텔","4",1,63,0,"2026-06-11"],["케이 그랜드 호텔 서울(K-Grand Hotel Seoul)","1",1,30,0,"2026-06-11"],["더 리센츠","3",1,207,0,"2026-06-11"],["춘천세종관광호텔","3",10,63,0,"2026-06-11"],["호텔베뉴지","3",1,162,0,"2026-06-10"],["호텔카리스","3",4,160,0,"2026-06-10"],["하얏트 플레이스 부산 연산","4",2,160,0,"2026-06-10"],["하운드호텔 포항영일대점","2",15,36,0,"2026-06-10"],["머큐어 앰배서더 서울 홍대","4",1,270,0,"2026-06-07"],["포포인츠 바이 쉐라톤 수원","4",9,221,0,"2026-06-07"],["제이케이 블라썸 호텔","3",1,272,0,"2026-06-05"],["호텔스카이파크명동Ⅱ","2",1,132,0,"2026-06-04"],["호텔 썬비","2",1,42,0,"2026-06-02"],["대림호텔","2",6,44,0,"2026-06-02"],["휘닉스호텔","4",10,130,0,"2026-06-01"],["호텔M타워","2",9,86,0,"2026-06-01"],["소노캄 고양","5",9,826,0,"2026-06-01"],["스탠포드호텔 명동","3",1,254,0,"2026-05-26"],["아이비씨호텔","3",1,55,0,"2026-05-26"],["(주)이랜드파크 켄싱턴호텔 설악","4",10,108,0,"2026-05-26"],["풀만 앰배서더 서울 이스트폴","5",1,150,0,"2026-05-20"],["테크노밸리 호텔","2",6,74,0,"2026-05-18"],["하얏트리젠시인천파라다이스시티","5",4,501,0,"2026-05-18"],["시애틀비호텔","2",2,55,0,"2026-05-18"],["호텔 디 아티스트 성신여대점","2",1,48,0,"2026-05-18"],["호텔스퀘어","4",9,201,0,"2026-05-18"],["나인트리 바이 파르나스 서울 인사동","3",1,301,0,"2026-05-18"],["호텔 엠펠리체","3",1,118,0,"2026-05-15"],["호텔 스카이파크Ⅲ","2",1,136,0,"2026-05-15"],["주식회사 에스알호텔","2",1,61,0,"2026-05-14"],["게스후","3",2,55,0,"2026-05-13"],["코리아나호텔","4",1,285,0,"2026-05-12"],["써미트호텔","3",1,190,0,"2026-05-12"],["(주)코모도호텔","4",2,311,0,"2026-05-12"],["(주)엠파이어관광호텔","2",5,43,0,"2026-05-12"],["VOW관광호텔","1",4,71,0,"2026-05-11"],["호텔 디 아티스트 역삼","1",1,50,0,"2026-05-11"],["경원재 바이 워커힐","5",4,30,1,"2026-05-08"],["토요코인 창원","3",16,339,0,"2026-05-08"],["프린스행복호텔","1",14,58,0,"2026-05-07"],["가락관광호텔","2",1,71,0,"2026-05-07"],["여수베네치아호텔앤스위트","4",14,343,0,"2026-05-06"],["(주) 호텔금오산","4",15,130,0,"2026-05-06"],["신라스테이","3",1,309,0,"2026-05-06"],["씨엠파크호텔 주식회사","3",15,62,0,"2026-05-06"],["호텔써던힐","3",14,74,0,"2026-05-04"],["파크마린호텔","3",4,88,0,"2026-05-04"],["강남 스테이 호텔","3",1,52,0,"2026-05-04"],["호텔 라온","2",16,34,0,"2026-05-03"],["수안보상록호텔","3",11,101,0,"2026-05-03"],["호텔 PJ","4",1,272,0,"2026-05-03"],["뉴블랑 센트럴 명동 호텔","3",1,182,0,"2026-04-27"],["호텔 오푸스","1",15,40,0,"2026-04-24"],["울산시티호텔","2",7,90,0,"2026-04-24"],["소노벨타워D비발디파크","4",10,79,0,"2026-04-22"],["트레블로지 동대문 호텔","3",1,242,0,"2026-04-22"],["(주)오키드호텔","3",10,85,0,"2026-04-22"],["베니키아 더에이치 호텔","3",9,90,0,"2026-04-22"],["더케이호텔앤리조트(주) 더케이설악산가족호텔","3",10,76,5,"2026-04-22"],["메이플레이스 호텔 서울 동대문","3",1,105,0,"2026-04-21"],["호텔리베라 거제","3",16,138,0,"2026-04-21"],["에이시티 관광호텔","3",3,80,0,"2026-04-20"],["나봄리조트(주)","2",13,51,5,"2026-04-20"],["파라다이스시티","5",4,769,0,"2026-04-20"],["나인트리 바이 파르나스 서울 동대문","3",1,219,0,"2026-04-19"],["스카이파크호텔 동대문1호점","2",1,254,0,"2026-04-19"],["신라스테이 마포","3",1,382,0,"2026-04-17"],["호텔 나루","5",1,196,0,"2026-04-13"],["베스트웨스턴인천에어포트호텔","4",4,305,0,"2026-04-13"],["사보이호텔","3",1,105,0,"2026-04-09"],["해시호텔","1",9,46,0,"2026-04-09"],["하모니 관광호텔","2",1,81,0,"2026-04-09"],["호텔 울돌소리","3",14,32,0,"2026-04-09"],["센텀관광호텔","2",14,42,0,"2026-04-08"],["오션더포인트호텔","2",2,45,0,"2026-04-06"],["콘래드 서울 호텔","5",1,434,0,"2026-04-06"],["그린피아 관광호텔","2",9,52,0,"2026-04-06"],["포항 하운드 호텔 송도해수욕장점","3",15,72,0,"2026-04-06"],["하운드호텔 대구혁신점","2",3,54,0,"2026-04-06"],["토요코인 서울 동대문 Ⅱ","2",1,203,0,"2026-04-05"],["(주)샹그리아비치호텔","3",14,75,0,"2026-04-01"],["동대문 시그니처 관광호텔","2",1,67,0,"2026-04-01"],["(주)구미센츄리호텔","3",15,131,0,"2026-04-01"],["바반트 관광호텔","2",14,62,0,"2026-04-01"],["호텔 국도","3",1,295,0,"2026-03-30"],["호텔농심","5",2,238,0,"2026-03-30"],["진주KAI관광호텔","2",16,43,0,"2026-03-27"],["안다즈 서울 강남","5",1,241,0,"2026-03-27"],["바이브 호텔","2",7,65,0,"2026-03-26"],["오션힐호텔","3",14,56,0,"2026-03-23"],["나인트리 바이 파르나스 서울 명동2","3",1,408,0,"2026-03-23"],["메리엇 이그제큐티브 아파트먼트 서울","5",1,94,5,"2026-03-21"],["더 제리스 플래닛 호텔","1",1,42,0,"2026-03-20"],["토요코인 울산삼산동","2",7,281,0,"2026-03-20"],["H-에비뉴 광안리해변점","2",2,34,0,"2026-03-19"],["머큐어 앰배서더 호텔 울산","4",7,131,0,"2026-03-18"],["주식회사 시티호텔","2",2,82,0,"2026-03-18"],["맹그로브 동대문","2",1,177,0,"2026-03-18"],["스탠포드호텔 부산","3",2,132,0,"2026-03-18"],["판도라 호텔","2",7,70,0,"2026-03-18"],["서울 프린스 관광호텔","3",1,100,0,"2026-03-16"],["호텔 이쁘다","2",9,42,0,"2026-03-16"],["아르반시티 호텔","3",2,137,0,"2026-03-16"],["에이원호텔","1",1,21,2,"2026-03-16"],["호텔 디아망","2",1,50,0,"2026-03-16"],["호텔 라뷔포레","3",9,45,0,"2026-03-16"],["나인브릭","3",1,94,0,"2026-03-13"],["토요코인 부산서면","2",2,299,0,"2026-03-12"],["호텔어반","1",1,51,0,"2026-03-10"],["부산시티호텔","3",2,122,0,"2026-03-06"],["토요코인 부산 해운대-Ⅱ","2",2,442,0,"2026-03-04"],["나르샤관광호텔","2",14,48,0,"2026-03-04"],["아난티 앳 강남","4",1,111,0,"2026-03-04"],["바이브호텔 거제고현점","2",16,70,0,"2026-03-03"],["(주)호텔롯데 롯데시티호텔울산","3",7,350,0,"2026-03-03"],["브라운도트호텔 하단점","2",2,51,0,"2026-03-03"],["올라호텔","2",2,42,0,"2026-03-03"],["그랜드하얏트인천 이스트타워","5",4,523,0,"2026-03-02"],["호텔 크레토","2",1,35,0,"2026-02-27"],["코트야드 바이 메리어트 평택","4",9,230,0,"2026-02-27"],["사우스반데코 호텔","2",2,56,0,"2026-02-27"],["에스알 호텔","3",1,82,0,"2026-02-27"],["라마다 서울 동대문 호텔(정광피엔아이 주식회사)","3",1,197,0,"2026-02-27"],["퍼시먼관광호텔","2",10,56,0,"2026-02-25"],["인제관광호텔","2",10,70,0,"2026-02-25"],["더뱀부호텔","2",7,20,2,"2026-02-25"],["브라운도트호텔 양산서창점","1",16,42,0,"2026-02-23"],["Plaire(플레르) 관광호텔","1",2,48,0,"2026-02-19"],["위브스위트-선유 파크사이드","3",1,157,5,"2026-02-19"],["경주지지관광호텔","3",15,53,0,"2026-02-17"],["이비스 앰배서더 명동","3",1,279,0,"2026-02-16"],["호텔아벤트리여의도","2",1,90,0,"2026-02-12"],["에이치호텔","2",7,44,0,"2026-02-12"],["쏠비치 남해","5",16,366,0,"2026-02-11"],["웨스틴 서울 파르나스","5",1,656,0,"2026-02-11"],["반도관광호텔","2",4,50,0,"2026-02-06"],["더 클래식 500 펜타즈","4",1,84,0,"2026-02-06"],["엠플레이스호텔","1",4,66,0,"2026-02-05"],["베니키아호텔","1",12,60,0,"2026-02-05"],["이지갤러리 관광호텔","1",1,62,0,"2026-02-05"],["비치호텔","2",15,42,0,"2026-02-05"],["호텔 뉴브","3",1,150,0,"2026-02-03"],["에이든 청담호텔","3",1,149,0,"2026-01-27"],["부곡스파디움따오기호텔","2",16,82,5,"2026-01-23"],["리츠프라자호텔","2",13,57,0,"2026-01-22"],["(주)서부티엔디 이비스 스타일 앰배서더 서울 용산","4",1,581,0,"2026-01-22"],["프레지던트호텔","4",1,271,0,"2026-01-20"],["정남진 골프리조트 관광호텔(주)","2",14,46,0,"2026-01-19"],["제이베이 관광호텔","2",1,52,0,"2026-01-17"],["카파쓰 호텔","3",1,52,0,"2026-01-15"],["글래드호텔앤리조트(주) 글래드호텔 여의도","4",1,319,0,"2026-01-14"],["아만티 호텔 서울","4",1,150,0,"2026-01-14"],["토요코인 부산역1","2",2,357,0,"2026-01-06"],["라까사호텔 광명","4",9,194,0,"2026-01-06"],["의정부 라트리 호텔(Uijeongbu La Tree Hotel)","2",9,58,0,"2026-01-05"],["호텔선샤인","2",6,55,0,"2026-01-05"],["호텔오이도","1",9,23,2,"2026-01-02"],["호텔클로버","2",9,88,0,"2026-01-02"],["글래드호텔 마포","4",1,378,0,"2025-12-30"],["나인트리 바이 파르나스 서울 명동1","3",1,144,0,"2025-12-29"],["(주)파라다이스호텔 부산","5",2,529,0,"2025-12-29"],["(주)호텔인터내셔널","4",16,121,0,"2025-12-28"],["레이크호텔","3",1,94,0,"2025-12-28"],["호텔티롤","2",1,83,0,"2025-12-27"],["이비스 스타일 앰배서더 서울 명동","3",1,180,0,"2025-12-27"],["코트야드 메리어트 서울 명동","4",1,400,0,"2025-12-27"],["블루마린호텔","1",4,51,0,"2025-12-24"],["(주) 무주덕유산리조트","3",13,974,5,"2025-12-24"],["브라운도트호텔 현풍점","2",3,60,0,"2025-12-24"],["하이원 그랜드호텔카지노","5",10,727,0,"2025-12-21"],["호텔 글래드 강남 코엑스센터","3",1,282,0,"2025-12-20"],["포시즌스 호텔 서울","5",1,317,0,"2025-12-18"],["바인호텔","2",9,66,0,"2025-12-17"],["한옥호텔오동재","1",14,40,1,"2025-12-15"],["호텔AROZO 2","1",1,24,2,"2025-12-15"],["호텔AROZO","1",1,24,2,"2025-12-15"],["주니비노호텔","3",1,68,0,"2025-12-12"],["호텔 씨에스 에비뉴","2",1,70,0,"2025-12-12"],["호텔리베라 아노블리","2",1,30,5,"2025-12-09"],["안동 그랜드 호텔","3",15,82,0,"2025-12-03"],["목시 서울 인사동 호텔","3",1,140,0,"2025-11-30"],["오라카이송도파크호텔","4",4,275,0,"2025-11-29"],["소울하다 계양","3",4,85,0,"2025-11-28"],["브라운도트호텔 덕천점","2",2,47,0,"2025-11-28"],["파크하얏트부산 호텔","5",2,269,0,"2025-11-28"],["쉐르빌온천관광호텔","3",9,68,0,"2025-11-28"],["레고랜드 호텔","3",10,154,0,"2025-11-28"],["루미아호텔앤리조트","2",14,59,5,"2025-11-27"],["호텔노아","2",2,51,0,"2025-11-26"],["브라운도트호텔","1",9,55,0,"2025-11-25"],["롱비치가족호텔","1",12,33,5,"2025-11-21"],["(주)와이엔텍 호텔다향앤리조트","2",14,55,0,"2025-11-20"],["아세라빌라드아쿠아 호텔","2",16,62,0,"2025-11-12"],["라마다 서울 신도림 호텔","4",1,104,0,"2025-11-10"],["3에스(S)호텔(검단점)","2",4,93,0,"2025-11-10"],["전주관광호텔 꽃심","3",13,101,0,"2025-11-05"],["마인드 관광호텔","2",1,65,0,"2025-11-05"],["호텔 인트로","2",10,20,2,"2025-11-05"],["영주온천관광호텔","2",15,52,0,"2025-11-03"],["임피리얼팰리스 부티크호텔","3",1,128,0,"2025-11-03"],["JW메리어트호텔 서울","5",1,379,0,"2025-10-29"],["보코서울강남","4",1,151,5,"2025-10-29"],["호텔안테룸서울","3",1,112,0,"2025-10-29"],["엘라포니시 풀빌라&호텔","2",15,52,0,"2025-10-29"],["브라운도트 호텔 경주점","2",15,29,2,"2025-10-29"],["엘가관광호텔","2",9,74,0,"2025-10-27"],["웨스틴 조선 부산","5",2,290,0,"2025-10-24"],["호텔 데님","2",1,88,0,"2025-10-22"],["뉴서울호텔","3",1,188,0,"2025-10-22"],["솔라리아 니시테츠 호텔 서울 명동","3",1,312,0,"2025-10-22"],["호텔포레 더 스파","2",2,47,0,"2025-10-22"],["호텔라르","3",9,144,0,"2025-10-22"],["웨스트9호텔","2",9,65,0,"2025-10-20"],["세이지우드 호텔 홍천","5",10,32,5,"2025-10-17"],["힐튼 가든 인 서울 강남","4",1,208,0,"2025-10-16"],["골든서울호텔","4",1,260,0,"2025-10-16"],["노보텔앰배서더서울동대문호텔","5",1,331,0,"2025-10-16"],["W 관광호텔","2",4,40,0,"2025-10-13"],["남도호텔","2",14,50,0,"2025-10-02"],["호텔가덴 비즈","2",9,18,2,"2025-10-02"],["메이플비치 골프 & 리조트","3",10,54,0,"2025-10-02"],["신라스테이 전주 호텔","3",13,210,0,"2025-10-01"],["제이비스(JBIS) 호텔","2",9,58,0,"2025-10-01"],["도미인 익스프레스 서울 인사동","3",1,127,0,"2025-10-01"],["메이필드호텔","5",1,239,0,"2025-09-30"],["소피텔 앰배서더 서울 호텔 앤 서비스드 레지던스(관광호텔)","5",1,403,0,"2025-09-26"],["비치온 관광호텔","2",15,59,0,"2025-09-25"],["Hotel Tops10","4",10,332,0,"2025-09-20"],["호텔몬다비","2",14,87,0,"2025-09-19"],["원주시티호텔 기업도시점","3",10,48,0,"2025-09-19"],["호텔스카이파크 센트럴 서울판교점","4",9,206,0,"2025-09-19"],["트레블로지 명동 을지로 호텔","3",1,224,0,"2025-09-19"],["(주)마산관광호텔","2",16,42,0,"2025-09-18"],["신촌 EVER8 레지던스 호텔","1",1,47,5,"2025-09-14"],["경주시티호텔","3",15,88,0,"2025-09-12"],["(주)코오롱엘에스아이 코오롱호텔","4",15,317,0,"2025-09-12"],["호텔 카푸치노","3",1,141,0,"2025-09-11"],["에이치에비뉴 호텔 이대점","2",1,94,0,"2025-09-11"],["홈즈레드 명동","3",1,111,0,"2025-09-08"],["유토피아가족호텔","2",14,38,5,"2025-09-08"],["라마다 바이윈덤 호텔 충주 수안보","2",11,103,0,"2025-09-04"],["이비스앰배서더수원","3",9,215,0,"2025-09-03"],["신라스테이 서대문","3",1,319,0,"2025-09-03"],["부천호텔","2",9,98,0,"2025-09-01"],["주왕산관광호텔","2",15,46,0,"2025-08-27"],["캠프관광호텔","2",1,50,0,"2025-08-26"],["라한호텔 목포","4",14,208,0,"2025-08-26"],["이끌림클래식호텔","1",9,84,0,"2025-08-26"],["볼(Voll) 관광호텔","2",1,53,0,"2025-08-25"],["더 링크 서울, 트리뷰트 포트폴리오 호텔","4",1,141,0,"2025-08-25"],["호텔리베라서울","4",1,319,0,"2025-08-23"],["알로프트 서울 강남 호텔","3",1,188,0,"2025-08-22"],["라한호텔 포항","3",15,160,0,"2025-08-22"],["아일랜드캐슬 호텔","3",9,101,0,"2025-08-19"],["보보호텔","2",1,55,0,"2025-08-18"],["포르투나호텔","2",16,64,0,"2025-08-13"],["뉴스카이호텔","2",9,36,0,"2025-08-12"],["맹그로브 신설","2",1,311,0,"2025-08-12"],["나무호텔","2",1,23,2,"2025-08-12"],["어반이스트 호텔","3",9,99,0,"2025-08-12"],["오아시스호텔","2",16,155,5,"2025-08-11"],["담양리조트가족호텔","2",14,36,5,"2025-08-11"],["아스티 호텔","4",2,360,0,"2025-08-09"],["아리랑힐 호텔 동대문","3",1,190,0,"2025-08-08"],["(주)호텔롯데 롯데시티 호텔마포","3",1,284,0,"2025-08-08"],["(주)샤이어호텔","2",2,71,0,"2025-08-05"],["베니키아호텔 해운대","3",2,166,0,"2025-08-05"],["제니스관광호텔","1",9,59,0,"2025-08-04"],["엔포드호텔 (주)중원산업","5",11,312,0,"2025-08-04"],["코트야드 바이 매리엇 서울 판교","4",9,280,0,"2025-08-01"],["포포인츠바이쉐라톤서울강남","4",1,199,0,"2025-07-30"],["아리수경주호텔","2",15,80,0,"2025-07-30"],["호텔에디션스","3",14,75,0,"2025-07-30"],["에이치에비뉴 인천서구청점","2",4,46,0,"2025-07-22"],["호텔포마","2",16,35,0,"2025-07-22"],["체스터톤스 경주 더 테라스 호텔","3",15,83,0,"2025-07-21"],["호텔498","2",4,71,0,"2025-07-21"],["노보텔 앰배서더 수원","4",9,287,0,"2025-07-19"],["잠실스테이","1",1,53,0,"2025-07-15"],["라한호텔전주","4",13,195,0,"2025-07-15"],["소노캄 여수","5",14,311,0,"2025-07-15"],["호텔 라온","2",2,67,0,"2025-07-15"],["주식회사 라한호텔(울산)","4",7,272,0,"2025-07-15"],["힐튼호텔","5",15,330,0,"2025-07-14"],["아몬드키즈관광호텔","2",16,42,0,"2025-07-14"],["(주)조양 호텔소프라","3",4,148,0,"2025-07-11"],["쉐라톤그랜드인천호텔","5",4,321,0,"2025-07-11"],["롤링힐스 호텔","4",9,228,0,"2025-07-10"],["호텔케이월드","1",1,54,0,"2025-07-10"],["코모도호텔 경주","4",15,276,0,"2025-07-09"],["베스트웨스턴 군산호텔","3",13,181,0,"2025-07-08"],["호텔 토마스 명동","3",1,123,0,"2025-07-04"],["제이스 관광호텔","1",9,44,0,"2025-07-01"],["그랜드베른호텔","2",2,60,0,"2025-06-30"],["바이브호텔 김해장유점","2",16,38,0,"2025-06-30"],["(주)호텔롯데 L7홍대","4",1,340,0,"2025-06-26"],["주식회사 신세계센트럴 호텔 오노마","5",6,171,0,"2025-06-21"],["신안비치 관광호텔","3",14,128,0,"2025-06-19"],["남해스포츠파크호텔","2",16,86,0,"2025-06-19"],["드래곤밸리 호텔","4",10,195,0,"2025-06-18"],["더리버사이드호텔","3",1,109,0,"2025-06-18"],["오월호텔","1",1,28,2,"2025-06-17"],["퀸벨호텔","3",3,62,0,"2025-06-16"],["CLUB E· S(클럽이에스)통영리조트","3",16,106,5,"2025-06-13"],["전주한옥마을호텔","2",13,24,2,"2025-06-13"],["(주)서부티엔디 노보텔 앰배서더 서울 용산","5",1,621,0,"2025-06-12"],["말리오션스파","2",12,47,5,"2025-06-11"],["호텔 오션뷰","2",2,30,0,"2025-06-11"],["(주)조선호텔앤리조트 포포인츠 조선 서울역","4",1,342,0,"2025-05-31"],["SK 네트웍스 (주) 워커힐-그랜드 워커힐","5",1,539,0,"2025-05-30"],["호텔 그레이스리 서울","3",1,336,0,"2025-05-23"],["오션스파호텔","1",16,27,2,"2025-05-22"],["라우스데오","1",15,29,2,"2025-05-22"],["씨마크호텔","5",10,150,0,"2025-05-20"],["주식회사 구월호텔론도인천문화예술회관","2",4,54,0,"2025-05-20"],["SK 네트웍스 (주) 워커힐 - 비스타 워커힐","5",1,244,0,"2025-05-19"],["온더웨이브호텔","2",7,30,0,"2025-05-16"],["부티크 호텔 XYM","1",1,29,2,"2025-05-16"],["연화문호텔을왕","2",4,44,1,"2025-05-16"],["천천호텔","2",4,48,0,"2025-05-16"],["반얀트리클럽앤스파서울","5",1,50,5,"2025-05-13"],["컨티뉴호텔","2",6,51,0,"2025-05-13"],["호텔아르떼","3",9,54,0,"2025-05-12"],["호텔골든캐프","2",3,54,0,"2025-05-08"],["누베르 서울호텔","2",1,69,0,"2025-05-08"],["폰타나비치관광호텔","3",14,67,0,"2025-05-07"],["호텔인터불고 대구","5",3,325,0,"2025-05-02"],["호텔더디자이너스프리미어성수&건대","2",1,100,0,"2025-04-30"],["파인힐스 관광호텔","2",14,36,0,"2025-04-30"],["해남126 오시아노 호텔","4",14,120,0,"2025-04-30"],["호텔 더 디자이너스 리즈 강남 프리미어","3",1,171,0,"2025-04-29"],["호텔 크레센도 서울","3",1,107,0,"2025-04-29"],["제천관광호텔","1",11,45,0,"2025-04-28"],["거제 돔 관광호텔","2",16,55,5,"2025-04-25"],["스탠포드호텔안동 주식회사","4",15,150,0,"2025-04-25"],["부산비즈니스호텔","3",2,233,0,"2025-04-22"],["머큐어 서울 마곡","4",1,400,0,"2025-04-18"],["소노벨 변산","4",13,504,5,"2025-04-18"],["씨에스호텔","3",5,94,0,"2025-04-11"],["브리드 바이 마티에","3",10,31,0,"2025-04-07"],["에이치에비뉴호텔 송정점","2",2,47,0,"2025-04-04"],["루이스해밀턴호텔","2",2,50,0,"2025-04-04"],["메이븐호텔","2",1,31,0,"2025-04-02"],["코모도호텔포항송도","3",15,50,0,"2025-04-02"],["주식회사오헤브데이호텔","3",13,77,0,"2025-03-31"],["베니키아호텔포항","2",15,80,0,"2025-03-31"],["서울시니어스타워(주)오색그린야드호텔","3",10,155,0,"2025-03-31"],["라센느호텔","2",9,52,0,"2025-03-29"],["대구 메리어트 호텔","5",3,190,0,"2025-03-28"],["메리제인 호텔","1",1,29,2,"2025-03-27"],["hs관광호텔","2",14,57,0,"2025-03-26"],["산청한방가족호텔(주)","3",16,108,5,"2025-03-26"],["롯데호텔앤리조트 김해","5",16,250,5,"2025-03-26"],["호텔 오크우드 프리미어","5",1,281,5,"2025-03-26"],["나인트리 바이 파르나스 서울 판교","4",9,315,0,"2025-03-25"],["AC호텔 바이 메리어트 서울금정","4",9,191,0,"2025-03-24"],["코너호텔","2",1,39,0,"2025-03-21"],["탑클라우드호텔익산","1",13,71,0,"2025-03-18"],["더 아르코 호텔","3",3,49,0,"2025-03-17"],["(주)여수관광레저(호텔더시티)","3",14,55,0,"2025-03-17"],["신트라호텔","2",1,54,0,"2025-03-14"],["팔팔호텔","3",1,100,0,"2025-03-12"],["페어필드 바이 메리어트 부산 송도비치호텔","3",2,179,0,"2025-03-12"],["베이브리즈","2",12,32,5,"2025-03-12"],["미르관광호텔","2",10,45,0,"2025-03-12"],["오로시에 관광호텔","3",1,45,0,"2025-03-10"],["골드스톤호텔","2",2,36,0,"2025-03-10"],["투헤븐호텔","1",2,31,0,"2025-02-28"],["타임터미널 호텔","1",6,42,0,"2025-02-28"],["호텔씨엘","2",9,54,0,"2025-02-28"],["메르드로브","3",2,33,0,"2025-02-28"],["시안호텔","1",1,49,0,"2025-02-27"],["호메르스호텔(주)","3",2,152,0,"2025-02-26"],["소노캄 호텔 델피노","4",10,84,5,"2025-02-25"],["제이앤파크호텔","3",4,80,0,"2025-02-25"],["베니키아호텔여수","2",14,50,0,"2025-02-24"],["(주)호텔롯데 L7강남","4",1,333,0,"2025-02-24"],["호텔JCS여수","4",14,151,0,"2025-02-24"],["이비스 스타일 앰배서더 호텔","3",13,81,0,"2025-02-20"],["더쿨리스트호텔","3",2,53,0,"2025-02-20"],["선트리호텔","2",2,33,0,"2025-02-20"],["아모르 관광호텔","2",16,52,0,"2025-02-17"],["(주)서울가든","4",1,372,0,"2025-02-17"],["더원 호텔","2",14,40,0,"2025-02-11"],["호텔에스알 스위츠","3",9,66,0,"2025-02-11"],["홈즈스테이 수원","3",9,242,0,"2025-02-10"],["TRT HOTEL","2",2,49,0,"2025-02-10"],["브라운도트 호텔","1",2,29,2,"2025-02-07"],["호텔 라움","2",16,35,0,"2025-02-06"],["(주)서울렉스호텔","3",1,108,0,"2025-02-06"],["리버틴호텔","2",3,53,0,"2025-02-05"],["홀리데이 인 익스프레스 서울 홍대","3",1,294,0,"2025-02-05"],["서울 호텔 신신","2",1,75,0,"2025-02-04"],["호텔갤러리","2",9,45,0,"2025-01-31"],["거제뷰 골프텔","2",16,40,5,"2025-01-24"],["씨앤스카이호텔","1",16,44,5,"2025-01-24"],["씨월드관광호텔","2",4,36,0,"2025-01-24"],["(주)서부티엔디 노보텔 스위트 앰배서더 서울 용산","5",1,264,5,"2025-01-23"],["노마드호텔","2",16,46,0,"2025-01-21"],["거제 선셋한옥&오션리조트","1",16,20,2,"2025-01-13"],["더글램호텔","2",4,71,0,"2025-01-08"],["쟈딘호텔","2",1,36,0,"2025-01-08"],["코트야드 메리어트 서울 보타닉파크","4",1,261,0,"2025-01-07"],["그랜드 머큐어 앰배서더 창원","4",16,321,0,"2025-01-06"],["웰니스호텔 인산가","2",16,43,0,"2025-01-03"],["호텔 더 메이","3",9,125,0,"2025-01-03"],["(주)선재해림풀빌라","3",4,20,2,"2025-01-02"],["호텔덕구온천","3",15,95,0,"2025-01-02"],["어반부띠크호텔","3",9,80,0,"2025-01-02"],["스탠포드호텔코리아(주) 스탠포드호텔서울","4",1,239,0,"2024-12-28"],["디에스디엘(주) 프레이저 플레이스 센트럴 서울","4",1,269,5,"2024-12-27"],["(주)조선호텔앤리조트 레스케이프","4",1,204,0,"2024-12-27"],["리버호텔","2",11,65,0,"2024-12-27"],["대명화성주식회사 호텔아쿠아펠리스지점","3",2,110,0,"2024-12-27"],["오션힐호텔","1",7,33,0,"2024-12-24"],["옐로마린호텔","1",4,30,0,"2024-12-24"],["호텔 감","1",1,37,0,"2024-12-24"],["티티호텔 구포","3",2,163,0,"2024-12-23"],["더케이호텔경주","4",15,278,0,"2024-12-22"],["앰배서더서울풀만호텔","5",1,0,0,"2024-12-20"],["보코 언 아이에이치지 호텔","4",1,576,0,"2024-12-20"],["호텔시애틀 인천공항점","2",4,43,0,"2024-12-20"],["신라스테이 서초","4",1,305,0,"2024-12-18"],["(주)서부티엔디 그랜드 머큐어 앰배서더 서울 용산","5",1,201,5,"2024-12-17"],["호텔 DM","2",1,90,0,"2024-12-17"],["(주)호텔롯데 롯데시티호텔 김포공항","3",1,197,0,"2024-12-17"],["라한호텔 경주","5",15,430,0,"2024-12-16"],["호텔더디자이너스건대","2",1,75,0,"2024-12-16"],["호텔파크하비오","3",1,472,0,"2024-12-16"],["(주)부산롯데호텔","5",2,650,0,"2024-12-16"],["아난티 앳 부산 코브","5",2,310,0,"2024-12-10"],["케이호텔","1",15,31,0,"2024-12-10"],["네스트 호텔","5",4,370,0,"2024-12-10"],["H-Avenue 광안리점","2",2,30,0,"2024-12-09"],["(주)조선호텔앤리조트 조선팰리스강남","5",1,254,0,"2024-12-08"],["홀리데이 인 광주 호텔","4",5,203,0,"2024-12-05"],["속초관광호텔 베리트","2",10,40,0,"2024-12-05"],["블룸비스타호텔앤컨퍼런스 주식회사","4",9,290,0,"2024-12-04"],["호텔 여우비","2",7,105,0,"2024-12-03"],["하운드호텔 서구청점","1",4,47,0,"2024-11-28"],["호텔 브릿지","2",1,83,0,"2024-11-28"],["통영엔쵸비관광호텔","2",16,43,0,"2024-11-28"],["써클호텔","1",1,40,0,"2024-11-28"],["(주)호텔신라","5",1,464,0,"2024-11-27"],["(주)대구그랜드호텔","4",3,150,0,"2024-11-26"],["호텔 페이토 삼성","3",1,163,0,"2024-11-26"],["뉴시즈 광안 호텔","1",2,45,0,"2024-11-25"],["호텔스테이온","3",16,63,5,"2024-11-22"],["소노문 해운대","3",2,235,0,"2024-11-21"],["더 그랜드호텔 명동","3",1,50,0,"2024-11-21"],["호텔은파팰리스","3",13,65,0,"2024-11-19"],["하운드호텔 기장일광점","2",2,53,0,"2024-11-18"],["(주)호텔롯데 L7해운대","4",2,383,0,"2024-11-18"],["티제이관광호텔","2",1,45,0,"2024-11-14"],["로얄관광호텔","2",9,45,0,"2024-11-14"],["노블스테이","2",3,51,0,"2024-11-12"],["심포니 관광호텔","2",9,64,0,"2024-11-11"],["아모르관광호텔","2",9,64,0,"2024-11-11"],["골든힐 관광호텔","2",9,80,0,"2024-11-11"],["호텔 드어반","2",1,46,0,"2024-11-08"],["오션투헤븐","2",2,26,2,"2024-11-05"],["더홍씨호텔 강릉","3",10,45,0,"2024-11-05"],["몬드리안 서울 이태원","5",1,295,0,"2024-11-03"],["호텔이스트나인","2",10,52,0,"2024-10-29"],["라마다프라자호텔수원","4",9,287,0,"2024-10-28"],["타니베이관광호텔 주식회사","4",7,147,0,"2024-10-28"],["소설스미스 호텔","2",9,34,0,"2024-10-24"],["(주)호텔로씨오","2",12,52,0,"2024-10-23"],["호텔부티크나인","1",1,86,0,"2024-10-23"],["씨하이호텔","2",9,29,2,"2024-10-22"],["더샵","1",10,28,2,"2024-10-21"],["씨엘관광호텔","2",1,49,0,"2024-10-17"],["(주)라메르관광호텔","2",2,49,0,"2024-10-17"],["노블리온호텔","2",15,42,0,"2024-10-17"],["호텔잇츠더블유","1",9,46,5,"2024-10-11"],["온양제일호텔","3",12,141,0,"2024-10-11"],["유캐슬호텔","2",14,86,0,"2024-10-11"],["호텔미드시티명동","3",1,140,0,"2024-10-10"],["베이튼호텔","3",1,160,0,"2024-10-10"],["호텔 엔트라","3",1,92,0,"2024-10-10"],["호텔 드씨엘","2",1,60,0,"2024-10-08"],["벨메르 바이 한화호텔앤드리조트","4",14,100,0,"2024-10-08"],["바이브호텔 마산 합성점","2",16,36,0,"2024-10-08"],["거문도섬호텔","2",14,30,0,"2024-10-08"],["셀립 여의","2",1,133,0,"2024-10-07"],["호텔뉴캐슬","2",4,56,0,"2024-10-07"],["오크우드 프리미어 인천 호텔","5",4,423,5,"2024-10-07"],["트레블로지 명동 남산","3",1,173,0,"2024-10-04"],["클라벤 호텔 명동 시티홀(舊트레블로지 명동 시티홀호텔)","3",1,129,0,"2024-10-02"],["칸호텔","1",3,44,0,"2024-10-02"],["글루호텔","2",1,53,0,"2024-09-27"],["스토너리","3",4,20,2,"2024-09-26"],["진송관광호텔","2",14,45,0,"2024-09-25"],["해담채 스테이","1",1,51,0,"2024-09-24"],["신라스테이 천안","3",12,305,0,"2024-09-24"],["(주)스카이뷰관광호텔","3",16,94,0,"2024-09-24"],["알로프트 서울 명동 호텔","4",1,223,0,"2024-09-24"],["호텔 굿모닝","3",7,75,0,"2024-09-24"],["(주)조선호텔앤리조트 그래비티서울판교","4",9,306,0,"2024-09-19"],["리젠시호텔","2",9,56,0,"2024-09-11"],["롯데리조트 속초","4",10,173,0,"2024-09-10"],["파인관광호텔","2",9,35,0,"2024-09-10"],["호텔티롤","4",13,118,0,"2024-09-06"],["컬리넌호텔구로","2",1,68,0,"2024-09-06"],["라피스호텔","3",16,53,5,"2024-09-04"],["호텔야자 위례점","2",9,35,0,"2024-09-03"],["벨라지오 관광호텔","2",1,52,0,"2024-08-29"],["팔공산온천관광호텔","2",3,36,0,"2024-08-27"],["호텔 진","2",4,64,0,"2024-08-23"],["(주)동승 JW메리어트 동대문 스퀘어 서울","5",1,170,0,"2024-08-23"],["골든씨티호텔","3",1,116,0,"2024-08-21"],["벨라지오 호텔","1",9,54,0,"2024-08-20"],["그랜드 인터컨티넨탈 서울 파르나스","5",1,550,0,"2024-08-16"],["아르누보스위트호텔","2",16,65,0,"2024-08-16"],["센트럴관광호텔주식회사","2",16,37,0,"2024-08-16"],["호텔한성","2",13,40,0,"2024-08-14"],["더프리마호텔 종로","3",1,155,0,"2024-08-08"],["아바니센트럴부산","4",2,281,0,"2024-08-08"],["오라카이대학로호텔","4",1,232,0,"2024-08-05"],["D∙H 네상스 호텔","2",1,36,0,"2024-08-05"],["페어몬트 앰배서더 서울","5",1,308,0,"2024-08-05"],["주식회사 샹그릴라 서원관광호텔","2",9,49,0,"2024-08-05"],["진해인터시티호텔","2",16,33,0,"2024-08-02"],["포 포인츠 바이 쉐라톤 조선 명동","4",1,375,0,"2024-07-31"],["제이비관광호텔","3",3,57,0,"2024-07-31"],["호텔루 136","2",1,51,0,"2024-07-31"],["호텔도마","2",1,45,0,"2024-07-29"],["베니키아호텔서산","4",12,194,0,"2024-07-25"],["밀로스 관광호텔","2",9,72,0,"2024-07-23"],["동해현진관광호텔(주)","3",10,82,0,"2024-07-23"],["더마크관광호텔","1",11,56,0,"2024-07-22"],["호텔 덕영","2",10,37,0,"2024-07-22"],["(주)인터불고엑스코","5",3,304,0,"2024-07-22"],["뉴동해관광호텔","3",10,63,0,"2024-07-19"],["플라자호텔","5",1,306,0,"2024-07-16"],["호텔롯데","5",1,1015,0,"2024-07-16"],["(주)교원프라퍼티 스위트호텔남원","4",13,59,0,"2024-07-16"],["롯데시티호텔 구로","3",1,287,0,"2024-07-14"],["쏠비치 호텔 삼척","4",10,217,0,"2024-07-14"],["호텔롯데 롯데호텔월드","5",1,477,0,"2024-07-07"],["코트야드 바이 메리어트 서울 타임스퀘어","4",1,283,0,"2024-07-07"],["호텔 반월","2",4,76,0,"2024-07-04"],["웨스트레이븐호텔","2",9,21,2,"2024-07-04"],["㈜호텔롯데 롯데시티호텔대전","4",6,306,0,"2024-07-04"],["앙비떼 관광호텔","2",9,49,0,"2024-07-04"],["호텔소설","2",1,52,0,"2024-07-02"],["에비뉴관광호텔","3",16,67,0,"2024-06-28"],["WD호텔","2",1,108,0,"2024-06-28"],["호텔더베이21","2",9,29,2,"2024-06-28"],["칼튼관광호텔","2",1,64,0,"2024-06-28"],["로자벨호텔","2",9,47,0,"2024-06-27"],["크리에이터타운 서교","3",1,296,0,"2024-06-27"],["호텔 부티크나인","2",1,92,0,"2024-06-27"],["브라운도트호텔 해운대점","2",2,45,0,"2024-06-27"],["호텔 더 디자이너스 디디피","1",1,84,0,"2024-06-27"],["G2호텔","3",1,126,0,"2024-06-25"],["밀양관광호텔","2",16,32,0,"2024-06-25"],["K2지점","2",1,45,0,"2024-06-25"],["호텔 파인 그로브","3",16,66,0,"2024-06-24"],["호텔인터시티","4",6,216,0,"2024-06-24"],["(주)인터투어 단양관광호텔","3",11,77,0,"2024-06-24"],["어라연 관광호텔","2",10,41,0,"2024-06-24"],["G3호텔","3",1,197,0,"2024-06-24"],["더클럽호텔","2",2,50,0,"2024-06-24"],["이제 부산","2",2,21,2,"2024-06-20"],["신라스테이 해운대","4",2,407,0,"2024-06-20"],["주식회사 호텔아리나","3",16,78,0,"2024-06-20"],["라베르호텔","1",16,43,5,"2024-06-17"],["쏠비치 호텔 진도","4",14,98,0,"2024-06-17"],["브릿지호텔","2",16,21,2,"2024-06-17"],["HOTEL GA JO","2",16,31,5,"2024-06-17"],["골드리버 관광호텔","3",1,109,0,"2024-06-17"],["엠디호텔 독산","3",1,258,0,"2024-06-13"],["남일대리조트 호텔","2",16,59,0,"2024-06-11"],["양구KCP호텔","2",10,48,0,"2024-06-11"],["주식회사 히든베이호텔","4",14,131,0,"2024-06-11"],["호텔 상상","2",16,30,0,"2024-06-11"],["스탠포드호텔앤리조트 주식회사","4",16,144,0,"2024-06-11"],["호텔더디자이너스동대문","2",1,99,0,"2024-06-10"],["호텔 센트럴베이","3",2,134,0,"2024-06-08"],["쏠비치호텔양양","4",10,214,0,"2024-06-08"],["호텔 더 캐슬(방이1)","2",1,63,0,"2024-06-07"],["샵앤플랫호텔","2",15,30,0,"2024-06-05"],["바고관광호텔","2",1,42,0,"2024-06-03"],["호텔 더 디자이너스 홍대","2",1,80,0,"2024-05-27"],["이랜드파크 켄싱턴호텔 평창","5",10,248,0,"2024-05-27"],["호텔 소울하다","2",1,46,0,"2024-05-23"],["홀리데이인인천송도호텔","4",4,202,0,"2024-05-22"],["(주)조선호텔앤리조트","5",1,462,0,"2024-05-20"],["울진그랜드호텔","2",15,40,0,"2024-05-20"],["음성관광호텔","1",11,30,0,"2024-05-17"],["(주)조선호텔앤리조트 그랜드조선 부산","5",2,330,0,"2024-05-17"],["동화킴스관광호텔","2",1,51,0,"2024-05-17"],["MK 프리미어스 호텔","1",4,85,0,"2024-05-17"],["누와즈컬리넌호텔","2",16,55,5,"2024-05-13"],["호텔 인 나인","4",1,152,0,"2024-05-10"],["(주)써클관광개발호텔베이204","2",1,72,0,"2024-05-09"],["하이원 팰리스호텔","3",10,197,0,"2024-05-09"],["아시아관광호텔","2",9,88,0,"2024-05-09"],["월드관광호텔","1",9,81,0,"2024-05-09"],["호텔 루이스","2",9,100,0,"2024-05-09"],["비욘드호텔","1",4,48,0,"2024-05-09"],["호텔G","2",3,44,0,"2024-05-08"],["통영갤러리관광호텔","2",16,39,0,"2024-05-07"],["크라운관광호텔","3",16,72,0,"2024-05-07"],["리치웰호텔","2",1,57,0,"2024-05-07"],["에어스카이","2",2,61,0,"2024-05-03"],["가보호텔","2",9,107,0,"2024-05-02"],["나봄호텔 주식회사","2",6,75,0,"2024-04-29"],["공주 관광호텔 INK(잉크)","2",12,49,0,"2024-04-26"],["브릿지호텔 인천송도","3",4,241,0,"2024-04-25"],["삼원프라자호텔","2",9,85,0,"2024-04-24"],["브라운도트 사직야구장점","2",2,61,0,"2024-04-24"],["더 메이 호텔","4",13,51,0,"2024-04-23"],["더휴식 워커스호텔 대전월평점","2",6,52,0,"2024-04-19"],["(주)코아반도체 파주메이트","2",9,47,0,"2024-04-19"],["목포가족관광호텔","1",14,47,5,"2024-04-18"],["루엘호텔","2",13,21,2,"2024-04-18"],["로얄프라임호텔","2",9,65,0,"2024-04-18"],["퍼시픽호텔","4",1,181,0,"2024-04-17"],["호텔마띠유 여수","3",14,43,0,"2024-04-12"],["리안호텔","2",16,32,0,"2024-04-05"],["주식회사 더숨디앤씨","3",9,83,0,"2024-04-04"],["브라운도트 풍산점","2",15,40,0,"2024-04-04"],["델타(Delta) 호텔","2",10,26,2,"2024-04-04"],["JD관광호텔","2",9,71,0,"2024-04-04"],["신라스테이삼성","4",1,309,0,"2024-04-04"],["호텔 28","3",1,83,0,"2024-04-04"],["(주)케이앤에스 호텔베이204","2",4,91,0,"2024-03-29"],["신라스테이동탄","3",9,286,0,"2024-03-26"],["포스타호텔","2",9,63,0,"2024-03-26"],["파인비치골프호텔","3",14,42,0,"2024-03-25"],["반달호텔","1",2,28,2,"2024-03-25"],["영주리치관광호텔","2",15,35,0,"2024-03-22"],["카인드호텔","3",9,92,0,"2024-03-20"],["레스트호텔","3",9,70,0,"2024-03-15"],["호텔 더 캐슬 (신천)","2",1,68,0,"2024-03-06"],["슈바이처도르프 호텔","3",12,51,0,"2024-03-06"],["호텔갤러리","2",14,57,0,"2024-03-06"],["전주관광호텔","1",13,32,0,"2024-02-27"],["참빛산업(주)약암홍염천관광호텔","2",9,71,0,"2024-02-26"],["청풍리조트 힐하우스","3",11,50,5,"2024-02-15"],["호텔 컬리넌 역삼","2",1,54,0,"2024-02-14"],["더엘관광호텔","2",14,35,0,"2024-02-13"],["호텔쏠레르","4",12,100,0,"2024-02-07"],["호텔더원","2",4,67,0,"2024-02-07"],["신라스테이 여수","4",14,315,0,"2024-02-07"],["호텔 ORA","3",4,84,0,"2024-02-01"],["백송온천관광호텔","1",3,30,0,"2024-02-01"],["윈덤그랜드부산","5",2,271,0,"2024-01-23"],["광안 하운드 호텔","2",2,49,0,"2024-01-19"],["호텔원티드","3",4,91,0,"2024-01-17"],["루미아호텔","2",1,61,0,"2024-01-17"],["통영한산마리나호텔&리조트","2",16,31,0,"2024-01-16"],["도야거제가족호텔","2",16,50,5,"2024-01-16"],["고려관광호텔","3",9,127,0,"2024-01-08"],["호텔 더윈","2",9,80,0,"2024-01-08"],["바티카호텔","2",1,52,0,"2024-01-08"],["ACC DESIGN 호텔","3",5,76,0,"2024-01-05"],["샤인호텔","2",14,48,5,"2024-01-05"],["주식회사 에코더블유 이든포레호텔","1",11,36,0,"2024-01-04"],["오라카이 인사동 스위츠","4",1,213,5,"2024-01-04"],["파크우드관광호텔","2",4,56,0,"2024-01-04"],["사곡 B&B HOTEL","2",16,32,0,"2024-01-04"],["더프린스호텔","2",4,41,0,"2024-01-04"],["데이지 호텔","2",9,26,2,"2024-01-04"],["호텔 마에스트로","3",9,25,2,"2024-01-04"],["아미드호텔","4",1,250,0,"2024-01-03"],["컴포트인여의도","3",1,71,0,"2024-01-03"],["인스파이어 엔터테인먼트 리조트","5",4,1275,0,"2024-01-03"],["메이트 호텔","2",9,62,0,"2024-01-03"],["아난티 앳 부산 빌라쥬","5",2,114,0,"2023-12-29"],["(주)에이더블유 호텔","3",3,54,0,"2023-12-29"],["앙코르호텔","2",3,72,0,"2023-12-28"],["아마레 관광호텔","1",4,67,0,"2023-12-28"],["호텔 유리앤","3",1,175,0,"2023-12-28"],["나비잠 한옥호텔","2",13,20,1,"2023-12-28"],["코트야드 메리어트 수원","4",9,288,0,"2023-12-28"],["브라운도트호텔 대구혁신도시점","2",3,52,0,"2023-12-27"],["썬플라워호텔","1",4,50,0,"2023-12-27"],["트리아 관광호텔","2",1,50,0,"2023-12-26"],["골드관광호텔","2",9,48,0,"2023-12-22"],["일라이트호텔","3",11,102,0,"2023-12-22"],["오션스카이 가족호텔","1",4,39,5,"2023-12-15"],["호텔그라모스","2",1,42,0,"2023-12-15"],["라고바움호텔","2",8,31,0,"2023-12-15"],["렉스관광호텔","2",1,41,0,"2023-12-15"],["사천관광호텔 주식회사","2",16,57,0,"2023-12-15"],["속리산개발(주) 레이크힐스 호텔속리산","2",11,132,0,"2023-12-15"],["한도관광(주)","2",11,111,0,"2023-12-15"],["베니키아 스위스로젠 호텔","3",15,60,0,"2023-12-13"],["에이치 에비뉴 건대점","2",1,60,0,"2023-12-13"],["호텔 마누","3",1,80,0,"2023-12-13"],["새턴호텔","1",1,30,0,"2023-12-13"],["라비타호텔","2",1,57,0,"2023-12-13"],["호텔 푸르미르","4",9,239,0,"2023-12-12"],["(주)가야호텔","2",15,62,0,"2023-12-08"],["스위스그랜드호텔서울","4",1,396,0,"2023-12-08"],["(주)메트로호텔","3",1,78,0,"2023-12-05"],["주식회사 에덴낙원","3",9,72,0,"2023-12-05"],["SM부티크호텔","1",1,34,0,"2023-12-01"],["춘천베어스관광호텔","3",10,78,0,"2023-11-29"],["광명 제이에스부티크호텔","2",9,88,0,"2023-11-29"],["모항해나루가족호텔","3",13,112,5,"2023-11-27"],["관광호텔 뜨랑블루","2",1,66,0,"2023-11-27"],["엘케이호텔","1",10,33,5,"2023-11-27"],["미포오션사이드호텔","2",2,28,2,"2023-11-27"],["파크하얏트서울","5",1,185,0,"2023-11-27"],["호텔1","1",2,52,0,"2023-11-27"],["선샤인호텔","3",1,109,0,"2023-11-27"],["경하온천호텔","2",6,40,0,"2023-11-21"],["메이커스호텔","2",1,42,0,"2023-11-18"],["에이치애비뉴 호텔 서면역점","2",2,43,0,"2023-11-16"],["베스트웨스턴 프리미어강남호텔","3",1,128,0,"2023-11-16"],["시티호텔","3",10,49,0,"2023-11-16"],["바람의언덕 호텔&리조트","2",16,30,5,"2023-11-16"],["노블관광호텔","2",1,34,0,"2023-11-16"],["호텔뷰","2",15,42,0,"2023-11-10"],["호텔 페이토","3",1,186,0,"2023-11-08"],["베니키아양산호텔","3",16,82,0,"2023-11-08"],["센트럴퍼슨평택호텔","2",9,51,0,"2023-11-07"],["호텔AG405","3",2,62,0,"2023-11-07"],["유원관광호텔","2",1,71,0,"2023-11-06"],["호텔 지엠에스","3",1,158,0,"2023-11-06"],["에이치에비뉴 기장일광점","3",2,71,0,"2023-11-06"],["스텔라마리스호텔","1",4,26,2,"2023-10-31"],["유니언호텔","2",1,94,0,"2023-10-27"],["부곡로얄관광호텔","1",16,93,0,"2023-10-27"],["더블트리 바이 힐튼 서울 판교 레지던스","5",9,170,5,"2023-10-27"],["스테이더공단호텔","3",15,43,0,"2023-10-27"],["제이비디자인호텔","2",2,80,0,"2023-10-22"],["베니키아 노블레스호텔","2",1,42,0,"2023-10-20"],["거제삼성호텔","4",16,166,0,"2023-10-20"],["프레이저플레이스남대문","4",1,252,0,"2023-10-20"],["도미인 서울 강남","3",1,220,0,"2023-10-18"],["호텔 네이처 부산신항점","2",16,39,0,"2023-10-18"],["천안상록가족호텔","3",12,116,5,"2023-10-16"],["코트야드 바이 메리어트 세종","4",8,281,0,"2023-10-13"],["(주)호텔롯데 시그니엘부산","5",2,260,0,"2023-10-12"],["동해보양온천컨벤션호텔","3",10,181,0,"2023-10-10"],["호텔더반","2",11,35,0,"2023-10-10"],["호텔 베르누이","3",1,421,0,"2023-10-10"],["호텔 디","2",9,59,0,"2023-10-10"],["호텔더클래스","2",9,72,0,"2023-10-10"],["더블트리 바이 힐튼 서울 판교","5",9,432,0,"2023-10-10"],["오리엔스 호텔 앤 레지던스","3",1,116,5,"2023-10-10"],["ENA 스위트 호텔","3",1,182,0,"2023-09-27"],["한빛호텔","2",13,33,0,"2023-09-26"],["황실한옥관광호텔","1",13,20,2,"2023-09-25"],["삼정관광호텔","4",1,160,0,"2023-09-22"],["나인트리 프리미어 로카우스호텔 서울 용산","4",1,274,0,"2023-09-14"],["토요코인 서울영등포","2",1,372,0,"2023-09-10"],["헨나호텔서울명동","2",1,100,0,"2023-09-08"],["주식회사 썬밸리","4",9,202,0,"2023-09-08"],["마루호텔","1",9,32,5,"2023-09-07"],["브라운도트 호텔","1",2,41,0,"2023-08-31"],["호텔로다","2",2,42,0,"2023-08-28"],["호텔스카이파크 대전1호점","3",6,100,0,"2023-08-23"],["발리관광호텔","1",1,50,0,"2023-08-21"],["에이치애비뉴","2",4,46,0,"2023-08-21"]];
+
+/* ─────────── 렌더링 ─────────── */
+function go(id, btn){
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.id === id));
+  document.querySelectorAll('.navbtn').forEach(b => b.classList.toggle('on', b === btn));
+}
+function fmt(n){ return n == null ? '—' : n.toLocaleString('ko-KR'); }
+
+function bars(elId, rows, valKey, unit, colorFn, clickFn){
+  const max = Math.max(...rows.map(r => r[valKey] || 0));
+  document.getElementById(elId).innerHTML = rows.map(r => {
+    const v = r[valKey];
+    const w = v ? Math.max(3, v / max * 100) : 0;
+    const col = colorFn ? colorFn(r) : (r.me ? '#f59e0b' : '#3b82f6');
+    const oc = clickFn ? ` class="bar-row lnk" onclick="${clickFn(r)}"` : ' class="bar-row"';
+    return `<div${oc}>
+      <div class="bar-label">${r.me ? '🎯 ' : ''}${r.name}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${w}%;background:${col}"></div></div>
+      <div class="bar-val">${v ? fmt(v) + unit : '연동예정'}</div></div>`;
+  }).join('');
+}
+
+bars('regionBars', REGIONS, 'cnt', '개', null, r => `exFilterArea('${r.name}')`);
+bars('regionRoomBars', [...REGIONS].sort((a,b)=>(b.rooms||0)-(a.rooms||0)), 'rooms', '실', null, r => `exFilterArea('${r.name}')`);
+bars('starCntBars', STARS, 'cnt', '개', r => r.color);
+bars('starRoomBars', STARS, 'rooms', '실', r => r.color);
+
+/* ─────────── 호텔 명단 탐색기 (성급 × 지역 × 업종 필터 + 하단 고정 합계) ─────────── */
+let exGrade = '', exArea = '';
+const t2btn = document.querySelector('[data-tab="t2"]');
+function exNavRender(){
+  const gCounts = {}; HOTELS.forEach(h => gCounts[h[1]] = (gCounts[h[1]] || 0) + 1);
+  document.getElementById('exGradeNav').innerHTML =
+    `<button class="gubtn ${exGrade === '' ? 'on' : ''}" onclick="exGrade='';exNavRender();renderEx()">성급 전체 (${HOTELS.length})</button>` +
+    ['5', '4', '3', '2', '1'].map(g => `<button class="gubtn ${exGrade === g ? 'on' : ''}" onclick="exGrade='${g}';exNavRender();renderEx()">${'⭐'.repeat(+g)} ${g}성 (${gCounts[g] || 0})</button>`).join('');
+  const aCounts = {}; HOTELS.forEach(h => { const a = EX_AREA[h[2]]; aCounts[a] = (aCounts[a] || 0) + 1; });
+  const areas = Object.keys(aCounts).sort((a, b) => aCounts[b] - aCounts[a]);
+  document.getElementById('exAreaNav').innerHTML =
+    `<button class="gubtn ${exArea === '' ? 'on' : ''}" onclick="exArea='';exNavRender();renderEx()">지역 전체</button>` +
+    areas.map(a => `<button class="gubtn ${exArea === a ? 'on' : ''}" onclick="exArea='${a}';exNavRender();renderEx()">${a === '부산' ? '🎯 ' : ''}${a} (${aCounts[a]})</button>`).join('');
+}
+function exFilter(g){ exGrade = g; exArea = ''; exNavRender(); renderEx(); document.getElementById('explorer').scrollIntoView({behavior:'smooth'}); }
+function exFilterArea(a){ exArea = a; exGrade = ''; go('t2', t2btn); exNavRender(); renderEx(); document.getElementById('explorer').scrollIntoView({behavior:'smooth'}); }
+function exFilterType(t){ exGrade = ''; exArea = ''; go('t2', t2btn); exNavRender(); document.getElementById('exType').value = String(t); renderEx(); document.getElementById('explorer').scrollIntoView({behavior:'smooth'}); }
+const gradeCls = { '5': 't-star5', '4': 't-star4', '3': 't-star3', '2': 't-star2', '1': 't-star1' };
+function renderEx(){
+  const q = (document.getElementById('exSearch').value || '').trim().toLowerCase();
+  const tp = document.getElementById('exType').value;
+  const sort = document.getElementById('exSort').value || 'rooms';
+  let rows = HOTELS.filter(h =>
+    (!exGrade || h[1] === exGrade) &&
+    (!exArea || EX_AREA[h[2]] === exArea) &&
+    (!tp || String(h[4]) === tp) &&
+    (!q || h[0].toLowerCase().includes(q)));
+  if (sort === 'rooms') rows.sort((a, b) => b[3] - a[3]);
+  else if (sort === 'date') rows.sort((a, b) => b[5].localeCompare(a[5]));
+  else rows.sort((a, b) => a[0].localeCompare(b[0], 'ko'));
+  const totRooms = rows.reduce((s, h) => s + h[3], 0);
+  document.getElementById('exCnt').textContent = `${rows.length}개 호텔 · ${fmt(totRooms)}실`;
+  document.getElementById('exBody').innerHTML = rows.map((h, i) => `
+    <tr${EX_AREA[h[2]] === '부산' ? ' style="background:rgba(245,158,11,.07)"' : ''}>
+      <td class="c muted">${i + 1}</td>
+      <td class="c"><span class="tag ${gradeCls[h[1]] || 't-star1'}">${h[1]}성</span></td>
+      <td><b>${h[0]}</b></td>
+      <td class="c">${EX_AREA[h[2]] === '부산' ? '🎯 ' : ''}${EX_AREA[h[2]]}</td>
+      <td class="c muted">${EX_TYPE[h[4]] || ''}</td>
+      <td class="r">${fmt(h[3])}</td>
+      <td class="c muted">${h[5]}</td>
+    </tr>`).join('');
+  document.getElementById('exFoot').innerHTML =
+    `<td colspan="3">합계 ${exArea || '전국'}${exGrade ? ' · ' + exGrade + '성급' : ''}</td><td class="c">${rows.length}개 호텔</td><td></td><td class="r">${fmt(totRooms)}실</td><td></td>`;
+}
+// 업종 select 옵션 채우기
+(() => {
+  const tCounts = {}; HOTELS.forEach(h => tCounts[h[4]] = (tCounts[h[4]] || 0) + 1);
+  document.getElementById('exType').innerHTML = '<option value="">업종 전체</option>' +
+    Object.keys(tCounts).map(t => `<option value="${t}">${EX_TYPE[t]} (${tCounts[t]})</option>`).join('');
+  // 호텔 유형 탭: 업종 구성 표
+  const tRooms = {}; HOTELS.forEach(h => tRooms[h[4]] = (tRooms[h[4]] || 0) + h[3]);
+  const NOTES = { 0: '성급제 핵심 — 도급 시장 주력', 5: '콘도형 다수 — 위탁운영사 상대 영업', 2: '30실 미만 소형 — 소규모 용역', 1: '한옥호텔 등 특수 시설' };
+  const keys = Object.keys(tCounts).sort((a, b) => tCounts[b] - tCounts[a]);
+  document.getElementById('typeTbl').innerHTML = keys.map(t => `
+    <tr class="clickable" onclick="exFilterType(${t})">
+      <td><b>${EX_TYPE[t]}</b> <span class="muted" style="font-size:11px">클릭→명단</span></td>
+      <td class="r">${fmt(tCounts[t])}</td><td class="r">${fmt(tRooms[t])}</td>
+      <td class="r">${Math.round(tRooms[t] / tCounts[t])}실</td>
+      <td class="muted" style="font-size:12px">${NOTES[t] || ''}</td></tr>`).join('');
+  const allC = HOTELS.length, allR = HOTELS.reduce((s, h) => s + h[3], 0);
+  document.getElementById('typeFoot').innerHTML =
+    `<td>합계</td><td class="r">${fmt(allC)}</td><td class="r">${fmt(allR)}</td><td class="r">${allC ? Math.round(allR / allC) : 0}실</td><td></td>`;
+})();
+exNavRender(); renderEx();
+
+document.getElementById('starTbl').innerHTML = STARS.map(s => `
+  <tr><td class="c"><span class="tag ${s.cls}">${s.name}</span></td>
+  <td class="r">${fmt(s.cnt)}</td><td class="r">${fmt(s.rooms)}</td>
+  <td class="r">${Math.round(s.rooms / s.cnt)}실</td>
+  <td class="r"><b>${fmt(s.bc)}</b></td><td class="r"><b>${fmt(s.br)}</b></td>
+  <td class="muted" style="font-size:12px">${s.note}</td></tr>`).join('') +
+  `<tr style="font-weight:700;background:rgba(59,130,246,.12)"><td class="c">합계</td>
+   <td class="r">834</td><td class="r">111,218</td><td class="r">133실</td><td class="r">80</td><td class="r">10,945</td><td></td></tr>`;
+
+/* 구인공고 */
+let guFilter = '';
+const GUS = [...new Set(JOBS.map(j => j.gu))];
+document.getElementById('guNav').innerHTML =
+  `<button class="gubtn on" onclick="setGu('',this)">전체 (${JOBS.length})</button>` +
+  GUS.map(g => `<button class="gubtn" onclick="setGu('${g}',this)">${g} (${JOBS.filter(j=>j.gu===g).length})</button>`).join('');
+function setGu(g, btn){
+  guFilter = g;
+  document.querySelectorAll('.gubtn').forEach(b => b.classList.toggle('on', b === btn));
+  renderJobs();
+}
+function renderJobs(){
+  const q = document.getElementById('jobSearch').value.trim().toLowerCase();
+  const jt = document.getElementById('jobType').value;
+  const op = document.getElementById('jobOp').value;
+  const rows = JOBS.filter(j =>
+    (!guFilter || j.gu === guFilter) &&
+    (!jt || j.job === jt) &&
+    (!op || j.op === op) &&
+    (!q || (j.hotel + j.corp + j.job + j.etc).toLowerCase().includes(q)))
+    .sort((a, b) => (b.d === '—' ? '' : b.d).localeCompare(a.d === '—' ? '' : a.d));
+  document.getElementById('jobCnt').textContent = `${rows.length}건 / 전체 ${JOBS.length}건`;
+  document.getElementById('jobBody').innerHTML = rows.map((j, i) => `
+    <tr class="${j.gm ? 'me' : ''}">
+      <td class="c">${i + 1}</td>
+      <td class="c">${j.mod ? '<span class="muted">수정</span> ' : ''}${j.d}</td>
+      <td class="c">부산 ${j.gu}</td>
+      <td>${j.gm ? '🎯 ' : ''}${j.hotel}</td>
+      <td>${j.corp} ${j.gm ? '<span class="tag t-gm">자사</span>' : `<span class="tag ${j.op === '도급' ? 't-dogub' : 't-direct'}">${j.op}</span>`}</td>
+      <td class="c">${j.job}</td>
+      <td class="c">${j.pay}</td>
+      <td class="c">${j.wf}</td>
+      <td class="wr" style="font-size:12px;color:#94a3b8">${j.etc} <span class="tag ${j.src === '고용24' ? 't-w24' : 't-srm'}">${j.src}</span></td>
+      <td class="c"><a class="joblink" href="${j.url}" target="_blank">공고 원문 ↗</a></td>
+    </tr>`).join('');
+}
+/* ─────────── 도급업체 → 호텔 매핑 (채용공고에서 자동 생성) ─────────── */
+let vGu = '';
+const VENDORS = (() => {
+  const m = {};
+  JOBS.filter(j => j.op === '도급').forEach(j => {
+    const v = m[j.corp] = m[j.corp] || { corp: j.corp, gm: !!j.gm, hotels: {}, gus: new Set(), jobs: new Set(), cnt: 0, latest: '', links: [] };
+    v.hotels[j.hotel] = (v.hotels[j.hotel] || 0) + 1;
+    v.gus.add(j.gu); v.jobs.add(j.job); v.cnt++;
+    if (j.d !== '—' && j.d > v.latest) v.latest = j.d;
+    v.links.push(j.url);
+  });
+  return Object.values(m).sort((a, b) => (b.gm ? 1 : 0) - (a.gm ? 1 : 0) || b.cnt - a.cnt);
+})();
+const vGus = [...new Set(VENDORS.flatMap(v => [...v.gus]))];
+document.getElementById('vGuNav').innerHTML =
+  `<button class="gubtn on" onclick="setVGu('',this)">부산 전체 (${VENDORS.length}개사)</button>` +
+  vGus.map(g => `<button class="gubtn" onclick="setVGu('${g}',this)">${g} (${VENDORS.filter(v => v.gus.has(g)).length})</button>`).join('');
+function setVGu(g, btn){
+  vGu = g;
+  document.querySelectorAll('#vGuNav .gubtn').forEach(b => b.classList.toggle('on', b === btn));
+  renderVendors();
+}
+function renderVendors(){
+  const q = (document.getElementById('vSearch').value || '').trim().toLowerCase();
+  const rows = VENDORS.filter(v =>
+    (!vGu || v.gus.has(vGu)) &&
+    (!q || (v.corp + Object.keys(v.hotels).join('')).toLowerCase().includes(q)));
+  document.getElementById('vCnt').textContent = `${rows.length}개사 / 전체 ${VENDORS.length}개사 (공고에서 관측된 도급사)`;
+  document.getElementById('vBody').innerHTML = rows.map(v => `
+    <tr class="${v.gm ? 'me' : ''}">
+      <td>${v.gm ? '🎯 ' : ''}<b>${v.corp}</b>${v.gm ? ' <span class="tag t-gm">자사</span>' : ''}</td>
+      <td>${Object.entries(v.hotels).map(([h, c]) => h + (c > 1 ? ` <span class="muted">×${c}</span>` : '')).join('<br>')}</td>
+      <td class="c">${[...v.gus].join(', ')}</td>
+      <td class="c">${[...v.jobs].join(' · ')}</td>
+      <td class="c"><b>${v.cnt}</b>건</td>
+      <td class="c">${v.latest || '—'}</td>
+      <td class="c">${v.links.slice(0, 3).map((u, i) => `<a class="joblink" href="${u}" target="_blank">공고${i + 1}↗</a>`).join(' ')}</td>
+    </tr>`).join('');
+}
+renderVendors();
+
+document.getElementById('kJobTotal').innerHTML = JOBS.length + '<span>건</span>';
+document.getElementById('kJobDogub').innerHTML = JOBS.filter(j => j.op === '도급' && !j.gm).length + '<span>건</span>';
+document.getElementById('kJobDirect').innerHTML = JOBS.filter(j => j.op === '직영').length + '<span>건</span>';
+document.getElementById('kJobGm').innerHTML = JOBS.filter(j => j.gm).length + '<span>건</span>';
+renderJobs();
+</script>
+</body></html>
