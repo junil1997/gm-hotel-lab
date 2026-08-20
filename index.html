@@ -94,6 +94,13 @@
   .joblink:hover { background:#1d4ed8; color:#fff; border-color:#1d4ed8; }
   .jobtbl td { white-space:nowrap; }
   .jobtbl td.wr { white-space:normal; min-width:160px; }
+  /* 컬럼별 필터 행 */
+  .jobtbl thead tr:first-child th { top:0; }
+  .jobtbl .frow th { position:sticky; top:33px; z-index:3; background:#0f172a; padding:5px 6px; border-bottom:1px solid #334155; }
+  .jobtbl .frow select { width:100%; min-width:110px; background:#1e293b; border:1px solid #334155;
+       color:#e2e8f0; border-radius:6px; padding:5px 7px; font-size:12px; }
+  .jobtbl .frow select:focus { outline:none; border-color:#3b82f6; }
+  .jobtbl .frow select.act { border-color:#3b82f6; background:#1d4ed8; color:#fff; font-weight:700; }
   .stat-banner { display:flex; align-items:center; gap:12px; flex-wrap:wrap;
        background:#134e4a; border:1px solid #0d9488; border-radius:10px;
        padding:10px 16px; margin:0 0 14px; font-size:13px; color:#99f6e4; }
@@ -469,7 +476,6 @@
 
   <div class="searchbar">
     <input id="jobSearch" placeholder="호텔명 · 업체명 · 직종 검색…" oninput="renderJobs()">
-    <select id="jobType" onchange="renderJobs()"><option value="">전체 직종</option></select>
     <select id="jobOp" onchange="renderJobs()">
       <option value="">도급/직영 전체</option>
       <option value="도급">도급·용역업체 공고만</option>
@@ -480,6 +486,7 @@
       <option value="">수집처 전체</option>
       <option>사람인</option><option>고용24</option><option>잡코리아</option><option>알바몬</option><option>알바천국</option>
     </select>
+    <button class="gubtn" onclick="jobReset()">필터 초기화</button>
     <span class="cnt" id="jobCnt"></span>
   </div>
 
@@ -535,10 +542,20 @@
 
   <div class="scrollx">
     <table class="tbl jobtbl">
-      <thead><tr>
-        <th>순번</th><th>등록일</th><th>지역</th><th>호텔명</th><th>도급업체명</th>
-        <th>구인직종</th><th>급여</th><th>복리후생</th><th class="wr">특이사항</th><th>URL</th>
-      </tr></thead>
+      <thead>
+        <tr>
+          <th>순번</th><th>등록일</th><th>지역</th><th>호텔명</th><th>도급업체명</th>
+          <th>구인직종</th><th>급여</th><th>복리후생</th><th class="wr">특이사항</th><th>URL</th>
+        </tr>
+        <tr class="frow">
+          <th></th><th></th>
+          <th><select id="fGu" onchange="renderJobs()"></select></th>
+          <th><select id="fHotel" onchange="renderJobs()"></select></th>
+          <th><select id="fCorp" onchange="renderJobs()"></select></th>
+          <th><select id="fJob" onchange="renderJobs()"></select></th>
+          <th></th><th></th><th></th><th></th>
+        </tr>
+      </thead>
       <tbody id="jobBody"></tbody>
     </table>
   </div>
@@ -957,27 +974,74 @@ document.getElementById('starTbl').innerHTML = STARS.map(s => `
 
 /* 구인공고 */
 const SRC_CLS = { '사람인':'t-srm', '고용24':'t-w24', '잡코리아':'t-jk', '알바몬':'t-am', '알바천국':'t-ac' };
-let guFilter = '';
 const GUS = [...new Set(JOBS.map(j => j.gu))];
 document.getElementById('guNav').innerHTML =
-  `<button class="gubtn on" onclick="setGu('',this)">전체 (${JOBS.length})</button>` +
-  GUS.map(g => `<button class="gubtn" onclick="setGu('${g}',this)">${g} (${JOBS.filter(j=>j.gu===g).length})</button>`).join('');
-function setGu(g, btn){
-  guFilter = g;
-  document.querySelectorAll('.gubtn').forEach(b => b.classList.toggle('on', b === btn));
+  `<button class="gubtn" data-gu="" onclick="setGu('')">전체 (${JOBS.length})</button>` +
+  GUS.map(g => `<button class="gubtn" data-gu="${g}" onclick="setGu('${g}')">${g} (${JOBS.filter(j=>j.gu===g).length})</button>`).join('');
+function setGu(g){
+  const fg = document.getElementById('fGu'); if (fg) fg.value = g;
+  renderJobs();
+}
+/* 컬럼 필터 : 지역 · 호텔명 · 도급업체명 · 구인직종
+   각 드롭다운의 선택지는 "나를 뺀 나머지 필터"를 적용한 결과에서 만들어져,
+   고르면 결과가 0건이 되는 항목은 애초에 목록에 나오지 않는다. */
+const COLF = [
+  { id: 'fGu',    key: 'gu',    label: '지역' },
+  { id: 'fHotel', key: 'hotel', label: '호텔명' },
+  { id: 'fCorp',  key: 'corp',  label: '도급업체명' },
+  { id: 'fJob',   key: 'job',   label: '구인직종' },
+];
+function jobBase(){
+  const q = document.getElementById('jobSearch').value.trim().toLowerCase();
+  const op = document.getElementById('jobOp').value;
+  const sc = document.getElementById('jobSrc').value;
+  return j =>
+    (!op || (op === '자사' ? j.gm : (j.op === op && !j.gm))) &&
+    (!sc || j.src === sc) &&
+    (!q || (j.hotel + j.corp + j.job + j.etc).toLowerCase().includes(q));
+}
+function colVals(){
+  const v = {};
+  COLF.forEach(c => { const e = document.getElementById(c.id); v[c.key] = e ? e.value : ''; });
+  return v;
+}
+function fillColFilters(){
+  const base = jobBase(), sel = colVals();
+  COLF.forEach(c => {
+    const el = document.getElementById(c.id);
+    if (!el) return;
+    // 자기 자신을 뺀 나머지 조건으로 후보 집계
+    const cnt = {};
+    JOBS.forEach(j => {
+      if (!base(j)) return;
+      for (const o of COLF) if (o.key !== c.key && sel[o.key] && j[o.key] !== sel[o.key]) return;
+      cnt[j[c.key]] = (cnt[j[c.key]] || 0) + 1;
+    });
+    const tot = Object.values(cnt).reduce((a, b) => a + b, 0);
+    const keys = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a] || a.localeCompare(b, 'ko'));
+    const cur = sel[c.key];
+    el.innerHTML = `<option value="">${c.label} 전체 (${tot})</option>` +
+      keys.map(k => `<option value="${k.replace(/"/g, '&quot;')}"${k === cur ? ' selected' : ''}>${k} (${cnt[k]})</option>`).join('') +
+      (cur && !keys.includes(cur) ? `<option value="${cur.replace(/"/g, '&quot;')}" selected>${cur} (0)</option>` : '');
+    el.classList.toggle('act', !!cur);
+  });
+}
+function jobReset(){
+  COLF.forEach(c => { const e = document.getElementById(c.id); if (e) e.value = ''; });
+  document.getElementById('jobSearch').value = '';
+  document.getElementById('jobOp').value = '';
+  document.getElementById('jobSrc').value = '';
   renderJobs();
 }
 function renderJobs(){
-  const q = document.getElementById('jobSearch').value.trim().toLowerCase();
-  const jt = document.getElementById('jobType').value;
+  fillColFilters();
+  const base = jobBase(), sel = colVals();
+  // 상단 구(區) 버튼 하이라이트를 지역 드롭다운 값에 맞춤 (둘은 같은 필터)
+  document.querySelectorAll('#guNav .gubtn').forEach(b => b.classList.toggle('on', (b.dataset.gu || '') === (sel.gu || '')));
   const op = document.getElementById('jobOp').value;
-  const sc = document.getElementById('jobSrc').value;
   const rows = JOBS.filter(j =>
-    (!guFilter || j.gu === guFilter) &&
-    (!jt || j.job === jt) &&
-    (!op || (op === '자사' ? j.gm : (j.op === op && !j.gm))) &&
-    (!sc || j.src === sc) &&
-    (!q || (j.hotel + j.corp + j.job + j.etc).toLowerCase().includes(q)))
+    base(j) &&
+    COLF.every(c => !sel[c.key] || j[c.key] === sel[c.key]))
     .sort((a, b) => (b.d === '—' ? '' : b.d).localeCompare(a.d === '—' ? '' : a.d));
   document.getElementById('jobCnt').textContent = `${rows.length}건 / 전체 ${JOBS.length}건`;
   const KPI = { '': 'kpiAll', '도급': 'kpiDogub', '직영': 'kpiDirect', '자사': 'kpiGm' };
@@ -1042,19 +1106,12 @@ document.getElementById('kJobDogub').innerHTML = JOBS.filter(j => j.op === '도�
 document.getElementById('kJobDirect').innerHTML = JOBS.filter(j => j.op === '직영' && !j.gm).length + '<span>건</span>';
 document.getElementById('kJobGm').innerHTML = JOBS.filter(j => j.gm).length + '<span>건</span>';
 
-/* 직종 드롭다운을 실제 데이터에서 생성 (건수 표시) */
-(() => {
-  const c = {}; JOBS.forEach(j => c[j.job] = (c[j.job] || 0) + 1);
-  document.getElementById('jobType').innerHTML = `<option value="">전체 직종 (${JOBS.length})</option>` +
-    Object.keys(c).sort((a, b) => c[b] - c[a]).map(k => `<option value="${k}">${k} (${c[k]})</option>`).join('');
-})();
-
 /* KPI 카드 클릭 → 도급/직영/자사 필터 */
 function opFilter(v){
   document.getElementById('jobOp').value = v;
-  guFilter = ''; document.getElementById('jobSearch').value = '';
-  document.getElementById('jobType').value = ''; document.getElementById('jobSrc').value = '';
-  document.querySelectorAll('#guNav .gubtn').forEach((b, i) => b.classList.toggle('on', i === 0));
+  document.getElementById('jobSearch').value = '';
+  document.getElementById('jobSrc').value = '';
+  COLF.forEach(c => { const e = document.getElementById(c.id); if (e) e.value = ''; });
   renderJobs();
 }
 renderJobs();
