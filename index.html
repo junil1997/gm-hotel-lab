@@ -656,21 +656,29 @@ bars('starRoomBars', STARS, 'rooms', '실', r => r.color);
 let exGrade = '', exArea = '';
 const t2btn = document.querySelector('[data-tab="t2"]');
 function exNavRender(){
-  const gCounts = {}; HOTELS.forEach(h => gCounts[h[1]] = (gCounts[h[1]] || 0) + 1);
+  /* 괄호 숫자는 현재 다른 필터가 적용된 상태의 개수 — 예: 3성 선택 시 지역 버튼은 "부산 (18)"처럼 3성 기준으로 표시 */
+  const q = (document.getElementById('exSearch').value || '').trim().toLowerCase();
+  const tp = document.getElementById('exType').value;
+  const base = h => (!tp || String(h[4]) === tp) && (!q || h[0].toLowerCase().includes(q));
+  const gCounts = {}; let gTot = 0;
+  HOTELS.forEach(h => { if (base(h) && (!exArea || EX_AREA[h[2]] === exArea)) { gCounts[h[1]] = (gCounts[h[1]] || 0) + 1; gTot++; } });
   document.getElementById('exGradeNav').innerHTML =
-    `<button class="gubtn ${exGrade === '' ? 'on' : ''}" onclick="exGrade='';exNavRender();renderEx()">성급 전체 (${HOTELS.length})</button>` +
-    ['5', '4', '3', '2', '1'].map(g => `<button class="gubtn ${exGrade === g ? 'on' : ''}" onclick="exGrade='${g}';exNavRender();renderEx()">${'⭐'.repeat(+g)} ${g}성 (${gCounts[g] || 0})</button>`).join('');
-  const aCounts = {}; HOTELS.forEach(h => { const a = EX_AREA[h[2]]; aCounts[a] = (aCounts[a] || 0) + 1; });
-  const areas = Object.keys(aCounts).sort((a, b) => aCounts[b] - aCounts[a]);
+    `<button class="gubtn ${exGrade === '' ? 'on' : ''}" onclick="exGrade='';renderEx()">성급 전체${exArea ? ' · ' + exArea : ''} (${gTot})</button>` +
+    ['5', '4', '3', '2', '1'].map(g => `<button class="gubtn ${exGrade === g ? 'on' : ''}" onclick="exGrade='${g}';renderEx()">${'⭐'.repeat(+g)} ${g}성 (${gCounts[g] || 0})</button>`).join('');
+  const aCounts = {}; let aTot = 0;
+  HOTELS.forEach(h => { if (base(h) && (!exGrade || h[1] === exGrade)) { const a = EX_AREA[h[2]]; aCounts[a] = (aCounts[a] || 0) + 1; aTot++; } });
+  const areas = [...new Set(HOTELS.map(h => EX_AREA[h[2]]))].filter(a => (aCounts[a] || 0) > 0 || a === exArea)
+    .sort((a, b) => (aCounts[b] || 0) - (aCounts[a] || 0));
   document.getElementById('exAreaNav').innerHTML =
-    `<button class="gubtn ${exArea === '' ? 'on' : ''}" onclick="exArea='';exNavRender();renderEx()">지역 전체</button>` +
-    areas.map(a => `<button class="gubtn ${exArea === a ? 'on' : ''}" onclick="exArea='${a}';exNavRender();renderEx()">${a === '부산' ? '🎯 ' : ''}${a} (${aCounts[a]})</button>`).join('');
+    `<button class="gubtn ${exArea === '' ? 'on' : ''}" onclick="exArea='';renderEx()">지역 전체${exGrade ? ' · ' + exGrade + '성' : ''} (${aTot})</button>` +
+    areas.map(a => `<button class="gubtn ${exArea === a ? 'on' : ''}" onclick="exArea='${a}';renderEx()">${a === '부산' ? '🎯 ' : ''}${a} (${aCounts[a] || 0})</button>`).join('');
 }
 function exFilter(g){ exGrade = g; exArea = ''; exNavRender(); renderEx(); document.getElementById('explorer').scrollIntoView({behavior:'smooth'}); }
 function exFilterArea(a){ exArea = a; exGrade = ''; go('t2', t2btn); exNavRender(); renderEx(); document.getElementById('explorer').scrollIntoView({behavior:'smooth'}); }
 function exFilterType(t){ exGrade = ''; exArea = ''; go('t2', t2btn); exNavRender(); document.getElementById('exType').value = String(t); renderEx(); document.getElementById('explorer').scrollIntoView({behavior:'smooth'}); }
 const gradeCls = { '5': 't-star5', '4': 't-star4', '3': 't-star3', '2': 't-star2', '1': 't-star1' };
 function renderEx(){
+  exNavRender();
   const q = (document.getElementById('exSearch').value || '').trim().toLowerCase();
   const tp = document.getElementById('exType').value;
   const sort = document.getElementById('exSort').value || 'rooms';
