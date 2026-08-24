@@ -49,8 +49,12 @@ function parse(site, html) {
     const ci = out.corp ? tail.indexOf(out.corp) : -1;
     out.name = (ci >= 0 ? tail.slice(ci + 1, ci + 8) : tail)
       .find(x => x.length > 5 && x.length < 80 && !/조회수|대기업|중견|코스피|가족|지원자격|근무조건/.test(x)) || '';
-    out.loc = (t.match(/지역\s*\|?\s*(부산광역시[^<|]{0,60}|경상남도[^<|]{0,60})/) || [])[1] || '';
-    if (!out.loc) out.loc = (t.match(/(부산광역시[^<|]{0,55})/) || [])[1] || '';
+    // 주소 후보를 모두 모아 '실제 근무지'로 보이는 것을 고른다.
+    // (페이지에는 관할 고용센터 "부산광역시 OO구청" 같은 표기가 먼저 나오므로 걸러야 함)
+    const ADDR = /((?:부산광역시|경상남도)[가-힣0-9\s,()\-·]{2,55})/g;
+    const cands = [...t.matchAll(ADDR)].map(m => flat(m[1]))
+      .filter(a => !/구청|시청|군청|고용센터/.test(a));
+    out.loc = cands.find(a => /\d+/.test(a) && /로|길|번지|동|읍|면/.test(a)) || cands[0] || '';
   } else if (site === '사람인') {
     // <title> = [회사명] 공고명(D-n) - 사람인
     const m = title.match(/^\[([^\]]+)\]\s*(.*?)(?:\([^)]*\))?\s*-\s*사람인/);
