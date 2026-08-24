@@ -19,14 +19,14 @@ const enc = encodeURIComponent;
 /** 수집 대상: 사이트 × 검색 키워드 */
 const TARGETS = [
   // ── 고용24 (부산 지역필터 region=26000) — 정부 원문 URL 확보 가능
-  ...['룸메이드', '하우스맨', '인스펙터', '하우스키핑', '객실정비', '호텔 시설'].map(kw => ({
+  ...['룸메이드', '하우스맨', '인스펙터', '하우스키핑', '객실정비', '호텔 시설', '호텔 미화', '영선'].map(kw => ({
     site: '고용24', kw,
     url: `https://www.work24.go.kr/wk/a/b/1200/retriveDtlEmpSrchList.do?srcKeyword=${enc(kw)}` +
          `&region=26000&codeDepth1Info=26000&codeDepth2Info=26000&resultCnt=50` +
          `&sortField=DATE&sortOrderBy=DESC&siteClcd=all&searchMode=Y&pageIndex=1`,
   })),
   // ── 사람인 (부산 loc_cd=106000)
-  ...['호텔 룸메이드', '호텔 하우스맨', '호텔 인스펙터', '호텔 하우스키핑', '호텔 시설'].map(kw => ({
+  ...['호텔 룸메이드', '호텔 하우스맨', '호텔 인스펙터', '호텔 하우스키핑', '호텔 시설', '호텔 미화', '호텔 영선'].map(kw => ({
     site: '사람인', kw,
     url: `https://www.saramin.co.kr/zf_user/search/recruit?searchword=${enc(kw)}&loc_cd=106000&recruitPageCount=100`,
   })),
@@ -50,7 +50,7 @@ const TARGETS = [
 /** 사이트별 공고 추출 규칙 */
 const EXTRACT = {
   '고용24': html => uniq(html, /wantedAuthNo=([A-Za-z0-9]+)/g,
-    id => `https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=${id}`),
+    id => `https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=${id}&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet`),
   '사람인': html => uniq(html, /rec_idx=(\d+)/g,
     id => `https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=${id}`),
   '잡코리아': html => uniq(html, /\/Recruit\/GI_Read\/(\d+)/g,
