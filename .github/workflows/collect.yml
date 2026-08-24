@@ -27,6 +27,9 @@ jobs:
       - name: 5개 사이트 수집
         run: node collect.js
 
+      - name: 공고 상세 조회 (회사명·급여·근무지)
+        run: node enrich.js
+
       - name: 결과 요약
         run: |
           node -e "
@@ -35,6 +38,8 @@ jobs:
             console.log('기존 공고번호:', d.knownCount);
             console.log('신규 후보:', d.newCount);
             d.searchReport.forEach(r=>console.log(' -', r));
+            const ok=d.candidates.filter(c=>c.detail&&!c.detail.error).length;
+            console.log('상세 조회 성공:', ok, '/', d.candidates.length);
           "
 
       - name: candidates.json 커밋
