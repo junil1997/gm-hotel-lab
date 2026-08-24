@@ -1,7 +1,7 @@
 {
-  "collectedAt": "2026-08-24T09:59:05.083Z",
+  "collectedAt": "2026-08-24T10:06:41.141Z",
   "knownCount": 157,
-  "newCount": 180,
+  "newCount": 200,
   "searchReport": [
     "고용24 \"룸메이드\" → 조회 43 / 신규 9",
     "고용24 \"하우스맨\" → 조회 17 / 신규 0",
@@ -11,17 +11,17 @@
     "고용24 \"호텔 시설\" → 조회 50 / 신규 16",
     "고용24 \"호텔 미화\" → 조회 16 / 신규 5",
     "고용24 \"영선\" → 조회 24 / 신규 24",
-    "사람인 \"호텔 룸메이드\" → 실패 (fetch failed)",
-    "사람인 \"호텔 하우스맨\" → 실패 (fetch failed)",
+    "사람인 \"호텔 룸메이드\" → 조회 53 / 신규 22",
+    "사람인 \"호텔 하우스맨\" → 조회 35 / 신규 9",
     "사람인 \"호텔 인스펙터\" → 조회 7 / 신규 1",
-    "사람인 \"호텔 하우스키핑\" → 조회 31 / 신규 13",
-    "사람인 \"호텔 시설\" → 조회 100 / 신규 83",
+    "사람인 \"호텔 하우스키핑\" → 조회 31 / 신규 7",
+    "사람인 \"호텔 시설\" → 조회 100 / 신규 78",
     "사람인 \"호텔 미화\" → 조회 18 / 신규 11",
     "사람인 \"호텔 영선\" → 조회 8 / 신규 0",
     "잡코리아 \"호텔 하우스키핑\" → 조회 30 / 신규 0 / 부산외 제외 27",
     "잡코리아 \"호텔 시설관리\" → 조회 27 / 신규 1 / 부산외 제외 25",
-    "잡코리아 \"객실정비\" → 조회 32 / 신규 2 / 부산외 제외 28",
-    "잡코리아 \"호텔 룸메이드\" → 조회 29 / 신규 0 / 부산외 제외 29",
+    "잡코리아 \"객실정비\" → 조회 31 / 신규 2 / 부산외 제외 27",
+    "잡코리아 \"호텔 룸메이드\" → 조회 30 / 신규 0 / 부산외 제외 30",
     "알바몬 \"부산 호텔 룸메이드\" → 조회 16 / 신규 3",
     "알바몬 \"부산 호텔 객실청소\" → 조회 4 / 신규 1 / 부산외 제외 1",
     "알바천국 \"부산 호텔 룸메이드\" → 조회 6 / 신규 1",
@@ -39,7 +39,7 @@
         "corp": "루펜티스주식회사",
         "name": "【 반얀트리 부산 해운대】 호텔 하우스키퍼 관리자(과장-대리) 객실부 경력직 채용",
         "pay": "연봉 2,900만원 이상",
-        "loc": "부산광역시 수영구청\", jobsCd: \"014101\", cert1Cd: \"\", cert2Cd: \"\", ess"
+        "loc": "부산광역시 기장군 기장읍 기장해안로 370, 반얀트리 부산"
       }
     },
     {
@@ -83,7 +83,7 @@
         "corp": "주식회사 엘시티매니지먼트",
         "name": "【엘시티 레지던스-매니지먼트】 신입 룸메이드 채용",
         "pay": "월급 240만원 ~ 265만원",
-        "loc": "부산광역시 수영구청\", jobsCd: \"561102\", cert1Cd: \"\", cert2Cd: \"\", ess",
+        "loc": "부산광역시 해운대구 달맞이길 30, 엘시티 더 레지던스 (중동, 엘시티)",
         "reg": "2026-07-23"
       }
     },
@@ -128,7 +128,7 @@
         "corp": "주식회사더맨",
         "name": "[명지동] 호텔퍼블릭, 룸메이드, 하우스맨 모집",
         "pay": "월급 225만원 ~ 230만원",
-        "loc": "부산광역시 서구청\", jobsCd: \"561100\", cert1Cd: \"\", cert2Cd: \"\", essC",
+        "loc": "부산광역시 강서구 명지국제7로 38,",
         "reg": "2026-07-01"
       }
     },
@@ -173,7 +173,7 @@
         "corp": "수글로벌참치 주식회사",
         "name": "수글로벌참치 냉동참치 가공보조 사원 구합니다",
         "pay": "월급 260만원 이상",
-        "loc": "부산광역시 서구 원양로 1, 수산가공선진화단지A동302호 (암남동, 수산가공선진화단지)",
+        "loc": "부산광역시 서구 원양로 1, 수산가공선진화단지",
         "reg": "2026-08-20"
       }
     },
@@ -351,7 +351,7 @@
         "corp": "주식회사은진",
         "name": "[한화호텔 리조트 마티에오시리아] 객실 하우스키퍼 구인",
         "pay": "월급 290만원 ~ 290만원",
-        "loc": "부산광역시 기장군 동부산관광7로 17, 한화 호텔&amp; 리조트 마티에 오시리아",
+        "loc": "부산광역시 기장군 동부산관광7로 17, 한화 호텔",
         "reg": "2026-08-20"
       }
     },
@@ -574,7 +574,7 @@
         "corp": "(주)삼익",
         "name": "【그랜드 조선 부산 호텔】 야간 퍼블릭(미화) 채용",
         "pay": "월급 235만원 이상",
-        "loc": "부산광역시 수영구청\", jobsCd: \"561300\", cert1Cd: \"\", cert2Cd: \"\", ess",
+        "loc": "부산광역시 해운대구 해운대해변로 292 (중동)",
         "reg": "2026-07-29"
       }
     },
@@ -589,7 +589,7 @@
         "corp": "(주)삼익",
         "name": "【그랜드 조선 부산 호텔】 퍼블릭(미화) 채용",
         "pay": "월급 202만원 이상",
-        "loc": "부산광역시 수영구청\", jobsCd: \"561300\", cert1Cd: \"\", cert2Cd: \"\", ess",
+        "loc": "부산광역시 해운대구 해운대해변로 292 (중동)",
         "reg": "2026-07-28"
       }
     },
@@ -632,7 +632,7 @@
         "corp": "주식회사 금빛종합복지센터",
         "name": "부곡동 재가요양보호사 모집",
         "pay": "시급 10,320원 이상",
-        "loc": "부산광역시 금정구 무학송로 86, . (부곡동, 동백맨션)",
+        "loc": "부산광역시 금정구 무학송로 86,",
         "reg": "2026-08-24"
       }
     },
@@ -736,7 +736,7 @@
         "corp": "주식회사지엠티엔지니어링",
         "name": "조선기술자,통신 전기 전자장비,cctv 설치 / CAD설계자 구인",
         "pay": "연봉 4,000만원 이상",
-        "loc": "부산광역시 사하구 신산로 170, 펜타플렉스 메트로 B동904호 (신평동)",
+        "loc": "부산광역시 사하구 신산로 170, 펜타플렉스 메트로",
         "reg": "2026-08-18"
       }
     },
@@ -780,7 +780,7 @@
         "corp": "",
         "name": "채용정보 상세",
         "pay": "시급 10,320원 ~ 10,320원",
-        "loc": "부산광역시 영도구 절영로 504, . (동삼동, 조양비취맨션)",
+        "loc": "부산광역시 영도구 절영로 504,",
         "reg": "2026-08-14"
       }
     },
@@ -824,7 +824,7 @@
         "corp": "(주)윤정은빛종합복지센터",
         "name": "[대평동]재가요양보호사 채용",
         "pay": "시급 10,320원 이상",
-        "loc": "부산광역시 영도구 대평로 15, . (대평동1가, 대평태림)",
+        "loc": "부산광역시 영도구 대평로 15,",
         "reg": "2026-08-11"
       }
     },
@@ -959,8 +959,442 @@
         "corp": "(주)고암",
         "name": "(주)고암 BNCT터미널(부산신항) 시설관리 전기안전관리자 채용",
         "pay": "월급 370만원 ~ 370만원",
-        "loc": "부산광역시 강서구 성북동 신항남로 586, BNCT터미널 내 (주)고암 시설관리팀 (성북동)",
+        "loc": "부산광역시 강서구 성북동 신항남로 586,",
         "reg": "2026-07-13"
+      }
+    },
+    {
+      "id": "54812581",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54812581",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54812581 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0",
+      "detail": {
+        "title": "[토요코인코리아(주)] 토요코인호텔 부산중앙역점 룸메이드모집(상시 채용) - 사람인",
+        "corp": "토요코인코리아(주)",
+        "name": "토요코인호텔 부산중앙역점 룸메이드모집",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54659481",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54659481",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "c&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54659481 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16d",
+      "detail": {
+        "title": "[㈜선정인터내셔날] [김해공항/정규직]항공기 객실 기내청소/정리정돈(상시 채용) - 사람인",
+        "corp": "㈜선정인터내셔날",
+        "name": "[김해공항/정규직]항공기 객실 기내청소/정리정돈",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54673951",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54673951",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54673951 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16d8",
+      "detail": {
+        "title": "[(주)사람인에이치에스] [프리미엄 리조트/부산]고객서비스 부문 담당자 채용(채용시 마감) - 사람인",
+        "corp": "(주)사람인에이치에스",
+        "name": "[프리미엄 리조트/부산]고객서비스 부문 담당자 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54377002",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54377002",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54377002 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a",
+      "detail": {
+        "title": "[루펜티스(주)] 특급호텔 객실부(Rooms) 경력직 채용(채용시 마감) - 사람인",
+        "corp": "루펜티스(주)",
+        "name": "특급호텔 객실부(Rooms) 경력직 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54762150",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54762150",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "h(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54762150 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16d8e458\"> [부산전",
+      "detail": {
+        "title": "[피플잡(주)] [부산전역무료셔틀운행]LGU 인공지능센터 단순상담 사원채용(D-23) - 사람인",
+        "corp": "피플잡(주)",
+        "name": "[부산전역무료셔틀운행]LGU 인공지능센터 단순상담 사원채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54806396",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54806396",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54806396 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16d8e458\"> [(주)지엠네",
+      "detail": {
+        "title": "[(주)지엠네트웍스] [(주)지엠네트웍스] 광안 인근 호텔 룸메이드 채용(D-27) - 사람인",
+        "corp": "(주)지엠네트웍스",
+        "name": "[(주)지엠네트웍스] 광안 인근 호텔 룸메이드 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54341328",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54341328",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "eric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54341328 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a",
+      "detail": {
+        "title": "[주식회사 시너제닉] [사하구] 하단 레이어스호텔 룸메이드 채용(하우스키핑)(채용시 마감) - 사람인",
+        "corp": "주식회사 시너제닉",
+        "name": "[사하구] 하단 레이어스호텔 룸메이드 채용(하우스키핑)",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54718694",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54718694",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54718694 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-8",
+      "detail": {
+        "title": "[（주）해운대 관광호텔] [중동] 베니키아호텔 룸메이드(사원급)(채용시 마감) - 사람인",
+        "corp": "（주）해운대 관광호텔",
+        "name": "[중동] 베니키아호텔 룸메이드(사원급)",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54818746",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54818746",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54818746 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16d8e458\"> 해운대 영",
+      "detail": {
+        "title": "[(주)백의] 해운대 영무파라드 호텔 하우스키핑(객실정비, 룸메이드) 채용(D-28) - 사람인",
+        "corp": "(주)백의",
+        "name": "해운대 영무파라드 호텔 하우스키핑(객실정비, 룸메이드) 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54815215",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54815215",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54815215 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-8",
+      "detail": {
+        "title": "[(주)아이비에스인더스트리] 『파라다이스호텔 부산』 룸메이드 채용(D-57) - 사람인",
+        "corp": "(주)아이비에스인더스트리",
+        "name": "『파라다이스호텔 부산』 룸메이드 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54686564",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54686564",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54686564 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-4",
+      "detail": {
+        "title": "[(주)아이비에스인더스트리] 파라다이스호텔 부산 객실 룸메이드 직원 모집(채용시 마감) - 사람인",
+        "corp": "(주)아이비에스인더스트리",
+        "name": "파라다이스호텔 부산 객실 룸메이드 직원 모집",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54490657",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54490657",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "ch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54490657 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af",
+      "detail": {
+        "title": "[주식회사 시너제닉] 광안리 호텔 [룸메이드] 정직원 채용(채용시 마감) - 사람인",
+        "corp": "주식회사 시너제닉",
+        "name": "광안리 호텔 [룸메이드] 정직원 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54815229",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54815229",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54815229 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42a",
+      "detail": {
+        "title": "[토요코인부산해운대Ⅱ] 토요코 인 호텔 부산해운대Ⅱ 룸메이드 모집 공고(채용시 마감) - 사람인",
+        "corp": "토요코인부산해운대Ⅱ",
+        "name": "토요코 인 호텔 부산해운대Ⅱ 룸메이드 모집 공고",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54802157",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54802157",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54802157 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16d8",
+      "detail": {
+        "title": "[주식회사은진] [한화호텔&amp;amp;리조트 마티에오시리아] 객실 하우스키퍼 구인(D-10) - 사람인",
+        "corp": "주식회사은진",
+        "name": "[한화호텔&amp;amp;리조트 마티에오시리아] 객실 하우스키퍼 구인",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54539440",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54539440",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": ", &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54539440 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab",
+      "detail": {
+        "title": "[주식회사 엘시티매니지먼트] 【엘시티 레지던스-매니지먼트】 신입 룸메이드 채용(채용시 마감) - 사람인",
+        "corp": "주식회사 엘시티매니지먼트",
+        "name": "【엘시티 레지던스-매니지먼트】 신입 룸메이드 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54817821",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54817821",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54817821 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-8",
+      "detail": {
+        "title": "[주식회사 케니스테이부산기장] 케니스테이 하우스키핑(룸메이드) 여 2명 모집(기장)(채용시 마감) - 사람인",
+        "corp": "주식회사 케니스테이부산기장",
+        "name": "케니스테이 하우스키핑(룸메이드) 여 2명 모집(기장)",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54734213",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54734213",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54734213 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42a",
+      "detail": {
+        "title": "[주식회사 시너제닉] [송도 해상케이블카 인근] 호텔 객실정비원 채용(채용시 마감) - 사람인",
+        "corp": "주식회사 시너제닉",
+        "name": "[송도 해상케이블카 인근] 호텔 객실정비원 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54284849",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54284849",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "ic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54284849 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16",
+      "detail": {
+        "title": "[(주)시너링크] (영도구 영도대교 근처 호텔) 객실정비 소장 , 주임, 객실정비원 모집(채용시 마감) - 사람인",
+        "corp": "(주)시너링크",
+        "name": "(영도구 영도대교 근처 호텔) 객실정비 소장 , 주임, 객실정비원 모집",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54284843",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54284843",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54284843 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42a",
+      "detail": {
+        "title": "[주식회사 와이제이인터내셔널] [센텀프리미어호텔] 호텔 객실정비팀 메이드 채용(채용시 마감) - 사람인",
+        "corp": "주식회사 와이제이인터내셔널",
+        "name": "[센텀프리미어호텔] 호텔 객실정비팀 메이드 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54752080",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54752080",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": ")}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54752080 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16d8e458\"",
+      "detail": {
+        "title": "[주식회사위더스티엠] 페어필드 바이 메리어트 송도 공용부 미화 모집(D-20) - 사람인",
+        "corp": "주식회사위더스티엠",
+        "name": "페어필드 바이 메리어트 송도 공용부 미화 모집",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54743538",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54743538",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54743538 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e",
+      "detail": {
+        "title": "[트레블로지 스위트 부산 센텀 호텔] 트레블로지 스위트 부산 센텀 호텔 하우스키핑 관리자 채용(채용시 마감) - 사람인",
+        "corp": "트레블로지 스위트 부산 센텀 호텔",
+        "name": "트레블로지 스위트 부산 센텀 호텔 하우스키핑 관리자 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54752060",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54752060",
+      "site": "사람인",
+      "kw": "호텔 룸메이드",
+      "ctx": "h(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54752060 location=ts searchword=%ED%98%B8%ED%85%94+%EB%A3%B8%EB%A9%94%EC%9D%B4%EB%93%9C searchType=search paid_fl=n search_uuid=507cec44-af4e-42ab-82e5-0a2a16d8e458\"> 페어필드",
+      "detail": {
+        "title": "[주식회사위더스티엠] 페어필드 바이 메리어트 송도 스튜어딩(식기세척,기물관리)(D-20) - 사람인",
+        "corp": "주식회사위더스티엠",
+        "name": "페어필드 바이 메리어트 송도 스튜어딩(식기세척,기물관리)",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54805507",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54805507",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": "ch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54805507 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-86e0e8115dbc\"> 부산 ",
+      "detail": {
+        "title": "[호텔아쿠아펠리스] 부산 아쿠아펠리스호텔 (광안리) 하우스맨 (중장년) 채용(D-27) - 사람인",
+        "corp": "호텔아쿠아펠리스",
+        "name": "부산 아쿠아펠리스호텔 (광안리) 하우스맨 (중장년) 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54830005",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54830005",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": "}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54830005 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-86e0e8115dbc\">",
+      "detail": {
+        "title": "[(주)비해피] [부산 송도] 레지던스호텔 객실관리 하우스맨 모집(D-30) - 사람인",
+        "corp": "(주)비해피",
+        "name": "[부산 송도] 레지던스호텔 객실관리 하우스맨 모집",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54752762",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54752762",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": "(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54752762 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-86e0e8115dbc\"> [부산 오",
+      "detail": {
+        "title": "[(주)프로에스콤] [부산 오시리아단지] 롯데월드 어드벤쳐 보안사원- 주간 보안(D-20) - 사람인",
+        "corp": "(주)프로에스콤",
+        "name": "[부산 오시리아단지] 롯데월드 어드벤쳐 보안사원- 주간 보안",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54728897",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54728897",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": "9;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54728897 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-86e0e8115db",
+      "detail": {
+        "title": "[신라에이치엠(주)] [신라스테이] 서부산 호텔 인재 채용(조리)(D-17) - 사람인",
+        "corp": "신라에이치엠(주)",
+        "name": "[신라스테이] 서부산 호텔 인재 채용(조리)",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54723102",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54723102",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": "atch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54723102 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-86e0e8115dbc\"> [",
+      "detail": {
+        "title": "[(주)아이에이치엠] [HOTEL TOV] 객실영업 프런트 신입/경력 모집(D-7) - 사람인",
+        "corp": "(주)아이에이치엠",
+        "name": "[HOTEL TOV] 객실영업 프런트 신입/경력 모집",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54819468",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54819468",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": "ch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54819468 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-86e0e8115dbc\"> 트레블",
+      "detail": {
+        "title": "[트레블로지 스위트 부산 센텀] 트레블로지 스위트 부산 센텀 하우스키핑 실장·관리자 채용(D-28) - 사람인",
+        "corp": "트레블로지 스위트 부산 센텀",
+        "name": "트레블로지 스위트 부산 센텀 하우스키핑 실장·관리자 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54729838",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54729838",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": "\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54729838 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-86e0e8115dbc\"> [전액국비] 2026",
+      "detail": {
+        "title": "[(주)리크루트재팬] [전액국비] 2026 일본 호텔 취업 부산 연수과정 03기 연수생 모집(D-17) - 사람인",
+        "corp": "(주)리크루트재팬",
+        "name": "[전액국비] 2026 일본 호텔 취업 부산 연수과정 03기 연수생 모집",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54734211",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54734211",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54734211 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-86",
+      "detail": {
+        "title": "[주식회사 시너제닉] [송도 해상케이블카 근처] 호텔 하우스맨 직원 채용(채용시 마감) - 사람인",
+        "corp": "주식회사 시너제닉",
+        "name": "[송도 해상케이블카 근처] 호텔 하우스맨 직원 채용",
+        "pay": "",
+        "loc": ""
+      }
+    },
+    {
+      "id": "54792247",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54792247",
+      "site": "사람인",
+      "kw": "호텔 하우스맨",
+      "ctx": ";generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54792247 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%EB%A7%A8 searchType=search paid_fl=n search_uuid=9f462480-a8d0-402b-8c72-",
+      "detail": {
+        "title": "[주식회사 제이앤케이컴퍼니] 【 뉴시즈 해운대】 뉴시즈 빌리브 패러그라퍼 객실 하우스맨(채용시 마감) - 사람인",
+        "corp": "주식회사 제이앤케이컴퍼니",
+        "name": "【 뉴시즈 해운대】 뉴시즈 빌리브 패러그라퍼 객실 하우스맨",
+        "pay": "",
+        "loc": ""
       }
     },
     {
@@ -968,7 +1402,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54763892",
       "site": "사람인",
       "kw": "호텔 인스펙터",
-      "ctx": "e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54763892 location=ts searchword=%ED%98%B8%ED%85%94+%EC%9D%B8%EC%8A%A4%ED%8E%99%ED%84%B0 searchType=search paid_fl=n search_uuid=e7cb1095-1414-4b27-850f-e2911cc64e84\"> 호텔라온 프",
+      "ctx": "e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54763892 location=ts searchword=%ED%98%B8%ED%85%94+%EC%9D%B8%EC%8A%A4%ED%8E%99%ED%84%B0 searchType=search paid_fl=n search_uuid=5ef26c37-75fa-417f-a97e-44c1b2a3f1e9\"> 호텔라온 프",
       "detail": {
         "title": "[호텔라온주식회사] 호텔라온 프론트 사원 모집(호텔전체 리모델링에 따른 신축 오픈(D-24) - 사람인",
         "corp": "호텔라온주식회사",
@@ -982,7 +1416,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54810262",
       "site": "사람인",
       "kw": "호텔 하우스키핑",
-      "ctx": "\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54810262 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a1ab268b\"> [라",
+      "ctx": "\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54810262 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=9d0a6181-d17f-42b6-848f-03779dfa8f9c\"> [라",
       "detail": {
         "title": "[이스트웨스트(주)] [라발스호텔] 객실프론트/객실관리/바리스타/영양사 채용(D-12) - 사람인",
         "corp": "이스트웨스트(주)",
@@ -992,25 +1426,11 @@
       }
     },
     {
-      "id": "54377002",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54377002",
-      "site": "사람인",
-      "kw": "호텔 하우스키핑",
-      "ctx": "9;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54377002 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-07",
-      "detail": {
-        "title": "[루펜티스(주)] 특급호텔 객실부(Rooms) 경력직 채용(채용시 마감) - 사람인",
-        "corp": "루펜티스(주)",
-        "name": "특급호텔 객실부(Rooms) 경력직 채용",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
       "id": "54717052",
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54717052",
       "site": "사람인",
       "kw": "호텔 하우스키핑",
-      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54717052 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-488",
+      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54717052 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=9d0a6181-d17f-42b",
       "detail": {
         "title": "[호텔아이파크(주)부산] [파크하얏트부산] 객실부 신입 채용(D-7) - 사람인",
         "corp": "호텔아이파크(주)부산",
@@ -1020,25 +1440,11 @@
       }
     },
     {
-      "id": "54819468",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54819468",
-      "site": "사람인",
-      "kw": "호텔 하우스키핑",
-      "ctx": "rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54819468 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a1ab268b\"> 트레블로",
-      "detail": {
-        "title": "[트레블로지 스위트 부산 센텀] 트레블로지 스위트 부산 센텀 하우스키핑 실장·관리자 채용(D-28) - 사람인",
-        "corp": "트레블로지 스위트 부산 센텀",
-        "name": "트레블로지 스위트 부산 센텀 하우스키핑 실장·관리자 채용",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
       "id": "54829967",
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54829967",
       "site": "사람인",
       "kw": "호텔 하우스키핑",
-      "ctx": "rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54829967 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a1ab268b\"> [부산 ",
+      "ctx": "rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54829967 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=9d0a6181-d17f-42b6-848f-03779dfa8f9c\"> [부산 ",
       "detail": {
         "title": "[(주)비해피] [부산 송도] 레지던스호텔 프런트 및 객실관리 사원 모집(D-30) - 사람인",
         "corp": "(주)비해피",
@@ -1052,7 +1458,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54830088",
       "site": "사람인",
       "kw": "호텔 하우스키핑",
-      "ctx": "rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54830088 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a1ab268b\"> [부산 ",
+      "ctx": "rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54830088 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=9d0a6181-d17f-42b6-848f-03779dfa8f9c\"> [부산 ",
       "detail": {
         "title": "[(주)비해피] [부산 광안] 레지던스호텔 프런트 및 객실관리 사원 모집(D-30) - 사람인",
         "corp": "(주)비해피",
@@ -1066,7 +1472,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54302795",
       "site": "사람인",
       "kw": "호텔 하우스키핑",
-      "ctx": "rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54302795 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a1ab268b\"> [아난티",
+      "ctx": "rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54302795 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=9d0a6181-d17f-42b6-848f-03779dfa8f9c\"> [아난티",
       "detail": {
         "title": "[(주)아난티 남해] [아난티 남해] 고객서비스(캡틴아난티) 부문 정규직 채용(D-3) - 사람인",
         "corp": "(주)아난티 남해",
@@ -1080,7 +1486,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54711857",
       "site": "사람인",
       "kw": "호텔 하우스키핑",
-      "ctx": ";\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54711857 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a1ab268b\"> 더",
+      "ctx": ";\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54711857 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=9d0a6181-d17f-42b6-848f-03779dfa8f9c\"> 더",
       "detail": {
         "title": "[더퍼스트오션광안] 더퍼스트오션광안에서 객실점검 매니저 한분 찾고 있어요(D-47) - 사람인",
         "corp": "더퍼스트오션광안",
@@ -1090,53 +1496,11 @@
       }
     },
     {
-      "id": "54818746",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54818746",
-      "site": "사람인",
-      "kw": "호텔 하우스키핑",
-      "ctx": "lass=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54818746 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a1ab268b\"> 해운대 영무파라드 호텔",
-      "detail": {
-        "title": "[(주)백의] 해운대 영무파라드 호텔 하우스키핑(객실정비, 룸메이드) 채용(D-28) - 사람인",
-        "corp": "(주)백의",
-        "name": "해운대 영무파라드 호텔 하우스키핑(객실정비, 룸메이드) 채용",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
-      "id": "54743538",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54743538",
-      "site": "사람인",
-      "kw": "호텔 하우스키핑",
-      "ctx": "}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54743538 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a",
-      "detail": {
-        "title": "[트레블로지 스위트 부산 센텀 호텔] 트레블로지 스위트 부산 센텀 호텔 하우스키핑 관리자 채용(채용시 마감) - 사람인",
-        "corp": "트레블로지 스위트 부산 센텀 호텔",
-        "name": "트레블로지 스위트 부산 센텀 호텔 하우스키핑 관리자 채용",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
-      "id": "54341328",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54341328",
-      "site": "사람인",
-      "kw": "호텔 하우스키핑",
-      "ctx": "ic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54341328 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a8",
-      "detail": {
-        "title": "[주식회사 시너제닉] [사하구] 하단 레이어스호텔 룸메이드 채용(하우스키핑)(채용시 마감) - 사람인",
-        "corp": "주식회사 시너제닉",
-        "name": "[사하구] 하단 레이어스호텔 룸메이드 채용(하우스키핑)",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
       "id": "54674745",
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54674745",
       "site": "사람인",
       "kw": "호텔 하우스키핑",
-      "ctx": "e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54674745 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a832-0769a1ab268b",
+      "ctx": "e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54674745 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=9d0a6181-d17f-42b6-848f-03779dfa8f9c",
       "detail": {
         "title": "[호텔아이파크(주)부산] 호텔아이파크(주)&amp;lt;파크하얏트 부산&amp;gt; 하우스키핑(운영 지원부) 신입 채용(채용시 마감) - 사람인",
         "corp": "호텔아이파크(주)부산",
@@ -1146,25 +1510,11 @@
       }
     },
     {
-      "id": "54817821",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54817821",
-      "site": "사람인",
-      "kw": "호텔 하우스키핑",
-      "ctx": "ric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54817821 location=ts searchword=%ED%98%B8%ED%85%94+%ED%95%98%EC%9A%B0%EC%8A%A4%ED%82%A4%ED%95%91 searchType=search paid_fl=n search_uuid=fd3b8dfc-8700-4880-a",
-      "detail": {
-        "title": "[주식회사 케니스테이부산기장] 케니스테이 하우스키핑(룸메이드) 여 2명 모집(기장)(채용시 마감) - 사람인",
-        "corp": "주식회사 케니스테이부산기장",
-        "name": "케니스테이 하우스키핑(룸메이드) 여 2명 모집(기장)",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
       "id": "54766681",
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54766681",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "neric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54766681 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> (주)그리핀",
+      "ctx": "neric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54766681 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> (주)그리핀",
       "detail": {
         "title": "[(주)그리핀베이] (주)그리핀베이 호텔 시설 미화(청소) 직원 채용(D-24) - 사람인",
         "corp": "(주)그리핀베이",
@@ -1178,7 +1528,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54830585",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "eric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54830585 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 라마다앙코르부",
+      "ctx": "eric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54830585 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> 라마다앙코르부",
       "detail": {
         "title": "[라마다앙코르부산역호텔] 라마다앙코르부산역호텔 시설 주간근무자 채용(시설팀)(D-30) - 사람인",
         "corp": "라마다앙코르부산역호텔",
@@ -1192,7 +1542,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54824532",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54824532 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [하단 레",
+      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54824532 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [하단 레",
       "detail": {
         "title": "[하단레이어스호텔점] [하단 레이어스호텔] 시설관리팀 경력직 (주임,대리급) 채용(D-30) - 사람인",
         "corp": "하단레이어스호텔점",
@@ -1206,7 +1556,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54771721",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "9;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54771721 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80eba",
+      "ctx": "9;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54771721 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e",
       "detail": {
         "title": "[(주)아이비에스인더스트리] 파라다이스 호텔 소방시설(방재) 직원 채용(D-8) - 사람인",
         "corp": "(주)아이비에스인더스트리",
@@ -1220,7 +1570,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=51438642",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=51438642 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 제주 드",
+      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=51438642 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> 제주 드",
       "detail": {
         "title": "[(주)엘티엔터테인먼트] 제주 드림타워 복합리조트 [카지노&amp;호텔] 대규모 신입 공채(D-7) - 사람인",
         "corp": "(주)엘티엔터테인먼트",
@@ -1234,7 +1584,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54646338",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54646338 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54646338 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[윈덤그랜드부산] [윈덤그랜드부산] 호텔 부문별 신입/경력직 채용(D-13) - 사람인",
         "corp": "윈덤그랜드부산",
@@ -1248,7 +1598,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54573107",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "c&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54573107 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [UH FLAT 오",
+      "ctx": "c&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54573107 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [UH FLAT 오",
       "detail": {
         "title": "[(주)유에이치씨] [UH FLAT 오시리아] 레지던스형 호텔 미들 / 야간 프론트 채용(D-2) - 사람인",
         "corp": "(주)유에이치씨",
@@ -1262,7 +1612,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54768142",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54768142 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> ",
+      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54768142 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> ",
       "detail": {
         "title": "[(주)유에이치씨] UH FLAT 오시리아 레지던스형 호텔 프론트 채용(D-24) - 사람인",
         "corp": "(주)유에이치씨",
@@ -1276,7 +1626,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54673781",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54673781 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> ",
+      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54673781 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> ",
       "detail": {
         "title": "[(주)사람인에이치에스] [부산/중견/정규직] 5성급 리조트 고객서비스 운영 전문가 채용(채용시 마감) - 사람인",
         "corp": "(주)사람인에이치에스",
@@ -1290,7 +1640,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54797982",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54797982 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaf",
+      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54797982 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4",
       "detail": {
         "title": "[(주)아난티코브] [㈜아난티코브] I.M(전산팀) 정규직 채용(D-26) - 사람인",
         "corp": "(주)아난티코브",
@@ -1304,7 +1654,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54813302",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54813302 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80eb",
+      "ctx": "39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54813302 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6",
       "detail": {
         "title": "[이도클럽디해운대(주)] [클럽디오아시스] 워터파크 발권직원 채용(D-27) - 사람인",
         "corp": "이도클럽디해운대(주)",
@@ -1318,7 +1668,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54728730",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54728730 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80e",
+      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54728730 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf",
       "detail": {
         "title": "[(주)파라다이스부산카지노지점] [파라다이스 부산 카지노] 2026년 하반기 신입사원 공개채용(D-6) - 사람인",
         "corp": "(주)파라다이스부산카지노지점",
@@ -1332,7 +1682,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54738787",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54738787 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 카페마",
+      "ctx": ";generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54738787 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> 카페마",
       "detail": {
         "title": "[(주)마일로] 카페마일로 프랜차이즈 운영지원직(총무,회계,세무,마케팅)(D-19) - 사람인",
         "corp": "(주)마일로",
@@ -1346,7 +1696,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54754397",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "c&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54754397 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 2026 케이스24",
+      "ctx": "c&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54754397 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> 2026 케이스24",
       "detail": {
         "title": "[주식회사 케이스24] 2026 케이스24 신입사원 모집 ( 온라인MD 1명, 출고팀 1명)(D-20) - 사람인",
         "corp": "주식회사 케이스24",
@@ -1360,7 +1710,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54767969",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "earch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54767969 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a",
+      "ctx": "earch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54767969 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11",
       "detail": {
         "title": "[송백한의원] 부전동 한의원 직원 구인(자격증 필수)(상시 채용) - 사람인",
         "corp": "송백한의원",
@@ -1374,7 +1724,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54813814",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "earch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54813814 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a",
+      "ctx": "earch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54813814 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11",
       "detail": {
         "title": "[(주)일신비츠온] 영업관리 정규직 사원모집(부산김해영업소)(채용시 마감) - 사람인",
         "corp": "(주)일신비츠온",
@@ -1388,7 +1738,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54771013",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "eric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54771013 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> KT플라자 정",
+      "ctx": "eric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54771013 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> KT플라자 정",
       "detail": {
         "title": "[(주)케이티엠앤에스] KT플라자 정규직 직원모집(오늘 마감) - 사람인",
         "corp": "(주)케이티엠앤에스",
@@ -1402,7 +1752,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54813766",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "ch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54813766 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d",
+      "ctx": "ch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54813766 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa5",
       "detail": {
         "title": "[㈜캐처스] 공무팀(전기,보일러) 정규직 모집(D-27) - 사람인",
         "corp": "㈜캐처스",
@@ -1416,7 +1766,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54766403",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "9;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54766403 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 하얏",
+      "ctx": "9;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54766403 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> 하얏",
       "detail": {
         "title": "[하얏트플레이스부산연산] 하얏트플레이스 부산연산 프론트데스크 신입~경력신입 채용(D-24) - 사람인",
         "corp": "하얏트플레이스부산연산",
@@ -1426,25 +1776,11 @@
       }
     },
     {
-      "id": "54752762",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54752762",
-      "site": "사람인",
-      "kw": "호텔 시설",
-      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54752762 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [부산 오",
-      "detail": {
-        "title": "[(주)프로에스콤] [부산 오시리아단지] 롯데월드 어드벤쳐 보안사원- 주간 보안(D-20) - 사람인",
-        "corp": "(주)프로에스콤",
-        "name": "[부산 오시리아단지] 롯데월드 어드벤쳐 보안사원- 주간 보안",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
       "id": "54825064",
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54825064",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54825064 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [부산 해",
+      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54825064 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [부산 해",
       "detail": {
         "title": "[(주)프로에스콤] [부산 해운대/3교대] 웨스틴조선호텔 부산 / 보안사원 채용(D-30) - 사람인",
         "corp": "(주)프로에스콤",
@@ -1454,39 +1790,11 @@
       }
     },
     {
-      "id": "54659481",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54659481",
-      "site": "사람인",
-      "kw": "호텔 시설",
-      "ctx": "&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54659481 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80",
-      "detail": {
-        "title": "[㈜선정인터내셔날] [김해공항/정규직]항공기 객실 기내청소/정리정돈(상시 채용) - 사람인",
-        "corp": "㈜선정인터내셔날",
-        "name": "[김해공항/정규직]항공기 객실 기내청소/정리정돈",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
-      "id": "54673951",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54673951",
-      "site": "사람인",
-      "kw": "호텔 시설",
-      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54673951 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80e",
-      "detail": {
-        "title": "[(주)사람인에이치에스] [프리미엄 리조트/부산]고객서비스 부문 담당자 채용(채용시 마감) - 사람인",
-        "corp": "(주)사람인에이치에스",
-        "name": "[프리미엄 리조트/부산]고객서비스 부문 담당자 채용",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
       "id": "54681160",
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54681160",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54681160 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80e",
+      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54681160 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf",
       "detail": {
         "title": "[(주)사람인에이치에스] [중견기업/정규직] 국내최고 복합리조트 조리부 채용(채용시 마감) - 사람인",
         "corp": "(주)사람인에이치에스",
@@ -1500,7 +1808,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54646732",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54646732 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> ",
+      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54646732 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> ",
       "detail": {
         "title": "[(주)아난티코브] [㈜아난티코브] 고객서비스(캡틴아난티) 정규직 채용(D-10) - 사람인",
         "corp": "(주)아난티코브",
@@ -1514,7 +1822,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54715264",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54715264 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54715264 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [",
       "detail": {
         "title": "[(주)지냄] [지냄] 엘시티 레지던스 와이컬렉션 프론트 직원 모집(D-17) - 사람인",
         "corp": "(주)지냄",
@@ -1528,7 +1836,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54646844",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54646844 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 웨",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54646844 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> 웨",
       "detail": {
         "title": "[(주)조선호텔앤리조트 부산] 웨스틴조선 부산 마케팅팀 CRO(객실예약) 신입 채용(D-10) - 사람인",
         "corp": "(주)조선호텔앤리조트 부산",
@@ -1542,7 +1850,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54787621",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54787621 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [공기업자",
+      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54787621 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [공기업자",
       "detail": {
         "title": "[지케이엘위드(주)] [공기업자회사/카지노] 부산사업팀 F&amp;B부문 식음료 수시채용(D-25) - 사람인",
         "corp": "지케이엘위드(주)",
@@ -1556,7 +1864,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54786946",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54786946 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54786946 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[이도클럽디해운대(주)] [해운대 클럽디오아시스] 워터파크 발권직원 채용(D-25) - 사람인",
         "corp": "이도클럽디해운대(주)",
@@ -1570,7 +1878,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54787060",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54787060 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [해운대",
+      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54787060 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [해운대",
       "detail": {
         "title": "[이도클럽디해운대(주)] [해운대 클럽디오아시스] 워터파크 운영1팀(발권직원) 채용(D-25) - 사람인",
         "corp": "이도클럽디해운대(주)",
@@ -1584,7 +1892,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54765419",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "arch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54765419 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a4",
+      "ctx": "arch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54765419 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11f",
       "detail": {
         "title": "[(주)현에프앤씨] 주차지원, 배송 멀티업무 구인(D-24) - 사람인",
         "corp": "(주)현에프앤씨",
@@ -1612,7 +1920,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54726747",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54726747 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54726747 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[(주)테일러팜스] (주)테일러팜스(식품) 공무담당자(경력) 채용공고(D-18) - 사람인",
         "corp": "(주)테일러팜스",
@@ -1626,7 +1934,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54774716",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54774716 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> (주)조선호텔앤리조트 그랜드 조선 부산 객실",
+      "ctx": "e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54774716 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> (주)조선호텔앤리조트 그랜드 조선 부산 객실",
       "detail": {
         "title": "[(주)조선호텔앤리조트 그랜드조선 부산] (주)조선호텔앤리조트 그랜드 조선 부산 객실팀 신입 모집(오늘 마감) - 사람인",
         "corp": "(주)조선호텔앤리조트 그랜드조선 부산",
@@ -1640,7 +1948,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54734481",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54734481 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [경남",
+      "ctx": ";generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54734481 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [경남",
       "detail": {
         "title": "[(주)프로에스콤] [경남 양산/3교대 근무] 쿠팡 양산 센터 보안사원 채용(D-19) - 사람인",
         "corp": "(주)프로에스콤",
@@ -1654,7 +1962,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54650418",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54650418 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 스테이네",
+      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54650418 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> 스테이네",
       "detail": {
         "title": "[(주)스테이네오] 스테이네오와 함께할 경영지원팀 StayCREW를 찾습니다.(D-7) - 사람인",
         "corp": "(주)스테이네오",
@@ -1682,7 +1990,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54799648",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54799648 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaf",
+      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54799648 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4",
       "detail": {
         "title": "[그로발스타로지스틱스(주)] 물류영업부 사무보조 계약직 직원모집 (1년)(D-26) - 사람인",
         "corp": "그로발스타로지스틱스(주)",
@@ -1696,7 +2004,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54808856",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54808856 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [부산 진",
+      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54808856 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [부산 진",
       "detail": {
         "title": "[아이노유성형외과의원] [부산 진구] 아이노유성형외과 수술실 간호사/간호조무사 모집(D-57) - 사람인",
         "corp": "아이노유성형외과의원",
@@ -1710,7 +2018,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54661616",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54661616 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaf",
+      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54661616 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4",
       "detail": {
         "title": "[(주)제이케이컴퍼니] 2026년 3분기 슈망 경영재무 정직원 채용(D-11) - 사람인",
         "corp": "(주)제이케이컴퍼니",
@@ -1724,7 +2032,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54681478",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54681478 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 2",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54681478 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> 2",
       "detail": {
         "title": "[(주)제이케이컴퍼니] 2026년 3분기 슈망 영업팀 MD 추가 정직원 채용(D-13) - 사람인",
         "corp": "(주)제이케이컴퍼니",
@@ -1738,7 +2046,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54796775",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54796775 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80eb",
+      "ctx": "39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54796775 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6",
       "detail": {
         "title": "[에이치에비뉴호텔송정점] 에이치에비뉴 호텔 송정 (프론트 매니저)(D-26) - 사람인",
         "corp": "에이치에비뉴호텔송정점",
@@ -1752,7 +2060,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54573239",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54573239 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54573239 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[(주)삼익] [그랜드조선부산호텔] ' 야간 미화 ' 모집-삼익(D-2) - 사람인",
         "corp": "(주)삼익",
@@ -1766,7 +2074,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54705220",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "9;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54705220 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [U",
+      "ctx": "9;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54705220 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [U",
       "detail": {
         "title": "[(주)유에이치씨] [UH FLAT 오시리아] 레지던스형 호텔 야간 프론트(D-16) - 사람인",
         "corp": "(주)유에이치씨",
@@ -1780,7 +2088,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54786014",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "9;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54786014 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80eba",
+      "ctx": "9;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54786014 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e",
       "detail": {
         "title": "[(주)사람인에이치에스] [부산/중견기업/복지우수] 프리미엄 리조트 조리팀 채용(채용시 마감) - 사람인",
         "corp": "(주)사람인에이치에스",
@@ -1794,7 +2102,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54632397",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54632397 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54632397 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [",
       "detail": {
         "title": "[(주)이브릿지] [김해공항] 스카이허브라운지 세척 (설거지) 직원채용(D-7) - 사람인",
         "corp": "(주)이브릿지",
@@ -1808,7 +2116,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54633887",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54633887 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [유니원 ",
+      "ctx": "eneric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54633887 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [유니원 ",
       "detail": {
         "title": "[(주)유니원커뮤니케이션즈] [유니원 상상마당부산] 스테이(호텔&amp;게스트하우스) 인턴 채용(D-9) - 사람인",
         "corp": "(주)유니원커뮤니케이션즈",
@@ -1822,7 +2130,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54713194",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54713194 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54713194 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[(주)부산비즈니스호텔] 부산비즈니스호텔 프론트 직원 모집(신입/경력)(D-17) - 사람인",
         "corp": "(주)부산비즈니스호텔",
@@ -1836,7 +2144,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54565750",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54565750 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80",
+      "ctx": "&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54565750 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56b",
       "detail": {
         "title": "[주식회사 아난티 오시리아 제1지점] [빌라쥬 드 아난티] 바리스타 부문 정직원 채용(D-1) - 사람인",
         "corp": "주식회사 아난티 오시리아 제1지점",
@@ -1850,7 +2158,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54574303",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "ic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54574303 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> (부산지점)스테이",
+      "ctx": "ic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54574303 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> (부산지점)스테이",
       "detail": {
         "title": "[(주)스테이네오] (부산지점)스테이네오와 함께할 호텔운영팀StayCREW를 찾습니다.(D-7) - 사람인",
         "corp": "(주)스테이네오",
@@ -1864,7 +2172,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54615023",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54615023 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54615023 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[주식회사 아난티 오시리아 제1지점] [빌라쥬 드 아난티] 고객서비스 부문 정직원 채용(D-6) - 사람인",
         "corp": "주식회사 아난티 오시리아 제1지점",
@@ -1878,7 +2186,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54629671",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "h&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54629671 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d8",
+      "ctx": "h&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54629671 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56",
       "detail": {
         "title": "[(주)조선호텔앤리조트 부산] 웨스틴조선 부산 식음팀 신입직 채용(D-10) - 사람인",
         "corp": "(주)조선호텔앤리조트 부산",
@@ -1892,7 +2200,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54787063",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54787063 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaf",
+      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54787063 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4",
       "detail": {
         "title": "[이도클럽디해운대(주)] 해운대 클럽디오아시스 워터파크 발권직원 채용(D-25) - 사람인",
         "corp": "이도클럽디해운대(주)",
@@ -1906,7 +2214,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54787602",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54787602 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54787602 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [",
       "detail": {
         "title": "[지케이엘위드(주)] [공기업자회사/카지노] 부산사업팀 조리 직무 수시채용(D-25) - 사람인",
         "corp": "지케이엘위드(주)",
@@ -1920,7 +2228,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54646691",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "ch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54646691 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d",
+      "ctx": "ch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54646691 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa5",
       "detail": {
         "title": "[(주)에이서비스코리아] 아바니센트럴부산 호텔 프런트 채용(D-10) - 사람인",
         "corp": "(주)에이서비스코리아",
@@ -1934,7 +2242,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54656268",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ", &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54656268 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff",
+      "ctx": ", &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54656268 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c",
       "detail": {
         "title": "[하얏트플레이스부산연산] [하얏트플레이부산연산]호텔 식음료서비스(과장-차장)경력채용(채용시 마감) - 사람인",
         "corp": "하얏트플레이스부산연산",
@@ -1948,7 +2256,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54738532",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54738532 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54738532 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[하단레이어스호텔점] [하단 레이어스호텔] 프론트 신입 및 경력직 채용(D-19) - 사람인",
         "corp": "하단레이어스호텔점",
@@ -1962,7 +2270,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54735589",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54735589 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54735589 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[하얏트플레이스부산연산] 하얏트플레이스 부산연산 호텔 식음료서비스팀 채용(D-19) - 사람인",
         "corp": "하얏트플레이스부산연산",
@@ -1976,7 +2284,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54762621",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54762621 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54762621 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[더스파하스타] [해운대 팔라티움 소노 스파 마레] 매니저 채용(D-23) - 사람인",
         "corp": "더스파하스타",
@@ -1990,7 +2298,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54604586",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ")}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54604586 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [Fairfield By Ma",
+      "ctx": ")}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54604586 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [Fairfield By Ma",
       "detail": {
         "title": "[더파이낸셜어드바이저리그룹 부산지점] [Fairfield By Marriott Busan] Revenue 사원급 모집(D-5) - 사람인",
         "corp": "더파이낸셜어드바이저리그룹 부산지점",
@@ -2004,7 +2312,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54680927",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54680927 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [Fairfield By Marriott B",
+      "ctx": "e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54680927 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [Fairfield By Marriott B",
       "detail": {
         "title": "[더파이낸셜어드바이저리그룹 부산지점] [Fairfield By Marriott Busan] Sales&amp;Marketing 사원급 모집(D-13) - 사람인",
         "corp": "더파이낸셜어드바이저리그룹 부산지점",
@@ -2018,7 +2326,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54695601",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "ch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54695601 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [Fairfield By Marriot",
+      "ctx": "ch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54695601 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [Fairfield By Marriot",
       "detail": {
         "title": "[더파이낸셜어드바이저리그룹 부산지점] [Fairfield By Marriott Busan] 객실부 Front Office 모집(D-16) - 사람인",
         "corp": "더파이낸셜어드바이저리그룹 부산지점",
@@ -2032,7 +2340,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54762023",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54762023 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-",
+      "ctx": ";search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54762023 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-",
       "detail": {
         "title": "[(주)골드스페이스] 서면 네스트리 호텔 야간근무자 채용(상시 채용) - 사람인",
         "corp": "(주)골드스페이스",
@@ -2046,7 +2354,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54771515",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54771515 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54771515 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [",
       "detail": {
         "title": "[(주)휴로넷] [초보가능/최고복지/칼퇴가능]SK서비스탑 정규직 단순상담[부산](D-1) - 사람인",
         "corp": "(주)휴로넷",
@@ -2060,7 +2368,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54771580",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54771580 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> ",
+      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54771580 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> ",
       "detail": {
         "title": "[(주)휴로넷] [초보가능/최고복지/칼퇴가능]SK서비스탑 정규직 상담직[부산](D-1) - 사람인",
         "corp": "(주)휴로넷",
@@ -2074,7 +2382,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54797966",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54797966 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [㈜아",
+      "ctx": ";generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54797966 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [㈜아",
       "detail": {
         "title": "[(주)아난티코브] [㈜아난티코브] 조리(Culinary) 신입/경력직 채용(D-26) - 사람인",
         "corp": "(주)아난티코브",
@@ -2088,7 +2396,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54828145",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54828145 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54828145 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [",
       "detail": {
         "title": "[(주)아난티코브] [㈜아난티코브] 시설(설비 파트) 계약직(1년) 채용(D-30) - 사람인",
         "corp": "(주)아난티코브",
@@ -2102,7 +2410,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54768050",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54768050 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [본에스",
+      "ctx": "generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54768050 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [본에스",
       "detail": {
         "title": "[(주)본에스티스] [본에스티스] 롯데백화점 부산 광복점 매니저, 시니어 채용(D-24) - 사람인",
         "corp": "(주)본에스티스",
@@ -2116,7 +2424,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54615002",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54615002 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54615002 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[주식회사 아난티 오시리아 제1지점] [빌라쥬 드 아난티] 베이커리 부문 정직원 채용(D-6) - 사람인",
         "corp": "주식회사 아난티 오시리아 제1지점",
@@ -2130,7 +2438,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54597592",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ", &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54597592 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff",
+      "ctx": ", &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54597592 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c",
       "detail": {
         "title": "[(주)조선호텔앤리조트 부산] 웨스틴조선 부산 조리팀(베이커리) 신입직 모집(D-5) - 사람인",
         "corp": "(주)조선호텔앤리조트 부산",
@@ -2144,7 +2452,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54629574",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "h&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54629574 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d8",
+      "ctx": "h&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54629574 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56",
       "detail": {
         "title": "[(주)조선호텔앤리조트 부산] 웨스틴조선 부산 조리팀 신입직 모집(D-10) - 사람인",
         "corp": "(주)조선호텔앤리조트 부산",
@@ -2154,25 +2462,11 @@
       }
     },
     {
-      "id": "54805507",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54805507",
-      "site": "사람인",
-      "kw": "호텔 시설",
-      "ctx": ";generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54805507 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> 부산 ",
-      "detail": {
-        "title": "[호텔아쿠아펠리스] 부산 아쿠아펠리스호텔 (광안리) 하우스맨 (중장년) 채용(D-27) - 사람인",
-        "corp": "호텔아쿠아펠리스",
-        "name": "부산 아쿠아펠리스호텔 (광안리) 하우스맨 (중장년) 채용",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
       "id": "54397573",
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54397573",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "9;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54397573 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [부",
+      "ctx": "9;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54397573 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [부",
       "detail": {
         "title": "[아이노유성형외과의원] [부산서면] 아이노유성형외과 코디네이터 신입/경력 채용(D-12) - 사람인",
         "corp": "아이노유성형외과의원",
@@ -2186,7 +2480,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54397579",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54397579 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> ",
+      "ctx": "#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54397579 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> ",
       "detail": {
         "title": "[아이노유성형외과의원] [서면] 아이노유성형외과 코디네이터 신입/경력 모집(D-12) - 사람인",
         "corp": "아이노유성형외과의원",
@@ -2200,7 +2494,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54648698",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54648698 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [",
+      "ctx": "39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54648698 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [",
       "detail": {
         "title": "[리조트휘트니스헬스&amp;PT롯데백화점부산동래점] [리조트휘트니스] 롯데백화점 동래점 오전컨시어지 채용(D-10) - 사람인",
         "corp": "리조트휘트니스헬스&amp;PT롯데백화점부산동래점",
@@ -2214,7 +2508,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54684937",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54684937 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80eb",
+      "ctx": "39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54684937 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6",
       "detail": {
         "title": "[무이재한방병원] 무이재한방병원 (부산점) 시설관리팀 채용(D-13) - 사람인",
         "corp": "무이재한방병원",
@@ -2228,7 +2522,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54680933",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "eric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54680933 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [팔라티움 b",
+      "ctx": "eric&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54680933 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\"> [팔라티움 b",
       "detail": {
         "title": "[주)팔라티움해운대바이소노펠리체] [팔라티움 by SONO] 수익 정산 및 분양 고객 관리자 채용(D-13) - 사람인",
         "corp": "주)팔라티움해운대바이소노펠리체",
@@ -2238,25 +2532,11 @@
       }
     },
     {
-      "id": "54729838",
-      "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54729838",
-      "site": "사람인",
-      "kw": "호텔 시설",
-      "ctx": "&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54729838 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\"> [전액국비] 2026",
-      "detail": {
-        "title": "[(주)리크루트재팬] [전액국비] 2026 일본 호텔 취업 부산 연수과정 03기 연수생 모집(D-17) - 사람인",
-        "corp": "(주)리크루트재팬",
-        "name": "[전액국비] 2026 일본 호텔 취업 부산 연수과정 03기 연수생 모집",
-        "pay": "",
-        "loc": ""
-      }
-    },
-    {
       "id": "54358696",
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54358696",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54358696 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaff\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54358696 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4c\">",
       "detail": {
         "title": "[(주)아난티 남해] [아난티 남해] 조리팀 정규직 채용(신입/경력)(D-7) - 사람인",
         "corp": "(주)아난티 남해",
@@ -2270,7 +2550,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54516083",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "ch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54516083 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d",
+      "ctx": "ch&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54516083 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa5",
       "detail": {
         "title": "[(주)바이오포트코리아] [KOSDAQ] 식품회사 해외영업 담당자 모집(채용시 마감) - 사람인",
         "corp": "(주)바이오포트코리아",
@@ -2284,7 +2564,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54603821",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54603821 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80e",
+      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54603821 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf",
       "detail": {
         "title": "[(주)아난티] [㈜아난티] 회원권 세일즈 담당자 모집(D-5) - 사람인",
         "corp": "(주)아난티",
@@ -2298,7 +2578,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54458492",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54458492 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80e",
+      "ctx": "#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54458492 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf",
       "detail": {
         "title": "[고려개발(주)] 고려개발그룹 수행비서 모집 (근무지 : 김해-부산)(채용시 마감) - 사람인",
         "corp": "고려개발(주)",
@@ -2312,7 +2592,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54615012",
       "site": "사람인",
       "kw": "호텔 시설",
-      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54615012 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=d24cd341-3b4c-4040-8c7e-5a48d80ebaf",
+      "ctx": ";, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54615012 location=ts searchword=%ED%98%B8%ED%85%94+%EC%8B%9C%EC%84%A4 searchType=search paid_fl=n search_uuid=578b138a-dd24-4cd4-99a2-11fa56bf6e4",
       "detail": {
         "title": "[주식회사 아난티 오시리아 제1지점] [빌라쥬 드 아난티] 시설 부문 계약직 채용(D-6) - 사람인",
         "corp": "주식회사 아난티 오시리아 제1지점",
@@ -2326,7 +2606,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54677737",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54677737 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc87-4e9b-8a34-cf1997d20e7f\">",
+      "ctx": "&#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54677737 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e23b-4504-9778-5186b657b39e\">",
       "detail": {
         "title": "[(주)커넥트호텔] (주)커넥트호텔 공용부분 미화 서비스 채용 공고(D-13) - 사람인",
         "corp": "(주)커넥트호텔",
@@ -2340,7 +2620,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54705595",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "s, &#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54705595 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc87-4e9",
+      "ctx": "s, &#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54705595 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e23b-450",
       "detail": {
         "title": "[주식회사 시너제닉] [사하구] 하단역 호텔 미화) 구인(채용시 마감) - 사람인",
         "corp": "주식회사 시너제닉",
@@ -2354,7 +2634,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54296888",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54296888 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc87-4e9b-8a34-c",
+      "ctx": "search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54296888 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e23b-4504-9778-5",
       "detail": {
         "title": "[(주)시너링크] (민락수변공원 근처) 호텔 미화 및 정비지원 모집(채용시 마감) - 사람인",
         "corp": "(주)시너링크",
@@ -2368,7 +2648,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54490656",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "9;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54490656 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc87-4e9b-8a34-cf1997d20e",
+      "ctx": "9;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54490656 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e23b-4504-9778-5186b657b3",
       "detail": {
         "title": "[(주)시너링크] (민락수변공원 근처) 호텔 미화 및 정비지원 모집 (6시간 근무)(채용시 마감) - 사람인",
         "corp": "(주)시너링크",
@@ -2382,7 +2662,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54776484",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "his, &#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54776484 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc87-4",
+      "ctx": "his, &#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54776484 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e23b-4",
       "detail": {
         "title": "[주식회사해성티엠] [부산 영무파라드 호텔] 미화원 모집합니다.(채용시 마감) - 사람인",
         "corp": "주식회사해성티엠",
@@ -2410,7 +2690,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54592294",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "&#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54592294 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc87-4e9b-8",
+      "ctx": "&#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54592294 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e23b-4504-9",
       "detail": {
         "title": "[(주)삼익] 【그랜드 조선 부산 호텔】 야간 퍼블릭(미화) 채용(채용시 마감) - 사람인",
         "corp": "(주)삼익",
@@ -2424,7 +2704,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54814936",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "Apply(this, &#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54814936 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa",
+      "ctx": "Apply(this, &#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54814936 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604",
       "detail": {
         "title": "[(주)이노서브에프엠] 호텔 환경미화원 (주5일 근무)(채용시 마감) - 사람인",
         "corp": "(주)이노서브에프엠",
@@ -2438,7 +2718,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54792248",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "&#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54792248 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc87-4e9b-8",
+      "ctx": "&#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54792248 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e23b-4504-9",
       "detail": {
         "title": "[주식회사 바론파트너스] 호텔 게스 후 광안리 퍼블릭( 주간 미화) 채용(채용시 마감) - 사람인",
         "corp": "주식회사 바론파트너스",
@@ -2452,7 +2732,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54760775",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54760775 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc87-4e9b-8a",
+      "ctx": "#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54760775 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e23b-4504-97",
       "detail": {
         "title": "[(주)IBS인더스트리지점] 호텔 청소직원 모집(D-7) - 사람인",
         "corp": "(주)IBS인더스트리지점",
@@ -2466,7 +2746,7 @@
       "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54600490",
       "site": "사람인",
       "kw": "호텔 미화",
-      "ctx": "ly(this, &#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54600490 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=a8ab2efa-dc",
+      "ctx": "ly(this, &#39;search&#39;, &#39;generic&#39;)}catch(e){};\" rel=\"\" class=\"data_layer\" data-data_layer=\"keyword_free|paid_n\" href=\"/zf_user/jobs/relay/view?view_type=search rec_idx=54600490 location=ts searchword=%ED%98%B8%ED%85%94+%EB%AF%B8%ED%99%94 searchType=search paid_fl=n search_uuid=991b9604-e2",
       "detail": {
         "title": "[토요코인코리아주식회사부산역점] 객실청소 관리자 치프모집(D-35) - 사람인",
         "corp": "토요코인코리아주식회사부산역점",
@@ -2476,16 +2756,16 @@
       }
     },
     {
-      "id": "49844214",
-      "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/49844214",
+      "id": "49843603",
+      "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/49843603",
       "site": "잡코리아",
       "kw": "호텔 시설관리",
       "ctx": "},\\\"alwaysHire\\\":false},{\\\"id\\\":\\\"118359080\\\",\\\"title\\\":\\\"[Ycolletion] 해운대비치 호텔 운영 지점매니저 채용\\\",\\\"postingCompanyName\\\":\\\"㈜지냄 와이컬렉션 해운대비치 호텔\\\",\\\"payType\\\":\\\"MONTHLY_SALARY\\\",\\\"payRange\\\":\\\"2800000\\\",\\\"location\\\":{\\\"address\\\":\\\"부산 해운대구 중동\\\"},\\\"applicationPeriod\\\":{\\\"start\\\":\\\"2026-08-08T00:15:11+09:00\\\"",
       "detail": {
-        "title": "이음터부동산 채용 - [홍대역 이음터 부동산]공인중개사/중개보조원 모집/최고 비율/인센티브 | 잡코리아",
-        "corp": "이음터부동산",
-        "name": "[홍대역 이음터 부동산]공인중개사/중개보조원 모집/최고 비율/인센티브",
-        "pay": "",
+        "title": "광성이엔시 채용 - [토목/전기 분야] 현장관리자(소장 및 공무) 채용 | 잡코리아",
+        "corp": "광성이엔시",
+        "name": "[토목/전기 분야] 현장관리자(소장 및 공무) 채용",
+        "pay": "월급 540만원 이상",
         "loc": ""
       }
     },
@@ -2602,5 +2882,5 @@
       }
     }
   ],
-  "enrichedAt": "2026-08-24T10:01:35.499Z"
+  "enrichedAt": "2026-08-24T10:09:25.019Z"
 }
