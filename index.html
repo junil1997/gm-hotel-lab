@@ -84,6 +84,52 @@
   .bar-track { flex:1; background:#0f172a; border-radius:6px; height:20px; overflow:hidden; }
   .bar-fill { height:100%; border-radius:6px; display:flex; align-items:center; }
   .bar-val { width:90px; text-align:right; color:#94a3b8; white-space:nowrap; }
+
+  /* 도급업체 막대 — 업체명이 먼저 눈에 들어오도록 */
+  .vbars .bar-row { gap:8px; margin:6px 0; padding:4px 6px; }
+  .vbars .bar-label { width:200px; color:#e2e8f0; font-weight:700; font-size:13.5px; }
+  .vbars .bar-val { width:104px; color:#cbd5e1; font-size:12.5px; }
+  .vbars .bar-val b { color:#fff; font-size:15px; }
+  .vbars .bar-track { height:16px; }
+  .vbars .bar-row.gmbar { background:rgba(245,158,11,.12); border:1px solid #78350f; }
+  .vbars .bar-row.gmbar .bar-label { color:#fcd34d; }
+  .rk { width:22px; height:22px; flex:0 0 22px; border-radius:6px; background:#1e293b; color:#94a3b8;
+        font-size:11.5px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .rk.top { background:#1d4ed8; color:#fff; }
+  .rk.gm  { background:#f59e0b; color:#1f1300; }
+
+  /* 도급업체 이름 셀 (매핑표) */
+  .vcell { min-width:170px; }
+  .vname { font-size:14.5px; font-weight:800; color:#f1f5f9; line-height:1.35; }
+  .tr-gm .vname { color:#fcd34d; }
+  .vsub { margin-top:4px; display:flex; flex-wrap:wrap; gap:4px; align-items:center; font-size:11px; color:#64748b; }
+
+  /* 객실수 확인율 게이지 */
+  .covbar { height:5px; border-radius:3px; background:#0f172a; margin:5px 0 3px; overflow:hidden; }
+  .covbar i { display:block; height:100%; border-radius:3px; background:linear-gradient(90deg,#0d9488,#5eead4); }
+  .rooms-v { font-size:15px; font-weight:800; color:#5eead4; }
+  .tbl tr.grp td { background:#0b1220; color:#93c5fd; font-weight:700; font-size:12px; padding:9px 10px; border-top:2px solid #1e40af; }
+  .tbl tr.sub td { background:rgba(59,130,246,.10); font-weight:700; }
+  .fy { color:#fbbf24; }
+  .card.hilite { border:1px solid #1d4ed8; background:linear-gradient(180deg,#132039,#111827); }
+  .chipwrap { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px; }
+  .vchip { display:inline-flex; align-items:center; gap:7px; padding:7px 12px; border-radius:9px;
+           background:#1e293b; border:1px solid #334155; cursor:pointer; transition:.12s;
+           font-size:13.5px; font-weight:700; color:#e2e8f0; }
+  .vchip:hover { background:#2b3a52; border-color:#60a5fa; transform:translateY(-1px); }
+  .vchip .n { background:#1d4ed8; color:#fff; border-radius:6px; padding:1px 7px; font-size:11.5px; font-weight:800; }
+  .vchip .rm { color:#5eead4; font-size:11.5px; font-weight:700; }
+  .vchip.big { font-size:15px; padding:9px 14px; border-color:#3b82f6; }
+  .vchip.gm { background:#78350f; border-color:#f59e0b; color:#fde68a; }
+  .vchip.gm .n { background:#f59e0b; color:#1f1300; }
+  .one { display:block; }
+  .corp-do { color:#c4b5fd; font-weight:800; }   /* 도급사 */
+  .corp-dr { color:#6ee7b7; font-weight:700; }   /* 호텔 직영 */
+  .corp-gm { color:#fcd34d; font-weight:800; }   /* 자사 */
+  .hlist { line-height:1.75; }
+  .hlist .hname { color:#e2e8f0; }
+  .hlist .hrm { color:#5eead4; font-weight:700; font-size:11.5px; }
+  .hlist .hunk { color:#64748b; font-size:11px; }
   .note { background:#172554; border:1px solid #1e40af; border-radius:10px; padding:12px 16px; font-size:13px; color:#bfdbfe; margin-bottom:14px; line-height:1.7; }
   .note.rule { background:#4a1d1d33; background:#3f1d1d; border-color:#b91c1c; color:#fecaca; }
   .note.todo { background:#3b2f0b; border-color:#b45309; color:#fde68a; }
@@ -154,7 +200,7 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.22</small></span></h1>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.23</small></span></h1>
   <div class="meta">성급·지역 : <b id="todayStamp">—</b> 기준 (등급유효 호텔 835개 · 최근 수집 2026-08-20)<br>
     등록현황 <b>2025년 말</b>(문체부) · 사업체조사 <b>2024년</b>(통계청) — 각 최신 공식판<br>
     구인공고 수집일 : <b>2026-08-24</b> (5개 사이트 · 누적 157건)</div>
@@ -379,34 +425,29 @@
   <h2>호텔 유형 분석 <span class="hint">운영 구조별 분류 — 도급 영업 접근법이 달라지는 지점</span></h2>
 
   <div class="note todo">
-    ⚠️ 이 탭은 <b>프레임(뼈대)만 완성</b>된 상태. 유형별 정확한 개수는 아직 신뢰할 수 있는 단일 출처가 없어 비워둠 (거짓 수치 금지 원칙).
-    데이터 소스 : 휴양콘도(250개/50,318실)는 확보 완료, 생활숙박시설은 건축물대장/지자체 데이터, 브랜드 체인은 각 체인 공식 홈페이지 크롤링으로 채울 예정.
+    ⚠️ <b>분양형 구간은 아직 미집계 항목이 남아 있음.</b> 휴양콘도(250개/50,318실)만 공식 통계가 있고,
+    분양형 관광호텔·생활숙박시설은 신뢰할 단일 공식 출처가 없어 <b>수치를 지어내지 않고 비워둠</b> (거짓 수치 금지 원칙).
+    충원 경로 : 생활숙박은 건축물대장·지자체 데이터, 분양형 호텔은 지방행정 인허가데이터(localdata) 숙박업 대장 연동 예정.
   </div>
 
   <div class="card">
-    <h3>등급유효 호텔 업종 구성 <span class="muted">2026-08-20 실시간 · 행 클릭 → 해당 업종 호텔 명단</span></h3>
+    <h3>숙박 유형 통합 현황
+      <span class="muted">등급유효 실측(관광호텔업 등) + 분양형 시장을 한 표로 통합 · 관광호텔업 행 클릭 → 해당 업종 호텔 명단</span></h3>
     <table class="tbl">
-      <thead><tr><th>업종</th><th>호텔 수</th><th>객실 수</th><th>평균 객실</th><th>비고</th></tr></thead>
+      <thead><tr><th>기준</th><th>유형</th><th>업체 수</th><th>객실 수</th><th>평균 객실</th><th>소유·운영 구조</th><th>도급 영업 포인트</th></tr></thead>
       <tbody id="typeTbl"></tbody>
       <tfoot><tr id="typeFoot"></tr></tfoot>
     </table>
-    <div class="src">등급결정(성급) 보유 호텔 기준 (제주 제외). 수상관광·의료관광·호스텔업은 현재 등급유효 호텔 없음.</div>
+    <div class="src">
+      ① 등급유효 실측 : 한국관광협회중앙회 등급결정(성급) 보유 호텔 전수 · 2026-08-20 실시간 (제주 제외). 수상관광·의료관광·호스텔업은 현재 등급유효 호텔 없음.<br>
+      ② 분양형 시장 : 문화체육관광부 「2025년 기준 관광숙박업 등록현황」 (전국 · 제주 포함).
+      두 기준은 조사 시점·범위가 다르지만 <b>집합이 겹치지 않음</b> — 휴양콘도미니엄은 성급 등급결정 대상이 아니므로 835개에 포함되지 않습니다.
+    </div>
   </div>
 
-  <div class="two">
+  <div class="one">
     <div class="card">
-      <h3>🏗️ 분양형 (소유·운영 분리)</h3>
-      <table class="tbl">
-        <thead><tr><th>유형</th><th>규모</th><th>도급 영업 포인트</th></tr></thead>
-        <tbody>
-          <tr><td>휴양콘도미니엄</td><td class="c"><b>250개 · 50,318실</b> ✅확보</td><td class="muted">위탁운영사가 계약 주체. 객실정비 외 시설관리 수요 큼</td></tr>
-          <tr><td>분양형 호텔 (수익형)</td><td class="c muted">수집 예정</td><td class="muted">수분양자-위탁운영사 갈등 잦음 → 운영사 교체 시 도급업체도 교체되는 경우 많아 진입 기회</td></tr>
-          <tr><td>생활숙박시설 (레지던스)</td><td class="c muted">수집 예정</td><td class="muted">2024~ 규제 정비로 숙박업 신고 전환 증가 → 신규 위탁운영·도급 수요 발생 구간</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card">
-      <h3>🏷️ 브랜드 체인 vs 독립</h3>
+      <h3>🏷️ 브랜드 체인 vs 독립 <span class="muted">소유·운영 구조와는 별개 축 — 같은 호텔이라도 브랜드에 따라 영업 경로가 달라짐</span></h3>
       <table class="tbl">
         <thead><tr><th>유형</th><th>대표 브랜드</th><th>도급 영업 포인트</th></tr></thead>
         <tbody>
@@ -435,7 +476,14 @@
 
 <!-- ══════════════════ 탭6 : 아웃소싱 공급시장 ══════════════════ -->
 <div class="tab" id="t6">
-  <h2>아웃소싱 공급시장 규모 <span class="hint">통계청 전국사업체조사 2024년 확정 — 현재 최신 공식판 (2025년 조사는 2026년 말 발표 예정)</span></h2>
+  <h2>아웃소싱 공급시장 규모 <span class="hint">① 실제 관측된 경쟁 도급업체 → ② 통계로 본 시장 전체 규모 순서</span></h2>
+
+  <div class="card hilite">
+    <h3>🥇 부산 호텔 도급업체 — 실제 관측 명단 <span class="muted">채용공고에서 확인된 곳만 · 이름 클릭 → 관리 호텔·공고 원문</span></h3>
+    <div class="kpi-grid" id="vKpi"></div>
+    <div class="chipwrap" id="vChips"></div>
+    <div class="src">숫자는 <b>관리(추정) 호텔 수</b>. 공고에 업체명이 드러난 건만 집계되므로 실제 활동 업체는 이보다 많을 수 있습니다.</div>
+  </div>
 
   <div class="note">
     💡 "아웃소싱 업체가 몇 개냐"는 <b>한 업종 코드로 답이 안 나옴</b>. 호텔 도급업체들은 사업자등록 시
@@ -483,7 +531,7 @@
   <div class="two">
     <div class="card">
       <h3>도급업체별 관리(추정) 호텔 수 <span class="muted">채용공고 근거 · 막대 클릭 → 해당 업체 공고</span></h3>
-      <div id="vCntBars"></div>
+      <div id="vCntBars" class="vbars"></div>
       <div class="bar-row" style="font-weight:800;border-top:2px solid #3b82f6;padding-top:8px;margin-top:10px">
         <div class="bar-label" style="color:#fff">합계</div><div class="bar-track" style="background:none"></div>
         <div class="bar-val" style="color:#93c5fd" id="vCntTot"></div>
@@ -491,7 +539,7 @@
     </div>
     <div class="card">
       <h3>도급업체별 관리 객실 수 <span class="muted">= 매출 규모 · 등급유효 명단 대조 확인분만</span></h3>
-      <div id="vRoomBars"></div>
+      <div id="vRoomBars" class="vbars"></div>
       <div class="bar-row" style="font-weight:800;border-top:2px solid #f59e0b;padding-top:8px;margin-top:10px">
         <div class="bar-label" style="color:#fff">합계</div><div class="bar-track" style="background:none"></div>
         <div class="bar-val" style="color:#fcd34d" id="vRoomTot"></div>
@@ -502,9 +550,12 @@
   <div class="note">
     💡 <b>객실 수가 곧 매출 규모</b> — 룸메이드 인건비는 보통 객실 단위로 정산되므로, 호텔 개수보다 <b>관리 객실 총량</b>이 실제 도급 매출에 가깝습니다.
     파라다이스호텔 1곳(529실)이 소형 호텔 10곳보다 큰 물량입니다.<br>
-    ⚠️ <b>객실 수는 등급유효 호텔 명단(835개)과 대조해 확인된 곳만 합산</b>했습니다.
-    레지던스·생활숙박·무등급 호텔은 공식 객실수 자료가 없어 <b>"미확인"으로 분리 표기</b>하고 합계에 넣지 않았습니다 — 추정치를 지어내지 않기 위함입니다.
-    따라서 아래 객실 수는 <b>실제보다 작게 잡힌 하한값</b>입니다.
+    ⚠️ <b>객실 수는 등급유효 호텔 명단(835개)과 1:1 수기 대조해 확인된 곳만 합산</b>합니다 (2026-08-26 재대조 — L7 해운대 383실 · 파크하얏트 부산 269실 · 호텔 게스후 광안리 55실 추가 확인).
+    합산에서 빠진 호텔은 그 사유를 두 갈래로 나눠 표기합니다 —
+    <span class="tag t-unk">공고 익명</span> 공고가 호텔명을 밝히지 않아 호텔 자체를 특정할 수 없는 경우 ·
+    <span class="tag t-unk">무등급·레지던스</span> 호텔은 특정됐으나 생활숙박·등급 미보유라 공식 객실수 자료 자체가 없는 경우.
+    업체별 <b>확인율(확인 호텔 수 / 전체 관리 호텔 수)</b>을 함께 표시하니, 확인율이 낮은 업체의 객실 수는 그만큼 더 크게 과소 집계된 것으로 보시면 됩니다.
+    추정치는 지어내지 않으므로 아래 객실 수는 모두 <b>실제보다 작게 잡힌 하한값</b>입니다.
   </div>
 
   <div class="card" id="vendorMap">
@@ -520,7 +571,7 @@
     </div>
     <div class="scrollx" style="max-height:60vh">
       <table class="tbl">
-        <thead><tr><th>도급업체</th><th>관리(추정) 호텔</th><th>호텔<br>수</th><th>관리 객실<br><span style="font-weight:400;font-size:10px">(확인분)</span></th><th>지역</th><th>모집 직종</th><th>공고</th><th>최근 공고일</th><th>근거 (공고 원문)</th></tr></thead>
+        <thead><tr><th style="min-width:170px">도급업체</th><th>관리(추정) 호텔 · 객실수</th><th>호텔<br>수</th><th style="min-width:118px">관리 객실 합계<br><span style="font-weight:400;font-size:10px">공식 확인분 + 확인율</span></th><th>지역</th><th>모집 직종</th><th>공고</th><th>최근 공고일</th><th>근거 (공고 원문)</th></tr></thead>
         <tbody id="vBody"></tbody>
       </table>
     </div>
@@ -798,7 +849,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.22 (2026-08-24) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.23 (2026-08-26) · 호텔 835개 전수 명단 내장<br>
   통계 출처 : 한국관광협회중앙회 호텔업 등급결정 현황(2026-08-20 수집 · 835개 전수) · 문화체육관광부 관광숙박업 등록현황(2025년 말) · 통계청 전국사업체조사(2024년, KOSIS) · 구인공고 : 사람인·고용24·잡코리아·알바몬·알바천국 5개 사이트 (2026-08-24 수집, 누적 157건, 전 건 원문 URL 첨부)
 </footer>
 
@@ -1139,17 +1190,62 @@ function renderEx(){
     Object.keys(tCounts).map(t => `<option value="${t}">${EX_TYPE[t]} (${tCounts[t]})</option>`).join('');
   // 호텔 유형 탭: 업종 구성 표
   const tRooms = {}; HOTELS.forEach(h => tRooms[h[4]] = (tRooms[h[4]] || 0) + h[3]);
-  const NOTES = { 0: '성급제 핵심 — 도급 시장 주력', 5: '콘도형 다수 — 위탁운영사 상대 영업', 2: '30실 미만 소형 — 소규모 용역', 1: '한옥호텔 등 특수 시설' };
+  /* 소유·운영 구조와 영업 포인트 — 분양형 여부를 같은 표 안에서 구분하기 위한 메타 */
+  const TMETA = {
+    0: { own: '자가 소유 · 직영 또는 위탁운영', note: '성급제 핵심 — 도급 시장 주력' },
+    5: { own: '가족단위 · <b class="fy">일부 분양형</b>', note: '콘도형 객실 혼재 — 위탁운영사 상대 영업' },
+    2: { own: '개인 오너 직영', note: '30실 미만 소형 — 소규모 용역' },
+    1: { own: '개인 · 재단', note: '한옥호텔 등 특수 시설' },
+  };
   const keys = Object.keys(tCounts).sort((a, b) => tCounts[b] - tCounts[a]);
-  document.getElementById('typeTbl').innerHTML = keys.map(t => `
+  const allC = HOTELS.length, allR = HOTELS.reduce((s, h) => s + h[3], 0);
+  const BUNYANG = [
+    { name: '휴양콘도미니엄업', cnt: 250, rooms: 50318,
+      own: '<b class="fy">분양형</b> — 수분양자 소유 + 위탁운영사 운영',
+      note: '위탁운영사가 계약 주체. 객실정비 외 시설관리 수요까지 묶임' },
+    { name: '분양형 관광호텔 (수익형)', cnt: null, rooms: null,
+      own: '<b class="fy">분양형</b> — 객실별 수분양자 + 위탁운영사',
+      note: '수분양자-운영사 갈등이 잦아 <b>운영사 교체 시 도급사도 함께 교체</b> — 진입 기회 구간' },
+    { name: '생활숙박시설 (레지던스)', cnt: null, rooms: null,
+      own: '<b class="fy">분양형</b> — 개별 소유 + 위탁관리업체',
+      note: '2024~ 규제 정비로 숙박업 신고 전환 증가 → 신규 위탁운영·도급 수요 발생' },
+  ];
+  const bCnt = BUNYANG.reduce((a, b) => a + (b.cnt || 0), 0);
+  const bRoom = BUNYANG.reduce((a, b) => a + (b.rooms || 0), 0);
+
+  document.getElementById('typeTbl').innerHTML =
+    `<tr class="grp"><td colspan="7">① 등급유효 호텔 — 성급을 보유한 호텔 전수 집계 (2026-08-20 실시간 · 제주 제외)</td></tr>` +
+    keys.map(t => `
     <tr class="clickable" onclick="exFilterType(${t})">
+      <td class="c muted" style="font-size:11.5px">등급유효<br>실측</td>
       <td><b>${EX_TYPE[t]}</b> <span class="muted" style="font-size:11px">클릭→명단</span></td>
       <td class="r">${fmt(tCounts[t])}</td><td class="r">${fmt(tRooms[t])}</td>
       <td class="r">${Math.round(tRooms[t] / tCounts[t])}실</td>
-      <td class="muted" style="font-size:12px">${NOTES[t] || ''}</td></tr>`).join('');
-  const allC = HOTELS.length, allR = HOTELS.reduce((s, h) => s + h[3], 0);
+      <td class="muted" style="font-size:12px">${(TMETA[t] || {}).own || '—'}</td>
+      <td class="muted" style="font-size:12px">${(TMETA[t] || {}).note || ''}</td></tr>`).join('') +
+    `<tr class="sub"><td colspan="2">소계 — 등급유효 호텔</td>
+      <td class="r">${fmt(allC)}</td><td class="r">${fmt(allR)}</td>
+      <td class="r">${Math.round(allR / allC)}실</td><td colspan="2"></td></tr>` +
+    `<tr class="grp"><td colspan="7">② 분양형 숙박시장 — <b>소유(수분양자)와 운영(위탁운영사)이 분리된 구간</b> · 2025년말 등록통계 (전국)</td></tr>` +
+    BUNYANG.map(b => `
+    <tr>
+      <td class="c muted" style="font-size:11.5px">등록통계<br>'25말</td>
+      <td><b>${b.name}</b></td>
+      <td class="r">${b.cnt ? fmt(b.cnt) : '<span class="muted">미집계</span>'}</td>
+      <td class="r">${b.rooms ? fmt(b.rooms) : '<span class="muted">미집계</span>'}</td>
+      <td class="r">${b.cnt ? Math.round(b.rooms / b.cnt) + '실' : '<span class="muted">—</span>'}</td>
+      <td class="muted" style="font-size:12px">${b.own}</td>
+      <td class="muted" style="font-size:12px">${b.note}</td></tr>`).join('') +
+    `<tr class="sub"><td colspan="2">소계 — 분양형 (확보분만)</td>
+      <td class="r">${fmt(bCnt)}</td><td class="r">${fmt(bRoom)}</td>
+      <td class="r">${Math.round(bRoom / bCnt)}실</td>
+      <td colspan="2" class="muted" style="font-size:11.5px">분양형 관광호텔·생활숙박 2개 항목은 공식 출처 미확보로 합계 제외</td></tr>`;
+
   document.getElementById('typeFoot').innerHTML =
-    `<td>합계</td><td class="r">${fmt(allC)}</td><td class="r">${fmt(allR)}</td><td class="r">${allC ? Math.round(allR / allC) : 0}실</td><td></td>`;
+    `<td colspan="2">통합 합계 <span class="muted" style="font-weight:400;font-size:11px">①+② · 집합 중복 없음</span></td>` +
+    `<td class="r">${fmt(allC + bCnt)}</td><td class="r">${fmt(allR + bRoom)}</td>` +
+    `<td class="r">${Math.round((allR + bRoom) / (allC + bCnt))}실</td>` +
+    `<td colspan="2" class="muted" style="font-weight:400;font-size:11.5px">①은 성급 보유 호텔(제주 제외) · ②는 전국 등록통계 — 조사 기준이 다름</td>`;
 })();
 exNavRender(); renderEx();
 
@@ -1244,7 +1340,7 @@ function renderJobs(){
       <td class="c">${j.mod ? '<span class="muted">수정</span> ' : ''}${j.d}</td>
       <td class="c">${BASE_GU.includes(j.gu) ? '🎯 ' : ''}${j.gu}</td>
       <td>${j.gm ? '🎯 ' : ''}${j.hotel}</td>
-      <td>${j.corp} ${j.gm ? '<span class="tag t-gm">자사</span>' : `<span class="tag ${j.op === '도급' ? 't-dogub' : 't-direct'}">${j.op}</span>`}</td>
+      <td><b class="${j.gm ? 'corp-gm' : (j.op === '도급' ? 'corp-do' : 'corp-dr')}">${j.corp}</b><br>${j.gm ? '<span class="tag t-gm">자사</span>' : `<span class="tag ${j.op === '도급' ? 't-dogub' : 't-direct'}">${j.op}</span>`}</td>
       <td class="c">${j.job}</td>
       <td class="c">${j.pay}</td>
       <td class="c">${j.wf}</td>
@@ -1259,11 +1355,26 @@ let vGu = '';
    자동 문자열 매칭은 오탐(예: '엘시티 레지던스'→'시티호텔')이 있어 전부 수기 대조함.
    목록에 없는 호텔 = 레지던스·생활숙박·무등급으로 공식 객실수 자료가 없는 곳 → 미확인 처리. */
 const ROOMS = {
-  '파라다이스호텔 부산': 529, '아스티호텔 부산': 360, '그랜드조선 부산': 330,
-  '코모도호텔 부산': 311, '웨스틴조선 부산': 290, '시그니엘 부산 (호텔롯데)': 260,
-  '호텔농심': 238, '페어필드 바이 메리어트 부산 송도비치': 179,
-  '하얏트 플레이스 부산 연산': 160, '빌라쥬 드 아난티': 114,
+  '파라다이스호텔 부산': 529, 'L7 해운대 (호텔롯데)': 383, '아스티호텔 부산': 360,
+  '그랜드조선 부산': 330, '코모도호텔 부산': 311, '웨스틴조선 부산': 290,
+  '파크하얏트 부산': 269, '시그니엘 부산 (호텔롯데)': 260, '호텔농심': 238,
+  '페어필드 바이 메리어트 부산 송도비치': 179, '하얏트 플레이스 부산 연산': 160,
+  '빌라쥬 드 아난티': 114, '호텔 게스후 광안리': 55,
 };
+/* 대조 근거 — 공고상 표기 → 등급유효 명단(835개)의 원본 등록명. 검증 추적용. */
+const ROOMS_SRC = {
+  '파라다이스호텔 부산': '(주)파라다이스호텔 부산', 'L7 해운대 (호텔롯데)': '(주)호텔롯데 L7해운대',
+  '아스티호텔 부산': '아스티 호텔', '그랜드조선 부산': '(주)조선호텔앤리조트 그랜드조선 부산',
+  '코모도호텔 부산': '(주)코모도호텔', '웨스틴조선 부산': '웨스틴 조선 부산',
+  '파크하얏트 부산': '파크하얏트부산 호텔', '시그니엘 부산 (호텔롯데)': '(주)호텔롯데 시그니엘부산',
+  '호텔농심': '호텔농심', '페어필드 바이 메리어트 부산 송도비치': '페어필드 바이 메리어트 부산 송도비치호텔',
+  '하얏트 플레이스 부산 연산': '하얏트 플레이스 부산 연산', '빌라쥬 드 아난티': '아난티 앳 부산 빌라쥬',
+  '호텔 게스후 광안리': '게스후',
+};
+/* 객실 수를 합계에 넣지 못하는 사유를 두 갈래로 구분 — "미확인" 한 덩어리로 뭉뚱그리지 않기 위함.
+   ① 익명  : 공고가 호텔명을 밝히지 않음("○○구 소재 호텔") → 호텔 특정 불가
+   ② 무등급 : 호텔은 특정됐으나 레지던스·생활숙박·등급 미보유라 공식 객실수 자료 자체가 없음 */
+const RUNK = h => /소재 (호텔|시설)|인근 호텔|해수욕장 인근/.test(h) ? '익명' : '무등급';
 /* 같은 대상을 다르게 적은 표기 통일 */
 const CORP_ALIAS = { '주식회사 베스트스탭': '(주)베스트스탭' };
 const HOTEL_ALIAS = { '센텀컨벤션호텔(벡스코 비즈니스호텔)': '센텀컨벤션호텔', '광안해변로 소재 호텔(광안리)': '광안리 소재 호텔' };
@@ -1287,6 +1398,10 @@ const VENDORS = (() => {
     v.rooms = names.reduce((s, n) => s + (ROOMS[n] || 0), 0);
     v.known = names.filter(n => ROOMS[n]).length;      // 객실수 확인된 호텔 수
     v.unknown = v.hotelCnt - v.known;                  // 미확인 호텔 수
+    v.unkNames = names.filter(n => !ROOMS[n]);
+    v.unkAnon = v.unkNames.filter(n => RUNK(n) === '익명').length;    // 공고 익명
+    v.unkNog  = v.unkNames.length - v.unkAnon;                        // 무등급·레지던스
+    v.cov = v.hotelCnt ? Math.round(v.known / v.hotelCnt * 100) : 0;  // 객실수 확인율
   });
   return Object.values(m).sort((a, b) => (b.gm ? 1 : 0) - (a.gm ? 1 : 0) || b.hotelCnt - a.hotelCnt || b.rooms - a.rooms);
 })();
@@ -1296,30 +1411,62 @@ const VENDORS = (() => {
   const esc = s => s.replace(/'/g, "\\'");
   const byCnt = [...VENDORS].sort((a, b) => b.hotelCnt - a.hotelCnt || b.rooms - a.rooms).slice(0, 14);
   const maxC = Math.max(...byCnt.map(v => v.hotelCnt));
-  document.getElementById('vCntBars').innerHTML = byCnt.map(v => `
-    <div class="bar-row lnk" onclick="vendorJump('${esc(v.corp)}')">
-      <div class="bar-label">${v.gm ? '🎯 ' : ''}${v.corp}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, v.hotelCnt / maxC * 100)}%;background:${v.gm ? '#f59e0b' : '#3b82f6'}"></div></div>
-      <div class="bar-val">${v.hotelCnt}곳</div>
+  document.getElementById('vCntBars').innerHTML = byCnt.map((v, i) => `
+    <div class="bar-row lnk ${v.gm ? 'gmbar' : ''}" onclick="vendorJump('${esc(v.corp)}')">
+      <div class="rk ${v.gm ? 'gm' : (i < 3 ? 'top' : '')}">${i + 1}</div>
+      <div class="bar-label">${v.corp}${v.gm ? ' <span class="tag t-gm">자사</span>' : ''}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, v.hotelCnt / maxC * 100)}%;background:${v.gm ? 'linear-gradient(90deg,#f59e0b,#fbbf24)' : 'linear-gradient(90deg,#1d4ed8,#60a5fa)'}"></div></div>
+      <div class="bar-val"><b>${v.hotelCnt}</b>곳${v.rooms ? ` <span class="muted">${fmt(v.rooms)}실</span>` : ''}</div>
     </div>`).join('');
   document.getElementById('vCntTot').textContent =
     `${VENDORS.length}개사 · ${VENDORS.reduce((s, v) => s + v.hotelCnt, 0)}곳`;
 
   const byRoom = VENDORS.filter(v => v.rooms > 0).sort((a, b) => b.rooms - a.rooms);
   const maxR = Math.max(...byRoom.map(v => v.rooms), 1);
-  document.getElementById('vRoomBars').innerHTML = byRoom.map(v => `
-    <div class="bar-row lnk" onclick="vendorJump('${esc(v.corp)}')">
-      <div class="bar-label">${v.gm ? '🎯 ' : ''}${v.corp}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, v.rooms / maxR * 100)}%;background:${v.gm ? '#f59e0b' : '#0d9488'}"></div></div>
-      <div class="bar-val">${fmt(v.rooms)}실${v.unknown ? ` <span class="muted">+${v.unknown}곳?</span>` : ''}</div>
+  document.getElementById('vRoomBars').innerHTML = byRoom.map((v, i) => `
+    <div class="bar-row lnk ${v.gm ? 'gmbar' : ''}" onclick="vendorJump('${esc(v.corp)}')">
+      <div class="rk ${v.gm ? 'gm' : (i < 3 ? 'top' : '')}">${i + 1}</div>
+      <div class="bar-label">${v.corp}${v.gm ? ' <span class="tag t-gm">자사</span>' : ''}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, v.rooms / maxR * 100)}%;background:${v.gm ? 'linear-gradient(90deg,#f59e0b,#fbbf24)' : 'linear-gradient(90deg,#0d9488,#5eead4)'}"></div></div>
+      <div class="bar-val"><b>${fmt(v.rooms)}</b>실<br><span class="muted" style="font-size:10.5px">확인 ${v.known}/${v.hotelCnt}곳</span></div>
     </div>`).join('') +
-    `<div class="bar-row" style="margin-top:10px"><div class="bar-label muted" style="width:auto">객실수 미확인 업체</div>
+    `<div class="bar-row" style="margin-top:10px;border-top:1px dashed #334155;padding-top:8px">
+     <div class="rk" style="visibility:hidden"></div>
+     <div class="bar-label muted" style="font-weight:400">전 호텔 객실수 미집계</div>
      <div class="bar-track" style="background:none"></div>
-     <div class="bar-val muted" style="width:auto">${VENDORS.filter(v => v.rooms === 0).length}개사</div></div>`;
+     <div class="bar-val muted" style="font-weight:400">${VENDORS.filter(v => v.rooms === 0).length}개사</div></div>`;
   const totRooms = VENDORS.reduce((s, v) => s + v.rooms, 0);
-  const totUnknown = VENDORS.reduce((s, v) => s + v.unknown, 0);
+  const totKnown = VENDORS.reduce((s, v) => s + v.known, 0);
+  const totHotel = VENDORS.reduce((s, v) => s + v.hotelCnt, 0);
+  const totAnon  = VENDORS.reduce((s, v) => s + v.unkAnon, 0);
+  const totNog   = VENDORS.reduce((s, v) => s + v.unkNog, 0);
   document.getElementById('vRoomTot').innerHTML =
-    `${fmt(totRooms)}실 <span class="muted" style="font-weight:400">(확인 ${VENDORS.reduce((s, v) => s + v.known, 0)}곳 · 미확인 ${totUnknown}곳)</span>`;
+    `${fmt(totRooms)}실 <span class="muted" style="font-weight:400">— 객실수 확인 ${totKnown}/${totHotel}곳 ` +
+    `(${Math.round(totKnown / totHotel * 100)}%) · 공고 익명 ${totAnon}곳 · 무등급·레지던스 ${totNog}곳</span>`;
+})();
+/* 탭6 상단 : 실제 관측된 도급업체를 한눈에 (KPI + 업체 칩) */
+(() => {
+  const esc = s => s.replace(/'/g, "\\'");
+  const totHotel = VENDORS.reduce((a, v) => a + v.hotelCnt, 0);
+  const totRooms = VENDORS.reduce((a, v) => a + v.rooms, 0);
+  const totKnown = VENDORS.reduce((a, v) => a + v.known, 0);
+  const rank = [...VENDORS].sort((a, b) => b.hotelCnt - a.hotelCnt || b.rooms - a.rooms);
+  const gmIdx = rank.findIndex(v => v.gm);
+  const top = rank[0];
+  document.getElementById('vKpi').innerHTML = `
+    <div class="kpi accent"><div class="kpi-t">관측된 도급업체</div><div class="kpi-v">${VENDORS.length}<span>개사</span></div>
+      <div class="kpi-s">부산 741·742·7512 등록 2,637개사 중 호텔 도급이 확인된 곳</div></div>
+    <div class="kpi"><div class="kpi-t">이들이 관리(추정)하는 호텔</div><div class="kpi-v">${totHotel}<span>곳</span></div>
+      <div class="kpi-s">업체당 평균 ${(totHotel / VENDORS.length).toFixed(1)}곳</div></div>
+    <div class="kpi"><div class="kpi-t">관리 객실 (공식 확인분)</div><div class="kpi-v">${fmt(totRooms)}<span>실</span></div>
+      <div class="kpi-s">${totKnown}/${totHotel}곳 확인 (${Math.round(totKnown / totHotel * 100)}%) · 하한값</div></div>
+    <div class="kpi gm"><div class="kpi-t">🎯 지엠네트웍스 위치</div><div class="kpi-v">${gmIdx >= 0 ? gmIdx + 1 : '—'}<span>위</span></div>
+      <div class="kpi-s">${gmIdx >= 0 ? `${rank[gmIdx].hotelCnt}곳 관리 · 1위 ${top.corp} ${top.hotelCnt}곳` : '공고 미관측'}</div></div>`;
+
+  document.getElementById('vChips').innerHTML = rank.map((v, i) => `
+    <div class="vchip ${v.gm ? 'gm' : ''} ${i < 5 ? 'big' : ''}" onclick="vendorJump('${esc(v.corp)}')" title="공고 ${v.cnt}건 · ${[...v.gus].join(', ')}">
+      <span class="n">${v.hotelCnt}</span>${v.gm ? '🎯 ' : ''}${v.corp}${v.rooms ? `<span class="rm">${fmt(v.rooms)}실</span>` : ''}
+    </div>`).join('');
 })();
 /* 막대 클릭 → 아래 매핑표에서 해당 업체만 보기 */
 function vendorJump(corp){
@@ -1343,13 +1490,25 @@ function renderVendors(){
     (!q || (v.corp + Object.keys(v.hotels).join('')).toLowerCase().includes(q)));
   document.getElementById('vCnt').textContent = `${rows.length}개사 / 전체 ${VENDORS.length}개사 (공고에서 관측된 도급사)`;
   document.getElementById('vBody').innerHTML = rows.map(v => `
-    <tr class="${v.gm ? 'me' : ''}">
-      <td>${v.gm ? '🎯 ' : ''}<b>${v.corp}</b>${v.gm ? ' <span class="tag t-gm">자사</span>' : ''}</td>
-      <td>${Object.entries(v.hotels).map(([h, c]) =>
-          h + (ROOMS[h] ? ` <span class="muted">${fmt(ROOMS[h])}실</span>` : ' <span class="muted">(객실수 미확인)</span>')
+    <tr class="${v.gm ? 'me tr-gm' : ''}">
+      <td class="vcell">
+        <div class="vname">${v.gm ? '🎯 ' : ''}${v.corp}</div>
+        <div class="vsub">${v.gm ? '<span class="tag t-gm">자사</span>' : '<span class="tag t-dogub">도급</span>'}
+          <span>공고 ${v.cnt}건</span></div>
+      </td>
+      <td class="hlist">${Object.entries(v.hotels).map(([h, c]) =>
+          `<span class="hname">${h}</span> ` + (ROOMS[h]
+            ? `<span class="hrm">${fmt(ROOMS[h])}실</span>`
+            : `<span class="hunk">(${RUNK(h) === '익명' ? '공고 익명' : '무등급·레지던스'} — 객실수 미집계)</span>`)
             + (c > 1 ? ` <span class="muted">×${c}</span>` : '')).join('<br>')}</td>
-      <td class="c"><b>${v.hotelCnt}</b></td>
-      <td class="r">${v.rooms ? '<b>' + fmt(v.rooms) + '</b>실' : '<span class="muted">—</span>'}${v.unknown ? `<br><span class="muted" style="font-size:11px">미확인 ${v.unknown}곳</span>` : ''}</td>
+      <td class="c"><b style="font-size:15px">${v.hotelCnt}</b></td>
+      <td class="r">
+        ${v.rooms ? `<span class="rooms-v">${fmt(v.rooms)}</span>실` : '<span class="muted">—</span>'}
+        <div class="covbar"><i style="width:${v.cov}%"></i></div>
+        <div class="muted" style="font-size:11px">확인 ${v.known}/${v.hotelCnt}곳 · ${v.cov}%</div>
+        ${v.unkAnon ? `<div class="muted" style="font-size:10.5px">익명공고 ${v.unkAnon}곳</div>` : ''}
+        ${v.unkNog ? `<div class="muted" style="font-size:10.5px">무등급 ${v.unkNog}곳</div>` : ''}
+      </td>
       <td class="c">${[...v.gus].join(', ')}</td>
       <td class="c">${[...v.jobs].join(' · ')}</td>
       <td class="c"><b>${v.cnt}</b>건</td>
