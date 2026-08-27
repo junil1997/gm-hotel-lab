@@ -112,7 +112,46 @@
   .tbl tr.sub td { background:rgba(59,130,246,.10); font-weight:700; }
   .fy { color:#fbbf24; }
   .card.hilite { border:1px solid #1d4ed8; background:linear-gradient(180deg,#132039,#111827); }
-  .chipwrap { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px; }
+  .hidden-tab { display:none !important; }
+
+  /* 도급업체 타일 (2곳 이상 관리) */
+  .vgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(232px,1fr)); gap:10px; margin:14px 0 4px; }
+  .vtile { position:relative; display:flex; align-items:flex-start; gap:10px; padding:11px 12px;
+           background:#1a2334; border:1px solid #334155; border-radius:10px; cursor:pointer; transition:.12s; }
+  .vtile:hover { background:#233047; border-color:#60a5fa; transform:translateY(-1px); }
+  .vtile .rkb { flex:0 0 26px; height:26px; border-radius:7px; background:#1d4ed8; color:#fff;
+                font-size:12.5px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .vtile .vn { font-size:13.5px; font-weight:800; color:#f1f5f9; line-height:1.3; word-break:keep-all; }
+  .vtile .vm { margin-top:5px; font-size:11.5px; color:#94a3b8; line-height:1.5; }
+  .vtile .vm b { color:#e2e8f0; }
+  .vtile .vm .rm { color:#5eead4; font-weight:700; }
+  .vtile.gm { background:#3a2408; border-color:#f59e0b; }
+  .vtile.gm .rkb { background:#f59e0b; color:#1f1300; }
+  .vtile.gm .vn { color:#fde68a; }
+
+  /* 접이식 섹션 */
+  .foldsec { margin-top:14px; }
+  .foldhdr { width:100%; text-align:left; background:#131c2e; color:#cbd5e1; border:1px solid #334155;
+             border-radius:9px; padding:9px 13px; font-size:12.5px; font-weight:700; cursor:pointer;
+             font-family:inherit; display:flex; align-items:center; gap:8px; }
+  .foldhdr:hover { background:#1c2740; border-color:#60a5fa; }
+  .foldhdr .ar { color:#60a5fa; font-size:11px; }
+  .foldbody { margin-top:10px; }
+  .foldbody.folded { display:none; }
+  .mgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(196px,1fr)); gap:7px; }
+  .mchip { display:flex; align-items:center; gap:7px; padding:7px 10px; border-radius:8px;
+           background:#1a2334; border:1px solid #2c3a4f; cursor:pointer; font-size:12.5px; color:#cbd5e1; transition:.12s; }
+  .mchip:hover { background:#233047; border-color:#60a5fa; color:#fff; }
+  .mchip .n { background:#334155; color:#cbd5e1; border-radius:5px; padding:0 6px; font-size:11px; font-weight:800; }
+  .mchip .rm { margin-left:auto; color:#5eead4; font-size:11px; font-weight:700; }
+
+  /* 카드 접기/펼치기 버튼 */
+  .cardtog { background:#1e293b; color:#94a3b8; border:1px solid #334155; border-radius:6px;
+             width:24px; height:24px; font-size:11px; line-height:1; cursor:pointer; margin-right:9px;
+             font-family:inherit; vertical-align:middle; padding:0; }
+  .cardtog:hover { background:#2b3a52; color:#fff; border-color:#60a5fa; }
+  .card.folded > *:not(h3) { display:none; }
+  .card.folded > h3 { margin-bottom:0; }
   .vchip { display:inline-flex; align-items:center; gap:7px; padding:7px 12px; border-radius:9px;
            background:#1e293b; border:1px solid #334155; cursor:pointer; transition:.12s;
            font-size:13.5px; font-weight:700; color:#e2e8f0; }
@@ -200,7 +239,7 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.23</small></span></h1>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.24</small></span></h1>
   <div class="meta">성급·지역 : <b id="todayStamp">—</b> 기준 (등급유효 호텔 835개 · 최근 수집 2026-08-20)<br>
     등록현황 <b>2025년 말</b>(문체부) · 사업체조사 <b>2024년</b>(통계청) — 각 최신 공식판<br>
     구인공고 수집일 : <b>2026-08-24</b> (5개 사이트 · 누적 157건)</div>
@@ -209,7 +248,9 @@
 <div class="nav">
   <button class="navbtn on" data-tab="t1" onclick="go('t1',this)">📊 전국 호텔 현황</button>
   <button class="navbtn" data-tab="t2" onclick="go('t2',this)">⭐ 성급별 분석</button>
+  <!-- 숨김(2026-08-27 요청) — 되살리려면 아래 주석만 해제
   <button class="navbtn" data-tab="t3" onclick="go('t3',this)">🏢 호텔 유형 (분양형·브랜드)</button>
+  -->
   <button class="navbtn" data-tab="t6" onclick="go('t6',this)">🏭 아웃소싱 공급시장</button>
   <button class="navbtn" data-tab="t4" onclick="go('t4',this)">📋 부산 구인공고 모니터링</button>
   <button class="navbtn" data-tab="t5" onclick="go('t5',this)">⚙️ 자동화 · 데이터 연동</button>
@@ -421,7 +462,7 @@
 </div>
 
 <!-- ══════════════════ 탭3 : 호텔 유형 ══════════════════ -->
-<div class="tab" id="t3">
+<div class="tab hidden-tab" id="t3">
   <h2>호텔 유형 분석 <span class="hint">운영 구조별 분류 — 도급 영업 접근법이 달라지는 지점</span></h2>
 
   <div class="note todo">
@@ -481,8 +522,14 @@
   <div class="card hilite">
     <h3>🥇 부산 호텔 도급업체 — 실제 관측 명단 <span class="muted">채용공고에서 확인된 곳만 · 이름 클릭 → 관리 호텔·공고 원문</span></h3>
     <div class="kpi-grid" id="vKpi"></div>
-    <div class="chipwrap" id="vChips"></div>
-    <div class="src">숫자는 <b>관리(추정) 호텔 수</b>. 공고에 업체명이 드러난 건만 집계되므로 실제 활동 업체는 이보다 많을 수 있습니다.</div>
+    <div id="vMajor"></div>
+    <div class="foldsec">
+      <button class="foldhdr" id="vMinorBtn" onclick="toggleFold('vMinor', this)"></button>
+      <div id="vMinor" class="foldbody folded"></div>
+    </div>
+    <div class="src">숫자는 <b>관리(추정) 호텔 수</b>, 초록색은 <b>공식 확인된 관리 객실 수</b>.
+      공고에 업체명이 드러난 건만 집계되므로 실제 활동 업체는 이보다 많을 수 있습니다.
+      업체명은 ㈜·(주)·주식회사 표기 흔들림을 통합해 셉니다 (공고 표 원문은 그대로 보존).</div>
   </div>
 
   <div class="note">
@@ -849,7 +896,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.23 (2026-08-26) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.24 (2026-08-27) · 호텔 835개 전수 명단 내장<br>
   통계 출처 : 한국관광협회중앙회 호텔업 등급결정 현황(2026-08-20 수집 · 835개 전수) · 문화체육관광부 관광숙박업 등록현황(2025년 말) · 통계청 전국사업체조사(2024년, KOSIS) · 구인공고 : 사람인·고용24·잡코리아·알바몬·알바천국 5개 사이트 (2026-08-24 수집, 누적 157건, 전 건 원문 URL 첨부)
 </footer>
 
@@ -1375,10 +1422,24 @@ const ROOMS_SRC = {
    ① 익명  : 공고가 호텔명을 밝히지 않음("○○구 소재 호텔") → 호텔 특정 불가
    ② 무등급 : 호텔은 특정됐으나 레지던스·생활숙박·등급 미보유라 공식 객실수 자료 자체가 없음 */
 const RUNK = h => /소재 (호텔|시설)|인근 호텔|해수욕장 인근/.test(h) ? '익명' : '무등급';
-/* 같은 대상을 다르게 적은 표기 통일 */
-const CORP_ALIAS = { '주식회사 베스트스탭': '(주)베스트스탭' };
+/* 같은 대상을 다르게 적은 표기 통일.
+   공고 사이트마다 ㈜ / (주) / 주식회사 / 전각괄호（주） / 띄어쓰기가 제각각이라
+   같은 회사가 여러 개사로 잘못 세어지고 있었음 → 아래 정규화로 통합. */
+const normCorp = c => c
+  .replace(/[（]/g, '(').replace(/[）]/g, ')')   // 전각 괄호 → 반각
+  .replace(/㈜/g, '(주)')                        // ㈜ → (주)
+  .replace(/주식회사/g, '(주)')                  // 주식회사 → (주)
+  .replace(/\s+/g, '');                         // 공백 제거
+/* 정규화만으로 안 묶이는 건(철자 흔들림·지점 표기)만 수기 확인 후 등록.
+   ※ (주)프로에스콤(파크하얏트 부산)과 (주)프로에이콤(하얏트 플레이스 연산)은
+      근무 호텔이 서로 달라 동일사 근거가 없으므로 통합하지 않음. */
+const CORP_ALIAS = {
+  '(주)와이제이인터네셔널': '(주)와이제이인터내셔널',   // 둘 다 센텀프리미어호텔 공고 — 동일사
+  '(주)토요코인코리아부산역점': '(주)토요코인코리아',   // 지점 표기
+  '라마다앙코르부산역호텔': '라마다앙코르 부산역호텔',
+};
 const HOTEL_ALIAS = { '센텀컨벤션호텔(벡스코 비즈니스호텔)': '센텀컨벤션호텔', '광안해변로 소재 호텔(광안리)': '광안리 소재 호텔' };
-const canonCorp = c => CORP_ALIAS[c] || c;
+const canonCorp = c => { const k = normCorp(c); return CORP_ALIAS[k] || k; };
 const canonHotel = h => HOTEL_ALIAS[h] || h;
 
 const VENDORS = (() => {
@@ -1463,10 +1524,53 @@ const VENDORS = (() => {
     <div class="kpi gm"><div class="kpi-t">🎯 지엠네트웍스 위치</div><div class="kpi-v">${gmIdx >= 0 ? gmIdx + 1 : '—'}<span>위</span></div>
       <div class="kpi-s">${gmIdx >= 0 ? `${rank[gmIdx].hotelCnt}곳 관리 · 1위 ${top.corp} ${top.hotelCnt}곳` : '공고 미관측'}</div></div>`;
 
-  document.getElementById('vChips').innerHTML = rank.map((v, i) => `
-    <div class="vchip ${v.gm ? 'gm' : ''} ${i < 5 ? 'big' : ''}" onclick="vendorJump('${esc(v.corp)}')" title="공고 ${v.cnt}건 · ${[...v.gus].join(', ')}">
-      <span class="n">${v.hotelCnt}</span>${v.gm ? '🎯 ' : ''}${v.corp}${v.rooms ? `<span class="rm">${fmt(v.rooms)}실</span>` : ''}
-    </div>`).join('');
+  /* 2곳 이상 관리 = 주요 경쟁사 → 타일로 크게 / 1곳 = 롱테일 → 접이식 */
+  const major = rank.filter(v => v.hotelCnt >= 2 || v.gm);
+  const minor = rank.filter(v => !(v.hotelCnt >= 2 || v.gm));
+
+  document.getElementById('vMajor').innerHTML =
+    `<div class="foldhdr" style="cursor:default;background:none;border:none;padding:4px 0;color:#93c5fd">
+       <span>■ 주요 경쟁사 — 2곳 이상 관리 <b>${major.length}개사</b></span></div>` +
+    `<div class="vgrid">` + major.map((v, i) => `
+      <div class="vtile ${v.gm ? 'gm' : ''}" onclick="vendorJump('${esc(v.corp)}')">
+        <div class="rkb">${rank.indexOf(v) + 1}</div>
+        <div>
+          <div class="vn">${v.gm ? '🎯 ' : ''}${v.corp}</div>
+          <div class="vm"><b>${v.hotelCnt}곳</b> 관리 ·
+            ${v.rooms ? `<span class="rm">${fmt(v.rooms)}실</span>` : '<span class="muted">객실수 미확인</span>'}
+            <br>${[...v.gus].slice(0, 3).join(' · ')}${v.gus.size > 3 ? ` 외 ${v.gus.size - 3}` : ''} · 공고 ${v.cnt}건</div>
+        </div>
+      </div>`).join('') + `</div>`;
+
+  document.getElementById('vMinor').innerHTML =
+    `<div class="mgrid">` + minor.map(v => `
+      <div class="mchip" onclick="vendorJump('${esc(v.corp)}')" title="공고 ${v.cnt}건 · ${[...v.gus].join(', ')}">
+        <span class="n">${v.hotelCnt}</span>${v.corp}${v.rooms ? `<span class="rm">${fmt(v.rooms)}실</span>` : ''}
+      </div>`).join('') + `</div>`;
+  document.getElementById('vMinorBtn').innerHTML =
+    `<span class="ar">▸</span> 단일 호텔 관리 <b>${minor.length}개사</b> <span class="muted">— 펼쳐 보기</span>`;
+})();
+
+/* 접이식 섹션 토글 */
+function toggleFold(id, btn){
+  const folded = document.getElementById(id).classList.toggle('folded');
+  const ar = btn.querySelector('.ar'); if (ar) ar.textContent = folded ? '▸' : '▾';
+  const hint = btn.querySelector('.muted'); if (hint) hint.textContent = folded ? '— 펼쳐 보기' : '— 접기';
+}
+
+/* 카드 접기/펼치기 — 모든 카드 제목 왼쪽에 버튼 자동 부착 */
+function toggleCard(btn){
+  const folded = btn.closest('.card').classList.toggle('folded');
+  btn.textContent = folded ? '▸' : '▾';
+  btn.title = folded ? '펼치기' : '접기';
+}
+(() => {
+  document.querySelectorAll('.card > h3').forEach(h => {
+    const b = document.createElement('button');
+    b.className = 'cardtog'; b.textContent = '▾'; b.title = '접기';
+    b.setAttribute('onclick', 'toggleCard(this)');
+    h.insertBefore(b, h.firstChild);
+  });
 })();
 /* 막대 클릭 → 아래 매핑표에서 해당 업체만 보기 */
 function vendorJump(corp){
