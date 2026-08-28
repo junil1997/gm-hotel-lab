@@ -51,5 +51,6 @@ jobs:
             echo "변경 없음 — 커밋 생략"
           else
             git commit -m "주간 수집 후보 $(TZ=Asia/Seoul date +%Y-%m-%d) ($(node -p "require('./candidates.json').newCount")건)"
+            git pull --rebase origin main   # 실행 중 다른 푸시가 있어도 non-fast-forward로 죽지 않게
             git push
           fi
