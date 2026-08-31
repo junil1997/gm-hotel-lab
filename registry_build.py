@@ -213,6 +213,80 @@ for h in A_DATA['jobHotels']:
         job_map[h] = tgt['mn']
 print(f'구인공고 호텔 {len(A_DATA["jobHotels"])}종 중 원장 연결 {len(job_map)}종 / 시설 {len(job_mns)}곳')
 
+
+# ---- 6.5 운영·브랜드 구분 (전국 호텔 현황 탭용) ----
+#  원장에는 '분양형' 필드가 없다(건물소유구분명은 자가/임대뿐) ->
+#  분양 여부는 단정하지 않고, 사업장명 브랜드 매칭 + 업태로만 구분한다.
+BRAND_RULES = [
+    (r'조선호텔|그랜드조선|웨스틴조선|조선팰리스|그래비티', '조선', 'K'),
+    (r'메리어트|Marriott|페어필드|코트야드|목시|MOXY|웨스틴|쉐라톤|포포인츠|메리디앙', '메리어트 계열', 'G'),
+    (r'힐튼|Hilton|콘래드', '힐튼', 'G'),
+    (r'하얏트|Hyatt', '하얏트', 'G'),
+    (r'이비스|노보텔|머큐어|소피텔|풀만|아코르', '아코르 계열', 'G'),
+    (r'홀리데이인|홀리데이 인|인터컨티넨탈|인디고', 'IHG 계열', 'G'),
+    (r'라마다|Ramada|윈덤|Wyndham|하워드존슨|데이즈호텔', '윈덤 계열', 'G'),
+    (r'반얀트리', '반얀트리', 'G'),
+    (r'베스트웨스턴', '베스트웨스턴', 'G'),
+    (r'오크우드|Oakwood', '오크우드', 'G'),
+    (r'이스틴|EASTIN', '이스틴', 'G'),
+    (r'롯데호텔|롯데시티|시그니엘|L7|롯데리조트', '롯데', 'K'),
+    (r'신라스테이|신라호텔|신라모노그램', '신라', 'K'),
+
+    (r'신세계', '신세계', 'K'),
+    (r'켄싱턴', '켄싱턴', 'K'),
+    (r'소노문|소노캄|소노벨|소노펠리체|대명리조트|대명콘도', '소노(대명)', 'K'),
+    (r'아난티', '아난티', 'K'),
+    (r'토요코인', '토요코인', 'K'),
+    (r'글래드|GLAD', '글래드', 'K'),
+    (r'스카이파크', '스카이파크', 'K'),
+    (r'베니키아', '베니키아', 'K'),
+    (r'라한호텔|라한셀렉트', '라한', 'K'),
+    (r'브라운도트', '브라운도트', 'F'),
+    (r'하운드', '하운드', 'F'),
+    (r'넘버25|No[.]?25', '넘버25', 'F'),
+    (r'야자|YAJA', '야자', 'F'),
+    (r'어반스테이', '어반스테이', 'F'),
+]
+_BRAND_C = [(re.compile(p_, re.I), lb, tier) for p_, lb, tier in BRAND_RULES]
+
+def classify(r):
+    for pat, lb, tier in _BRAND_C:
+        if pat.search(r['name']):
+            return tier, lb
+    if r['btype'] == '숙박업(생활)':
+        return 'R', ''
+    if r['btype'] == '휴양콘도미니엄업':
+        return 'C', ''
+    return 'I', ''
+
+CATS = [
+    ('G', '글로벌 체인'), ('K', '국내 체인'), ('F', '국내 프랜차이즈'),
+    ('R', '생활숙박·레지던스 (비체인)'), ('C', '휴양콘도 (비체인)'), ('I', '독립 관광·일반호텔'),
+]
+cls_sum = {k: {'label': lb, 'cnt': 0, 'rooms': 0, 'b_cnt': 0, 'b_rooms': 0, 'brands': {}} for k, lb in CATS}
+for r in REG:
+    if r['btype'] not in TARGET_BTYPES:
+        continue
+    tier, lb = classify(r)
+    c = cls_sum[tier]
+    c['cnt'] += 1
+    c['rooms'] += r['rt']
+    if r['region'] == '부산':
+        c['b_cnt'] += 1
+        c['b_rooms'] += r['rt']
+    if lb:
+        b = c['brands'].setdefault(lb, [0, 0])
+        b[0] += 1
+        b[1] += r['rt']
+REG_CLASS = []
+for k, lb in CATS:
+    c = cls_sum[k]
+    top = sorted(c['brands'].items(), key=lambda x: -x[1][0])[:8]
+    REG_CLASS.append({'key': k, 'label': lb, 'cnt': c['cnt'], 'rooms': c['rooms'],
+                      'b_cnt': c['b_cnt'], 'b_rooms': c['b_rooms'],
+                      'top': [[n_, v[0], v[1]] for n_, v in top]})
+print('운영·브랜드 구분:', json.dumps([[c['label'], c['cnt'], c['rooms']] for c in REG_CLASS], ensure_ascii=False))
+
 # ── 6. 출력 데이터 생성 ────────────────────────────────────
 BT = ['관광호텔', '일반호텔', '숙박업(생활)', '휴양콘도미니엄업', '숙박업 기타', '여관업', '여인숙업']
 bti = {b: i for i, b in enumerate(BT)}
@@ -247,6 +321,7 @@ block = ('/*==REGISTRY_DATA_START==*/\n'
          f'const XM = {json.dumps(xm, ensure_ascii=False)};\n'
          f'const XM_SUM = {json.dumps(xsum, ensure_ascii=False)};\n'
          f'const JOB_REG_MAP = {json.dumps(job_map, ensure_ascii=False)};\n'
+         f'const REG_CLASS = {json.dumps(REG_CLASS, ensure_ascii=False)};\n'
          '/*==REGISTRY_DATA_END==*/')
 pat = re.compile(r'/\*==REGISTRY_DATA_START==\*/.*?/\*==REGISTRY_DATA_END==\*/', re.S)
 if pat.search(html):
