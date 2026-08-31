@@ -324,8 +324,8 @@ for r in REG:
     if r['btype'] not in TARGET_BTYPES or r['mn'] in used:
         continue
     tier_x, lb_x = classify(r)
-    keep = (r['region'] == '부산') or r['rt'] >= 30 or tier_x in ('G', 'K', 'F')
-    if not keep:
+    # 100객실 이하 제외 (2026-08-31 지시 — 소형 시설은 도급 영업 의미 없음)
+    if r['rt'] <= 100:
         continue
     REGX.append([r['name'], r['region'], r['district'], bti_x[r['btype']], r['rt'],
                  mn2job.get(r['mn'], ''), r['operator'] if r['operator'] not in ('', '-') else '',
