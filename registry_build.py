@@ -328,7 +328,8 @@ for r in REG:
     if not keep:
         continue
     REGX.append([r['name'], r['region'], r['district'], bti_x[r['btype']], r['rt'],
-                 mn2job.get(r['mn'], ''), r['operator'] if r['operator'] not in ('', '-') else ''])
+                 mn2job.get(r['mn'], ''), r['operator'] if r['operator'] not in ('', '-') else '',
+                 r['owner_type']])
 REGX.sort(key=lambda x: -x[4])
 print(f'탐색기 확장(REGX): {len(REGX)}개 시설 (부산 {sum(1 for x in REGX if x[1] == "부산")})')
 
