@@ -312,6 +312,27 @@ json.dump(regb, io.open(os.path.join(BASE, 'data', 'registry_busan.json'), 'w', 
 json.dump(summary, io.open(os.path.join(BASE, 'data', 'registry_summary.json'), 'w', encoding='utf-8'), ensure_ascii=False)
 json.dump({'xm': xm, 'sum': xsum}, io.open(os.path.join(BASE, 'data', 'xmatch.json'), 'w', encoding='utf-8'), ensure_ascii=False)
 
+# ---- 6.6 탐색기 확장 (REGX) : 등급DB에 없는 원장 타깃시설 ----
+#  전국은 30실 이상 또는 브랜드 매칭 시설만, 부산은 타깃업태 전부.
+#  A와 매칭된 시설은 탐색기에 이미 있으므로 제외(중복 방지).
+mn2job = {}
+for jh, mn_ in job_map.items():
+    mn2job.setdefault(mn_, jh)
+bti_x = {'관광호텔': 0, '일반호텔': 1, '숙박업(생활)': 2, '휴양콘도미니엄업': 3}
+REGX = []
+for r in REG:
+    if r['btype'] not in TARGET_BTYPES or r['mn'] in used:
+        continue
+    tier_x, lb_x = classify(r)
+    keep = (r['region'] == '부산') or r['rt'] >= 30 or tier_x in ('G', 'K', 'F')
+    if not keep:
+        continue
+    REGX.append([r['name'], r['region'], r['district'], bti_x[r['btype']], r['rt'],
+                 mn2job.get(r['mn'], ''), r['operator'] if r['operator'] not in ('', '-') else ''])
+REGX.sort(key=lambda x: -x[4])
+print(f'탐색기 확장(REGX): {len(REGX)}개 시설 (부산 {sum(1 for x in REGX if x[1] == "부산")})')
+
+
 # ── 7. index.html 데이터 블록 주입 ─────────────────────────
 block = ('/*==REGISTRY_DATA_START==*/\n'
          '/* Dataset B — 숙박업 인허가 원장 (숙박업 리스트_260220.xlsx · registry_build.py 생성).\n'
@@ -322,6 +343,7 @@ block = ('/*==REGISTRY_DATA_START==*/\n'
          f'const XM_SUM = {json.dumps(xsum, ensure_ascii=False)};\n'
          f'const JOB_REG_MAP = {json.dumps(job_map, ensure_ascii=False)};\n'
          f'const REG_CLASS = {json.dumps(REG_CLASS, ensure_ascii=False)};\n'
+         f'const REGX = {json.dumps(REGX, ensure_ascii=False)};\n'
          '/*==REGISTRY_DATA_END==*/')
 pat = re.compile(r'/\*==REGISTRY_DATA_START==\*/.*?/\*==REGISTRY_DATA_END==\*/', re.S)
 if pat.search(html):
