@@ -19,7 +19,7 @@ const enc = encodeURIComponent;
 /** 수집 대상: 사이트 × 검색 키워드 */
 const TARGETS = [
   // ── 고용24 (부산 지역필터 region=26000) — 정부 원문 URL 확보 가능
-  ...['룸메이드', '하우스맨', '인스펙터', '하우스키핑', '객실정비', '호텔 시설', '호텔 미화', '영선'].map(kw => ({
+  ...['룸메이드', '하우스맨', '인스펙터', '하우스키핑', '객실정비', '호텔 시설', '호텔 미화', '영선', '숙박서비스종사원', '숙박시설 서비스원'].map(kw => ({
     site: '고용24', kw,
     url: `https://www.work24.go.kr/wk/a/b/1200/retriveDtlEmpSrchList.do?srcKeyword=${enc(kw)}` +
          `&region=26000&codeDepth1Info=26000&codeDepth2Info=26000&resultCnt=50` +

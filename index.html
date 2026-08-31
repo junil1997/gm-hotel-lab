@@ -252,8 +252,8 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.36</small></span></h1>
-  <div class="meta">구인공고 수집일 : <b>2026-08-19 ~ 매주 금요일 자동수집</b><span id="todayStamp" style="display:none"></span></div>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.37</small></span></h1>
+  <div class="meta">구인공고 수집일 : <b>2026-08-28</b> · 매주 금요일 자동수집<span id="todayStamp" style="display:none"></span></div>
 </header>
 
 <div class="nav">
@@ -265,6 +265,7 @@
   <button class="navbtn" data-tab="t6" onclick="go('t6',this)">🏭 아웃소싱 공급시장</button>
   <button class="navbtn" data-tab="t7" onclick="go('t7',this)">🗂️ 전국 숙박업 명단</button>
   <button class="navbtn" data-tab="t4" onclick="go('t4',this)">📋 부산 구인공고 모니터링</button>
+  <button class="navbtn" data-tab="t8" onclick="go('t8',this)">📈 시장조사 현황</button>
   <button class="navbtn" data-tab="t5" onclick="go('t5',this)">⚙️ 자동화 · 데이터 연동</button>
 </div>
 
@@ -787,6 +788,40 @@
   </div>
 </div>
 
+<!-- ══════════════════ 탭8 : 시장조사 현황 ══════════════════ -->
+<div class="tab" id="t8">
+  <h2>시장조사 현황 <span class="hint">여태까지 수집한 구인공고를 호텔별로 모아 직종별 급여를 한 표로 — 급여 미기재·면접 후 결정은 공란</span></h2>
+
+  <div class="kpi-grid" id="mkKpi"></div>
+
+  <div class="card">
+    <h3>호텔별 직종·급여 매트릭스 <span class="muted">급여는 해당 직종의 최신 공고 기준 · 셀 클릭 → 그 호텔 공고</span></h3>
+    <div class="searchbar">
+      <select id="mkOp" onchange="renderMkt()">
+        <option value="">전체</option><option value="도급">도급 운영만</option><option value="직영">자사운영만</option>
+      </select>
+      <input id="mkQ" placeholder="호텔명 · 도급업체 검색…" oninput="renderMkt()" style="min-width:220px">
+      <span class="cnt" id="mkCnt"></span>
+    </div>
+    <div class="scrollx" style="max-height:75vh">
+      <table class="tbl vmap" style="min-width:1080px">
+        <colgroup>
+          <col style="width:190px"><col style="width:76px"><col style="width:58px"><col style="width:58px"><col style="width:150px">
+          <col><col><col><col><col><col>
+        </colgroup>
+        <thead><tr>
+          <th>호텔</th><th>위치</th><th>등급</th><th>객실</th><th>도급업체</th>
+          <th>룸메이드</th><th>하우스맨</th><th>인스펙터</th><th>관리자<br><span style="font-weight:400;font-size:9.5px">소장·치프</span></th><th>시설·영선</th><th>미화</th>
+        </tr></thead>
+        <tbody id="mkBody"></tbody>
+      </table>
+    </div>
+    <div class="src">누적 수집 공고 전체를 호텔 단위로 집계. 급여는 공고 표기 그대로(최신 공고 우선)이며
+      "면접 후 결정"·미기재는 공란입니다. 괄호 안 날짜는 그 급여가 실린 공고의 등록일.
+      등급·객실수는 성급 명단 기준(무성급 시설은 인허가 명단 객실수).</div>
+  </div>
+</div>
+
 <!-- ══════════════════ 탭4 : 부산 구인공고 ══════════════════ -->
 <div class="tab" id="t4">
   <h2>부산 호텔 구인공고 모니터링 <span class="hint">룸메이드 · 하우스맨 · 인스펙터 · 관리자 · 시설 · 미화 · 영선</span></h2>
@@ -1009,7 +1044,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.36 (2026-08-31) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.37 (2026-08-31) · 호텔 835개 전수 명단 내장<br>
   통계 출처 : 한국관광협회중앙회 호텔업 등급결정 현황(2026-08-20 수집 · 835개 전수) · 문화체육관광부 관광숙박업 등록현황(2025년 말) · 통계청 전국사업체조사(2024년, KOSIS) · 구인공고 : 사람인·고용24·잡코리아·알바몬·알바천국 5개 사이트 (2026-08-24 수집, 누적 226건, 전 건 원문 URL 첨부)
 </footer>
 
@@ -2337,5 +2372,75 @@ renderOps();
   };
   window.renderRegb();
 })();
+
+/* ─────────── 탭8 : 시장조사 현황 (호텔 × 직종 급여 매트릭스) ─────────── */
+const MKT = (() => {
+  /* A 명단 역매핑: 공고 호텔명 → [성급, 객실수] */
+  const aBy = {};
+  HOTELS.forEach(h => { aBy[canonHotel(OPS_MAP[h[0]] || h[0])] = h; });
+  /* 무성급 시설 객실수 (REGX의 공고 연결분) */
+  const xBy = {};
+  if (typeof REGX === 'object') REGX.forEach(x => { if (x[5]) xBy[canonHotel(x[5])] = x; });
+  const JCOL = { '룸메이드': 0, '하우스맨': 1, '인스펙터': 2, '하우스키핑 관리자': 3, '시설': 4, '영선': 4, '미화': 5 };
+  const m = {};
+  JOBS.forEach(j => {
+    const k = canonHotel(j.hotel);
+    const o = m[k] = m[k] || { hotel: j.hotel, gu: j.gu, corps: new Set(), gm: false, dogub: 0, direct: 0, n: 0, pays: [null, null, null, null, null, null] };
+    o.n++;
+    if (j.gm) o.gm = true;
+    if (j.op === '도급') { o.dogub++; o.corps.add(canonCorp(j.corp)); } else if (j.op === '직영') o.direct++;
+    const c = JCOL[j.job];
+    if (c === undefined) return;
+    const cur = o.pays[c];
+    const hasPay = j.pay && j.pay !== '—' && !/면접/.test(j.pay);
+    /* 급여 있는 최신 공고 우선, 없으면 건수만 누적 */
+    if (!cur) o.pays[c] = { pay: hasPay ? j.pay : '', d: j.d, cnt: 1 };
+    else {
+      cur.cnt++;
+      if (hasPay && (!cur.pay || (j.d !== '—' && j.d > cur.d))) { cur.pay = j.pay; cur.d = j.d; }
+    }
+  });
+  return Object.entries(m).map(([k, o]) => {
+    const a = aBy[k], x = xBy[k];
+    return { ...o, key: k,
+      star: a ? a[1] + '성' : (x ? '무성급' : ''),
+      rooms: a ? a[3] : (x ? x[4] : 0),
+      corpsArr: [...o.corps] };
+  }).sort((p, q) => q.n - p.n || q.rooms - p.rooms);
+})();
+function renderMkt(){
+  const q = (document.getElementById('mkQ').value || '').trim().toLowerCase();
+  const op = document.getElementById('mkOp').value;
+  const rows = MKT.filter(r =>
+    (!op || (op === '도급' ? r.dogub > 0 : r.dogub === 0 && r.direct > 0)) &&
+    (!q || (r.hotel + r.corpsArr.join('')).toLowerCase().includes(q)));
+  document.getElementById('mkCnt').textContent = `${rows.length}개 호텔 / 전체 ${MKT.length}개 · 공고 ${JOBS.length}건 누적`;
+  const cell = (r, i) => {
+    const p = r.pays[i];
+    if (!p) return '<td class="c"></td>';
+    const payTxt = p.pay ? `<b style="color:#5eead4;font-size:12px">${p.pay}</b>` : '<span class="muted" style="font-size:10.5px">급여 공란</span>';
+    return `<td class="c exlnk" onclick="exToJobsB('${r.hotel.replace(/'/g, "\\'")}')" title="공고 보기">
+      ${payTxt}<br><span class="muted" style="font-size:10px">${p.cnt}건${p.d !== '—' ? ' · ' + p.d : ''}</span></td>`;
+  };
+  document.getElementById('mkBody').innerHTML = rows.map(r => `
+    <tr class="${r.gm ? 'me' : ''}">
+      <td><b class="${r.gm ? 'corp-gm' : ''}">${r.hotel}</b><br><span class="muted" style="font-size:10px">공고 ${r.n}건</span></td>
+      <td class="c" style="font-size:12px">${r.gu}</td>
+      <td class="c">${r.star ? `<span class="tag ${r.star === '무성급' ? 't-unk' : (gradeCls[r.star[0]] || 't-star1')}" style="font-size:10px">${r.star}</span>` : ''}</td>
+      <td class="r">${r.rooms ? fmt(r.rooms) : ''}</td>
+      <td style="font-size:11.5px">${r.dogub > 0
+        ? (r.gm ? '🎯 ' : '') + `<b style="color:${r.gm ? '#fcd34d' : '#c4b5fd'}">${r.corpsArr.join(', ')}</b>`
+        : (r.direct > 0 ? '<span class="tag t-direct">자사운영</span>' : '')}</td>
+      ${[0, 1, 2, 3, 4, 5].map(i => cell(r, i)).join('')}
+    </tr>`).join('');
+  /* KPI */
+  const payN = MKT.reduce((s2, r) => s2 + r.pays.filter(p => p && p.pay).length, 0);
+  document.getElementById('mkKpi').innerHTML = `
+    <div class="kpi accent"><div class="kpi-t">조사된 호텔·시설</div><div class="kpi-v">${MKT.length}<span>곳</span></div><div class="kpi-s">채용공고가 관측된 사업장</div></div>
+    <div class="kpi"><div class="kpi-t">누적 수집 공고</div><div class="kpi-v">${JOBS.length}<span>건</span></div><div class="kpi-s">5개 사이트 · 전 건 원문 URL</div></div>
+    <div class="kpi"><div class="kpi-t">급여 확인</div><div class="kpi-v">${payN}<span>칸</span></div><div class="kpi-s">호텔×직종 조합 기준 · 미기재는 공란</div></div>
+    <div class="kpi gm"><div class="kpi-t">🎯 도급 운영 확인</div><div class="kpi-v">${MKT.filter(r => r.dogub > 0).length}<span>곳</span></div><div class="kpi-s">자사운영(직영) ${MKT.filter(r => r.dogub === 0 && r.direct > 0).length}곳</div></div>`;
+}
+renderMkt();
 </script>
 </body></html>
