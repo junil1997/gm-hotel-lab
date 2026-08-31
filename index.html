@@ -252,7 +252,7 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.38</small></span></h1>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.39</small></span></h1>
   <div class="meta">구인공고 수집일 : <b>2026-08-28</b> · 매주 금요일 자동수집<span id="todayStamp" style="display:none"></span></div>
 </header>
 
@@ -414,6 +414,8 @@
         <option value="old">개관일 오래된 순</option>
         <option value="name">호텔명 가나다순</option>
       </select>
+      <label class="gubtn" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer">
+        <input type="checkbox" id="exMin100" onchange="exMin = this.checked ? 100 : 0; renderEx()" style="accent-color:#3b82f6">100실 이상만</label>
       <input id="exSearch" placeholder="호텔명 검색…" oninput="renderEx()">
       <span class="cnt" id="exCnt"></span>
     </div>
@@ -1044,7 +1046,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.38 (2026-08-31) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.39 (2026-08-31) · 호텔 835개 전수 명단 내장<br>
   통계 출처 : 한국관광협회중앙회 호텔업 등급결정 현황(2026-08-20 수집 · 835개 전수) · 문화체육관광부 관광숙박업 등록현황(2025년 말) · 통계청 전국사업체조사(2024년, KOSIS) · 구인공고 : 사람인·고용24·잡코리아·알바몬·알바천국 5개 사이트 (2026-08-24 수집, 누적 226건, 전 건 원문 URL 첨부)
 </footer>
 
@@ -1398,7 +1400,15 @@ bars('starCntBars', STARS, 'cnt', '개', r => r.color);
 bars('starRoomBars', STARS, 'rooms', '실', r => r.color);
 
 /* ─────────── 호텔 명단 탐색기 (성급 × 지역 × 업종 필터 + 하단 고정 합계) ─────────── */
-let exGrades = new Set(), exArea = '부산', exGu = '';   // 성급·업태 복수선택 · 기본 부산
+let exGrades = new Set(), exArea = '부산', exGu = '', exMin = 0;   // 성급·업태 복수선택 · 기본 부산
+/* 첫 화면 ③ 카드 클릭 → 부산권 100실 이상 명단 */
+function gmTargetView(){
+  exArea = '부산'; exGu = ''; exGrades.clear(); exMin = 100;
+  const cb = document.getElementById('exMin100'); if (cb) cb.checked = true;
+  document.getElementById('exSearch').value = ''; document.getElementById('exType').value = '';
+  go('t2', t2btn); exNavRender(); renderEx();
+  document.getElementById('explorer').scrollIntoView({ behavior: 'smooth' });
+}
 const exSelB = () => [...exGrades].filter(g => g.startsWith('B')).map(g => +g.slice(1));
 const exSelG = () => [...exGrades].filter(g => !g.startsWith('B'));
 function exToggle(g){
@@ -1412,9 +1422,9 @@ function exNavRender(){
   /* 괄호 숫자는 현재 다른 필터가 적용된 상태의 개수 — 예: 3성 선택 시 지역 버튼은 "부산 (18)"처럼 3성 기준으로 표시 */
   const q = (document.getElementById('exSearch').value || '').trim().toLowerCase();
   const tp = document.getElementById('exType').value;
-  const base = h => (!tp || String(h[4]) === tp) && (!q || h[0].toLowerCase().includes(q));
+  const base = h => (!tp || String(h[4]) === tp) && (!q || h[0].toLowerCase().includes(q)) && (!exMin || h[3] >= exMin);
   const RX = (typeof REGX === 'object' && REGX) ? REGX : [];
-  const baseB = x => !q || x[0].toLowerCase().includes(q);
+  const baseB = x => (!q || x[0].toLowerCase().includes(q)) && (!exMin || x[4] >= exMin);
   const selG = exSelG(), selB = exSelB();
   const showA = !exGrades.size || selG.length > 0;      // 성급 호텔 표시 여부
   const showB = !exGrades.size || selB.length > 0;      // 무성급 시설 표시 여부
@@ -1475,6 +1485,7 @@ function renderEx(){
     (!exArea || EX_AREA[h[2]] === exArea) &&
     (!exGu || (h[7] || '미상') === exGu) &&
     (!tp || String(h[4]) === tp) &&
+    (!exMin || h[3] >= exMin) &&
     (!q || h[0].toLowerCase().includes(q)));
   /* 인허가 명단 추가시설 — 업종(A전용) 필터가 걸리면 제외, 업태(B) 선택 시 그 업태만 */
   let brows = [];
@@ -1483,6 +1494,7 @@ function renderEx(){
       (!selB2.length || selB2.includes(x[3])) &&
       (!exArea || x[1] === exArea) &&
       (!exGu || x[2] === exGu) &&
+      (!exMin || x[4] >= exMin) &&
       (!q || x[0].toLowerCase().includes(q)));
   }
   if (sort === 'rooms') { rows.sort((a, b) => b[3] - a[3]); brows.sort((a, b) => b[4] - a[4]); }
@@ -2295,8 +2307,8 @@ renderOps();
   if (seg) seg.innerHTML = `
     <div class="kpi accent"><div class="kpi-t">① 등급시장 — 등급유효 호텔</div><div class="kpi-v">${fmt(HOTELS.length)}<span>개</span></div><div class="kpi-s">성급 보유 · 제주 제외 (전국 전체 호텔 수 아님)</div></div>
     <div class="kpi"><div class="kpi-t">② 숙박업 전체시장 — 영업 중 사업장</div><div class="kpi-v">${fmt(REG_SUMMARY.total)}<span>개</span></div><div class="kpi-s">구청 허가 기준 · 여관/여인숙 포함</div></div>
-    <div class="kpi"><div class="kpi-t">③ GM 분석대상 — 부산권 100실 이상 호텔</div><div class="kpi-v">${gmA + gmB}<span>개</span></div><div class="kpi-s">성급 ${gmA} + 무성급(생활숙박·콘도 포함) ${gmB}</div></div>
-    <div class="kpi gm"><div class="kpi-t">④ 도급시장 관측 — 도급 확인 시설</div><div class="kpi-v">${dogubFacilities}<span>사업장</span></div><div class="kpi-s">채용공고 근거 (부산)</div></div>`;
+    <div class="kpi clickable" onclick="gmTargetView()" style="cursor:pointer"><div class="kpi-t">③ GM 분석대상 — 부산권 100실 이상 호텔</div><div class="kpi-v">${gmA + gmB}<span>개</span></div><div class="kpi-s">성급 ${gmA} + 무성급 ${gmB} · <b style="color:#93c5fd">클릭 → 명단</b></div></div>
+    <div class="kpi gm clickable" onclick="go('t6', document.querySelector('[data-tab='t6']')); setTimeout(() => document.getElementById('vendorMap').scrollIntoView({behavior:'smooth'}), 60);" style="cursor:pointer"><div class="kpi-t">④ 도급시장 관측 — 도급 확인 시설</div><div class="kpi-v">${dogubFacilities}<span>사업장</span></div><div class="kpi-s">채용공고 근거 (부산) · <b style="color:#fcd34d">클릭 → 업체별 명단</b></div></div>`;
 
   /* 탭7 KPI */
   document.getElementById('regKpi').innerHTML = `
