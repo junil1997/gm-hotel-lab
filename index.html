@@ -7,6 +7,19 @@
   * { box-sizing:border-box; }
   body { font-family:'Malgun Gothic','맑은 고딕',sans-serif; margin:0; background:#0f172a; color:#e2e8f0; }
   .wrap { max-width:1280px; margin:0 auto; padding:0 22px 60px; }
+  /* 좌측 사이드바 메뉴 (2026-09-08) — 980px 이하에서는 기존 상단 가로 메뉴로 복귀 */
+  @media (min-width: 981px) {
+    body { padding-left:198px; }
+    .nav { position:fixed; left:0; top:0; bottom:0; width:198px; box-sizing:border-box;
+           flex-direction:column; align-items:stretch; gap:5px; overflow-y:auto;
+           padding:16px 12px; margin:0; border-bottom:none; border-right:2px solid #1e293b;
+           background:#0b1220; }
+    .nav::before { content:'GM HOTEL LAB'; display:block; color:#3b82f6; font-weight:800;
+                   font-size:13px; letter-spacing:1px; padding:2px 6px 12px;
+                   border-bottom:1px solid #1e293b; margin-bottom:8px; }
+    .navbtn { text-align:left; padding:11px 12px; font-size:13.5px; border-radius:8px; }
+    .fullbleed { width:100%; margin-left:0; padding:0; }
+  }
   header { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:24px 0 14px; }
   h1 { font-size:23px; margin:0; color:#fff; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
   /* ㈜지엠네트웍스 CI 심볼 — 원본 벡터.
@@ -252,8 +265,8 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.41</small></span></h1>
-  <div class="meta">구인공고 수집일 : <b>2026-08-28</b> · 매주 금요일 자동수집<span id="todayStamp" style="display:none"></span></div>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.42</small></span></h1>
+  <div class="meta">구인공고 수집일 : <b>2026-09-08</b> · 매주 금요일 자동수집<span id="todayStamp" style="display:none"></span></div>
 </header>
 
 <div class="nav">
@@ -832,7 +845,7 @@
     <div class="sb-row"><span class="sb-k">🔄 방식</span><span>누적 수집 · 최신 등록순 — 새 공고가 위에 쌓이고 기존 공고는 삭제하지 않습니다</span></div>
     <div class="sb-row"><span class="sb-k">수집처</span><span><b>5개 사이트</b> · 사람인 · 고용24 · 잡코리아 · 알바몬 · 알바천국</span></div>
     <div class="sb-row"><span class="sb-k">직종</span><span>룸메이드 · 하우스맨 · 인스펙터 · 하우스키핑 관리자 · 소장/센터장 · 시설 · 미화 · 영선</span></div>
-    <div class="sb-row"><span class="sb-k">이력</span><span>1–4차 08-19~24 <b>157건</b> → 5차 08-28 자동수집 <b>+69</b> → 6차 08-28 요청수집 +10 · 등록일 60건 보정 → <b style="color:#fcd34d">7차 09-04 주간 자동수집 +12</b> = <b>누적 248건</b></span></div>
+    <div class="sb-row"><span class="sb-k">이력</span><span>1–6차 08-19~28 <b>236건</b> → 7차 09-04 자동수집 <b>+12</b> → <b style="color:#fcd34d">8차 09-08 요청수집 +10</b> = <b>누적 258건</b></span></div>
     <div class="sb-foot">✅ 전 건 실제 공고 · 원문 URL 첨부</div>
   </div>
 
@@ -1046,7 +1059,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.41 (2026-09-04) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.42 (2026-09-08) · 호텔 835개 전수 명단 내장<br>
   통계 출처<br>
   한국관광협회중앙회 호텔업 등급결정 현황 (2026-08-20 자료 기준 · 835개 전수)<br>
   문화체육관광부 관광숙박업 등록현황 (2025년 말)<br>
@@ -1103,14 +1116,14 @@ const STARS = [
    필드: no 자동 / d 등록일 / mod 수정일여부 / gu 지역 / hotel 호텔명 / corp 업체명 /
    op 도급|직영 / job 직종 / pay 급여 / wf 복리후생 / etc 특이사항 / src 사람인|고용24 / gm 자사 / id rec_idx */
 const JOBS = [
- { d:'26/08/29', nw:1, gu:'해운대구', hotel:'씨클라우드 호텔 해운대', corp:'모스원㈜', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'동일 공고를 08/24·27·29 반복 재게시 — 최신 1건만 등재', src:'알바몬', u:'https://www.albamon.com/jobs/detail/118844836' },
+ { d:'26/08/29',  gu:'해운대구', hotel:'씨클라우드 호텔 해운대', corp:'모스원㈜', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'동일 공고를 08/24·27·29 반복 재게시 — 최신 1건만 등재', src:'알바몬', u:'https://www.albamon.com/jobs/detail/118844836' },
  { d:'26/08/28', dfix:1, anon:1, gu:'수영구', hotel:'광안리 소재 호텔', corp:'주식회사 시너제닉', op:'도급', job:'미화', pay:'월 193만원', wf:'식사제공·4대보험', etc:'광안리 해수욕장 인근 호텔', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130112608280011&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/28', anon:1, gu:'서구', hotel:'송도 소재 호텔', corp:'주식회사 시너제닉', op:'도급', job:'인스펙터', pay:'시급 10,320원', wf:'4대보험', etc:'송도 해상케이블카 근처 호텔', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130112608260061&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/28', gu:'수영구', hotel:'게스후 광안리', corp:'주식회사 바론파트너스', op:'도급', job:'미화', pay:'월 240만원 이상', wf:'4대보험', etc:'주간·조조 미화', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608270003&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/28', dfix:1, gu:'해운대구', hotel:'그랜드조선 부산', corp:'(주)삼익', op:'도급', job:'미화', pay:'—', wf:'—', etc:'야간 미화', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54878271' },
  { d:'26/08/28', dfix:1, gu:'서구', hotel:'페어필드 바이 메리어트 부산 송도비치', corp:'주식회사위더스티엠', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'신입·외국인 가능', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54879077' },
  { d:'26/08/28', dfix:1, anon:1, gu:'해운대구', hotel:'해운대구 소재 호텔', corp:'㈜오즈프렌즈', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'레지던스호텔 · 일6개·주급', src:'알바몬', u:'https://www.albamon.com/jobs/detail/118834861' },
- { d:'26/08/28', nw:1, gu:'수영구', hotel:'호텔 아쿠아펠리스', corp:'호텔아쿠아펠리스', op:'직영', job:'하우스맨', pay:'—', wf:'—', etc:'🆕 신규 호텔 · 대명화성(주) 운영 110실 · 직영 채용 = 도급 전환 제안 대상', src:'사람인', id:54884235 },
+ { d:'26/08/28',  gu:'수영구', hotel:'호텔 아쿠아펠리스', corp:'호텔아쿠아펠리스', op:'직영', job:'하우스맨', pay:'—', wf:'—', etc:'🆕 신규 호텔 · 대명화성(주) 운영 110실 · 직영 채용 = 도급 전환 제안 대상', src:'사람인', id:54884235 },
  { d:'26/08/27', dfix:1, gu:'중구', hotel:'토요코인 부산 중앙역', corp:'토요코인코리아(주)', op:'직영', job:'하우스키핑 관리자', pay:'—', wf:'—', etc:'객실관리 책임자(치프)', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54865408' },
  { d:'26/08/27', dfix:1, gu:'중구', hotel:'크라운하버호텔 부산', corp:'주식회사더크라운이앤에스크라운하버호텔부산', op:'직영', job:'시설', pay:'—', wf:'—', etc:'전기안전관리자 경력', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54863850' },
  { d:'26/08/27', dfix:1, gu:'기장군', hotel:'빌라쥬 드 아난티', corp:'(주)삼익', op:'도급', job:'인스펙터', pay:'—', wf:'—', etc:'하우스맨·룸메이드 동시모집', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54864495' },
@@ -1121,18 +1134,18 @@ const JOBS = [
  { d:'26/08/26', anon:1, gu:'수영구', hotel:'광안리 소재 호텔', corp:'주식회사 시너제닉', op:'도급', job:'시설', pay:'월 239만원', wf:'식사제공·4대보험', etc:'광안리 소재 호텔 · 주당비휴', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130112608260041&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/26', dfix:1, gu:'연제구', hotel:'아르반시티', corp:'아르반시티', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'—', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54851665' },
  { d:'26/08/26', dfix:1, gu:'해운대구', hotel:'W레지던스호텔 해운대', corp:'더블유레지던스호텔해운대', op:'직영', job:'룸메이드', pay:'월 240만원', wf:'—', etc:'해운대역 인근', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146487572' },
- { d:'26/08/26', nw:1, gu:'기장군', hotel:'해운대비치 골프앤리조트', corp:'주식회사 디티에스', op:'도급', job:'미화', pay:'월 262만원', wf:'식사제공·4대보험', etc:'🆕 신규 도급업체 · 리조트 외곽 미화 · 기장읍 대변로 74', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBD002608260007&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
- { d:'26/08/26', nw:1, gu:'사하구', hotel:'하단 레이어스호텔', corp:'하단레이어스호텔점', op:'직영', job:'시설', pay:'시급 10,320원 이상', wf:'식사제공·4대보험', etc:'시설팀 경력 3년 이상 · 하우스키핑은 (주)시너제닉 도급 중', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130052608260007&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/08/26',  gu:'기장군', hotel:'해운대비치 골프앤리조트', corp:'주식회사 디티에스', op:'도급', job:'미화', pay:'월 262만원', wf:'식사제공·4대보험', etc:'🆕 신규 도급업체 · 리조트 외곽 미화 · 기장읍 대변로 74', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBD002608260007&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/08/26',  gu:'사하구', hotel:'하단 레이어스호텔', corp:'하단레이어스호텔점', op:'직영', job:'시설', pay:'시급 10,320원 이상', wf:'식사제공·4대보험', etc:'시설팀 경력 3년 이상 · 하우스키핑은 (주)시너제닉 도급 중', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130052608260007&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/25', gu:'동래구', hotel:'농심호텔', corp:'주식회사베스트스탭', op:'도급', job:'룸메이드', pay:'일급 102,000원', wf:'식사제공·4대보험', etc:'—', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KF10922608250001&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/25', anon:1, gu:'서구', hotel:'송도 소재 호텔', corp:'주식회사 비해피 송도지점', op:'도급', job:'하우스맨', pay:'월 230만원', wf:'—', etc:'송도 레지던스 · 프론트 겸', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KF10092608250002&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/25', dfix:1, gu:'해운대구', hotel:'라마다앙코르 해운대', corp:'(주)디에스에이치글로벌', op:'도급', job:'하우스맨', pay:'—', wf:'—', etc:'객실팀 신입·경력', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54839399' },
  { d:'26/08/25', dfix:1, gu:'동구', hotel:'이데아호텔 부산역', corp:'이데아호텔', op:'직영', job:'룸메이드', pay:'시급 10,320원', wf:'—', etc:'하우스키핑·객실청소', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146445937' },
- { d:'26/08/25', nw:1, gu:'해운대구', hotel:'뉴시즈 빌리브 패러그라퍼 해운대', corp:'주식회사 제이앤케이컴퍼니', op:'도급', job:'인스펙터', pay:'월 260만원 이상', wf:'4대보험', etc:'2026 항공산업 커리어 엑스포 연계 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250014&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
- { d:'26/08/25', nw:1, gu:'해운대구', hotel:'그랜드조선 부산', corp:'(주)삼익', op:'도급', job:'룸메이드', pay:'월 216~235만원', wf:'식사제공·4대보험', etc:'2026 항공산업 커리어 엑스포 연계 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250009&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
- { d:'26/08/25', nw:1, gu:'해운대구', hotel:'웨스틴조선 부산', corp:'(주)삼익', op:'도급', job:'룸메이드', pay:'월 216~225만원', wf:'식사제공·4대보험', etc:'2026 항공산업 커리어 엑스포 연계 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250008&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
- { d:'26/08/25', nw:1, gu:'해운대구', hotel:'시그니엘 부산 (호텔롯데)', corp:'에이치디씨랩스 (주)', op:'도급', job:'룸메이드', pay:'월 235만원 이상', wf:'식사제공·4대보험', etc:'같은 호텔로 3개 공고 동시 게시(신입/경력·급여 235~275만) — 대표 1건만 등재', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250007&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
- { d:'26/08/25', nw:1, gu:'해운대구', hotel:'뉴시즈 빌리브 패러그라퍼 해운대', corp:'주식회사 제이앤케이컴퍼니', op:'도급', job:'하우스맨', pay:'월 250만원 이상', wf:'4대보험', etc:'2026 항공산업 커리어 엑스포 연계 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250015&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
- { d:'26/08/25', nw:1, gu:'부산진구', hotel:'부산롯데호텔', corp:'리에이즈주식회사', op:'도급', job:'하우스키핑 관리자', pay:'월 235만원 이상', wf:'식사제공·4대보험', etc:'🆕 신규 도급업체·신규 호텔 · 650실 부산 최대 · 오더테이커', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250011&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/08/25',  gu:'해운대구', hotel:'뉴시즈 빌리브 패러그라퍼 해운대', corp:'주식회사 제이앤케이컴퍼니', op:'도급', job:'인스펙터', pay:'월 260만원 이상', wf:'4대보험', etc:'2026 항공산업 커리어 엑스포 연계 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250014&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/08/25',  gu:'해운대구', hotel:'그랜드조선 부산', corp:'(주)삼익', op:'도급', job:'룸메이드', pay:'월 216~235만원', wf:'식사제공·4대보험', etc:'2026 항공산업 커리어 엑스포 연계 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250009&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/08/25',  gu:'해운대구', hotel:'웨스틴조선 부산', corp:'(주)삼익', op:'도급', job:'룸메이드', pay:'월 216~225만원', wf:'식사제공·4대보험', etc:'2026 항공산업 커리어 엑스포 연계 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250008&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/08/25',  gu:'해운대구', hotel:'시그니엘 부산 (호텔롯데)', corp:'에이치디씨랩스 (주)', op:'도급', job:'룸메이드', pay:'월 235만원 이상', wf:'식사제공·4대보험', etc:'같은 호텔로 3개 공고 동시 게시(신입/경력·급여 235~275만) — 대표 1건만 등재', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250007&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/08/25',  gu:'해운대구', hotel:'뉴시즈 빌리브 패러그라퍼 해운대', corp:'주식회사 제이앤케이컴퍼니', op:'도급', job:'하우스맨', pay:'월 250만원 이상', wf:'4대보험', etc:'2026 항공산업 커리어 엑스포 연계 채용', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250015&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/08/25',  gu:'부산진구', hotel:'부산롯데호텔', corp:'리에이즈주식회사', op:'도급', job:'하우스키핑 관리자', pay:'월 235만원 이상', wf:'식사제공·4대보험', etc:'🆕 신규 도급업체·신규 호텔 · 650실 부산 최대 · 오더테이커', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608250011&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/24', dfix:1, gu:'기장군', hotel:'반얀트리 부산', corp:'루펜티스주식회사', op:'도급', job:'하우스키핑 관리자', pay:'연봉 2,900만원 이상', wf:'식사제공·4대보험', etc:'객실부 과장-대리 경력직', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002608240003&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/24', anon:1, gu:'연제구', hotel:'연제구 소재 호텔', corp:'주식회사아몬드건설', op:'도급', job:'시설', pay:'월 350만원', wf:'—', etc:'호텔 시설물 하자·유지보수', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042608240028&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/08/24', dfix:1, gu:'중구', hotel:'중구 비프광장 소재 호텔', corp:'(주)파라미온', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'호텔 메이드 · 근무지 비프광장로 20 (호텔명 비공개)', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54833209' },
@@ -1340,17 +1353,29 @@ const JOBS = [
  { d:'—', gu:'해운대구', hotel:'브라운도트호텔 센텀점', corp:'브라운도트호텔 센텀점', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'재송동 · ⚠ 원문 마감 — 등록일 확인 불가', src:'알바몬', u:'https://www.albamon.com/jobs/detail/118703342' },
  { d:'—', gu:'수영구', hotel:'브라운도트 광안리', corp:'브라운도트 호텔', op:'직영', job:'룸메이드', pay:'일 90,000원', wf:'—', etc:'평일 주2일 · ⚠ 원문 마감 — 등록일 확인 불가', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146431639' },
  { d:'26/09/04', gu:'서구', hotel:'페어필드 바이 메리어트 부산 송도비치', corp:'(주)위더스파크', op:'도급', job:'미화', pay:'월 224만원', wf:'—', etc:'—', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KEC0052609040009&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
- { d:'26/09/03', nw:1, gu:'중구', hotel:'매그넘남포호텔', corp:'매그넘남포호텔', op:'직영', job:'룸메이드', pay:'월 220~240만원', wf:'—', etc:'🆕 신규 호텔', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042609030041&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/09/03',  gu:'중구', hotel:'매그넘남포호텔', corp:'매그넘남포호텔', op:'직영', job:'룸메이드', pay:'월 220~240만원', wf:'—', etc:'🆕 신규 호텔', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042609030041&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/09/03', gu:'중구', hotel:'지엔비호텔 부평동', corp:'지엔비호텔(GnB HOTEL)', op:'직영', job:'룸메이드', pay:'월 215만원 이상', wf:'—', etc:'객실 메이드 표기', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042609020039&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/09/03', gu:'영도구', hotel:'호텔아델라', corp:'(주)아델라태산', op:'직영', job:'하우스맨', pay:'—', wf:'—', etc:'—', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=54927756&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
- { d:'26/09/04', nw:1, gu:'부산진구', hotel:'센트럴세븐호텔', corp:'(주)라인서비스', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'🆕 신규 도급업체 · 서면 소재 추정', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54890506' },
- { d:'26/09/03', nw:1, anon:1, gu:'부산진구', hotel:'서면 소재 호텔', corp:'(주)라인서비스', op:'도급', job:'인스펙터', pay:'—', wf:'—', etc:'🆕 신규 도급업체 · 센트럴세븐호텔 룸메이드 공고와 동일업체', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=54909002&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/09/04',  gu:'부산진구', hotel:'센트럴세븐호텔', corp:'(주)라인서비스', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'🆕 신규 도급업체 · 서면 소재 추정', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54890506' },
+ { d:'26/09/03',  anon:1, gu:'부산진구', hotel:'서면 소재 호텔', corp:'(주)라인서비스', op:'도급', job:'인스펙터', pay:'—', wf:'—', etc:'🆕 신규 도급업체 · 센트럴세븐호텔 룸메이드 공고와 동일업체', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=54909002&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/09/01', gu:'동구', hotel:'하운드호텔 부산역', corp:'하운드호텔', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'객실정비(하우스키핑)', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=54894327&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
  { d:'26/09/04', gu:'해운대구', hotel:'그랜드조선 부산', corp:'(주)삼익', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'경력직 아르바이트', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54942181' },
  { d:'26/09/02', gu:'동구', hotel:'이데아호텔 부산역', corp:'이데아호텔', op:'직영', job:'룸메이드', pay:'시급 10,320원', wf:'—', etc:'하우스키핑·객실청소', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146645611' },
  { d:'26/09/04', gu:'사상구', hotel:'에이치에비뉴 호텔 사상', corp:'(주)베스원', op:'도급', job:'룸메이드', pay:'건당 6,500원', wf:'—', etc:'하우스키핑 · 건별 단가제', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146697535' },
- { d:'26/09/04', nw:1, gu:'해운대구', hotel:'마리쏠호텔', corp:'마리쏠 by 해운대비치', op:'도급', job:'룸메이드', pay:'연 3,000만원', wf:'—', etc:'🆕 신규 호텔 · 프론트 겸직 공고', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146621835' },
- { d:'26/08/12', nw:1, gu:'기장군', hotel:'반얀트리 부산 해운대', corp:'㈜원이앤에스', op:'도급', job:'하우스키핑 관리자', pay:'—', wf:'—', etc:'🆕 신규 도급업체 · 미화 소장급 · 기존 루펜티스(주)는 객실 하우스키핑 담당', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51392744&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/09/04',  gu:'해운대구', hotel:'마리쏠호텔', corp:'마리쏠 by 해운대비치', op:'도급', job:'룸메이드', pay:'연 3,000만원', wf:'—', etc:'🆕 신규 호텔 · 프론트 겸직 공고', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146621835' },
+ { d:'26/08/12',  gu:'기장군', hotel:'반얀트리 부산 해운대', corp:'㈜원이앤에스', op:'도급', job:'하우스키핑 관리자', pay:'—', wf:'—', etc:'🆕 신규 도급업체 · 미화 소장급 · 기존 루펜티스(주)는 객실 하우스키핑 담당', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51392744&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+
+  /* ── 8차 수집 2026-09-08 (요청 실행 · 신규 11건) — 재게시·부산외·직종외 제외 ── */
+ { d:'26/09/07', nw:1, gm:true, gu:'동구', hotel:'라마다앙코르 부산역호텔', corp:'(주)지엠네트웍스', op:'도급', job:'룸메이드', pay:'일급 91,630원', wf:'식사제공·4대보험', etc:'🎯 자사 · 공고 근무지 주소(중앙대로196번길 10)가 라마다앙코르 부산역과 일치', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042609070051&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/09/07', nw:1, gu:'동구', hotel:'마티에 부산하버시티', corp:'주식회사 누리', op:'도급', job:'룸메이드', pay:'월 220~250만원', wf:'4대보험', etc:'🆕 롯데 드메르(북항) 하우스키핑 인스펙트리스·룸메이드 · 충장대로 190', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002609050003&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/09/05', nw:1, gu:'동구', hotel:'마티에 부산하버시티', corp:'주식회사 누리', op:'도급', job:'하우스키핑 관리자', pay:'월 300~350만원', wf:'4대보험', etc:'하우스키핑 소장급 채용 — 소장 직종 첫 관측', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002609050002&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/09/05', nw:1, gu:'동구', hotel:'하운드호텔 부산역', corp:'하운드호텔부산역점', op:'직영', job:'룸메이드', pay:'월 215만원 이상', wf:'—', etc:'중앙대로236번길 9 (초량동)', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBM002609050001&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
+ { d:'26/09/05', nw:1, gu:'수영구', hotel:'호텔 아쿠아펠리스', corp:'호텔아쿠아펠리스', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'광안리 · 대명화성(주) 운영 110실', src:'사람인', id:54951107 },
+ { d:'26/09/03', nw:1, gu:'수영구', hotel:'호텔1', corp:'(주)우리모두브라보', op:'직영', job:'룸메이드', pay:'월 202만원', wf:'—', etc:'🆕 광안리 호텔1 (1성 52실) 운영법인 직접 채용', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146679977' },
+ { d:'26/09/01', nw:1, gu:'중구', hotel:'GNB호텔(지엔비호텔)', corp:'GNB HOTEL', op:'직영', job:'룸메이드', pay:'—', wf:'—', etc:'—', src:'사람인', id:54915170 },
+ { d:'26/09/01', nw:1, gu:'서구', hotel:'페어필드 바이 메리어트 부산 송도비치', corp:'주식회사 위더스파크', op:'도급', job:'룸메이드', pay:'월 225만원', wf:'—', etc:'—', src:'알바천국', u:'https://www.alba.co.kr/job/Detail?adid=146628731' },
+ { d:'26/08/30', nw:1, gu:'해운대구', hotel:'영무파라드호텔 해운대', corp:'(주)백의', op:'도급', job:'하우스맨', pay:'—', wf:'—', etc:'아르바이트', src:'사람인', id:54890858 },
+ { d:'26/08/28', nw:1, gu:'중구', hotel:'크라운하버호텔 부산', corp:'주식회사 더크라운이앤에스', op:'직영', job:'시설', pay:'시급 10,320원', wf:'식사제공(2식)·4대보험', etc:'중구 일자리박람회 참여 공고', src:'고용24', u:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KJBP002608280001&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet' },
 ];
 JOBS.forEach(j => j.url = j.u || ('https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=' + j.id));
 
