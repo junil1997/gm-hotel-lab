@@ -277,7 +277,7 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.44</small></span></h1>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.62</small></span></h1>
   <div class="meta">구인공고 수집일 : <b>2026-09-08</b> · 매주 금요일 자동수집<span id="todayStamp" style="display:none"></span></div>
 </header>
 
@@ -859,8 +859,10 @@
     <h3>📅 시장조사 현황 ver.2 — 월별 공고 매트릭스
       <span class="muted">도급업체 × 호텔 × 직종을 월 단위로 — 어느 달에 어떤 자리가 나왔는지 한눈에 · <b style="color:#c4b5fd">칸 클릭 → 해당 공고 원문</b></span></h3>
     <div class="gunav" id="v2Months"></div>
+    <div class="gunav" id="v2Cats"></div>
     <div class="searchbar">
       <select id="v2Corp" onchange="renderV2()"><option value="">도급업체 전체</option></select>
+      <select id="v2Gu" onchange="renderV2()"><option value="">부산 구·군 전체</option></select>
       <select id="v2Op" onchange="renderV2()">
         <option value="">운영 전체</option><option value="도급">도급 운영만</option><option value="직영">자사운영만</option>
       </select>
@@ -1150,7 +1152,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.44 (2026-09-08) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.62 (2026-09-08) · 호텔 835개 전수 명단 내장<br>
   통계 출처<br>
   한국관광협회중앙회 호텔업 등급결정 현황 (2026-08-20 자료 기준 · 835개 전수)<br>
   문화체육관광부 관광숙박업 등록현황 (2025년 말)<br>
@@ -2623,7 +2625,8 @@ const V2 = (() => {
   });
   return { CATS, JC, mKey, months, rows: Object.values(hot).sort((p, q) => q.n - p.n || (q.gm ? 1 : 0) - (p.gm ? 1 : 0)) };
 })();
-let v2Month = '';
+let v2Month = '', v2Cat = '';
+function v2SetCat(c){ v2Cat = (c === v2Cat) ? '' : c; renderV2(); }
 const v2ML = m => m === '미상' ? '미상' : (m.slice(0, 2) === '26' ? '' : "'" + m.slice(0, 2) + ' ') + (+m.slice(3)) + '월';
 function v2SetMonth(m){
   v2Month = (m === v2Month) ? '' : m;
@@ -2666,18 +2669,35 @@ function renderV2(){
     `<button class="gubtn ${!v2Month ? 'on' : ''}" onclick="v2SetMonth('')">전체 (${JOBS.length})</button>` +
     MS.map(m => `<button class="gubtn ${v2Month === m ? 'on' : ''}" onclick="v2SetMonth('${m}')">${v2ML(m)} (${mCnt[m] || 0})</button>`).join('') +
     `<span class="muted" style="align-self:center;font-size:11px">2026년 · 월 클릭 → 그 달 공고만 + 아래에 전체 목록</span>`;
+  /* 직종 필터 버튼 — 선택한 월 기준 건수 병기 */
+  const cCnt = [0, 0, 0, 0, 0, 0]; let cTot = 0;
+  JOBS.forEach(j => {
+    if (v2Month && V2.mKey(j) !== v2Month) return;
+    const c = V2.JC[j.job];
+    if (c !== undefined) { cCnt[c]++; cTot++; }
+  });
+  document.getElementById('v2Cats').innerHTML =
+    `<span class="muted" style="align-self:center;font-size:12px;margin-right:4px">직종 ▸</span>` +
+    `<button class="gubtn ${v2Cat === '' ? 'on' : ''}" onclick="v2SetCat('')">전체 (${cTot})</button>` +
+    V2.CATS.map((c, i) => `<button class="gubtn ${v2Cat === i ? 'on' : ''}" onclick="v2SetCat(${i})">${c} (${cCnt[i]})</button>`).join('');
   document.getElementById('v2Head').innerHTML =
     `<tr><th style="min-width:140px">도급업체</th><th style="min-width:150px">호텔</th><th style="min-width:88px">직종</th>` +
     MS.map(m => `<th class="c" style="min-width:54px;${v2Month === m ? 'background:rgba(124,58,237,.35)' : ''}">${v2ML(m)}</th>`).join('') + `</tr>`;
+  const gu = document.getElementById('v2Gu').value;
+  const catHit = r => v2Cat === '' ||
+    MS.some(m => r.cells[v2Cat + '|' + m] && (!v2Month || m === v2Month));
   const rows = V2.rows.filter(r =>
     (!v2Month || r.inM[v2Month]) &&
+    catHit(r) &&
+    (!gu || r.gu === gu) &&
     (!op || (op === '도급' ? r.dogub > 0 : r.dogub === 0 && r.direct > 0)) &&
     (!corp || [...r.corps].includes(corp)) &&
     (!q || (r.hotel + [...r.corps].join('')).toLowerCase().includes(q)));
   document.getElementById('v2Cnt').textContent =
     `${rows.length}개 사업장${v2Month ? ` · ${v2ML(v2Month)} 공고 ${mCnt[v2Month] || 0}건` : ` · 공고 ${JOBS.length}건 누적`}`;
   document.getElementById('v2Body').innerHTML = rows.map(r => {
-    let cats = [0, 1, 2, 3, 4, 5].filter(i => all || MS.some(m => r.cells[i + '|' + m]));
+    let cats = v2Cat !== '' ? [v2Cat]
+      : [0, 1, 2, 3, 4, 5].filter(i => all || MS.some(m => r.cells[i + '|' + m]));
     if (!cats.length) cats = [0];   // 6분류 밖 공고만 있는 사업장도 호텔 행은 남김
     const corpCell = r.dogub > 0
       ? (r.gm ? '🎯 ' : '') + `<b style="color:${r.gm ? '#fcd34d' : '#c4b5fd'}">${[...r.corps].join(', ')}</b>`
@@ -2695,11 +2715,15 @@ function renderV2(){
       }).join('') + `</tr>`).join('');
   }).join('') || `<tr><td colspan="${3 + MS.length}" class="c muted" style="padding:14px">조건에 맞는 공고가 없습니다</td></tr>`;
 }
-(() => {   // 도급업체 select 옵션
+(() => {   // 도급업체·구 select 옵션
   const cs = {};
   JOBS.forEach(j => { if (j.op === '도급') { const c = canonCorp(j.corp); if (c && c !== '미확인') cs[c] = (cs[c] || 0) + 1; } });
   document.getElementById('v2Corp').innerHTML = '<option value="">도급업체 전체</option>' +
     Object.keys(cs).sort((a, b) => cs[b] - cs[a]).map(c => `<option value="${c}">${c} (${cs[c]})</option>`).join('');
+  const gs = {};
+  V2.rows.forEach(r => { if (r.gu) gs[r.gu] = (gs[r.gu] || 0) + 1; });
+  document.getElementById('v2Gu').innerHTML = '<option value="">부산 구·군 전체</option>' +
+    Object.keys(gs).sort((a, b) => gs[b] - gs[a]).map(g => `<option value="${g}">${g} (${gs[g]})</option>`).join('');
 })();
 renderV2();
 
