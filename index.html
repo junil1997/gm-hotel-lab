@@ -182,6 +182,7 @@
   .hrow .hmeta { margin-left:auto; white-space:nowrap; font-size:11px; color:#64748b; }
   .hrow .hrm { color:#5eead4; font-weight:700; }
   .tag.mini { font-size:9.5px; padding:0 5px; background:#1e293b; color:#94a3b8; border:1px solid #334155; }
+  .tag.t-est { background:rgba(124,58,237,.16); color:#c4b5fd; border:1px solid #7c3aed; cursor:help; }
   .note { background:#172554; border:1px solid #1e40af; border-radius:10px; padding:12px 16px; font-size:13px; color:#bfdbfe; margin-bottom:14px; line-height:1.7; }
   .note.rule { background:#4a1d1d33; background:#3f1d1d; border-color:#b91c1c; color:#fecaca; }
   .note.todo { background:#3b2f0b; border-color:#b45309; color:#fde68a; }
@@ -277,8 +278,8 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.64</small></span></h1>
-  <div class="meta">구인공고 수집일 : <b>2026-09-08</b> · 매주 금요일 자동수집<span id="todayStamp" style="display:none"></span></div>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.65</small></span></h1>
+  <div class="meta">구인공고 수집일 : <b>2026-09-11</b> · 매주 금요일 자동수집<span id="todayStamp" style="display:none"></span></div>
 </header>
 
 <div class="nav">
@@ -289,7 +290,7 @@
   -->
   <button class="navbtn" data-tab="t6" onclick="go('t6',this)">🏭 아웃소싱 공급시장</button>
   <button class="navbtn" data-tab="t7" onclick="go('t7',this)">🗂️ 전국 숙박업 명단</button>
-  <button class="navbtn" data-tab="t4" onclick="go('t4',this)">📋 부산 구인공고 모니터링</button>
+  <button class="navbtn" data-tab="t4" onclick="go('t4',this)">📋 부산 구인공고</button>
   <button class="navbtn" data-tab="t8" onclick="go('t8',this)">📈 시장조사 현황</button>
   <button class="navbtn" data-tab="t9" onclick="go('t9',this)">🗺️ 전국 호텔 지도</button>
   <button class="navbtn" data-tab="t5" onclick="go('t5',this)">⚙️ 자동화 · 데이터 연동</button>
@@ -590,7 +591,9 @@
     </div>
     <div class="src">숫자는 <b>관리(추정) 호텔 수</b>, 초록색은 <b>공식 확인된 관리 객실 수</b>.
       공고에 업체명이 드러난 건만 집계되므로 실제 활동 업체는 이보다 많을 수 있습니다.
-      업체명은 ㈜·(주)·주식회사 표기 흔들림을 통합해 셉니다 (공고 표 원문은 그대로 보존).</div>
+      업체명은 ㈜·(주)·주식회사 표기 흔들림을 통합해 셉니다 (공고 표 원문은 그대로 보존).<br>
+      <span style="color:#c4b5fd">보라색 <b>추정</b> 배지</span>는 호텔명을 밝히지 않은 익명 공고를 위치·규모 단서로 좁힌 <b>추정치</b>입니다
+      (2026-09-16 승인 — 배지에 마우스를 올리면 근거 표시). 근거가 약한 익명 공고는 추정 없이 그대로 둡니다.</div>
   </div>
 
   <div class="note">
@@ -795,6 +798,7 @@
       생활숙박(레지던스) 대형 시설은 별은 없어도 하우스키핑·시설관리 수요가 있는 실제 영업대상입니다.
       단, <b>운영사(호텔을 위탁받아 굴리는 회사)와 도급업체(청소·시설 용역사)는 다른 개념</b>입니다.</div>
     <div class="searchbar" style="flex-wrap:wrap">
+      <select id="rbArea" onchange="renderRegb()" title="지역별 조회 (ver.65) — 부산은 원장 전체, 타 지역은 100실 이상 무성급 시설만 내장"></select>
       <select id="rbType" onchange="renderRegb()"></select>
       <select id="rbSize" onchange="renderRegb()">
         <option value="">객실 전체</option><option value="500">500실 이상</option>
@@ -830,6 +834,7 @@
   <div class="card">
     <h3>호텔별 직종·급여 매트릭스 <span class="muted">급여는 해당 직종의 최신 공고 기준 · 셀 클릭 → 그 호텔 공고</span></h3>
     <div class="searchbar">
+      <select id="mkGu" onchange="renderMkt()"><option value="">부산 구·군 전체</option></select>
       <select id="mkOp" onchange="renderMkt()">
         <option value="">전체</option><option value="도급">도급 운영만</option><option value="직영">자사운영만</option>
       </select>
@@ -870,6 +875,10 @@
       <label class="gubtn" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer">
         <input type="checkbox" id="v2All" onchange="renderV2()" style="accent-color:#7c3aed">빈 직종도 표시</label>
       <input id="v2Q" placeholder="호텔명 · 도급업체 검색…" oninput="renderV2()" style="min-width:200px">
+      <label class="muted" style="display:inline-flex;align-items:center;gap:4px;font-size:12px">기간
+        <input type="date" id="v2From" onchange="v2Range()" style="font-size:12px"> ~
+        <input type="date" id="v2To" onchange="v2Range()" style="font-size:12px">
+        <button class="gubtn" onclick="v2RangeClear()" title="기간 필터 해제">✕</button></label>
       <span class="cnt" id="v2Cnt"></span>
     </div>
     <!-- 통계 요약 (ver.63) — 현재 필터가 적용된 공고 기준 -->
@@ -936,6 +945,7 @@
       <option>사람인</option><option>고용24</option><option>잡코리아</option><option>알바몬</option><option>알바천국</option>
     </select>
     <button class="gubtn" onclick="jobReset()">필터 초기화</button>
+    <button class="gubtn" onclick="jobsExcel()" title="누적 공고 전체를 엑셀 파일로 저장">📥 엑셀</button>
     <span class="cnt" id="jobCnt"></span>
   </div>
 
@@ -1052,11 +1062,21 @@
       <input id="mpQ" placeholder="호텔명 검색…" oninput="mpRender()" style="min-width:160px">
       <span class="cnt" id="mpCnt"></span>
     </div>
+    <!-- 범례 별도 박스 (ver.65 — 대표 피드백: 크게, 따로) -->
+    <div style="display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-bottom:10px;padding:12px 16px;
+                border:1px solid #334155;border-radius:10px;background:rgba(30,41,59,.5);font-size:14px;font-weight:700">
+      <span style="color:#94a3b8;font-size:12.5px;font-weight:400">범례 ▸</span>
+      <span><span style="color:#f59e0b;font-size:19px;vertical-align:-2px">●</span> 5성</span>
+      <span><span style="color:#a78bfa;font-size:19px;vertical-align:-2px">●</span> 4성</span>
+      <span><span style="color:#3b82f6;font-size:19px;vertical-align:-2px">●</span> 3성</span>
+      <span><span style="color:#38bdf8;font-size:19px;vertical-align:-2px">●</span> 2성</span>
+      <span><span style="color:#94a3b8;font-size:19px;vertical-align:-2px">●</span> 1성</span>
+      <span><span style="color:#14b8a6;font-size:19px;vertical-align:-2px">●</span> 무성급 <span class="muted" style="font-size:11.5px;font-weight:400">생활숙박·콘도·일반호텔</span></span>
+      <span class="muted" style="font-size:12px;font-weight:400">· 점 크기 = 객실수 비례 · 점 클릭 → 상세·공고</span>
+      <button class="gubtn" style="margin-left:auto" onclick="mpExcel()">📥 엑셀 다운로드</button>
+    </div>
     <div id="mapBox" style="height:64vh;min-height:420px;border-radius:12px;overflow:hidden;border:1px solid #1e293b;background:#0b1220"></div>
     <div class="src" style="margin-top:10px">
-      범례 : <span style="color:#f59e0b">●</span> 5성 <span style="color:#a78bfa">●</span> 4성 <span style="color:#3b82f6">●</span> 3성
-      <span style="color:#38bdf8">●</span> 2성 <span style="color:#94a3b8">●</span> 1성 <span style="color:#14b8a6">●</span> 무성급(생활숙박·콘도·일반호텔 등) —
-      점 크기는 객실수 비례 · <b style="color:#fcd34d">테두리 금색 = 채용공고 확인 사업장</b>.<br>
       좌표는 지자체 인허가 원장(EPSG:5174)을 WGS84로 변환한 사업장 실제 위치.
       성급 호텔은 <b>교차검증에서 지역까지 일치한 확정 매칭만</b> 표시 — 검토(지역 상이)·미매칭·좌표 미기재 <b id="mpExA"></b>개와
       무성급 좌표 미기재 <b id="mpExX"></b>개는 위치를 추정하지 않고 지도에서 제외(명단 탭에는 모두 존재).
@@ -1155,7 +1175,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.64 (2026-09-11) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.65 (2026-09-16) · 호텔 835개 전수 명단 내장<br>
   통계 출처<br>
   한국관광협회중앙회 호텔업 등급결정 현황 (2026-08-20 자료 기준 · 835개 전수)<br>
   문화체육관광부 관광숙박업 등록현황 (2025년 말)<br>
@@ -1994,6 +2014,30 @@ const HOTEL_ALIAS = {
 const canonCorp = c => { const k = normCorp(c); return CORP_ALIAS[k] || k; };
 const canonHotel = h => HOTEL_ALIAS[h] || h;
 
+/* 익명 공고 → 추정 호텔 매핑 (ver.65 — 2026-09-16 대표 승인: 추정 배지 표기 허용).
+   확정이 아니라 위치·규모 단서 기반 "추정"이며 반드시 보라색 추정 배지로 구분 표기한다.
+   근거가 약한 익명 공고(광안리·민락 등 후보 다수)는 등록하지 않고 익명 그대로 둔다.
+   rm(객실수)은 단일 호텔로 사실상 좁혀질 때만 넣고, 후보 병기(multi)는 rm 없이 이름만. */
+const ANON_GUESS = {
+  '하단역 소재 호텔': { g: '하단 레이어스호텔', rm: 350,
+    why: '하단역 인근 유일 대형 호텔(350실 — 2위는 51실) · 같은 호텔의 실명 공고 이력 존재' },
+  '명지동 소재 호텔': { g: '신라스테이 서부산', rm: 295,
+    why: '명지동 유일 대형 호텔(295실 — 2위는 51실) · 퍼블릭·하우스맨 동시모집 규모 부합' },
+  '서면 소재 호텔': { g: '센트럴세븐호텔',
+    why: '채용사 (주)라인서비스가 센트럴세븐호텔 룸메이드 실명 공고를 낸 동일 업체' },
+  '오시리아 롯데몰 인근 호텔': { g: '마티에 오시리아', rm: 200,
+    why: '롯데프리미엄아울렛 동부산점 바로 옆의 유일 대형 숙박시설(200실)' },
+  '송도 소재 호텔': { g: '윈덤그랜드·엘모멘토·페어필드 송도 중', multi: 1,
+    why: '등대로 소재 호텔은 윈덤그랜드 부산(271실)·엘모멘토 송도(152실) 2곳, 해상케이블카 인근은 페어필드 송도비치(179실) 등 — 단일 특정 불가로 후보만 표기' },
+  '영도대교 인근 호텔': { g: '라발스·노스하버·아델라 중', multi: 1,
+    why: '영도대교 인근 대형은 라발스호텔(380실)과 태종로 45의 노스하버·호텔아델라(135·134실) — 단일 특정 불가로 후보만 표기' },
+};
+const anonGuess = h => (typeof ANON_GUESS === 'object' && ANON_GUESS[canonHotel(h)]) || null;
+const estBadge = (h, small) => {
+  const gz = anonGuess(h);
+  return gz ? `<span class="tag t-est${small ? ' mini' : ''}" title="근거: ${gz.why}">추정${gz.multi ? ' 후보' : ''}: ${gz.g}${gz.rm ? ' · ' + fmt(gz.rm) + '실' : ''}</span>` : '';
+};
+
 const VENDORS = (() => {
   const m = {};
   JOBS.filter(j => j.op === '도급').forEach(j => {
@@ -2011,6 +2055,9 @@ const VENDORS = (() => {
     v.hotelCnt = names.length;
     v.rooms = names.reduce((s, n) => s + (ROOMS[n] || 0), 0);
     v.known = names.filter(n => ROOMS[n]).length;      // 객실수 확인된 호텔 수
+    /* ver.65: 익명 공고 추정 호텔의 객실수 — 공식 확인분과 절대 합치지 않고 별도 필드로 병기 */
+    v.roomsEst = names.reduce((s, n) => s + ((!ROOMS[n] && ANON_GUESS[n] && ANON_GUESS[n].rm) ? ANON_GUESS[n].rm : 0), 0);
+    v.estCnt = names.filter(n => !ROOMS[n] && ANON_GUESS[n]).length;
     v.unknown = v.hotelCnt - v.known;                  // 미확인 호텔 수
     v.unkNames = names.filter(n => !ROOMS[n]);
     v.unkAnon = v.unkNames.filter(n => RUNK(n) === '익명').length;    // 공고 익명
@@ -2035,27 +2082,29 @@ const VENDORS = (() => {
   document.getElementById('vCntTot').textContent =
     `${VENDORS.length}개사 · ${VENDORS.reduce((s, v) => s + v.hotelCnt, 0)}사업장`;
 
-  const byRoom = VENDORS.filter(v => v.rooms > 0).sort((a, b) => b.rooms - a.rooms);
-  const maxR = Math.max(...byRoom.map(v => v.rooms), 1);
+  /* ver.65: 확인 객실 + 추정 객실(익명 공고 추정 매핑)을 함께 표시 — 막대는 확인분(진한색)+추정분(반투명) 2단 */
+  const byRoom = VENDORS.filter(v => v.rooms + v.roomsEst > 0).sort((a, b) => (b.rooms + b.roomsEst) - (a.rooms + a.roomsEst));
+  const maxR = Math.max(...byRoom.map(v => v.rooms + v.roomsEst), 1);
   document.getElementById('vRoomBars').innerHTML = byRoom.map((v, i) => `
     <div class="bar-row lnk ${v.gm ? 'gmbar' : ''}" onclick="vendorJump('${esc(v.corp)}')">
       <div class="rk ${v.gm ? 'gm' : (i < 3 ? 'top' : '')}">${i + 1}</div>
       <div class="bar-label">${v.corp}${v.gm ? ' <span class="tag t-gm">자사</span>' : ''}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, v.rooms / maxR * 100)}%;background:${v.gm ? 'linear-gradient(90deg,#f59e0b,#fbbf24)' : 'linear-gradient(90deg,#0d9488,#5eead4)'}"></div></div>
-      <div class="bar-val"><b>${fmt(v.rooms)}</b>실<br><span class="muted" style="font-size:10.5px">확인 ${v.known}/${v.hotelCnt}사업장</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, (v.rooms + v.roomsEst) / maxR * 100)}%;background:${v.gm ? 'linear-gradient(90deg,#f59e0b,#fbbf24)' : (v.roomsEst ? `linear-gradient(90deg,#0d9488 ${v.rooms / (v.rooms + v.roomsEst) * 100}%,rgba(124,58,237,.55) ${v.rooms / (v.rooms + v.roomsEst) * 100}%)` : 'linear-gradient(90deg,#0d9488,#5eead4)')}"></div></div>
+      <div class="bar-val"><b>${fmt(v.rooms)}</b>실${v.roomsEst ? ` <span style="color:#c4b5fd">+추정 ${fmt(v.roomsEst)}</span>` : ''}<br><span class="muted" style="font-size:10.5px">확인 ${v.known}/${v.hotelCnt}사업장${v.estCnt ? ` · 추정 ${v.estCnt}` : ''}</span></div>
     </div>`).join('') +
     `<div class="bar-row" style="margin-top:10px;border-top:1px dashed #334155;padding-top:8px">
      <div class="rk" style="visibility:hidden"></div>
      <div class="bar-label muted" style="font-weight:400">전 호텔 객실수 미집계</div>
      <div class="bar-track" style="background:none"></div>
-     <div class="bar-val muted" style="font-weight:400">${VENDORS.filter(v => v.rooms === 0).length}개사</div></div>`;
+     <div class="bar-val muted" style="font-weight:400">${VENDORS.filter(v => v.rooms + v.roomsEst === 0).length}개사</div></div>`;
   const totRooms = VENDORS.reduce((s, v) => s + v.rooms, 0);
   const totKnown = VENDORS.reduce((s, v) => s + v.known, 0);
   const totHotel = VENDORS.reduce((s, v) => s + v.hotelCnt, 0);
   const totAnon  = VENDORS.reduce((s, v) => s + v.unkAnon, 0);
   const totNog   = VENDORS.reduce((s, v) => s + v.unkNog, 0);
+  const totEst   = VENDORS.reduce((s, v) => s + v.roomsEst, 0);
   document.getElementById('vRoomTot').innerHTML =
-    `${fmt(totRooms)}실 <span class="muted" style="font-weight:400">— 객실수 확인 ${totKnown}/${totHotel}사업장 ` +
+    `${fmt(totRooms)}실${totEst ? ` <span style="color:#c4b5fd">+ 추정 ${fmt(totEst)}실</span>` : ''} <span class="muted" style="font-weight:400">— 객실수 확인 ${totKnown}/${totHotel}사업장 ` +
     `(${Math.round(totKnown / totHotel * 100)}%) · 공고 익명 ${totAnon}사업장 · 무등급·레지던스 ${totNog}사업장</span>`;
 })();
 /* 탭6 상단 : 실제 관측된 도급업체를 한눈에 (KPI + 업체 칩) */
@@ -2169,7 +2218,7 @@ function renderVendors(){
           <span class="hname" title="${h}">${h}</span>${c > 1 ? `<span class="tag mini">×${c}</span>` : ''}
           <span class="hmeta">${ROOMS[h]
             ? `<span class="hrm">${fmt(ROOMS[h])}실</span>`
-            : `<span class="tag mini">${RUNK(h) === '익명' ? '익명공고' : '무등급'}</span>`}</span>
+            : (estBadge(h) || `<span class="tag mini">${RUNK(h) === '익명' ? '익명공고' : '무등급'}</span>`)}</span>
         </div>`).join('')}</td>
       <td class="c"><b style="font-size:15px">${v.hotelCnt}</b></td>
       <td class="r">
@@ -2545,10 +2594,41 @@ renderOps();
   const tSel = document.getElementById('rbType');
   tSel.innerHTML = '<option value="">업태 전체</option><option value="T">🎯 GM 타깃 4개 업태</option>' +
     BT.map((b, i) => `<option value="${i}">${b} (${REGB.filter(r => r[1] === i).length})</option>`).join('');
+  /* 지역별 조회 (ver.65) — 부산은 인허가 원장 전체(REGB), 타 지역은 100실 이상 무성급 시설(REGX)만 내장 */
+  const aSel = document.getElementById('rbArea');
+  if (aSel) {
+    const ac = {};
+    (typeof REGX === 'object' ? REGX : []).forEach(x => { if (x[1] && x[1] !== '부산') ac[x[1]] = (ac[x[1]] || 0) + 1; });
+    aSel.innerHTML = `<option value="부산">🎯 부산 — 원장 전체 (${fmt(REGB.length)})</option>` +
+      Object.keys(ac).sort((a, b) => ac[b] - ac[a]).map(s => `<option value="${s}">${s} — 100실↑ 무성급 (${ac[s]})</option>`).join('');
+  }
   window.renderRegb = function(){
+    const area = (aSel && aSel.value) || '부산';
     const ty = tSel.value, sz = document.getElementById('rbSize').value;
     const mt = document.getElementById('rbMatch').value;
     const q = (document.getElementById('rbQ').value || '').trim().toLowerCase();
+    if (area !== '부산') {
+      /* 타 지역: REGX(무성급 100실 이상) 조회 — 업태·교차상태 필터는 부산 원장 전용이라 미적용 */
+      const xs = REGX.filter(x => x[1] === area &&
+        (sz === '' || (sz === '-1' ? !x[4] : x[4] >= +sz)) &&
+        (!q || (x[0] + (x[6] || '') + x[2]).toLowerCase().includes(q)));
+      document.getElementById('rbCnt').textContent = `${fmt(xs.length)}건 / ${area} 100실 이상 무성급`;
+      document.getElementById('regbCnt').textContent = `${area} — 100실 이상 무성급 시설만 내장 (성급 호텔은 '성급별 분석' 탐색기에서 조회)`;
+      document.getElementById('regbBody').innerHTML = xs.sort((a, b) => b[4] - a[4]).slice(0, 400).map(x => `
+        <tr>
+          <td><b>${x[0]}</b></td>
+          <td class="c"><span class="tag t-unk" style="font-size:10.5px">${['관광호텔', '일반호텔', '생활숙박', '콘도'][x[3]] || '기타'}</span></td>
+          <td class="r">${x[4] ? '<b>' + fmt(x[4]) + '</b>' : '<span class="muted">미기재</span>'}</td>
+          <td>${x[6] || '<span class="muted">—</span>'}</td>
+          <td class="c muted" style="font-size:11px">${x[7] || '—'}</td>
+          <td class="c">${x[2]}</td>
+          <td class="muted" style="font-size:11px">—</td>
+          <td class="c muted" style="font-size:11px">—</td>
+          <td class="c muted" style="font-size:11px">성급—</td>
+        </tr>`).join('') +
+        (xs.length > 400 ? `<tr><td colspan="9" class="c muted">외 ${fmt(xs.length - 400)}건</td></tr>` : '');
+      return;
+    }
     const rows = REGB.filter(r =>
       (ty === '' || (ty === 'T' ? TGT_I.includes(r[1]) : r[1] === +ty)) &&
       (sz === '' || (sz === '-1' ? r[2] === 0 : r[2] >= +sz)) &&
@@ -2611,7 +2691,9 @@ const MKT = (() => {
 function renderMkt(){
   const q = (document.getElementById('mkQ').value || '').trim().toLowerCase();
   const op = document.getElementById('mkOp').value;
+  const gu = (document.getElementById('mkGu') || {}).value || '';
   const rows = MKT.filter(r =>
+    (!gu || r.gu === gu) &&
     (!op || (op === '도급' ? r.dogub > 0 : r.dogub === 0 && r.direct > 0)) &&
     (!q || (r.hotel + r.corpsArr.join('')).toLowerCase().includes(q)));
   document.getElementById('mkCnt').textContent = `${rows.length}개 호텔 / 전체 ${MKT.length}개 · 공고 ${JOBS.length}건 누적`;
@@ -2624,7 +2706,7 @@ function renderMkt(){
   };
   document.getElementById('mkBody').innerHTML = rows.map(r => `
     <tr class="${r.gm ? 'me' : ''}">
-      <td><b class="${r.gm ? 'corp-gm' : ''}">${r.hotel}</b><br><span class="muted" style="font-size:10px">공고 ${r.n}건</span></td>
+      <td><b class="${r.gm ? 'corp-gm' : ''}">${r.hotel}</b>${estBadge(r.hotel, 1) ? '<br>' + estBadge(r.hotel, 1) : ''}<br><span class="muted" style="font-size:10px">공고 ${r.n}건</span></td>
       <td class="c" style="font-size:12px">${r.gu}</td>
       <td class="c">${r.star ? `<span class="tag ${r.star === '무성급' ? 't-unk' : (gradeCls[r.star[0]] || 't-star1')}" style="font-size:10px">${r.star}</span>` : ''}</td>
       <td class="r">${r.rooms ? fmt(r.rooms) : ''}</td>
@@ -2641,17 +2723,24 @@ function renderMkt(){
     <div class="kpi"><div class="kpi-t">급여 확인</div><div class="kpi-v">${payN}<span>칸</span></div><div class="kpi-s">호텔×직종 조합 기준 · 미기재는 공란</div></div>
     <div class="kpi gm"><div class="kpi-t">🎯 도급 운영 확인</div><div class="kpi-v">${MKT.filter(r => r.dogub > 0).length}<span>곳</span></div><div class="kpi-s">자사운영(직영) ${MKT.filter(r => r.dogub === 0 && r.direct > 0).length}곳</div></div>`;
 }
+(() => {   // 구·군 select 옵션 (ver.65 — 구별 검색)
+  const gs = {};
+  MKT.forEach(r => { if (r.gu) gs[r.gu] = (gs[r.gu] || 0) + 1; });
+  const el = document.getElementById('mkGu');
+  if (el) el.innerHTML = '<option value="">부산 구·군 전체</option>' +
+    Object.keys(gs).sort((a, b) => gs[b] - gs[a]).map(g => `<option value="${g}">${g} (${gs[g]})</option>`).join('');
+})();
 renderMkt();
 
 /* ═══════════ 시장조사 현황 ver.2 — 월별 공고 매트릭스 (ver.62) ═══════════ */
 const escQ = s => String(s).replace(/'/g, "\\'");
-const V2 = (() => {
+function buildV2(list){   // ver.65: 기간 조회를 위해 재계산 가능하게 함수화
   const CATS = ['룸메이드', '하우스맨', '인스펙터', '소장(센터장)', '시설·영선', '미화'];
   const JC = { '룸메이드': 0, '하우스맨': 1, '인스펙터': 2, '하우스키핑 관리자': 3, '시설': 4, '영선': 4, '미화': 5 };
   const mKey = j => (j.d && j.d !== '—') ? j.d.slice(0, 5) : '미상';
-  const months = [...new Set(JOBS.map(mKey))].sort((a, b) => a === '미상' ? 1 : b === '미상' ? -1 : a.localeCompare(b));
+  const months = [...new Set(list.map(mKey))].sort((a, b) => a === '미상' ? 1 : b === '미상' ? -1 : a.localeCompare(b));
   const hot = {};
-  JOBS.forEach(j => {
+  list.forEach(j => {
     const k = canonHotel(j.hotel);
     const o = hot[k] = hot[k] || { key: k, hotel: j.hotel, gu: j.gu, corps: new Set(), gm: false, dogub: 0, direct: 0, n: 0, cells: {}, inM: {} };
     o.n++;
@@ -2663,10 +2752,20 @@ const V2 = (() => {
     (o.cells[c + '|' + m] = o.cells[c + '|' + m] || []).push(j);
   });
   return { CATS, JC, mKey, months, rows: Object.values(hot).sort((p, q) => q.n - p.n || (q.gm ? 1 : 0) - (p.gm ? 1 : 0)) };
-})();
-let v2Month = '', v2Cat = '', v2Mode = 'm';   // v2Mode: 'm'=월별 건수, 'c'=누적 건수
+}
+let V2 = buildV2(JOBS), v2Jobs = JOBS;
+let v2Month = '', v2Cat = '', v2Mode = 'm', v2Old = false;   // v2Mode: 'm'=월별, 'c'=누적 · v2Old: 오래된 달 표시
 function v2SetCat(c){ v2Cat = (c === v2Cat) ? '' : c; renderV2(); }
 function v2SetMode(m){ v2Mode = m; renderV2(); }
+function v2ToggleOld(){ v2Old = !v2Old; renderV2(); }
+/* 기간 조회 (ver.65) — 등록일 기준. 날짜 미상 공고는 기간을 걸면 제외됨 */
+const jISO = j => (j.d && j.d !== '—') ? '20' + j.d.replace(/\//g, '-') : '';
+function v2Range(){
+  const f = document.getElementById('v2From').value, t = document.getElementById('v2To').value;
+  v2Jobs = (!f && !t) ? JOBS : JOBS.filter(j => { const d = jISO(j); return d && (!f || d >= f) && (!t || d <= t); });
+  V2 = buildV2(v2Jobs); v2Month = ''; renderV2();
+}
+function v2RangeClear(){ document.getElementById('v2From').value = ''; document.getElementById('v2To').value = ''; v2Range(); }
 const v2ML = m => m === '미상' ? '미상' : (m.slice(0, 2) === '26' ? '' : "'" + m.slice(0, 2) + ' ') + (+m.slice(3)) + '월';
 function v2SetMonth(m){
   v2Month = (m === v2Month) ? '' : m;
@@ -2683,7 +2782,7 @@ function v2JobRows(list){
     <td class="c"><a href="${j.u}" target="_blank">${j.src} ↗</a></td></tr>`).join('');
 }
 function v2MonthDetail(m){
-  const list = JOBS.filter(j => V2.mKey(j) === m);
+  const list = v2Jobs.filter(j => V2.mKey(j) === m);
   document.getElementById('v2DTitle').textContent = `2026년 ${v2ML(m)} 등록 공고 전체 — ${list.length}건`;
   document.getElementById('v2DBody').innerHTML = v2JobRows(list);
   document.getElementById('v2Detail').style.display = '';
@@ -2708,16 +2807,22 @@ function renderV2(){
   const corp = document.getElementById('v2Corp').value;
   const op = document.getElementById('v2Op').value;
   const all = document.getElementById('v2All').checked;
-  const MS = V2.months;
-  const mCnt = {}; JOBS.forEach(j => { const m = V2.mKey(j); mCnt[m] = (mCnt[m] || 0) + 1; });
+  /* ver.65: 최신 월이 왼쪽 첫 열 · 기본 최근 6개월만, 이전 달은 토글로 (대표 피드백) */
+  const allMS = V2.months;
+  const dated = allMS.filter(m => m !== '미상');
+  const older = Math.max(0, dated.length - 6);
+  const MS = [...(v2Old ? dated : dated.slice(-6))].reverse();
+  if (allMS.includes('미상')) MS.push('미상');
+  const mCnt = {}; v2Jobs.forEach(j => { const m = V2.mKey(j); mCnt[m] = (mCnt[m] || 0) + 1; });
   document.getElementById('v2Months').innerHTML =
     `<span class="muted" style="align-self:center;font-size:12px;margin-right:4px">월별 현황 ▸</span>` +
-    `<button class="gubtn ${!v2Month ? 'on' : ''}" onclick="v2SetMonth('')">전체 (${JOBS.length})</button>` +
+    `<button class="gubtn ${!v2Month ? 'on' : ''}" onclick="v2SetMonth('')">전체 (${v2Jobs.length})</button>` +
     MS.map(m => `<button class="gubtn ${v2Month === m ? 'on' : ''}" onclick="v2SetMonth('${m}')">${v2ML(m)} (${mCnt[m] || 0})</button>`).join('') +
-    `<span class="muted" style="align-self:center;font-size:11px">2026년 · 월 클릭 → 그 달 공고만 + 아래에 전체 목록</span>`;
-  /* 직종 필터 버튼 — 선택한 월 기준 건수 병기 */
+    (older ? `<button class="gubtn" onclick="v2ToggleOld()">${v2Old ? '최근 6개월만' : `이전 ${older}개월 ▸`}</button>` : '') +
+    `<span class="muted" style="align-self:center;font-size:11px">최신 월부터 · 월 클릭 → 그 달 공고만 + 아래에 전체 목록</span>`;
+  /* 직종 필터 버튼 — 선택한 월·기간 기준 건수 병기 */
   const cCnt = [0, 0, 0, 0, 0, 0]; let cTot = 0;
-  JOBS.forEach(j => {
+  v2Jobs.forEach(j => {
     if (v2Month && V2.mKey(j) !== v2Month) return;
     const c = V2.JC[j.job];
     if (c !== undefined) { cCnt[c]++; cTot++; }
@@ -2737,7 +2842,7 @@ function renderV2(){
     `<th class="c" style="min-width:52px;background:rgba(59,130,246,.18)">합계</th></tr>`;
   const gu = document.getElementById('v2Gu').value;
   const catHit = r => v2Cat === '' ||
-    MS.some(m => r.cells[v2Cat + '|' + m] && (!v2Month || m === v2Month));
+    allMS.some(m => r.cells[v2Cat + '|' + m] && (!v2Month || m === v2Month));
   const rows = V2.rows.filter(r =>
     (!v2Month || r.inM[v2Month]) &&
     catHit(r) &&
@@ -2745,22 +2850,25 @@ function renderV2(){
     (!op || (op === '도급' ? r.dogub > 0 : r.dogub === 0 && r.direct > 0)) &&
     (!corp || [...r.corps].includes(corp)) &&
     (!q || (r.hotel + [...r.corps].join('')).toLowerCase().includes(q)));
+  const rangeOn = !!(document.getElementById('v2From').value || document.getElementById('v2To').value);
   document.getElementById('v2Cnt').textContent =
-    `${rows.length}개 사업장${v2Month ? ` · ${v2ML(v2Month)} 공고 ${mCnt[v2Month] || 0}건` : ` · 공고 ${JOBS.length}건 누적`}`;
-  /* ── 통계 요약 (ver.63) — 현재 필터(직종·구·업체·검색)가 적용된 공고 기준, 월 선택과 무관하게 전 기간 표시 ── */
+    `${rows.length}개 사업장${v2Month ? ` · ${v2ML(v2Month)} 공고 ${mCnt[v2Month] || 0}건` : ` · 공고 ${v2Jobs.length}건${rangeOn ? ' (기간 적용)' : ' 누적'}`}`;
+  /* ── 통계 요약 — 현재 필터(직종·구·업체·검색·기간)가 적용된 공고 기준 · 누적은 시간순 계산(accMap) ── */
   const hotSel = new Set(rows.map(r => r.key));
-  const fj = JOBS.filter(j => hotSel.has(canonHotel(j.hotel)) && (v2Cat === '' || V2.JC[j.job] === v2Cat));
+  const fj = v2Jobs.filter(j => hotSel.has(canonHotel(j.hotel)) && (v2Cat === '' || V2.JC[j.job] === v2Cat));
   const tCnt = {}; fj.forEach(j => { const m = V2.mKey(j); tCnt[m] = (tCnt[m] || 0) + 1; });
-  let acc = 0;
+  const accMap = {}; let acc = 0;
+  dated.forEach(m => { acc += tCnt[m] || 0; accMap[m] = acc; });
   const maxM = Math.max(1, ...MS.map(m => tCnt[m] || 0));
   const trend = MS.map(m => {
-    const n = tCnt[m] || 0; if (m !== '미상') acc += n;
+    const n = tCnt[m] || 0;
     return `<div class="bar-row" style="min-height:20px">
       <div class="bar-label lnk" style="width:44px;font-size:11.5px;${v2Month === m ? 'color:#c4b5fd;font-weight:800' : ''}" onclick="v2SetMonth('${m}')">${v2ML(m)}</div>
       <div class="bar-track" style="height:10px"><div class="bar-fill" style="width:${Math.max(2, n / maxM * 100)}%;background:${v2Month === m ? '#a78bfa' : '#7c3aed'}"></div></div>
-      <div class="bar-val" style="width:96px;font-size:11.5px"><b>${n}</b>건${m !== '미상' ? ` <span class="muted">누적 ${acc}</span>` : ''}</div></div>`;
+      <div class="bar-val" style="width:96px;font-size:11.5px"><b>${n}</b>건${m !== '미상' ? ` <span class="muted">누적 ${accMap[m]}</span>` : ''}</div></div>`;
   }).join('');
-  const cStat = [0, 0, 0, 0, 0, 0]; fj.forEach(j => { const c = V2.JC[j.job]; if (c !== undefined) cStat[c]++; });
+  const cStat = [0, 0, 0, 0, 0, 0];
+  v2Jobs.filter(j => hotSel.has(canonHotel(j.hotel))).forEach(j => { const c = V2.JC[j.job]; if (c !== undefined) cStat[c]++; });
   const maxC2 = Math.max(1, ...cStat);
   const catBars = V2.CATS.map((c, i) => `<div class="bar-row" style="min-height:20px">
       <div class="bar-label lnk" style="width:84px;font-size:11.5px;${v2Cat === i ? 'color:#93c5fd;font-weight:800' : ''}" onclick="v2SetCat(${i})">${c}</div>
@@ -2787,20 +2895,22 @@ function renderV2(){
       : (r.direct > 0 ? '<span class="tag t-direct">자사운영</span>' : '<span class="muted" style="font-size:11px">미확인</span>');
     return cats.map((ci, k) => `<tr class="${r.gm ? 'me' : ''}">` +
       (k === 0 ? `<td rowspan="${cats.length}" style="vertical-align:middle;font-size:11.5px;border-right:1px solid #1e293b">${corpCell}</td>
-        <td rowspan="${cats.length}" style="vertical-align:middle;border-right:1px solid #1e293b"><b>${r.hotel}</b><br><span class="muted" style="font-size:10px">${r.gu || ''} · 공고 ${r.n}건</span></td>` : '') +
+        <td rowspan="${cats.length}" style="vertical-align:middle;border-right:1px solid #1e293b"><b>${r.hotel}</b>${estBadge(r.hotel, 1) ? '<br>' + estBadge(r.hotel, 1) : ''}<br><span class="muted" style="font-size:10px">${r.gu || ''} · 공고 ${r.n}건</span></td>` : '') +
       `<td style="font-size:12px;color:#94a3b8">${V2.CATS[ci]}</td>` +
       (() => {
-        let run = 0, tot = 0;
+        /* 누적은 시간순으로 계산해 두고(runMap), 표시는 최신 월부터 (ver.65) */
+        const runMap = {}; let run = 0;
+        dated.forEach(m => { run += (r.cells[ci + '|' + m] || []).length; runMap[m] = run; });
+        const tot = run + (r.cells[ci + '|미상'] ? r.cells[ci + '|미상'].length : 0);
         const tds = MS.map(m => {
           const arr = r.cells[ci + '|' + m];
           const n = arr ? arr.length : 0;
-          tot += n;
-          if (m !== '미상') run += n;
           const hi = v2Month === m ? 'background:rgba(124,58,237,.14);' : '';
           if (v2Mode === 'c' && m !== '미상') {
             /* 누적 모드: 그 달까지의 합계. 새 공고 없는 달은 흐리게 */
-            return run
-              ? `<td class="c exlnk" style="${hi}${n ? '' : 'opacity:.5;'}" onclick="v2Cell('${escQ(r.hotel)}',${ci},'${m}',1)" title="~${v2ML(m)} 누적 ${run}건 원문 보기">${n ? '<b style="color:#a78bfa">●</b>' : ''}<b style="margin-left:3px">${run}</b></td>`
+            const rv = runMap[m] || 0;
+            return rv
+              ? `<td class="c exlnk" style="${hi}${n ? '' : 'opacity:.5;'}" onclick="v2Cell('${escQ(r.hotel)}',${ci},'${m}',1)" title="~${v2ML(m)} 누적 ${rv}건 원문 보기">${n ? '<b style="color:#a78bfa">●</b>' : ''}<b style="margin-left:3px">${rv}</b></td>`
               : `<td class="c" style="${hi}"></td>`;
           }
           return arr
@@ -2824,7 +2934,43 @@ function renderV2(){
 renderV2();
 
 /* ═══════════ 전국 호텔 지도 (ver.62) — Leaflet · 좌표는 인허가 원장 기준 ═══════════ */
-var mpMap = null, mpLayer = null, mpSidoSel = '', mpGuSel = '', mpFit = false;
+var mpMap = null, mpLayer = null, mpSidoSel = '', mpGuSel = '', mpFit = false, mpLastRows = [];
+/* 엑셀 다운로드 (ver.65) — SheetJS를 클릭 시에만 로드 */
+function loadXLSX(cb){
+  if (typeof XLSX !== 'undefined') return cb();
+  const s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+  s.onload = cb; s.onerror = () => alert('엑셀 라이브러리 로드 실패 — 인터넷 연결을 확인하세요');
+  document.head.appendChild(s);
+}
+function mpExcel(){
+  const rows = mpLastRows.length ? mpLastRows : MAPD;
+  loadXLSX(() => {
+    const data = rows.map(d => {
+      const o = mpOps(d);
+      return { '호텔명': d[0], '시도': d[1], '시군구': d[2], '성급': d[6] ? d[6] + '성' : '무성급',
+        '업태': d[6] ? '관광호텔(성급)' : (['관광호텔', '일반호텔', '생활숙박', '콘도'][d[8]] || '기타'),
+        '객실수': d[5] || '', '위도': d[3], '경도': d[4],
+        '도급업체': o && o.status === '도급' ? o.corps.join(', ') : (o && o.status === '자사운영' ? '자사운영' : ''),
+        '공고건수': o ? o.jobs : '' };
+    });
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wbk = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wbk, ws, '호텔지도');
+    XLSX.writeFile(wbk, `호텔지도_${mpSidoSel || '전국'}${mpGuSel ? '_' + mpGuSel : ''}_${new Date().toISOString().slice(0, 10)}.xlsx`);
+  });
+}
+function jobsExcel(){
+  loadXLSX(() => {
+    const data = JOBS.map((j, i) => ({ '순번': i + 1, '등록일': j.d, '지역': j.gu, '호텔명': j.hotel,
+      '업체명': j.corp, '운영': j.op, '직종': j.job, '급여': j.pay, '복리후생': j.wf,
+      '특이사항': j.etc, '출처': j.src, 'URL': j.url || j.u }));
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wbk = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wbk, ws, '구인공고');
+    XLSX.writeFile(wbk, `부산_구인공고_전체_${new Date().toISOString().slice(0, 10)}.xlsx`);
+  });
+}
 const MP_GC = { '5': '#f59e0b', '4': '#a78bfa', '3': '#3b82f6', '2': '#38bdf8', '1': '#94a3b8', '': '#14b8a6' };
 function mpOps(d){
   if (d[7] >= 0) { const o = (typeof EX_OPS === 'object' && EX_OPS) ? EX_OPS[d[0]] : null; return o ? { ...o, fn: 'exToJobs', arg: d[0] } : null; }
@@ -2862,7 +3008,8 @@ function mpRender(){
   /* 시도 버튼 */
   const sc = {}; let tot = 0;
   MAPD.forEach(d => { if (base(d)) { sc[d[1]] = (sc[d[1]] || 0) + 1; tot++; } });
-  const sidos = Object.keys(sc).sort((a, b) => sc[b] - sc[a]);
+  /* 부산(자사 시장)을 맨 앞에 고정, 나머지는 사업장 수 순 (ver.65 대표 피드백) */
+  const sidos = Object.keys(sc).sort((a, b) => (b === '부산') - (a === '부산') || sc[b] - sc[a]);
   document.getElementById('mpSido').innerHTML =
     `<button class="gubtn ${!mpSidoSel ? 'on' : ''}" onclick="mpSetSido('')">전국 (${tot})</button>` +
     sidos.map(s => `<button class="gubtn ${mpSidoSel === s ? 'on' : ''}" onclick="mpSetSido('${s}')">${s === '부산' ? '🎯 ' : ''}${s} (${sc[s]})</button>`).join('');
@@ -2878,13 +3025,15 @@ function mpRender(){
       gus.map(g => `<button class="gubtn ${mpGuSel === g ? 'on' : ''}" onclick="mpSetGu('${g}')">${g} (${gc[g]})</button>`).join('');
   }
   const rows = MAPD.filter(d => base(d) && (!mpSidoSel || d[1] === mpSidoSel) && (!mpGuSel || d[2] === mpGuSel));
+  mpLastRows = rows;   // 엑셀 다운로드용 (현재 필터 결과)
   mpLayer.clearLayers();
   const bounds = [];
   rows.forEach(d => {
     const o = mpOps(d);
+    /* ver.65: 금색 테두리 제거 (대표 피드백 — 공고 확인 표기는 팝업에서만) */
     const mk = L.circleMarker([d[3], d[4]], {
       radius: Math.min(14, 3 + Math.sqrt(d[5] || 1) / 2.2),
-      color: o ? '#fcd34d' : MP_GC[d[6]], weight: o ? 2.5 : 1,
+      color: MP_GC[d[6]], weight: 1,
       fillColor: MP_GC[d[6]], fillOpacity: .72,
     });
     mk.bindPopup(() => mpPopup(d, mpOps(d)), { maxWidth: 300 });
@@ -2899,9 +3048,19 @@ function mpEnsure(){
   if (mpMap) { setTimeout(() => mpMap.invalidateSize(), 60); return; }
   if (typeof L === 'undefined' || typeof MAPD !== 'object') return;   // 오프라인 검증 등 Leaflet 없는 환경
   mpMap = L.map('mapBox', { renderer: L.canvas(), zoomSnap: .5 }).setView([36.1, 127.8], 7);
-  /* OSM 표준 타일 + CSS invert 필터로 다크 톤 (키 필요 없는 무료 소스 — CARTO dark는 API 키 요구로 교체) */
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  /* 지도 타일 (ver.65) — VWorld(국토교통부 공식, 네이버 지도 스타일에 가까움) 키가 있으면 VWorld,
+     없으면 OSM 다크 폴백. 키 발급: vworld.kr 회원가입 → 오픈API 인증키 신청(사이트 URL에
+     https://junil1997.github.io 등록) → 발급 키를 아래 VWORLD_KEY 에 붙여넣으면 즉시 전환됨 */
+  const VWORLD_KEY = '124CEC98-7A50-4EAF-949C-0CAE7B88697F';   // 2026-09-16 발급 · junil1997.github.io 도메인 등록
+  const osm = () => L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     { attribution: '© OpenStreetMap contributors', maxZoom: 19, className: 'mp-dark-tiles' }).addTo(mpMap);
+  if (VWORLD_KEY) {
+    const vw = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/' + VWORLD_KEY + '/Base/{z}/{y}/{x}.png',
+      { attribution: '© 국토교통부 VWorld', maxZoom: 19 }).addTo(mpMap);
+    /* 키는 junil1997.github.io 도메인에 묶여 있어 로컬 미리보기 등에선 타일이 거부될 수 있음 → OSM 자동 폴백 */
+    let vwErr = 0;
+    vw.on('tileerror', () => { if (++vwErr === 6) { mpMap.removeLayer(vw); osm(); } });
+  } else osm();
   mpLayer = L.layerGroup().addTo(mpMap);
   const ea = document.getElementById('mpExA'), ex = document.getElementById('mpExX');
   if (ea && typeof MAP_EXCLUDED === 'object') { ea.textContent = MAP_EXCLUDED.a; ex.textContent = MAP_EXCLUDED.x; }
