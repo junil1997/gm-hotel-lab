@@ -278,7 +278,7 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.65</small></span></h1>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.66</small></span></h1>
   <div class="meta">구인공고 수집일 : <b>2026-09-11</b> · 매주 금요일 자동수집<span id="todayStamp" style="display:none"></span></div>
 </header>
 
@@ -1057,22 +1057,17 @@
         <option value="A">성급 호텔만</option>
         <option value="B">무성급 시설만</option>
       </select>
-      <label class="gubtn" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer">
-        <input type="checkbox" id="mpJobs" onchange="mpRender()" style="accent-color:#f59e0b">공고 확인 사업장만</label>
+      <label class="gubtn" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap">
+        <input type="checkbox" id="mpJobs" onchange="mpRender()" style="flex:0 0 auto;min-width:0;width:15px;height:15px;accent-color:#f59e0b">공고 확인 사업장만</label>
       <input id="mpQ" placeholder="호텔명 검색…" oninput="mpRender()" style="min-width:160px">
       <span class="cnt" id="mpCnt"></span>
     </div>
-    <!-- 범례 별도 박스 (ver.65 — 대표 피드백: 크게, 따로) -->
-    <div style="display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-bottom:10px;padding:12px 16px;
-                border:1px solid #334155;border-radius:10px;background:rgba(30,41,59,.5);font-size:14px;font-weight:700">
-      <span style="color:#94a3b8;font-size:12.5px;font-weight:400">범례 ▸</span>
-      <span><span style="color:#f59e0b;font-size:19px;vertical-align:-2px">●</span> 5성</span>
-      <span><span style="color:#a78bfa;font-size:19px;vertical-align:-2px">●</span> 4성</span>
-      <span><span style="color:#3b82f6;font-size:19px;vertical-align:-2px">●</span> 3성</span>
-      <span><span style="color:#38bdf8;font-size:19px;vertical-align:-2px">●</span> 2성</span>
-      <span><span style="color:#94a3b8;font-size:19px;vertical-align:-2px">●</span> 1성</span>
-      <span><span style="color:#14b8a6;font-size:19px;vertical-align:-2px">●</span> 무성급 <span class="muted" style="font-size:11.5px;font-weight:400">생활숙박·콘도·일반호텔</span></span>
-      <span class="muted" style="font-size:12px;font-weight:400">· 점 크기 = 객실수 비례 · 점 클릭 → 상세·공고</span>
+    <!-- 범례 = 등급 필터 (ver.66 — 대표 피드백: 체크해서 그 등급만 보기, 복수 선택) -->
+    <div style="display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;margin-bottom:10px;padding:12px 16px;
+                border:1px solid #334155;border-radius:10px;background:rgba(30,41,59,.5)">
+      <span style="color:#94a3b8;font-size:12.5px">범례·필터 ▸</span>
+      <span id="mpLegend" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"></span>
+      <span class="muted" style="font-size:12px">클릭 = 그 등급만 표시(복수 선택) · 점 크기 = 객실수 비례</span>
       <button class="gubtn" style="margin-left:auto" onclick="mpExcel()">📥 엑셀 다운로드</button>
     </div>
     <div id="mapBox" style="height:64vh;min-height:420px;border-radius:12px;overflow:hidden;border:1px solid #1e293b;background:#0b1220"></div>
@@ -1175,7 +1170,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.65 (2026-09-16) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.66 (2026-09-16) · 호텔 835개 전수 명단 내장<br>
   통계 출처<br>
   한국관광협회중앙회 호텔업 등급결정 현황 (2026-08-20 자료 기준 · 835개 전수)<br>
   문화체육관광부 관광숙박업 등록현황 (2025년 말)<br>
@@ -2718,10 +2713,10 @@ function renderMkt(){
   /* KPI */
   const payN = MKT.reduce((s2, r) => s2 + r.pays.filter(p => p && p.pay).length, 0);
   document.getElementById('mkKpi').innerHTML = `
-    <div class="kpi accent"><div class="kpi-t">조사된 호텔·시설</div><div class="kpi-v">${MKT.length}<span>곳</span></div><div class="kpi-s">채용공고가 관측된 사업장</div></div>
+    <div class="kpi accent"><div class="kpi-t">조사된 호텔·시설</div><div class="kpi-v">${MKT.length}<span>사업장</span></div><div class="kpi-s">채용공고가 관측된 사업장</div></div>
     <div class="kpi"><div class="kpi-t">누적 수집 공고</div><div class="kpi-v">${JOBS.length}<span>건</span></div><div class="kpi-s">5개 사이트 · 전 건 원문 URL</div></div>
-    <div class="kpi"><div class="kpi-t">급여 확인</div><div class="kpi-v">${payN}<span>칸</span></div><div class="kpi-s">호텔×직종 조합 기준 · 미기재는 공란</div></div>
-    <div class="kpi gm"><div class="kpi-t">🎯 도급 운영 확인</div><div class="kpi-v">${MKT.filter(r => r.dogub > 0).length}<span>곳</span></div><div class="kpi-s">자사운영(직영) ${MKT.filter(r => r.dogub === 0 && r.direct > 0).length}곳</div></div>`;
+    <div class="kpi"><div class="kpi-t">급여 확인</div><div class="kpi-v">${payN}<span>건</span></div><div class="kpi-s">호텔×직종 조합 기준 확인 · 미기재는 공란</div></div>
+    <div class="kpi gm"><div class="kpi-t">🎯 도급 운영 확인</div><div class="kpi-v">${MKT.filter(r => r.dogub > 0).length}<span>사업장</span></div><div class="kpi-s">자사운영(직영) ${MKT.filter(r => r.dogub === 0 && r.direct > 0).length}사업장</div></div>`;
 }
 (() => {   // 구·군 select 옵션 (ver.65 — 구별 검색)
   const gs = {};
@@ -2995,6 +2990,23 @@ function mpPopup(d, o){
     <span style="color:#f59e0b">${cls}</span><br>
     ${d[1]} ${d[2]} · ${d[5] ? fmt(d[5]) + '실' : '객실수 미기재'}${open ? '<br>개관(등록·인허가) ' + fmtOpen(open) : ''}${jl}</div>`;
 }
+/* 범례 등급 다중 필터 (ver.66) — 빈 Set = 전체 표시 */
+var mpGradeSel = new Set();
+function mpToggleGrade(g){ mpGradeSel.has(g) ? mpGradeSel.delete(g) : mpGradeSel.add(g); mpRender(); }
+function mpLegendRender(gc){
+  const items = [['5', '5성'], ['4', '4성'], ['3', '3성'], ['2', '2성'], ['1', '1성'], ['', '무성급']];
+  document.getElementById('mpLegend').innerHTML = items.map(([g, lb]) => {
+    const on = !mpGradeSel.size || mpGradeSel.has(g);
+    const sel = mpGradeSel.has(g);
+    return `<button onclick="mpToggleGrade('${g}')" title="${lb}만 보기 (복수 선택 가능)"
+      style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;cursor:pointer;
+             padding:7px 14px;border-radius:20px;color:${on ? '#e2e8f0' : '#475569'};
+             background:${sel ? 'rgba(59,130,246,.22)' : 'rgba(15,23,42,.6)'};
+             border:1.5px solid ${sel ? MP_GC[g] : '#334155'};${on ? '' : 'opacity:.45;'}">
+      <span style="color:${MP_GC[g]};font-size:18px;line-height:1">●</span>${lb}
+      <span style="font-weight:400;font-size:11.5px;color:#94a3b8">${fmt(gc[g] || 0)}</span></button>`;
+  }).join('');
+}
 function mpSetSido(s){ mpSidoSel = s; mpGuSel = ''; mpFit = true; mpRender(); }
 function mpSetGu(g){ mpGuSel = g; mpFit = true; mpRender(); }
 function mpRender(){
@@ -3003,8 +3015,13 @@ function mpRender(){
   const src = document.getElementById('mpSrc').value;
   const jonly = document.getElementById('mpJobs').checked;
   const q = (document.getElementById('mpQ').value || '').trim().toLowerCase();
-  const base = d => (!min || d[5] >= min) && (!src || (src === 'A' ? d[6] !== '' : d[6] === '')) &&
+  const base0 = d => (!min || d[5] >= min) && (!src || (src === 'A' ? d[6] !== '' : d[6] === '')) &&
     (!q || d[0].toLowerCase().includes(q)) && (!jonly || !!mpOps(d));
+  const base = d => base0(d) && (!mpGradeSel.size || mpGradeSel.has(d[6]));
+  /* 범례 필터 버튼 — 등급별 개수는 등급 필터 제외한 조건 기준 */
+  const gcnt = {};
+  MAPD.forEach(d => { if (base0(d) && (!mpSidoSel || d[1] === mpSidoSel) && (!mpGuSel || d[2] === mpGuSel)) gcnt[d[6]] = (gcnt[d[6]] || 0) + 1; });
+  mpLegendRender(gcnt);
   /* 시도 버튼 */
   const sc = {}; let tot = 0;
   MAPD.forEach(d => { if (base(d)) { sc[d[1]] = (sc[d[1]] || 0) + 1; tot++; } });
