@@ -913,7 +913,7 @@
     <div class="sb-row"><span class="sb-k">🔄 방식</span><span>누적 수집 · 최신 등록순 — 새 공고가 위에 쌓이고 기존 공고는 삭제하지 않습니다</span></div>
     <div class="sb-row"><span class="sb-k">수집처</span><span><b>5개 사이트</b> · 사람인 · 고용24 · 잡코리아 · 알바몬 · 알바천국</span></div>
     <div class="sb-row"><span class="sb-k">직종</span><span>룸메이드 · 하우스맨 · 인스펙터 · 하우스키핑 관리자 · 소장/센터장 · 시설 · 미화 · 영선</span></div>
-    <div class="sb-row"><span class="sb-k">이력</span><span>1–6차 08-19~28 <b>236건</b> → 7차 09-04 자동수집 <b>+12</b> → 8차 09-08 요청수집 +10 → 9차 09-11 자동수집 +34 → <b style="color:#fcd34d">10차 09-18 자동수집 +41</b> = <b>누적 333건</b></span></div>
+    <div class="sb-row"><span class="sb-k">이력</span><span>1–6차 08-19~28 <b>236건</b> → 7차 09-04 자동수집 <b>+12</b> → 8차 09-08 요청수집 +10 → 9차 09-11 자동수집 +34 → <b style="color:#fcd34d">10차 09-18 자동수집 +43</b> = <b>누적 335건</b></span></div>
     <div class="sb-foot">✅ 전 건 실제 공고 · 원문 URL 첨부</div>
   </div>
 
@@ -1090,7 +1090,7 @@
       <thead><tr><th style="width:92px">날짜</th><th style="width:70px">버전</th><th>변경 내용</th></tr></thead>
       <tbody>
         <tr class="me"><td class="c">2026-09-18</td><td class="c"><b>ver.68</b></td>
-          <td>주간 수집 10차 — Actions YAML 버그(on.workflow_dispatch 오배치)로 9/16 이후 자동수집 전면 중단된 것을 발견·수정 후 수동 실행, 신규 공고 41건 반영(누적 333건) — 모스원 씨클라우드호텔 인스펙터 공고 재확인, 파크하얏트 부산 신규 확인</td></tr>
+          <td>주간 수집 10차 — Actions YAML 버그(on.workflow_dispatch 오배치)로 9/16 이후 자동수집 전면 중단된 것을 발견·수정 후 수동 실행, 신규 공고 43건 반영(누적 335건) — 모스원 씨클라우드호텔 인스펙터 공고 재확인, 파크하얏트 부산 신규 확인</td></tr>
         <tr><td class="c">2026-09-16</td><td class="c">ver.67</td>
           <td>주 3회 수집 체제 반영 — 헤더 표기(월·수·금)·연동 표·수집 절차 갱신, 업데이트 내역 카드 신설</td></tr>
         <tr><td class="c">2026-09-16</td><td class="c">ver.66</td>
@@ -1204,7 +1204,7 @@
   문화체육관광부 관광숙박업 등록현황 (2025년 말)<br>
   통계청 전국사업체조사 (2024년, KOSIS)<br>
   지자체 숙박업 인허가 명단 (숙박업 리스트_260220 · 2026-02-20 자료 기준 · 30,693개 사업장)<br>
-  구인공고 : 사람인·고용24·잡코리아·알바몬·알바천국 5개 사이트 (2026-09-18 수집 · 누적 333건 · 전 건 원문 URL 첨부)
+  구인공고 : 사람인·고용24·잡코리아·알바몬·알바천국 5개 사이트 (2026-09-18 수집 · 누적 335건 · 전 건 원문 URL 첨부)
 </footer>
 
 </div>
@@ -1599,6 +1599,8 @@ const JOBS = [
  { d:'26/09/18', nw:1, anon:1, gu:'수영구', hotel:'광안리 소재 호텔', corp:'주식회사 바론파트너스', op:'도급', job:'미화', pay:'—', wf:'—', etc:'주간 조조 미화 보조 겸직', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54874973' },
  { d:'26/09/18', nw:1, gu:'해운대구', hotel:'씨클라우드 호텔 해운대', corp:'모스원 주식회사', op:'도급', job:'룸메이드', pay:'—', wf:'—', etc:'🚨 자사 운영 호텔 — 모스원 8/14부터 지속 재게시', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54993132' },
  { d:'26/09/18', nw:1, gu:'해운대구', hotel:'씨클라우드 호텔 해운대', corp:'모스원 주식회사', op:'도급', job:'인스펙터', pay:'—', wf:'—', etc:'🚨 자사 운영 호텔 — 모스원 인스펙터(IP) 공고 지속', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54993133' },
+ { d:'26/09/18', nw:1, gu:'해운대구', hotel:'트레블로지 스위트 부산 센텀', corp:'트레블로지 스위트 부산 센텀', op:'직영', job:'하우스키핑 관리자', pay:'—', wf:'—', etc:'🆕 신규 확인 사업장', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55037973' },
+ { d:'26/09/18', nw:1, gu:'해운대구', hotel:'웨스틴조선 부산', corp:'(주)조선호텔앤리조트 부산', op:'직영', job:'시설', pay:'—', wf:'—', etc:'호텔 직영 시설 담당(삼익 도급 인력과 별도)', src:'사람인', u:'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55072820' },
 ];
 JOBS.forEach(j => j.url = j.u || ('https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=' + j.id));
 
