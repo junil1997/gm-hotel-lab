@@ -30,6 +30,10 @@ jobs:
       - name: 공고 상세 조회 (회사명·급여·근무지)
         run: node enrich.js
 
+      - name: 공고 마감 여부 확인 (ver.70 — 누적 공고 원문을 열어 마감/진행 판정)
+        run: node status.js
+        continue-on-error: true      # 마감 확인이 실패해도 수집 결과 커밋은 진행
+
       - name: 결과 요약
         run: |
           node -e "
@@ -46,7 +50,7 @@ jobs:
         run: |
           git config user.name  "gm-hotel-lab collector"
           git config user.email "actions@users.noreply.github.com"
-          git add -f candidates.json
+          git add -f candidates.json data/job_status.json
           if git diff --staged --quiet; then
             echo "변경 없음 — 커밋 생략"
           else
