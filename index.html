@@ -311,7 +311,7 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.73</small></span></h1>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.74</small></span></h1>
   <div class="meta">최근 자동수집 : <b id="lastCollect">2026-09-30</b> · 공고 반영 : <b id="collectDate">2026-09-25</b>
     <span style="display:block;font-size:11px;opacity:.8">매주 <b>월·수·금</b> 자동수집 → 금요일 검수 후 공고표 반영</span><span id="todayStamp" style="display:none"></span></div>
 </header>
@@ -1197,7 +1197,10 @@
     <table class="tbl" style="font-size:12.5px">
       <thead><tr><th style="width:92px">날짜</th><th style="width:70px">버전</th><th>변경 내용</th></tr></thead>
       <tbody>
-        <tr class="me"><td class="c">2026-10-01</td><td class="c"><b>ver.73</b></td>
+        <tr class="me"><td class="c">2026-10-01</td><td class="c"><b>ver.74</b></td>
+          <td>아웃소싱 인포그래픽 순위 정정(대표 지적) — 지엠네트웍스 포지션을 페이지 기준과 같은 <b>관리 사업장 수 순위(2위, 1위 시너링크)</b>로 표기.
+              확인 객실 비중 도넛은 익명 공고 업체 객실이 빠진 하한값임을 명시</td></tr>
+        <tr><td class="c">2026-10-01</td><td class="c">ver.73</td>
           <td><b>디자인 개편</b> — 데이터·계산 로직은 그대로 두고 화면만 변경(개편 전 ver.72는 GitHub 태그 backup-ver72로 보존) ·
               글꼴 Pretendard · 유리 질감 카드 · 숫자 카운트업·막대 차오름 모션 ·
               <b>탭별 인포그래픽 7종</b>(전국 현황·성급별·숙박업 명단·아웃소싱·구인공고·시장조사·지도 — 도넛·게이지·추이 차트·구×직종 히트맵·부산 구별 타일맵) ·
@@ -1327,7 +1330,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.73 (2026-10-01) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.74 (2026-10-01) · 호텔 835개 전수 명단 내장<br>
   통계 출처<br>
   한국관광협회중앙회 호텔업 등급결정 현황 (2026-08-20 자료 기준 · 835개 전수)<br>
   문화체육관광부 관광숙박업 등록현황 (2025년 말)<br>
@@ -4044,22 +4047,26 @@ function mpEnsure(){
         panel('구 × 직종 공고 분포', `공고 많은 상위 ${gus.length}개 구 · 색이 진할수록 많음 · 누적 기준`, heat, '1/-1'), 'g4'));
     } catch (e) { console.warn('ig t4', e); }
 
-    /* ── ③ 아웃소싱 공급시장 ── */
+    /* ── ③ 아웃소싱 공급시장 ──
+       순위는 페이지의 기존 기준(관리 사업장 수 → 같으면 확인 객실)과 같게 맞춤 (ver.74 대표 지적).
+       '확인 객실'은 익명 공고 업체의 객실이 빠진 하한값이라 순위 근거로 쓰지 않음 */
     try {
-      const vs = [...VENDORS].sort((a, b) => b.rooms - a.rooms), tot = vs.reduce((s, v) => s + v.rooms, 0);
+      const byH = [...VENDORS].sort((a, b) => b.hotelCnt - a.hotelCnt || b.rooms - a.rooms), totH = VENDORS.reduce((s, v) => s + v.hotelCnt, 0);
+      const gmV = VENDORS.find(v => v.gm), rk = gmV ? byH.indexOf(gmV) + 1 : 0, top1 = byH[0];
+      const vs = VENDORS.filter(v => v.rooms > 0).sort((a, b) => b.rooms - a.rooms), tot = vs.reduce((s, v) => s + v.rooms, 0);
       const top = vs.slice(0, 6), etc = tot - top.reduce((s, v) => s + v.rooms, 0);
       const segs = top.map((v, i) => ({ label: (v.gm ? '🎯 ' : '') + v.corp, value: v.rooms, color: v.gm ? '#f5b942' : PAL[i] }));
-      segs.push({ label: `기타 ${vs.length - 6}개사`, value: etc, color: '#334155' });
-      const byH = [...VENDORS].sort((a, b) => b.hotelCnt - a.hotelCnt), totH = VENDORS.reduce((s, v) => s + v.hotelCnt, 0), gmV = VENDORS.find(v => v.gm);
-      const rk = gmV ? vs.indexOf(gmV) + 1 : 0;
+      if (etc > 0) segs.push({ label: `기타 ${vs.length - 6}개사`, value: etc, color: '#334155' });
+      const unk = byH.filter(v => v.rooms === 0).slice(0, 3).map(v => `${v.corp.replace(/^\(주\)|\(주\)$/g, '')} ${v.hotelCnt}`).join(' · ');
       put('t6', card('도급 시장 점유 구조', '인포그래픽',
-        panel('관리 객실 점유율', '공식 확인 객실 기준', donut(segs, [F(tot), '확인 객실(실)'], { fmt: v => F(v) + '실' })) +
-        panel('🎯 지엠네트웍스 포지션', '관측 도급업체 ' + VENDORS.length + '개사 중', gmV ? `<div style="display:flex;gap:18px;align-items:center;justify-content:center;padding:6px 0">
-            <div style="text-align:center"><div class="sk-big" style="color:#f5b942;font-size:40px">${rk}<span style="font-size:16px">위</span></div><div class="sk-sub">관리 객실 순위</div></div>
-            <div style="text-align:center"><div class="sk-big">${F(gmV.rooms)}<span style="font-size:13px;color:#8b9bb4">실</span></div><div class="sk-sub">점유 ${P(gmV.rooms, tot).toFixed(1)}%</div></div>
-            <div style="text-align:center"><div class="sk-big">${gmV.hotelCnt}<span style="font-size:13px;color:#8b9bb4">사업장</span></div><div class="sk-sub">관리 사업장 ${byH.indexOf(gmV) + 1}위</div></div></div>` : '') +
-        panel('관리 사업장 수 상위', `전체 ${F(totH)}사업장`, `<div class="sk-stack" style="height:22px">${byH.slice(0, 6).map((v, i) => `<i style="width:${P(v.hotelCnt, totH)}%;background:${v.gm ? '#f5b942' : PAL[i]}" title="${v.corp} ${v.hotelCnt}"></i>`).join('')}<i style="width:${P(totH - byH.slice(0, 6).reduce((s, v) => s + v.hotelCnt, 0), totH)}%;background:#334155"></i></div>
-          <div class="sk-leg">${byH.slice(0, 6).map((v, i) => `<div><i style="background:${v.gm ? '#f5b942' : PAL[i]}"></i><span>${v.gm ? '🎯 ' : ''}${v.corp}</span><b>${v.hotelCnt}사업장</b><em>${P(v.hotelCnt, totH).toFixed(1)}%</em></div>`).join('')}</div>`)));
+        panel('관리 사업장 수 상위', `전체 ${F(totH)}사업장 · 순위 기준`, `<div class="sk-stack" style="height:22px">${byH.slice(0, 6).map((v, i) => `<i style="width:${P(v.hotelCnt, totH)}%;background:${v.gm ? '#f5b942' : PAL[i]}" title="${v.corp} ${v.hotelCnt}"></i>`).join('')}<i style="width:${P(totH - byH.slice(0, 6).reduce((s, v) => s + v.hotelCnt, 0), totH)}%;background:#334155"></i></div>
+          <div class="sk-leg">${byH.slice(0, 6).map((v, i) => `<div><i style="background:${v.gm ? '#f5b942' : PAL[i]}"></i><span>${i + 1}. ${v.gm ? '🎯 ' : ''}${v.corp}</span><b>${v.hotelCnt}사업장</b><em>${P(v.hotelCnt, totH).toFixed(1)}%</em></div>`).join('')}</div>`) +
+        panel('🎯 지엠네트웍스 포지션', '관측 도급업체 ' + VENDORS.length + '개사 중', gmV ? `<div style="display:flex;gap:22px;align-items:center;justify-content:center;padding:6px 0">
+            <div style="text-align:center"><div class="sk-big" style="color:#f5b942;font-size:40px">${rk}<span style="font-size:16px">위</span></div><div class="sk-sub">관리 사업장 순위</div></div>
+            <div style="text-align:center"><div class="sk-big">${gmV.hotelCnt}<span style="font-size:13px;color:#8b9bb4">사업장</span></div><div class="sk-sub">1위 ${top1.corp} ${top1.hotelCnt}사업장</div></div>
+            <div style="text-align:center"><div class="sk-big">${F(gmV.rooms)}<span style="font-size:13px;color:#8b9bb4">실</span></div><div class="sk-sub">확인 객실 (${gmV.known}/${gmV.hotelCnt}사업장)</div></div></div>` : '') +
+        panel('확인된 관리 객실 비중', '공식 확인분만 · 하한값', donut(segs, [F(tot), '확인 객실(실)'], { fmt: v => F(v) + '실' }) +
+          `<div class="sk-sub" style="margin-top:8px">※ 익명 공고만 있는 업체는 객실을 알 수 없어 빠져 있음 (예: ${unk}사업장) — 실제 점유율과 다를 수 있음</div>`)));
     } catch (e) { console.warn('ig t6', e); }
 
     /* ── ④ 시장조사 현황 ── */
