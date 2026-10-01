@@ -311,8 +311,9 @@
 
 <header>
   <h1><svg class="gm-logo" role="img" aria-label="지엠네트웍스" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 152"><path d="M140.82 16.63L140.82 2.24C140.82 1.01 141.82 0.01 143.05 0.01L157.44 0.01C159.43 0.01 160.43 2.42 159.02 3.82L144.63 18.21C143.23 19.62 140.82 18.62 140.82 16.63Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M112.57 0.01L126.96 0.01C128.19 0.01 129.19 1.01 129.19 2.24L129.19 16.63C129.19 18.62 126.79 19.62 125.38 18.21L110.99 3.82C109.59 2.42 110.58 0.01 112.57 0.01Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M129.19 60.86L129.19 41.42C129.19 31.07 120.81 22.69 110.46 22.69L25.06 22.69C8.37 22.69 0.02 42.86 11.82 54.66L72.76 115.54L79.95 103.73L95.34 78.38L76.78 60.86L129.19 60.86Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M97.33 68.04L104.17 74.88L99.73 84.13L80.78 123.57L97.26 140.06C109.06 151.86 129.23 143.51 129.23 126.82L129.23 75.45C129.23 71.36 125.91 68.04 121.82 68.04L97.33 68.04Z" fill="#0a4c93" fill-rule="evenodd"/><path d="M241.69 71.16L258.18 54.66C269.98 42.86 261.63 22.69 244.94 22.69L159.58 22.69C149.24 22.69 140.85 31.07 140.85 41.41L140.82 126.80C140.82 143.49 160.99 151.85 172.80 140.05L189.27 123.57L159.10 60.77C160.07 60.74 161.02 60.65 161.95 60.49C162.97 60.32 163.99 60.83 164.53 61.71L197.30 115.54L233.66 79.18L179.83 46.41C178.94 45.87 178.44 44.85 178.61 43.83C178.77 42.90 178.86 41.95 178.89 40.98L241.69 71.16Z" fill="#0a4c93" fill-rule="evenodd"/></svg><span class="h1-txt">지엠네트웍스 호텔 상권분석 대시보드
-    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.71</small></span></h1>
-  <div class="meta">구인공고 수집일 : <b id="collectDate">2026-09-25</b> · 매주 <b>월·수·금</b> 자동수집 (금요일 검수·반영)<span id="todayStamp" style="display:none"></span></div>
+    <small>전국 호텔 시장 현황 · 부산 호텔 도급 구인공고 모니터링 — ver.72</small></span></h1>
+  <div class="meta">최근 자동수집 : <b id="lastCollect">2026-09-30</b> · 공고 반영 : <b id="collectDate">2026-09-25</b>
+    <span style="display:block;font-size:11px;opacity:.8">매주 <b>월·수·금</b> 자동수집 → 금요일 검수 후 공고표 반영</span><span id="todayStamp" style="display:none"></span></div>
 </header>
 
 <div class="nav">
@@ -1196,7 +1197,9 @@
     <table class="tbl" style="font-size:12.5px">
       <thead><tr><th style="width:92px">날짜</th><th style="width:70px">버전</th><th>변경 내용</th></tr></thead>
       <tbody>
-        <tr class="me"><td class="c">2026-10-01</td><td class="c"><b>ver.71</b></td>
+        <tr class="me"><td class="c">2026-10-01</td><td class="c"><b>ver.72</b></td>
+          <td>헤더 날짜 2개로 구분 — <b>최근 자동수집</b>(월·수·금 수집 때마다 자동 갱신) · <b>공고 반영</b>(금요일 검수 후 공고표 반영일). 기존엔 반영일만 보여 월·수 수집이 안 된 것처럼 보였음</td></tr>
+        <tr><td class="c">2026-10-01</td><td class="c">ver.71</td>
           <td>대표 피드백 — 메뉴 순서 변경(숙박업 명단 ↔ 아웃소싱) · 데이터 검증 카드 접어도 요약 4칸 유지 · 업체별 관리 객실 막대 한 줄로 축소(확인 사업장 수 표기 삭제)</td></tr>
         <tr><td class="c">2026-09-28</td><td class="c">ver.70</td>
           <td>대표 피드백 9건 — <b>아웃소싱 데이터 전수 검증</b>(객실 연결 확대·중복 호텔 11건 통합·직영 재분류 4개사) ·
@@ -1319,7 +1322,7 @@
 
 <footer>
   <span class="made">Made by 인공지능소프트웨어협회</span><br>
-  지엠네트웍스 호텔 상권분석 대시보드 — ver.71 (2026-10-01) · 호텔 835개 전수 명단 내장<br>
+  지엠네트웍스 호텔 상권분석 대시보드 — ver.72 (2026-10-01) · 호텔 835개 전수 명단 내장<br>
   통계 출처<br>
   한국관광협회중앙회 호텔업 등급결정 현황 (2026-08-20 자료 기준 · 835개 전수)<br>
   문화체육관광부 관광숙박업 등록현황 (2025년 말)<br>
@@ -1822,6 +1825,14 @@ const HOTELS = [["파이 호텔","1",4,65,0,"2026-08-20","20081010",""],["호텔
   const mx = JOBS.reduce((m, j) => (j.c && j.c > m) ? j.c : m, '');
   const el = document.getElementById('collectDate'); if (el && mx) el.textContent = '20' + mx.replace(/\//g, '-');
 } catch (e) {} })();
+(function(){
+  if (typeof fetch !== 'function' || !/^https?:/.test((typeof location === 'object' && location.protocol) || '')) return;
+  fetch('candidates.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(d => {
+    if (!d || !d.collectedAt) return;
+    const kst = new Date(new Date(d.collectedAt).getTime() + 9 * 3600e3).toISOString().slice(0, 10);
+    const el = document.getElementById('lastCollect'); if (el) el.textContent = kst;
+  }).catch(() => {});
+})();
 function navSync(){ const t = document.getElementById('navTog'); if (t) t.textContent = document.body.classList.contains('navc') && !document.body.classList.contains('navo') ? '☰' : '«';
   if (typeof mpMap === 'object' && mpMap) setTimeout(() => mpMap.invalidateSize(), 260); }
 function navToggle(){
