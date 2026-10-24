@@ -16,9 +16,10 @@ const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const flat = s => s.replace(/\s+/g, ' ').trim();
 
-const get = async url => {
+const UA_MO = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
+const get = async (url, ua) => {
   const r = await fetch(url, {
-    headers: { 'User-Agent': UA, 'Accept-Language': 'ko-KR,ko;q=0.9' },
+    headers: { 'User-Agent': ua || UA, 'Accept-Language': 'ko-KR,ko;q=0.9' },
     signal: AbortSignal.timeout(25000),
   });
   if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -38,7 +39,7 @@ const PAY = /(월급|일급|시급|연봉|건별)\s*[\d,]+\s*(만원|원)?(\s*(�
 function parse(site, html) {
   const title = flat((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '');
   const t = flat(html);
-  const out = { title: title.slice(0, 120), corp: '', name: '', pay: '', loc: '' };
+  const out = { title: title.slice(0, 120), corp: '', name: '', pay: '', loc: '', reg: '' };
 
   if (site === '고용24') {
     const s = segs(html);
@@ -71,6 +72,14 @@ function parse(site, html) {
     const m = title.match(/^(.*?)\s*채용정보\s*:\s*(.*?)\s*-\s*알바천국/);
     if (m) { out.corp = m[1]; out.name = m[2]; }
   }
+  /* 근무지·등록일 보강 (2026-10-24) — 고용24 외 4개 사이트는 loc·reg가 비어 선별에서 부산 공고가 통째로 빠지고,
+     등록일이 없어 시장조사 월별 매트릭스 '미상'으로 몰리던 문제. 사이트가 제공하는 구조화 데이터(JSON-LD)에서 읽는다 */
+  const js = k => { const m = html.match(new RegExp(k + '\\\\*"\\s*:\\s*\\\\*"([^"\\\\]{2,80})')); return m ? m[1] : ''; };
+  if (!out.reg) { const dp = js('datePosted').match(/^(\d{4}-\d{2}-\d{2})/); if (dp) out.reg = dp[1]; }
+  if (!out.loc) {
+    if (site === '잡코리아') out.loc = (t.match(/근무지주소\s*([^<]{4,60})/) || [])[1] || js('streetAddress');
+    else out.loc = [js('addressRegion'), js('addressLocality'), js('streetAddress')].filter(Boolean).join(' ');
+  }
   out.pay = flat((t.match(PAY) || [])[0] || '');
   ['corp', 'name', 'loc'].forEach(k => { out[k] = flat(out[k]).slice(0, 70); });
   return out;
@@ -93,9 +102,23 @@ function parse(site, html) {
       }
       const html = await get(url);
       c.detail = parse(c.site, html);
+      /* 사람인 PC 페이지에는 근무지·등록일이 없어 모바일 상세에서 읽는다 ('근무지위치', '시작일') */
+      if (c.site === '사람인' && (!c.detail.loc || !c.detail.reg)) {
+        const id = (url.match(/rec_idx=(\d+)/) || [])[1];
+        if (id) try {
+          const m = await get('https://m.saramin.co.kr/job-search/view?rec_idx=' + id, UA_MO);
+          const mt = flat(m.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&[a-z]+;/gi, ' '));
+          const lc = mt.match(/근무지위치\s*(?:\(\d{5}\)\s*)?([^(]{4,60}?)(?:\s*\(인근|\s*크게보기|$)/);
+          if (lc && !c.detail.loc) c.detail.loc = flat(lc[1]).slice(0, 70);
+          const sd = mt.match(/시작일\s*(\d{4})\.(\d{1,2})\.(\d{1,2})/);
+          if (sd && !c.detail.reg) c.detail.reg = `${sd[1]}-${sd[2].padStart(2, '0')}-${sd[3].padStart(2, '0')}`;
+        } catch (e) {}
+        await sleep(700);
+      }
       // 등록일은 목록 ctx 쪽이 더 정확한 경우가 많아 함께 보존
       const reg = (c.ctx || '').match(/등록일\s*:?\s*(\d{4}-\d{2}-\d{2})/);
       if (reg) c.detail.reg = reg[1];
+      if (!c.detail.reg) delete c.detail.reg;
       ok++;
     } catch (e) {
       c.detail = { error: e.message };
