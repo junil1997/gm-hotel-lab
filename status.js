@@ -22,10 +22,16 @@ const TODAY = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);   //
 function loadJobs(){
   const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
   const L = html.split('\n');
-  const i0 = L.findIndex(x => x.trim().startsWith('const JOBS = ['));
-  let i1 = i0; while (L[i1].trim() !== '];') i1++;
-  const J = eval(L.slice(i0, i1 + 1).join('\n').replace(/const JOBS = /, ''));
-  return J.map(j => ({ src: j.src, url: j.u || ('https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=' + j.id) }));
+  /* JOBS(하우스키핑·시설) + FRONTS(프런트, 2026-10-29) 둘 다 */
+  const arr = name => {
+    const i0 = L.findIndex(x => x.trim().startsWith(`const ${name} = [`)); if (i0 < 0) return [];
+    let i1 = i0; while (L[i1].trim() !== '];') i1++;
+    return eval(L.slice(i0, i1 + 1).join('\n').replace(`const ${name} = `, ''));
+  };
+  const J = [...arr('JOBS'), ...arr('FRONTS')];
+  const seen = new Set();
+  return J.map(j => ({ src: j.src, url: j.u || ('https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=' + j.id) }))
+          .filter(j => !seen.has(j.url) && seen.add(j.url));
 }
 
 const byDate = dl => ({ st: dl < TODAY ? '마감' : '진행', dl });

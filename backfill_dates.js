@@ -42,13 +42,16 @@ async function regDate(url){
   const dry = process.argv.includes('--dry');
   let html = fs.readFileSync(FILE, 'utf8');
   const L = html.split('\n');
-  const i0 = L.findIndex(x => x.trim().startsWith('const JOBS = ['));
-  let i1 = i0; while (L[i1].trim() !== '];') i1++;
   const targets = [];
+  /* JOBS + FRONTS 두 배열 모두 (2026-10-29) */
+  for (const name of ['JOBS', 'FRONTS']) {
+  const i0 = L.findIndex(x => x.trim().startsWith(`const ${name} = [`)); if (i0 < 0) continue;
+  let i1 = i0; while (L[i1].trim() !== '];') i1++;
   for (let i = i0 + 1; i < i1; i++) {
     if (!/^\s*\{ d:'—'/.test(L[i])) continue;
     const u = (L[i].match(/u:'(https:[^']+)'/) || [])[1] || ((L[i].match(/\bid:(\d+)/) || [])[1] ? 'https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=' + L[i].match(/\bid:(\d+)/)[1] : '');
     if (u) targets.push({ i, u });
+  }
   }
   console.log('등록일 없는 공고', targets.length, '건');
   let ok = 0; const months = {};

@@ -45,7 +45,35 @@ const TARGETS = [
     site: '알바천국', kw,
     url: `https://www.alba.co.kr/search/Search?section=ALL&srchType=ALL&clsType=search&EasySearch=mainSearch&wsSrchWord=${enc(kw)}`,
   })),
+
+  /* ── 호텔 프런트 (2026-10-29 추가) — cat:'front' 로 표시해 하우스키핑 공고(JOBS)와 따로 FRONTS 에 반영 ── */
+  ...['호텔 프론트', '호텔 프런트', '프론트데스크', '호텔 리셉션', '나이트오디터'].map(kw => ({
+    site: '고용24', kw, cat: 'front',
+    url: `https://www.work24.go.kr/wk/a/b/1200/retriveDtlEmpSrchList.do?srcKeyword=${enc(kw)}` +
+         `&region=26000&codeDepth1Info=26000&codeDepth2Info=26000&resultCnt=50` +
+         `&sortField=DATE&sortOrderBy=DESC&siteClcd=all&searchMode=Y&pageIndex=1`,
+  })),
+  ...['호텔 프론트', '호텔 프런트', '호텔 리셉션', '나이트 오디터'].map(kw => ({
+    site: '사람인', kw, cat: 'front',
+    url: `https://www.saramin.co.kr/zf_user/search/recruit?searchword=${enc(kw)}&loc_cd=106000&recruitPageCount=100`,
+  })),
+  ...['부산 호텔 프론트', '부산 호텔 프런트'].map(kw => ({
+    site: '잡코리아', kw, cat: 'front',
+    url: `https://www.jobkorea.co.kr/Search/?stext=${enc(kw)}&tabType=recruit`,
+  })),
+  ...['부산 호텔 프론트'].map(kw => ({
+    site: '알바몬', kw, cat: 'front',
+    url: `https://www.jobkorea.co.kr/Search/?stext=${enc(kw)}&tabType=amRecruit`,
+  })),
+  ...['부산 호텔 프론트', '부산 호텔 프런트'].map(kw => ({
+    site: '알바천국', kw, cat: 'front',
+    url: `https://www.alba.co.kr/search/Search?section=ALL&srchType=ALL&clsType=search&EasySearch=mainSearch&wsSrchWord=${enc(kw)}`,
+  })),
 ];
+/* --front : 프런트 검색어만 돌림(수동 1회 수집용) */
+const ONLY_FRONT = process.argv.includes('--front');
+/* --site=사람인 : 특정 사이트만 다시 돌릴 때 */
+const ONLY_SITE = (process.argv.find(x => x.startsWith('--site=')) || '').slice(7);
 
 /** 사이트별 공고 추출 규칙 */
 const EXTRACT = {
@@ -121,7 +149,8 @@ async function get(url) {
 /** index.html 안의 JOBS 배열에서 이미 수집한 공고번호를 뽑는다 */
 function knownIds(indexHtml) {
   const ids = new Set();
-  for (const m of indexHtml.matchAll(/id:(\d+)/g)) ids.add(m[1]);                       // 사람인
+  for (const m of indexHtml.matchAll(/id:(\d+)/g)) ids.add(m[1]);                       // 사람인 (id 형식)
+  for (const m of indexHtml.matchAll(/rec_idx=(\d+)/g)) ids.add(m[1]);                  // 사람인 (u: URL 형식 — 2026-10-29 누락 수정)
   for (const m of indexHtml.matchAll(/wantedAuthNo=([A-Za-z0-9]+)/g)) ids.add(m[1]);    // 고용24
   for (const m of indexHtml.matchAll(/GI_Read\/(\d+)/g)) ids.add(m[1]);                 // 잡코리아
   for (const m of indexHtml.matchAll(/jobs\/detail\/(\d+)/g)) ids.add(m[1]);            // 알바몬
@@ -138,7 +167,7 @@ function knownIds(indexHtml) {
   const found = new Map();   // id -> {id, url, site, kw, ctx}
   const report = [];
 
-  for (const t of TARGETS) {
+  for (const t of TARGETS.filter(x => (!ONLY_FRONT || x.cat === 'front') && (!ONLY_SITE || x.site === ONLY_SITE))) {
     try {
       const html = await get(t.url);
       const rows = EXTRACT[t.site](html);
@@ -146,15 +175,15 @@ function knownIds(indexHtml) {
       const needBusanCheck = !['고용24', '사람인'].includes(t.site);
       let neu = 0, skipped = 0;
       for (const r of rows) {
-        if (found.has(r.id)) continue;
+        if (found.has(r.id)) { if (t.cat && !found.get(r.id).cat) found.get(r.id).cat2 = t.cat; continue; }
         if (!showAll && known.has(r.id)) continue;
         const ctx = context(html, r.id);
         if (needBusanCheck && !/부산|해운대|기장|김해/.test(ctx)) { skipped++; continue; }
-        found.set(r.id, { ...r, site: t.site, kw: t.kw, ctx });
+        found.set(r.id, { ...r, site: t.site, kw: t.kw, ...(t.cat ? { cat: t.cat } : {}), ctx });
         neu++;
       }
       const tail = skipped ? ` / 부산외 제외 ${skipped}` : '';
-      report.push(`${t.site} "${t.kw}" → 조회 ${rows.length} / 신규 ${neu}${tail}`);
+      report.push(`${t.cat === 'front' ? '[프런트] ' : ''}${t.site} "${t.kw}" → 조회 ${rows.length} / 신규 ${neu}${tail}`);
       console.error(`  ✓ ${t.site} "${t.kw}" : ${rows.length}건 (신규 ${neu}${tail})`);
     } catch (e) {
       report.push(`${t.site} "${t.kw}" → 실패 (${e.message})`);
